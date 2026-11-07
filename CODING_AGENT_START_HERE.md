@@ -30,3 +30,9 @@
 ## Repo 完全獨立（強制）
 
 本 Repository 已包含自有程式碼、Spec、Skills、Mock 模擬器、測試與 GitHub Sync。不需要也不允許另外從其他 SiliconForge Repository 拉取檔案來完成任務。先閱讀 [17｜Standalone Repository Contract](docs/17_STANDALONE_REPOSITORY_CONTRACT.md)，並執行 `python -m unittest discover -s tests -v` 檢查獨立性。所有**GitHub 網頁回報**僅寫入本 Repo 的 `SiliconForge_Working_SYNC.md`；程式與測試先保存在 Local，待取得真正的 Artifact 交付通道後交由授權 Integrator 提交此 Repo。不得要求這位 Agent 執行 GitHub Clone 或 Push。
+
+## 動態監督指令與自主進度推進
+
+**目前最優先的工作命令**請直接從 [SiliconForge_Working_SYNC.md](SiliconForge_Working_SYNC.md) 讀取，再開啟 [19｜Supervisor Work Order](docs/19_SUPERVISOR_WORK_ORDER.md)。活躍執行期間每 15 分鐘用 Chrome 重新讀取 docs/19，比對 `DIRECTIVE_ID`，如有更新則在安全檢查點套用並以 Sync 網頁編輯回覆 `last_seen_directive_id`、ACK、目前 Gate、Local SHA、測試證據、阻礙及下一步。**無更新則繼續目前工作與已授權的後續里程碑，不必等待人類重複指示。**
+
+監督端每兩小時檢查 Sync，必要時只更新 docs/19 的工作方向；不接管 Agent 的 Sync 狀態欄位。此安排不代表關閉 Agent Session 後依然具備 Always-on Polling，若無常駐能力須如實註記。Coding Agent 仍只能用 Local Git 與 GitHub Browser 編輯單一 Sync 檔。

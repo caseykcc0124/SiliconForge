@@ -85,3 +85,9 @@ When blocked, give a narrow explicit reason and a next executable action. Do not
 ## Standalone enforcement
 
 Before reporting any milestone, execute `python -m unittest discover -s tests -v` from a clean **GitHub Download ZIP extract** of this repository (with necessary local environment setup) and verify the standalone checks in `docs/17_STANDALONE_REPOSITORY_CONTRACT.md`. No source, test or instruction may be fetched from another SiliconForge repository as a prerequisite. All future work and status must remain here.
+
+## Supervisor Directives and milestone auto-advancement
+
+The active external Coding Agent MUST read `docs/19_SUPERVISOR_WORK_ORDER.md` through Chrome at session start and every 15 minutes **while actively running**, and immediately before changing milestones, resuming from pause, or reporting a genuine blocker. Check the explicit `DIRECTIVE_ID` and acknowledge changes solely by GitHub Web Edit to `SiliconForge_Working_SYNC.md`. If a directive changes, implement it at the next safe checkpoint; otherwise continue current authorized work automatically. All execution and evidence milestones G0–G7 are in docs/19. Existing A0–A6 and E01–E20 gates, human approvals, and the Browser/ZIP/Local-Git-only transport stay mandatory.
+
+Only the Supervisor or authorized Integrator edits docs/19. The external Coding Agent owns its Sync progress, not GitHub source edits, remote PRs or Git push. Do not claim periodic work while its session is inactive. A supervisor update cannot authorize weakened tests, source publication, unauthorized EDA/PDK, or fabricated evidence.

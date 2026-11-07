@@ -72,3 +72,7 @@ ZIP 作為 **GitHub → Local 的輸入通道**。要讓 **Local → GitHub 的�
 - GitHub 上的 `AGENTS.md` 是未來進入專案工作樹時的規則，**不能當成遠端 Browser Coding Agent 已自動讀取的前提**。
 - 80 項工程驗收依原規格不變。只有相關程式與報告真正交付、版本一致並有可追溯證據時才能 PASS。
 - 此 Repo 保持獨立，不得再引入任何其他 SiliconForge Repository 作為運作依賴。
+
+## 7. 監督者動態指引輪詢
+
+目前工作指引位於 [docs/19_SUPERVISOR_WORK_ORDER.md](19_SUPERVISOR_WORK_ORDER.md)，其版本鍵為 `DIRECTIVE_ID`。外部 Coding Agent 必須在活躍 Session 開始時、每 15 分鐘、每個 Gate／Blocker／重啟節點，用 Browser 重讀指引。以 GitHub Web Edit 僅更新根目錄 `SiliconForge_Working_SYNC.md` 的 `last_seen_directive_id`、ACK、Heartbeat 與已驗收工程證據。若指引不變，繼續目前 Gate 和獲准的後續 Gate。監督者定時查 Sync、必要時更新 docs/19 而不覆蓋 Agent 狀態。缺少 Always-on Session 不等於已經定時輪詢；不能宣稱有背景能力。完整工作與里程碑依 docs/19。
