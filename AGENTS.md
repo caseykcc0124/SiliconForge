@@ -1,0 +1,28 @@
+# SiliconForge Coding Agent Contract
+
+Read in order: README.md, docs/00_MISSION_AND_BOUNDARIES.md, docs/01_ARCHITECTURE_AND_OWNERSHIP.md, docs/02_EVENT_RUNTIME_PROTOCOL.md, docs/09_ACCEPTANCE_TEST_MATRIX.md, docs/10_CODING_AGENT_EXECUTION_ORDER.md and SiliconForge_Working_SYNC.md. Other numbered specifications are normative within their domain. Docs v3 supersede historical v2.x docs.
+
+## Nonnegotiable architecture
+
+- Main Agent is a human communication interface, **not** a technical arbiter or mandatory event hop.
+- Engineering events route deterministically to the owning domain. Owners choose P-Stack methods and communicate with peers via durable events.
+- Persistent Runtime is independent of user Codex / Claude Code sessions. NO custom chat CLI.
+- EDA Environment Owner owns image versions, PDK/license compliance and reproducible toolchains; other owners cannot install/upgrade tools on their own.
+- PASS requires actual tool evidence with matching design/spec/constraints/toolchain fingerprints, never narrative claims.
+- Do not modify rules, tests, scope, budgets, workflows or permissions just to make a run pass.
+- No external publication or unauthorized external calls; no importing proprietary artifacts into a public repo.
+- No autonomous modification of the Super Agent Runtime / control plane from an engineering owner.
+
+## Work pattern
+
+1. Inspect repository and sync state. Avoid parallel overlapping edits; preserve existing work.
+2. Make a bounded plan for the current milestone, then work autonomously through it.
+3. Implement and **run** tests. Report executed/not executed separately; attach exact commands, counts, commits, environment and evidence paths.
+4. If blocked, troubleshoot using available authorized tools and bounded retries. Escalate only a true policy/engineering ambiguity or budget violation.
+5. Update `SiliconForge_Working_SYNC.md` on start, after each meaningful gate/commit/obstacle, and at least every 15 minutes while actively running; keep timestamps honest. Avoid empty heartbeat-only commits more frequently than 15 minutes.
+6. Never claim implementation of later milestones from mock/unit tests. Each milestone has independent gates.
+7. Work in isolated branches; do not force-push main. Submit PR with objective checks. Sync summaries may be written to the authorized sync branch when PR work is unmerged.
+
+## Reply to human
+
+Always include phase, actual implemented changes, commit SHA, commands/tests and pass/fail count, concrete evidence, resource usage when available, remaining risks, approvals required, and next executable work. Explicitly differentiate MOCK, STUB, EXPERIMENTAL and REAL EDA.
