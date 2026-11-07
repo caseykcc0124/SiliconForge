@@ -38,7 +38,7 @@ Recommended editable installation: `python -m pip install -e .`. A0 tests use on
 
 ## GitHub workflow
 
-The canonical standalone repository is `caseykcc0124/SiliconForge`. Work should proceed on topic branches with pull requests and CI, subject to the authorized publishing rules. Coding Agent updates `SiliconForge_Working_SYNC.md` on meaningful progress and at least once per 15 minutes while actively developing, and commits it to GitHub without inventing test outcomes. Track the authoritative sync file on `main` via integration commits/PR merges or explicitly approved dedicated status branch if PR work is ongoing. See `docs/10_CODING_AGENT_EXECUTION_ORDER.md`.
+The canonical standalone repository is `caseykcc0124/SiliconForge`. For the **current external Coding Agent**, source is acquired via the GitHub **Code → Download ZIP** web action and developed using **Local Git only**. The Agent cannot execute Git Clone/Pull/Push on GitHub, create remote PRs, or edit remote source files. It can edit **only the Sync file via the GitHub web UI**. Separate authorized GitHub integration is needed after actual ZIP/Patch artifact transfer. PRs and CI apply to the Integrator, not as mandatory agent actions. Coding Agent updates `SiliconForge_Working_SYNC.md` on meaningful progress and at least once per 15 minutes while actively developing, and commits it to GitHub without inventing test outcomes. Track the authoritative sync file on `main` via integration commits/PR merges or explicitly approved dedicated status branch if PR work is ongoing. See `docs/10_CODING_AGENT_EXECUTION_ORDER.md`.
 
 ## Reference materials
 
@@ -61,3 +61,8 @@ The canonical [Coding Agent entry point](CODING_AGENT_START_HERE.md) includes th
 ## Fully standalone repository
 
 This repository is the **only** SiliconForge source, specification, acceptance and status authority. A clean clone includes the local source, tests, skills, config, contracts, simulator, 60 original A0–A6 cases and 20 new E cases. It does not rely on another SiliconForge repository or external archive for its own implementation baseline. See [Standalone Repository Contract](docs/17_STANDALONE_REPOSITORY_CONTRACT.md). The A0 local test suite now includes independence and acceptance-integrity tests: `python -m unittest discover -s tests -v`.
+
+
+## External Coding Agent: Browser + ZIP + Sync-only
+
+The first read is [SiliconForge_Working_SYNC.md](SiliconForge_Working_SYNC.md). Use Chrome/Computer Use to read files, GitHub **Code → Download ZIP** to acquire source, and Git only in the Agent's Local workspace. The sole GitHub Web-editable file for this Agent is `SiliconForge_Working_SYNC.md`. See [18｜External Coding Agent Handoff](docs/18_BROWSER_ZIP_CODING_AGENT_HANDOFF.md). Local code is **not** on GitHub until an accessible artifact is transferred to and committed by an authorized Integrator.
