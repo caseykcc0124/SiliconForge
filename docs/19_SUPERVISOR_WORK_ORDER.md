@@ -96,7 +96,7 @@ supervisor_coordination:
 ## 6. Supervisor 的定時監督與指令修改責任
 
 Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/CI 與本指引的版本，並和前次狀態比對：
-- 當看到 Gate 合法閉合、真實新阻礙、重複失敗、交付渠道變更或需求有新的決策，**由 Supervisor 更新這份 docs/19 文件並遞增 DIRECTIVE_ID**，Coding Agent 下次主動輪詢即可接收，不需要人類轉達。
+- 當看到 Gate 合法閉合、真實新阻礙、重複失敗、交付渠道變更或需求有新的決策，**由 Supervisor 更新這份 docs/19 文件並遞增 DIRECTIVE_ID**，不必也不應為了更新 Supervisor 版本同步改寫 Agent 的 Sync；Agent 會在下一次輪詢後自行 ACK 最新版本，Coding Agent 下次主動輪詢即可接收，不需要人類轉達。
 - 更新只限安全且已授權的目標排序、下一階段、故障恢復及 Reviewer 的查核重點；**禁止自動降低測試 Gate、擅自核准公開發布、增加未授權外部工具或改變原架構意圖**。
 - 除明確需要人類批准外，Supervisor 不要求人類重複搬運同一任務；若沒有重大改變，**不要製造新版本或打斷 Coding Agent**。
 - Supervisor 不編輯 Agent 擁有的 Sync Status 區塊；Agent 不編輯 Supervisor 擁有的 docs/19 指引。若指令已更新而沒有 ACK，下一輪巡檢提醒或分類為執行能力限制。
