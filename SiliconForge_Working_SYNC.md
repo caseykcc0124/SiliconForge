@@ -40,9 +40,9 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0
 owner_agent: Codex_local_A0
-updated_at_utc: "2026-11-07T16:37:46Z"
-last_progress_at_utc: "2026-11-07T16:37:46Z"
-last_heartbeat_at_utc: "2026-11-07T16:37:46Z"
+updated_at_utc: "2026-11-07T16:52:16Z"
+last_progress_at_utc: "2026-11-07T16:52:16Z"
+last_heartbeat_at_utc: "2026-11-07T16:52:16Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
 current_task: "A0 acceptance gap audit and implementation, see GitHub Issue #1"
@@ -143,14 +143,14 @@ external_coding_agent:
   input_zip_baseline_sha: efe183b726de8392371b4271bb57ea5cf3d76f2b
   input_zip_sha256: 9ceeaa748872bbe77c5a1b61480a343266a753a9f1d3a52c40b71abb369eefdc
   local_workspace_state: ACTIVE
-  local_git_commit: 0ce2b25
+  local_git_commit: c5f3194
   code_artifact_state: NOT_CREATED
   code_artifact_access: UNAVAILABLE
   remote_source_integrated_commit: null
   tests_executed:
     - command: PYTHONPATH=src python -m unittest discover -s tests -v
       result: PASS
-      count: 58
+      count: 79
       scope: CURRENT_LOCAL_SUITE_NOT_FULL_A0
   next_action: Complete scoped Runtime, lease expiry, durable wait/wake, ingress policy and evidence rejection; execute A0-01 through A0-18.
 ```
@@ -160,4 +160,8 @@ external_coding_agent:
 
 
 2026-11-07T16:37:46Z. Local checkpoint. Full stdlib suite 58/58 PASS, independently rerun by Luna reviewer. Executable tests/run_a0_acceptance.py has per-ID raw logs, source hashes and JSON under .audit/a0-acceptance; currently 17 A0 checks pass and A0-14 remains NOT_VERIFIED. Independent review continues on peer boundaries and canonical envelope completeness, so full A0 remains NOT_VERIFIED. A separate Luna worker is implementing immutable ordered history reconstruction. Changes remain uncommitted; local_git_commit stays baseline 0ce2b25. Source artifact NOT_CREATED and transfer UNAVAILABLE. Next finish replay and boundary review, rerun acceptance at committed local revision, then A0X. REAL EDA/native harness/E01-E20 NOT_RUN. No remote source changes or new approval requests.
+
+
+
+2026-11-07T16:52:16Z. Local progress. Commit c5f3194 has clean-checkout 18/18 A0 ID checks and 67/67 suite PASS, with logs and hashes under D:/mtk32712/SiliconForge/verify-a0-c5f3194/.audit. Subsequent uncommitted peer lifecycle integration and immutable INSERT OR REPLACE protection have development suite 79/79 PASS and 18/18 ID checks PASS. Peer response/refusal/expiry use durable transitions and direct causal sender wake; ACK preserves WAITING_FOR_PEER. Canonical ingress separates producer requirements from runtime-generated verified identity, ticket and reception fields. Final independent review is running, so overall A0 remains NOT_VERIFIED; A0X not started. Next resolve final findings, commit and reverify exact revision, build source/evidence ZIP+Patch and manifest, then A0X. Artifact NOT_CREATED, transfer UNAVAILABLE, remote_source_integrated_commit remains null. REAL EDA/native harness/E01-E20 NOT_RUN. Only this Sync is written remotely; no approval requested.
 
