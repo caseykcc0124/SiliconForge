@@ -1,6 +1,6 @@
 # SiliconForge
 
-**Autonomous Chip Engineering Framework | Architecture & Delivery Baseline v3.0**
+**Autonomous Chip Engineering Framework | Architecture & Delivery Baseline v3.1**
 
 Status: **SPECIFICATION / A0 REFERENCE IMPLEMENTATION**. No production autonomous EDA flow has been demonstrated. Existing `simulator/` is a deterministic **mock**, not evidence of working Codex or Verilator.
 
@@ -38,7 +38,7 @@ Recommended editable installation: `python -m pip install -e .`. A0 tests use on
 
 ## GitHub workflow
 
-The planned public repository is `caseykcc0124/SiliconForge`. Work should proceed on topic branches with pull requests and CI, subject to the authorized publishing rules. Coding Agent updates `SiliconForge_Working_SYNC.md` on meaningful progress and at least once per 15 minutes while actively developing, and commits it to GitHub without inventing test outcomes. Track the authoritative sync file on `main` via integration commits/PR merges or explicitly approved dedicated status branch if PR work is ongoing. See `docs/10_CODING_AGENT_EXECUTION_ORDER.md`.
+The canonical standalone repository is `caseykcc0124/SiliconForge`. Work should proceed on topic branches with pull requests and CI, subject to the authorized publishing rules. Coding Agent updates `SiliconForge_Working_SYNC.md` on meaningful progress and at least once per 15 minutes while actively developing, and commits it to GitHub without inventing test outcomes. Track the authoritative sync file on `main` via integration commits/PR merges or explicitly approved dedicated status branch if PR work is ongoing. See `docs/10_CODING_AGENT_EXECUTION_ORDER.md`.
 
 ## Reference materials
 
@@ -56,3 +56,8 @@ The canonical [Coding Agent entry point](CODING_AGENT_START_HERE.md) includes th
 
 **The original A0–A6 60 cases remain mandatory. The 20 new E cases bring the project to 80 Required Acceptance cases.** Documentation publication is not implementation acceptance.
 
+
+
+## Fully standalone repository
+
+This repository is the **only** SiliconForge source, specification, acceptance and status authority. A clean clone includes the local source, tests, skills, config, contracts, simulator, 60 original A0–A6 cases and 20 new E cases. It does not rely on another SiliconForge repository or external archive for its own implementation baseline. See [Standalone Repository Contract](docs/17_STANDALONE_REPOSITORY_CONTRACT.md). The A0 local test suite now includes independence and acceptance-integrity tests: `python -m unittest discover -s tests -v`.

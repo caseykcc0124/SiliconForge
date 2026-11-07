@@ -38,3 +38,8 @@ Before coding or architectural decisions, read `CODING_AGENT_START_HERE.md`, `do
 - Branch spawn must have bounded explicit hypothesis, stop criterion and quota. One blocked branch must not stop healthy branches.
 - Implement A0X/A3X/A4X/A5X/A6X at the milestones specified by docs/16. Never create another framework or overwrite the existing Working Sync state.
 
+
+
+## Standalone repository source-of-truth (mandatory)
+
+Use only the current repository for SiliconForge source code, specifications, contracts, skills, acceptance trackers, Git activity and Working Sync. There is no alternate SiliconForge repository to clone or synchronize. Read `docs/17_STANDALONE_REPOSITORY_CONTRACT.md`; run `python -m unittest discover -s tests -v` before milestone claims. External Codex/Claude and open EDA tools are execution dependencies, not cross-repository SiliconForge source dependencies. All changes and PRs belong here.

@@ -17,9 +17,14 @@
 
 ## 工作回報與同步
 
-- 先讀並持續更新 [SiliconForge_Working_SYNC.md](SiliconForge_Working_SYNC.md)，不要寫到另一個 Repo 的同名或相似檔案。
+- 先讀並持續更新 [SiliconForge_Working_SYNC.md](SiliconForge_Working_SYNC.md)，這是本專案唯一權威狀態檔，不要建立第二個同步入口。
 - 每次有實際 commit、Fork、Merge、驗證完成、阻塞或需批准事項，記錄探索群組 / 分支 / Instance / Commit / Evidence / 停止原因 / 下一步；活躍期間每 15 分鐘至少更新一次狀態或 Heartbeat。
 - 進展、模擬、真實 EDA、未執行分開記錄。Heartbeat、Worker 數量、分支數量不算工程成果。
 - 對實作仍採 Git topic branch + PR；批准邊界、資源上限和公開發布政策依現有 AGENTS.md。
 
 **即刻可執行下一步：** 先執行既有 A0 基準測試，做 80 項 Gap Audit，將 A0X Exploration Registry/Owner Instance/Worktree Isolation 的第一個可驗收工作切入既有 A0/M1 模組，保留失敗測試，逐 Gate 繼續推進。
+
+
+## Repo 完全獨立（強制）
+
+本 Repository 已包含自有程式碼、Spec、Skills、Mock 模擬器、測試與 GitHub Sync。不需要也不允許另外從其他 SiliconForge Repository 拉取檔案來完成任務。先閱讀 [17｜Standalone Repository Contract](docs/17_STANDALONE_REPOSITORY_CONTRACT.md)，並執行 `python -m unittest discover -s tests -v` 檢查獨立性。所有變更、E 類驗收與工作進度只提交到目前的 `caseykcc0124/SiliconForge`。
