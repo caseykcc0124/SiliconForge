@@ -42,18 +42,31 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: null
-  directive_poll_at_utc: null
-  directive_ack_at_utc: null
-  directive_application_state: PENDING_AGENT_ACK
-  polling_mode: ACTIVE_SESSION_ONLY_UNCONFIRMED
-  active_gate: G0
-  active_gate_state: PENDING_AGENT_RESUME
-  local_artifact_state: NOT_CREATED
-  local_artifact_sha256: null
+  last_seen_directive_id: SF-DIR-20261108-01
+  directive_poll_at_utc: "2026-11-07T23:36:29.330698Z"
+  directive_ack_at_utc: "2026-11-07T23:39:47.059320Z"
+  directive_application_state: APPLIED
+  polling_mode: ACTIVE_SESSION_ONLY
+  active_gate: G1
+  active_gate_state: ACTIVE
+  G0_local_gate: CLOSED_LOCAL_WITH_INDEPENDENT_REVIEW
+  G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
+  local_git_commit: "9f8560d801eaff42eb0d67f765737e180dc98505"
+  local_artifact_state: PREPARED_LOCAL
+  local_artifact_sha256: "a5f6609c20cc122d8b0512c87d7b0cab6e98d8ac6fac3f4b0481bb8ce65a531b"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/a0x-scope-9f8560d/SiliconForge-A0X-scope-local.zip"
   artifact_transfer_state: UNAVAILABLE
+  artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
-  next_executable_action: Read docs/19, acknowledge directive, close A0 local gate, prepare source/evidence bundle, then start A0X.
+  local_test_evidence:
+    - "Frozen 9f8560d: 101/101 stdlib tests, including 21 A0X development checks"
+    - "Frozen 9f8560d: A0-01..A0-18 each PASS with per-ID raw logs and SHA256"
+    - "Independent Luna review: no remaining high/medium correctness findings in this A0X scope-runtime unit"
+  blocked_items:
+    - "No verified source ZIP/Patch transport to an authorized Integrator; local work continues"
+  next_executable_action: Audit and implement remaining G1 candidate-scoped fan-in, checkpoint/watchdog and quota contracts; then proceed to independent G2/G3 prerequisites without remote publishing.
+  last_heartbeat_at_utc: "2026-11-07T23:39:47.059320Z"
+  last_effective_progress_at_utc: "2026-11-07T17:39:20.950730Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -65,15 +78,15 @@ coding_agent_transport:
   local_artifact_transfer: NOT_ESTABLISHED
   actual_source_on_github_updated_by_agent: false
 mission_state: ACTIVE
-phase: A0
-owner_agent: Codex_local_A0
-updated_at_utc: "2026-11-07T16:52:16Z"
-last_progress_at_utc: "2026-11-07T16:52:16Z"
-last_heartbeat_at_utc: "2026-11-07T16:52:16Z"
+phase: A0X
+owner_agent: Codex_local_G1
+updated_at_utc: "2026-11-07T23:39:47.059320Z"
+last_progress_at_utc: "2026-11-07T17:39:20.950730Z"
+last_heartbeat_at_utc: "2026-11-07T23:39:47.059320Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
-current_task: "A0 acceptance gap audit and implementation, see GitHub Issue #1"
-next_action: "Coding Agent: follow Issue #1 and docs/10; audit existing A0-01..A0-18, then implement v3.1 docs/14-16 E01..E20 using A0X/A3X/A4X/A5X/A6X gates."
+current_task: "G0 locally closed; G1 A0X scope-runtime unit verified, remaining runtime contracts active"
+next_action: "Continue G1 contract gap audit and bounded implementation; source transport does not block local progress"
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -148,6 +161,7 @@ The external Coding Agent edits **only this file via GitHub Web UI**. Its local 
 
 | UTC timestamp | Agent | Phase/state | Commit or PR | Executed evidence | Next |
 |---|---|---|---|---|---|
+| 2026-11-07T23:39:47.059320Z | Coding Agent | G0 CLOSED_LOCAL / G1 ACTIVE | Local-only 9f8560d | Frozen 101/101 suite, 21 A0X MOCK checks, 18/18 A0 IDs, independent review and tested-byte ZIP | Continue G1 contracts; transfer UNAVAILABLE; no remote source integration |
 | 2026-11-07T08:14:54Z | Architecture handoff | A0 / NOT_STARTED | [6fe2c6b](https://github.com/caseykcc0124/SiliconForge/commit/6fe2c6b243adf399420fbfb9815c807a0ff728cb) | Public repository has 54 files; [GitHub CI 22/22 reference PASS](https://github.com/caseykcc0124/SiliconForge/actions/runs/42354537870); formal A0 acceptance NOT_RUN | Coding Agent starts [Issue #1](https://github.com/caseykcc0124/SiliconForge/issues/1) |
 | 2026-11-07T06:35:15Z | Architect | A0 / NOT_STARTED | Local-only | 22/22 stdlib reference tests passed; no production EDA or full A0 acceptance | Coding Agent to begin A0 gap audit |
 
@@ -170,16 +184,24 @@ external_coding_agent:
   input_zip_baseline_sha: efe183b726de8392371b4271bb57ea5cf3d76f2b
   input_zip_sha256: 9ceeaa748872bbe77c5a1b61480a343266a753a9f1d3a52c40b71abb369eefdc
   local_workspace_state: ACTIVE
-  local_git_commit: c5f3194
-  code_artifact_state: NOT_CREATED
-  code_artifact_access: UNAVAILABLE
+  local_git_commit: 9f8560d801eaff42eb0d67f765737e180dc98505
+  code_artifact_state: PREPARED_LOCAL
+  code_artifact_access: LOCAL_WORKSPACE_ONLY
+  artifact_transfer_state: UNAVAILABLE
   remote_source_integrated_commit: null
+  a0_local_commit: 1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae
+  a0_bundle_sha256: 8b9b9fc9405e0c0a534e3e300155c3969e7b1a0aa327b47a341c9a333afb4fed
+  a0x_scope_bundle_sha256: a5f6609c20cc122d8b0512c87d7b0cab6e98d8ac6fac3f4b0481bb8ce65a531b
   tests_executed:
-    - command: PYTHONPATH=src python -m unittest discover -s tests -v
+    - command: PYTHONPATH=src python -m unittest discover -s tests -q
       result: PASS
-      count: 79
-      scope: CURRENT_LOCAL_SUITE_NOT_FULL_A0
-  next_action: Complete scoped Runtime, lease expiry, durable wait/wake, ingress policy and evidence rejection; execute A0-01 through A0-18.
+      count: 101
+      scope: FROZEN_LOCAL_9f8560d_INCLUDES_21_A0X_MOCK_CHECKS
+    - command: PYTHONPATH=src python tests/run_a0_acceptance.py
+      result: PASS
+      cases: A0-01..A0-18
+      scope: LOCAL_A0_ACCEPTANCE_WITH_RAW_LOGS_AND_HASHES
+  next_action: Complete remaining G1 runtime contracts; native Harness, real EDA and formal E01-E20 remain NOT_RUN.
 ```
 
 2026-11-07T16:37:46Z. Downloaded main through Chrome Code -> Download ZIP and initialized local-only Git. Original 30 reference tests passed. Read-only audit reproduced expired lease ACK, stranded final lease, unknown-route loss and same-project IP scope gaps. Core repairs and boundary modules are in progress. A0 remains NOT_VERIFIED; real EDA, native harness and E01-E20 remain NOT_RUN. No remote source file has been changed. Local source artifact transfer is not established; this does not block authorized local A0 work.
@@ -191,4 +213,7 @@ external_coding_agent:
 
 
 2026-11-07T16:52:16Z. Local progress. Commit c5f3194 has clean-checkout 18/18 A0 ID checks and 67/67 suite PASS, with logs and hashes under D:/mtk32712/SiliconForge/verify-a0-c5f3194/.audit. Subsequent uncommitted peer lifecycle integration and immutable INSERT OR REPLACE protection have development suite 79/79 PASS and 18/18 ID checks PASS. Peer response/refusal/expiry use durable transitions and direct causal sender wake; ACK preserves WAITING_FOR_PEER. Canonical ingress separates producer requirements from runtime-generated verified identity, ticket and reception fields. Final independent review is running, so overall A0 remains NOT_VERIFIED; A0X not started. Next resolve final findings, commit and reverify exact revision, build source/evidence ZIP+Patch and manifest, then A0X. Artifact NOT_CREATED, transfer UNAVAILABLE, remote_source_integrated_commit remains null. REAL EDA/native harness/E01-E20 NOT_RUN. Only this Sync is written remotely; no approval requested.
+
+
+2026-11-07T23:39:47.059320Z. Applied Supervisor directive SF-DIR-20261108-01. Reconciled stale Sync against existing frozen local evidence without repeating unaffected work. G0 local A0 CLOSE is complete at 1c4f55f with independent sign-off and a verified source/evidence ZIP. G1 scope-runtime unit is frozen at 9f8560d with 101/101 tests and 18/18 A0 IDs; independent Luna review found no remaining high/medium defect in this unit. G1 as a whole remains ACTIVE. Candidate fan-in, checkpoint/watchdog and complete resource governance require contract audit. The prepared A0 and A0X ZIPs have not been transferred; remote source remains NOT_INTEGRATED. Formal E01-E20, native harness and real EDA are NOT_RUN. Chrome physical input has recovered for this ACK. Directive polling is ACTIVE_SESSION_ONLY, with no background scheduler or Always-on service claimed. Last effective engineering progress remains 2026-11-07T17:39:20.950730Z; this directive ACK is a coordination update, not a new test result.
 
