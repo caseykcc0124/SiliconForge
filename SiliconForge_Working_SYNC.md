@@ -2,6 +2,21 @@
 
 **Purpose:** Git-backed handoff contract among the human project owner, Coding Agent(s), and status-review assistant. This is a current status snapshot plus a concise audit trail, not an autonomous scheduling service.
 
+## IMPORTANT: External Coding Agent must use Browser + ZIP + Local Git + Sync-only
+
+**This section is the direct task and communication contract for the current external Coding Agent. Read it first. The Agent CANNOT run Git commands against GitHub, CANNOT clone/pull/push the remote repository, and CANNOT write any remote source file other than this Sync file via the GitHub web editor. It CAN use local Git on its own machine.**
+
+1. **Read task**: Open THIS FILE using Chrome/Computer Use. Other GitHub files, including `AGENTS.md` and `docs/`, may be read using Browser when needed; do not assume they have been automatically loaded.
+2. **Acquire code when necessary**: Open `https://github.com/caseykcc0124/SiliconForge` in the Browser; choose **Code → Download ZIP**, download and extract into the Coding Agent's own Local workspace. This is the permitted whole-repository input method. **Do not run `git clone`, `git fetch` or `git pull` on GitHub.**
+3. **Work locally**: Develop and test in that Local directory. Local `git init`, Local branches and Local commits are allowed, but they are **NOT GitHub commits** and are not proof that remote source has changed. The ZIP is a snapshot without `.git` history.
+4. **Report progress**: In the Browser, edit only `SiliconForge_Working_SYNC.md` and save it through GitHub Web UI. Report the current baseline revision, local code status, exact tests, SHA of produced artifact, blocker, and next local action. **Do not claim a Sync Web edit means code was uploaded.**
+5. **Deliver actual source**: When implementation is ready, prepare a Local ZIP/Patch Bundle containing changed source, tests, manifests and raw evidence, with baseline SHA and SHA256. The Agent currently has **no verified direct transfer path for this bundle**. Mark `LOCAL_IMPLEMENTED_PENDING_ARTIFACT_TRANSFER` until an authorized, accessible channel is available. A separate GitHub Integrator may commit actual source only **after receiving and verifying those bytes**. If no transfer path exists, state this blocker accurately. Do not tell the human that GitHub source was updated.
+6. **Never attempt**: remote Git Clone/Pull/Push, GitHub PR creation as a required Coding Agent step, edits to other GitHub files via the Browser, reading another SiliconForge repository, or unbounded test/framework expansion.
+7. **Engineering goals**: SiliconForge v3.1 remains the event-driven Super Agent Runtime with specialized P-Stack Domain Owners, native Codex/Claude Harness interfaces and real EDA verification. Multiple Owner Instances may concurrently explore one Requirement with Performance/Low Power/Area Git worktrees, nested forks, independent candidate evidence, Pareto selection and verified Merge. Existing A0–A6 **60 required cases** and E01–E20 **20 required cases** give **80**. A0 is NOT_VERIFIED; no new E case is PASS by writing this instruction.
+8. **Sync frequency**: On start, material progress, test changes, blocked, and final report. During active work update/heartbeat at least once per 15 minutes where Browser UI permits; distinguish heartbeat timestamp from last actual engineering progress. Re-read the page before editing to avoid overwriting another editor.
+
+If a separate doc says 'Clone the repo', 'Push commit', or 'Create PR', **that step is for an authorized GitHub Integrator or a different environment**. For this Coding Agent, the transport contract in this section overrides it. Full procedure in `docs/18_BROWSER_ZIP_CODING_AGENT_HANDOFF.md`.
+
 ## MACHINE-READABLE STATUS
 
 ```yaml
@@ -12,10 +27,20 @@ branch: main
 sync_branch: main
 sync_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 architecture_baseline: "3.1"
+coding_agent_transport:
+  acquisition: GITHUB_WEB_DOWNLOAD_ZIP
+  github_read: BROWSER_COMPUTER_USE
+  github_write: WEB_EDIT_SINGLE_SYNC_FILE
+  only_remote_editable_file: SiliconForge_Working_SYNC.md
+  remote_git_clone_pull_push: UNSUPPORTED
+  git_scope: LOCAL_ONLY
+  remote_source_delivery: NOT_AVAILABLE_FROM_CODING_AGENT
+  local_artifact_transfer: NOT_ESTABLISHED
+  actual_source_on_github_updated_by_agent: false
 mission_state: NOT_STARTED
 phase: A0
 owner_agent: unassigned
-updated_at_utc: "2026-11-07T15:36:03.849Z"
+updated_at_utc: "2026-11-07T15:53:34.490Z"
 last_progress_at_utc: "2026-11-07T08:14:54Z"
 last_heartbeat_at_utc: null
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
@@ -86,7 +111,7 @@ last_evidence:
 
 ## Sync update protocol
 
-Each status commit must include: meaningful task state, actual commit SHA/PR, actual commands and per-gate results, progress timestamp, currently running/blocked activities, next executable step and any human approval. Update upon each meaningful change and at least every 15 minutes during active execution. Idle heartbeat must not imply engineering progress. Use `WAITING_FOR_HUMAN` only when no authorized route forward exists. Update to `VERIFIED` only after all acceptance IDs for the phase have actual evidence. Avoid reporting 'CI GREEN' when CI has not actually run.
+The external Coding Agent edits **only this file via GitHub Web UI**. Its local Git commits are local-only and must be reported as `local_git_commit`, never as an uploaded GitHub commit or PR. Each web-edited status update must include meaningful task state, exact tests and evidence, local artifact transfer state, progress timestamp, currently running/blocked activities, next executable step and any human approval. A real remote source commit SHA may be recorded only after an authorized Integrator has independently published and verified the actual source. Update upon each meaningful change and at least every 15 minutes during active execution. Idle heartbeat must not imply engineering progress. Use `WAITING_FOR_HUMAN` only when no authorized route forward exists. Update to `VERIFIED` only after all acceptance IDs for the phase have actual evidence. Avoid reporting 'CI GREEN' when CI has not actually run.
 
 ### Required states
 
