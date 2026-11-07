@@ -68,7 +68,7 @@ If a requested cloud service cannot be reached, continue on local A0 work where 
 
 ## v3.1 mandatory execution amendment
 
-**This repository is now the canonical home for all SiliconForge execution instructions.** Follow [CODING_AGENT_START_HERE.md](../CODING_AGENT_START_HERE.md), [14｜Exploration Architecture](14_PARALLEL_EXPLORATION_ARCHITECTURE.md), [15｜Acceptance](15_PARALLEL_EXPLORATION_ACCEPTANCE.md), [16｜Implementation](16_PARALLEL_EXPLORATION_IMPLEMENTATION.md). Do not copy updates into `caseykcc0124/codex_coding/SiliconForge` or start a new project.
+**This repository is now the canonical home for all SiliconForge execution instructions.** Follow [CODING_AGENT_START_HERE.md](../CODING_AGENT_START_HERE.md), [14｜Exploration Architecture](14_PARALLEL_EXPLORATION_ARCHITECTURE.md), [15｜Acceptance](15_PARALLEL_EXPLORATION_ACCEPTANCE.md), [16｜Implementation](16_PARALLEL_EXPLORATION_IMPLEMENTATION.md). Do not create a second repository, fetch alternative SiliconForge source trees, or start a new project. The current repository contains every required implementation entrypoint.
 
 Do not model RTL, Verification, Formal, PPA, Spec or any Domain Role as a globally single Owner instance. The deterministic Runtime may run many instances of the same Role, independently scoped to `exploration_id`, `branch_id`, `ticket_id` and `lease_epoch`. P-Stack `arena` and `swarm` stay inside each Owner Instance, while Runtime maintains the inter-branch DAG, routing, budgets, stop conditions and durable state.
 
@@ -78,3 +78,8 @@ Implement A0X immediately after core A0: Branch Registry, ID schema, Router/Outb
 
 When blocked, give a narrow explicit reason and a next executable action. Do not ask the human to manually relay normal peer results. Do not declare completion from mock or textual claims.
 
+
+
+## Standalone enforcement
+
+Before reporting any milestone, execute `python -m unittest discover -s tests -v` from a clean clone of this repository and verify the standalone checks in `docs/17_STANDALONE_REPOSITORY_CONTRACT.md`. No source, test or instruction may be fetched from another SiliconForge repository as a prerequisite. All future work and status must remain here.
