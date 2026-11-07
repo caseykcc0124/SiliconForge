@@ -26,3 +26,18 @@ src/siliconforge/{runtime.py,ingress.py,router.py,scheduler.py,mcp_server.py,har
 
 ## Coding Agent execution order
 Perform gap audit against docs/09, select smallest safe next work, implement and execute tests, publish evidence and Git commit, update sync and proceed. Stop only for human approval, explicit budget wall, or proven blocker. Never quietly expand scope.
+
+## v3.1 required branch exploration gates
+
+The established A0–A6 architecture remains authoritative. Extend it with:
+
+| Insertion gate | Required implementation and evidence |
+|---|---|
+| A0X after A0 | Exploration/Branch Registry, lineage DAG, multiple Owner Instances per Role, candidate-scoped routing/leases/quotas, crash replay and state transitions |
+| A3X in A1/A3 | Native Codex/Claude Owner Instances, actual Git worktrees, branch isolation, branch-specific P-Stack workflows, job registration and conflict-safe commits |
+| A4X in A2/A4 | CRC32 Performance/Low Power/Area concurrent tracks, independent real Simulation/Formal/Synthesis/PPA, nested fork, Pareto, controlled merge and post-merge gates |
+| A5X in A5 | Dashboard Branch DAG, per-instance traces, compare/merge view and PDCA of discarded variants |
+| A6X in A6 | Multi-branch crash/recovery, stale evidence protection, no-progress watchdog, branch fairness, cost ceilings |
+
+See docs/14–16 for event/state/data-model requirements. Existing 60 A0–A6 cases remain; E01–E20 are 20 new required cases. **Total: 80**. Do not reduce earlier test coverage or claim development success by counting branches/commits.
+
