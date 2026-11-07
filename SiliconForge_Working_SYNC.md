@@ -37,12 +37,12 @@ coding_agent_transport:
   remote_source_delivery: NOT_AVAILABLE_FROM_CODING_AGENT
   local_artifact_transfer: NOT_ESTABLISHED
   actual_source_on_github_updated_by_agent: false
-mission_state: NOT_STARTED
+mission_state: ACTIVE
 phase: A0
-owner_agent: unassigned
-updated_at_utc: "2026-11-07T15:53:34.490Z"
-last_progress_at_utc: "2026-11-07T08:14:54Z"
-last_heartbeat_at_utc: null
+owner_agent: Codex_local_A0
+updated_at_utc: "2026-11-07T16:23:14Z"
+last_progress_at_utc: "2026-11-07T16:23:14Z"
+last_heartbeat_at_utc: "2026-11-07T16:23:14Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
 current_task: "A0 acceptance gap audit and implementation, see GitHub Issue #1"
@@ -133,3 +133,27 @@ The external Coding Agent edits **only this file via GitHub Web UI**. Its local 
 ## Blocker escalation format
 
 When genuinely blocked, append `blocker_id`, owner, attempted fixes, machine-readable failure signature, logs/artifacts, why further autonomous work would violate scope/policy, specific decision requested, and alternative tasks still possible. Do not ask the human to manually ferry normal peer messages.
+
+## External Coding Agent local A0 execution
+
+```yaml
+external_coding_agent:
+  transport: BROWSER_ZIP_LOCAL_GIT
+  github_write_scope: SiliconForge_Working_SYNC.md_ONLY
+  input_zip_baseline_sha: efe183b726de8392371b4271bb57ea5cf3d76f2b
+  input_zip_sha256: 9ceeaa748872bbe77c5a1b61480a343266a753a9f1d3a52c40b71abb369eefdc
+  local_workspace_state: ACTIVE
+  local_git_commit: 0ce2b25
+  code_artifact_state: NOT_CREATED
+  code_artifact_access: UNAVAILABLE
+  remote_source_integrated_commit: null
+  tests_executed:
+    - command: PYTHONPATH=src python -m unittest discover -s tests -v
+      result: PASS
+      count: 30
+      scope: ORIGINAL_LOCAL_REFERENCE_SUITE_NOT_FULL_A0
+  next_action: Complete scoped Runtime, lease expiry, durable wait/wake, ingress policy and evidence rejection; execute A0-01 through A0-18.
+```
+
+2026-11-07T16:23:14Z. Downloaded main through Chrome Code -> Download ZIP and initialized local-only Git. Original 30 reference tests passed. Read-only audit reproduced expired lease ACK, stranded final lease, unknown-route loss and same-project IP scope gaps. Core repairs and boundary modules are in progress. A0 remains NOT_VERIFIED; real EDA, native harness and E01-E20 remain NOT_RUN. No remote source file has been changed. Local source artifact transfer is not established; this does not block authorized local A0 work.
+
