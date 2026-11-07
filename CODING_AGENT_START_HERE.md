@@ -1,5 +1,7 @@
 # SiliconForge v3.1 Coding Agent 開發入口
 
+**此文件適用於 GitHub Browser + Download ZIP + Local Git 的 Coding Agent。** 該 Agent 沒有 GitHub Clone／Pull／Push 能力；它只會透過 Chrome／Computer Use 瀏覽 GitHub，並且只能透過 GitHub 網頁編輯 `SiliconForge_Working_SYNC.md`。如果尚未下載 ZIP，先直接打開 Sync 檔就可接收工作。詳細協定：[18｜Browser + ZIP 交付](docs/18_BROWSER_ZIP_CODING_AGENT_HANDOFF.md)。
+
 **唯一實作目標：** 在本 Repository 繼續完成可恢復、事件驅動的自主晶片研發框架。Super Agent Runtime 管理自主性；同一 Domain Role 可以同時擁有多個 Owner Instance；每個 Instance 使用領域特化 P-Stack Skills，自主處理所屬 Candidate 的工程問題。人類透過原生 Codex / Claude Code + Skills/MCP 操作，Web 顯示工程與事件 DAG；不另外開發聊天 CLI。
 
 ## 正式執行順序
@@ -20,11 +22,11 @@
 - 先讀並持續更新 [SiliconForge_Working_SYNC.md](SiliconForge_Working_SYNC.md)，這是本專案唯一權威狀態檔，不要建立第二個同步入口。
 - 每次有實際 commit、Fork、Merge、驗證完成、阻塞或需批准事項，記錄探索群組 / 分支 / Instance / Commit / Evidence / 停止原因 / 下一步；活躍期間每 15 分鐘至少更新一次狀態或 Heartbeat。
 - 進展、模擬、真實 EDA、未執行分開記錄。Heartbeat、Worker 數量、分支數量不算工程成果。
-- 對實作仍採 Git topic branch + PR；批准邊界、資源上限和公開發布政策依現有 AGENTS.md。
+- Agent 的實作採 **Local Git Branch / Local Commit**；它不能直接推 GitHub Branch、Commit／PR。需要交付程式時在 Local 製作 ZIP／Patch Bundle 和 SHA256，只有實際可用的傳遞管道交到授權 Integrator 後，才能由 Integrator 寫入 GitHub 並驗證。缺少傳遞管道時須明記交付受阻，不能宣稱遠端已更新。
 
 **即刻可執行下一步：** 先執行既有 A0 基準測試，做 80 項 Gap Audit，將 A0X Exploration Registry/Owner Instance/Worktree Isolation 的第一個可驗收工作切入既有 A0/M1 模組，保留失敗測試，逐 Gate 繼續推進。
 
 
 ## Repo 完全獨立（強制）
 
-本 Repository 已包含自有程式碼、Spec、Skills、Mock 模擬器、測試與 GitHub Sync。不需要也不允許另外從其他 SiliconForge Repository 拉取檔案來完成任務。先閱讀 [17｜Standalone Repository Contract](docs/17_STANDALONE_REPOSITORY_CONTRACT.md)，並執行 `python -m unittest discover -s tests -v` 檢查獨立性。所有變更、E 類驗收與工作進度只提交到目前的 `caseykcc0124/SiliconForge`。
+本 Repository 已包含自有程式碼、Spec、Skills、Mock 模擬器、測試與 GitHub Sync。不需要也不允許另外從其他 SiliconForge Repository 拉取檔案來完成任務。先閱讀 [17｜Standalone Repository Contract](docs/17_STANDALONE_REPOSITORY_CONTRACT.md)，並執行 `python -m unittest discover -s tests -v` 檢查獨立性。所有**GitHub 網頁回報**僅寫入本 Repo 的 `SiliconForge_Working_SYNC.md`；程式與測試先保存在 Local，待取得真正的 Artifact 交付通道後交由授權 Integrator 提交此 Repo。不得要求這位 Agent 執行 GitHub Clone 或 Push。
