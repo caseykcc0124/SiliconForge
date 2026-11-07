@@ -2,7 +2,7 @@
 
 # 16｜Parallel Exploration 實作藍圖、狀態機與交付順序
 
-## 14.1 產品責任切割
+## 16.1 產品責任切割
 
 - **Super Agent Runtime**：`ExplorationCoordinator` 是一個**確定性的後端 Domain Service**，持久化 Explorer Graph、發 Fork command、建立 Owner Instances、分配 branch budget、排工作與恢復。它不能替 RTL 或 PPA 作工程判斷。
 - **Domain Owner Instances**：對特定 Branch + Ticket 自主工程判斷。相同 Role 可並發多個 Instance，P-Stack 專業 Skills 留在每個 Instance 裡，可於其分支中再 Spawn Workers 和提出 Fork。
@@ -12,17 +12,19 @@
 - **Spec / PPA Domain Decision Owners**：各自處理需求語義和 objective trade-off；Integration Owner 對 merge SHA Gate 負責。
 - **Dashboard / External Harness**：可查詢探索圖、同步狀態、提交經授權的探索意圖；Human／Main 不需保持 Session。
 
-## 14.2 M3X 與 M6X 插入點
+## 16.2 與本 Repository A0 至 A6 的插入點
 
-在現有 M0–M7 路線中，不另起平行專案，不延後現有 Runtime 核心：
-- **M1 後立即做 M1X**：DB Migration、Exploration/Branch Registry、Instance Router、Git Workspace Service、append-only lineage + transactional outbox。驗收 E01–E08、E09 的隔離部分。
-- **M3 後做 M3X**：多 Instance Codex Owner、每分支 P-Stack Skill、EDA Job Branch Fingerprint、Graph resume、對外 MCP query。驗收 E01–E10、E17、E19。
-- **M5/M6 整合做 M6X**：3 分支真實 CRC32 測試、Formal、PPA 比較、Pareto、merge 後 re-gate、故障注入及 E20。
-- **M7**：Dashboard 的 cohort/branch timeline、並行資源花費與 PDCA 策略比較。
+本 Repo 已有正式 A0–A6 里程碑，**不得建立與之競爭的另一套 M0–M7 系統**。在原有依賴路線內增加：
 
-原 M0–M7 全部仍須完成，且不可把增加的並行測試無限制擴張成另一個 Framework。
+- **A0X（A0 Runtime 完成後）**：Exploration Registry、Branch DAG、Owner Instance Resolver、branch-scoped Event Inbox/Outbox、Lease Epoch、Budget/Watchdog。以 E01–E08 的 Runtime 斷言及負面測試驗證。
+- **A3X（A1 Harness / A3 Domain Owner 整合期間）**：受控 Git Workspace Service、多 Instance Codex/Claude Owner、不同 Branch 的 P-Stack Skills、Branch-scoped EDA Job Fingerprints、重啟恢復、真實 Worktree 隔離。驗收 E01–E10、E17、E19 對應實證。
+- **A4X（A2 Real EDA 與 A4 PPA 整合）**：同一 Requirement 三支真實 RTL 候選，Simulation/Formal/Synthesis/PPA 各自執行，一支二次 Fork，形成 Pareto，合併後新 SHA 重新跑 Gate。完成 E11–E18 與 E20，負面注入 Spec stale、冲突、成本耗盡。
+- **A5X（A5 Dashboard/PDCA）**：顯示可回放的 Branch Lineage DAG、Owner Instance、資源消耗、Merge Evidence 與失敗候選。
+- **A6X（A6 Reliability）**：多分支長時間 Crash Recovery、環境漂移、跨候選 Evidence 污染阻擋和資源公平性。
 
-## 14.3 REST/MCP/內部 Command 最小集合
+原 A0–A6 的全部 Required Case 仍須完成，v3.1 增加 E01–E20。原有 60 項加上 20 項，總計 **80**。同一階段內可平行處理互不衝突的模組，但不得省略 Gate 或為了展示增加無限制 Worker。
+
+## 16.3 REST/MCP/內部 Command 最小集合
 
 - `request_exploration(requirement_id, spec_revision, objectives[], constraints_sha, budget_scope_id, initial_fanout, policy_version)`。
 - `fork_branch(exploration_id, parent_branch_id, expected_parent_head_sha, objective, reason, scope)`。
@@ -34,13 +36,13 @@
 
 所有 mutating Command 都有 `operation_id`、`actor_identity`、`expected_revision`、`idempotency_key`，經單一 AuthZ/Policy handler 寫入 Transactional Outbox，並回傳 Event/Command IDs。MCP 不得直接開放任意 `git push` 或 `shell exec`。
 
-## 14.4 必須支援的 Branch Event Family
+## 16.4 必須支援的 Branch Event Family
 
 `EXPLORATION.REQUESTED`、`EXPLORATION.STARTED`、`BRANCH.FORK_REQUESTED`、`BRANCH.CREATED`、`BRANCH.OWNER_ASSIGNED`、`BRANCH.CANDIDATE_READY`、`BRANCH.EVIDENCE_READY`、`BRANCH.BLOCKED`、`BRANCH.STALE`、`BRANCH.ARCHIVED`、`BRANCH.COMPARISON_READY`、`BRANCH.MERGE_PROPOSED`、`BRANCH.MERGE_CONFLICT`、`BRANCH.MERGED`、`BRANCH.MERGE_REVERIFY_REQUIRED`、`BRANCH.MERGE_REVERIFIED`。
 
 所有事件使用既有 `event_id, type, producer_identity, correlation_id, causation_id, idempotency_key, policy_version`，新增 `exploration_id, branch_id, candidate_id, owner_instance_id, expected_head_sha`；對 EDA 事件還需 `job_registry` 反查，以阻止偽造。Branch 層級的 Event 在路由前需先驗證 Registry 以及 Actor scope。
 
-## 14.5 典型資料庫交易
+## 16.5 典型資料庫交易
 
 `request_exploration`: 驗證 Spec、Scope、Quota → insert exploration + initial branches + reservations + events + outbox 同一 transaction → 工作佇列創建 instances → Git Service 建 Worktrees → ready ack。
 
@@ -48,15 +50,15 @@
 
 `merge`: 取得 targets 的租約、驗證 source/target current heads，Git 執行受控 merge → 註冊新 SHA + lineage edge → 發 `MERGE_REVERIFY_REQUIRED` → 重新排所有必需 Gate → Integration 驗證完畢才允許 Release。中途 crash 可由 operation receipt 恢復，不可重複 merge / overwrite。
 
-## 14.6 與現有資料相容的 Migration
+## 16.6 與現有資料相容的 Migration
 
 現有 `owner_registry` 的 `role` 區分新增 `owner_instance_id`；所有已存在 Ticket、Event、EDA Job 要有對應 `exploration_id`、`branch_id`；對歷史單分支項目可以建立 `legacy-singleton` Cohort，但不能把 legacy 邏輯留在新 Router 的主要執行路徑。提供向後相容的讀取及 migration test；不得把未標 branch 的舊證據視為跨分支可共用。
 
-## 14.7 操作與 Dashboard
+## 16.7 操作與 Dashboard
 
 要求有 Exploration Graph（可折疊 Branch Tree / DAG）、每分支 Timeline、Owner Instances（役別與身份不同）、Git head、證據 Gate、PPA Pareto 圖、Resource Budget、Active / Blocked / Stale / Merged，以及比較與合併決策紀錄。Web 是觀測與授權入口；自然語言仍用 Codex／Claude Code + SiliconForge MCP，不建立新聊天 CLI。
 
-## 14.8 不能聲稱完成的情況
+## 16.8 不能聲稱完成的情況
 
 三個 Prompt 異步生成幾份 RTL，沒有分支和 Repo Worktree，不能宣稱完成。
 三個 Git Branch 共用一份驗證報告，不能宣稱完成。
