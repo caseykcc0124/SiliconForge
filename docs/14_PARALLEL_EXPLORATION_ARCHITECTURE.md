@@ -1,14 +1,14 @@
 > Canonical repository: `caseykcc0124/SiliconForge`. This v3.1 extension supplements existing A0–A6 and does not replace their implementation or acceptance evidence.
 
-# 16｜多 Owner Instance、並行探索圖與 Git Branch 治理（v3.1 REQUIRED）
+# 14｜多 Owner Instance、並行探索圖與 Git Branch 治理（v3.1 REQUIRED）
 
-## 12.1 為何新增這一層
+## 14.1 為何新增這一層
 
 SiliconForge 不是單一路徑的 `Spec → RTL → Verify → PPA` 線性迴圈。同一個 Requirement 在不改變其語義的前提下，可以同時展開 Performance、Power、Area、Balanced，甚至研究多個不同的微架構，且各自再分叉成新的候選。不同領域的 Owner 也可能同時有多個 Instance。**每一條路線具備完整、獨立、可驗證、可停止的工程生命週期。**
 
 這是 v3.1 的核心要求，任何以「每個 Role 僅有一個 Owner Session」或「先選一條設計再開始驗證」取代多路探索的系統都不合格。P-Stack `arena` 是 Owner **內部**的候選探索方法，但跨 Role、跨分支與跨事件的長期並行探索由 Super Agent Runtime 統籌追蹤，不得把 P-Stack 誤當全域排程器。
 
-## 12.2 不可混淆的五層 ID
+## 14.2 不可混淆的五層 ID
 
 | 名稱 | 唯一性、生命週期 | 作用 |
 |---|---|---|
@@ -20,7 +20,7 @@ SiliconForge 不是單一路徑的 `Spec → RTL → Verify → PPA` 線性迴�
 
 `owner_role` 是能力與權限集合，**不是單例執行個體**。相同 `role` 的 N 個 `owner_instance_id` 必須各自具備狀態、Inbox、lease、Skill 版本、模型決策、代碼工作區和 Trace。Owner Instance 並不必固定佔用一個 LLM Process。
 
-## 12.3 參考 Exploration Graph
+## 14.3 參考 Exploration Graph
 
 ```text
 Requirement R42 / Spec S7 / Constraints C3 / Env E5
@@ -44,7 +44,7 @@ Integration: controlled merge/cherry-pick → NEW SHA M1 → mandatory re-verifi
 
 同一 Requirement 在 3 條或更多路線同時探索，允許按政策再建立二級分叉。系統以圖追蹤依賴，不能靠 branch name 猜測對應關係。每個 Candidate 的驗證可以平行進行；每個 EDA Job 需保留自己的 Source/Spec/Test/Constraints/Env 指紋。
 
-## 12.4 Exploration graph 的權威資料模型
+## 14.4 Exploration graph 的權威資料模型
 
 第一版使用 DB Referential Integrity、append-only `exploration_events` 與快照投影：
 
@@ -60,7 +60,7 @@ Integration: controlled merge/cherry-pick → NEW SHA M1 → mandatory re-verifi
 
 DB 必須強制 `(exploration_id, branch_ref)` 唯一、`owner_instance_id` 唯一、`(branch_id, candidate_id)` Referential Integrity；同一 Worktree 同時最多一個可寫 lease。不可用 Agent 回答內容直接修改 Git/DB 事實，所有提交都由受控 Git Service 驗證。
 
-## 12.5 分叉、繼承與失效規則
+## 14.5 分叉、繼承與失效規則
 
 1. 由 Spec/PPA 授權的探索提案指定 `requirement_id`、`objective_vector`、`hard_constraints`、`budget_scope`、`initial_fanout` 和 `max_depth`，Router 核准範圍內的探索不需每條詢問人類。
 2. `EXPLORATION.REQUESTED` 由 trusted gateway / Owner 送進持久化 Inbox；`exploration service` 原子註冊 cohort、base sha 與授權預算。`BRANCH.FORK_REQUESTED` 需要 parent ref、expected head、衍生理由與 branch budget。
@@ -71,7 +71,7 @@ DB 必須強制 `(exploration_id, branch_ref)` 唯一、`owner_instance_id` 唯�
 7. Branch 有生命週期：`PROPOSED → ACTIVE → EVALUATING → QUALIFIED → SELECTED → MERGING → MERGED`，或 `BLOCKED/REJECTED/ARCHIVED`；失敗、被淘汰仍保留血緣與 Evidence。Branch `QUALIFIED` 代表已有符合該方案的候選，並不等於允許 merge。
 8. Branch 無進展停止只影響其子圖；只有 shared resource governor 可決定暫緩其他分支，不能因一個 Candidate 重試耗盡便停止整個 Requirement。
 
-## 12.6 路由目標與 Peer Request
+## 14.6 路由目標與 Peer Request
 
 Runtime 使用兩階段確定性路由：
 - `route_to_role`：事件政策指定 `owner_role`，如 RTL、Verification、PPA；角色不代表執行實例。
@@ -81,7 +81,7 @@ Runtime 使用兩階段確定性路由：
 
 同一 `exploration_id` 的比較事件可發送給 Comparison Service + PPA/Spec Domain Decision Owner，但它們只能建議或作已授權的工程選擇。Main Agent 沒有候選評分、分支合併及技術仲裁權。
 
-## 12.7 Git Branch/Worktree 與 Merge 規約
+## 14.7 Git Branch/Worktree 與 Merge 規約
 
 - 使用獨立命名空間 `sf/<exploration_id>/<branch_id>-<slug>`；git ref 與 branch_id 綁定，slug 只供人讀。
 - Worktree 檔案系統須限定在專案受控根目錄；禁止非本專案的清理命令，禁止 force-push 或重寫已發佈的 lineage refs。
@@ -90,14 +90,14 @@ Runtime 使用兩階段確定性路由：
 - Merge/Cherry-pick 後 `merge_commit_sha` 為新 Candidate，**源分支先前的 Simulation/Formal/PPA Pass 不可直接繼承**；全部必要 Gate 必須在整合後的新 SHA 重新執行。若先將多個分支的 RTL 合併、才產生真正的 target SHA，驗收必須綁定該 SHA。
 - Branch 選擇不等於自動刪除 loser；保留可回溯 Artifact 與紀錄，依留存政策再 Archive；遞迴清理不得刪除未決 Peer/EDA Jobs。
 
-## 12.8 候選比較、Pareto 与工程權限
+## 14.8 候選比較、Pareto 与工程權限
 
 - 多目標向量包括 `performance`、`power`、`area`，可以加入 latency、frequency、energy、cell_count；先通過功能正確性、Formal 必要條件和所有 hard constraints，才有資格比較。
 - 比較必須披露 workload、constraints、lib/PDK、toolchain、process corner、clock/mode、switching activity、power estimation confidence；不具可比性的資料只能 `INCOMPARABLE`，不准宣稱勝出。
 - 對無法單一排序的候選，保存 Pareto frontier，多個方案可同時 `QUALIFIED`。不得擅自替人類發明權重或更改原目標。權重已在授權 `objective_policy_sha` 時，PPA Owner 可依規則選擇；未授權的 trade-off 提供選項要求人類決策。
 - Spec Owner 對功能意圖／需求衝突負責，PPA Owner 對 PPA 評估策略負責，RTL Owner 對自己的設計負責，Verification/Formal 各自對其 Gate 負責，Integration Owner 對最終 Commit 的全套 Gate 與發布狀態負責。Main 只呈現進度和轉達人類決策。
 
-## 12.9 資源、停止與恢復
+## 14.9 資源、停止與恢復
 
 開發初期預設 `max_initial_branches_per_exploration=3`、`max_total_branches_per_exploration=6`、`max_active_branches_per_exploration=3`、`max_branch_depth=2`、`max_parallel_owner_instances_per_role=3`；配置必須可版控，數字是 MVP 資源政策而不是系統架構上限。`max_concurrent_eda_jobs` 為全域配額，應採公平排程，讓同一 cohort 的多分支可同時取得進展。
 
@@ -107,7 +107,7 @@ Runtime 使用兩階段確定性路由：
 - Scheduler 可按照公平性、預算與工作依賴讓 Branch 被暫停或重新喚醒；明確保存 `WAITING_FOR_EDA/WAITING_FOR_PEER/WAITING_FOR_ENV/WAITING_FOR_BUDGET`。
 - 不得因 PDCA 自動建新 Branch 無限衍生。PDCA 可提出改善提案，正式部署需完成受控版本變更。
 
-## 12.10 最低交付檢驗
+## 14.10 最低交付檢驗
 
 一個 APB CRC32 Requirement 同時展開 3 條不同微架構路線；至少一條二級 Fork；每條路線有對應 RTL Owner Instance、Verification、Formal、PPA 的獨立 Tickets 與 Evidence。每條分支能被暫停、失敗、重試，其他路線仍前進；能列出完整 lineage、Pareto frontier、選擇／淘汰理由；最後有受控 merge 或保留多個合格候選，新 SHA 全 Gate 重跑。
 
