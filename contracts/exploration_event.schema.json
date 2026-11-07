@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/caseykcc0124/SiliconForge/blob/main/contracts/exploration_event.schema.json",
+  "title": "SiliconForge Parallel Exploration Event Extension",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_id",
+    "event_type",
+    "producer_identity",
+    "project_id",
+    "requirement_id",
+    "spec_revision",
+    "exploration_id",
+    "branch_id",
+    "correlation_id",
+    "causation_id",
+    "idempotency_key",
+    "policy_version",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "3.1"
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "pattern": "^(EXPLORATION|BRANCH|MERGE|RTL|EDA|PEER)\\."
+    },
+    "producer_identity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requirement_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "spec_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exploration_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "branch_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "candidate_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "owner_instance_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "expected_head_sha": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "correlation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "causation_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "payload": {
+      "type": "object"
+    },
+    "timestamp_utc": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
