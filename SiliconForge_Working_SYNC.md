@@ -40,9 +40,9 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0
 owner_agent: Codex_local_A0
-updated_at_utc: "2026-11-07T16:23:14Z"
-last_progress_at_utc: "2026-11-07T16:23:14Z"
-last_heartbeat_at_utc: "2026-11-07T16:23:14Z"
+updated_at_utc: "2026-11-07T16:37:46Z"
+last_progress_at_utc: "2026-11-07T16:37:46Z"
+last_heartbeat_at_utc: "2026-11-07T16:37:46Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
 current_task: "A0 acceptance gap audit and implementation, see GitHub Issue #1"
@@ -150,10 +150,14 @@ external_coding_agent:
   tests_executed:
     - command: PYTHONPATH=src python -m unittest discover -s tests -v
       result: PASS
-      count: 30
-      scope: ORIGINAL_LOCAL_REFERENCE_SUITE_NOT_FULL_A0
+      count: 58
+      scope: CURRENT_LOCAL_SUITE_NOT_FULL_A0
   next_action: Complete scoped Runtime, lease expiry, durable wait/wake, ingress policy and evidence rejection; execute A0-01 through A0-18.
 ```
 
-2026-11-07T16:23:14Z. Downloaded main through Chrome Code -> Download ZIP and initialized local-only Git. Original 30 reference tests passed. Read-only audit reproduced expired lease ACK, stranded final lease, unknown-route loss and same-project IP scope gaps. Core repairs and boundary modules are in progress. A0 remains NOT_VERIFIED; real EDA, native harness and E01-E20 remain NOT_RUN. No remote source file has been changed. Local source artifact transfer is not established; this does not block authorized local A0 work.
+2026-11-07T16:37:46Z. Downloaded main through Chrome Code -> Download ZIP and initialized local-only Git. Original 30 reference tests passed. Read-only audit reproduced expired lease ACK, stranded final lease, unknown-route loss and same-project IP scope gaps. Core repairs and boundary modules are in progress. A0 remains NOT_VERIFIED; real EDA, native harness and E01-E20 remain NOT_RUN. No remote source file has been changed. Local source artifact transfer is not established; this does not block authorized local A0 work.
+
+
+
+2026-11-07T16:37:46Z. Local checkpoint. Full stdlib suite 58/58 PASS, independently rerun by Luna reviewer. Executable tests/run_a0_acceptance.py has per-ID raw logs, source hashes and JSON under .audit/a0-acceptance; currently 17 A0 checks pass and A0-14 remains NOT_VERIFIED. Independent review continues on peer boundaries and canonical envelope completeness, so full A0 remains NOT_VERIFIED. A separate Luna worker is implementing immutable ordered history reconstruction. Changes remain uncommitted; local_git_commit stays baseline 0ce2b25. Source artifact NOT_CREATED and transfer UNAVAILABLE. Next finish replay and boundary review, rerun acceptance at committed local revision, then A0X. REAL EDA/native harness/E01-E20 NOT_RUN. No remote source changes or new approval requests.
 
