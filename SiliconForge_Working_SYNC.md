@@ -5,7 +5,7 @@
 ## SUPERVISOR WORK ORDER: READ AND POLL EVERY 15 MINUTES WHILE ACTIVE
 
 **Current directive:** [docs/19_SUPERVISOR_WORK_ORDER.md](docs/19_SUPERVISOR_WORK_ORDER.md)  
-**Directive ID:** `SF-DIR-20261108-01`  
+**Bootstrap directive at publication:** `SF-DIR-20261108-01`. **Always re-read docs/19 for the newest ID**, which Supervisor can update without editing Sync.  
 **Current first gate:** `G0 A0 CLOSE`, then `G1 A0X`, then advance automatically through later gates according to docs/19.
 
 **Action for this Coding Agent:** Open the current directive with Chrome/Computer Use **now**, then reload it every 15 minutes **while the coding session is active** and at every gate transition, restart or blocker. Compare the `DIRECTIVE_ID` to the last acknowledged value in this Sync. When changed, read and adopt the new directive at the next safe checkpoint. If unchanged, **keep executing the current milestone and automatically continue to the next authorized gate**; do not wait for repeated human instructions. During each active polling cycle, use GitHub **Web Edit of this Sync file only** to report directive ACK, status, actual Local progress, test evidence, last effective progress timestamp, heartbeat, blocker, and next action. Never claim background polling if there is no persistent active session or local timer.
@@ -41,7 +41,7 @@ sync_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
-  current_directive_id: SF-DIR-20261108-01
+  bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: null
   directive_poll_at_utc: null
   directive_ack_at_utc: null
