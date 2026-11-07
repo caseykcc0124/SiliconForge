@@ -2,6 +2,18 @@
 
 **Purpose:** Git-backed handoff contract among the human project owner, Coding Agent(s), and status-review assistant. This is a current status snapshot plus a concise audit trail, not an autonomous scheduling service.
 
+## SUPERVISOR WORK ORDER: READ AND POLL EVERY 15 MINUTES WHILE ACTIVE
+
+**Current directive:** [docs/19_SUPERVISOR_WORK_ORDER.md](docs/19_SUPERVISOR_WORK_ORDER.md)  
+**Directive ID:** `SF-DIR-20261108-01`  
+**Current first gate:** `G0 A0 CLOSE`, then `G1 A0X`, then advance automatically through later gates according to docs/19.
+
+**Action for this Coding Agent:** Open the current directive with Chrome/Computer Use **now**, then reload it every 15 minutes **while the coding session is active** and at every gate transition, restart or blocker. Compare the `DIRECTIVE_ID` to the last acknowledged value in this Sync. When changed, read and adopt the new directive at the next safe checkpoint. If unchanged, **keep executing the current milestone and automatically continue to the next authorized gate**; do not wait for repeated human instructions. During each active polling cycle, use GitHub **Web Edit of this Sync file only** to report directive ACK, status, actual Local progress, test evidence, last effective progress timestamp, heartbeat, blocker, and next action. Never claim background polling if there is no persistent active session or local timer.
+
+Supervisor uses authorized GitHub tools to update **docs/19 only**; Coding Agent owns **this Sync status report**. Coding Agent cannot Git Clone/Pull/Push GitHub, cannot create remote PR or upload arbitrary source; it may use Local Git and GitHub ZIP snapshots. **Local code is not a remote GitHub source commit**. If no way exists to transfer ZIP/Patch to an Integrator, record artifact transfer as unavailable and continue unrelated Local engineering work.
+
+Before any new work, acknowledge `SF-DIR-20261108-01` in `supervisor_coordination.last_seen_directive_id`; report `directive_application_state=APPLIED` or a specific policy conflict. Read [docs/19](docs/19_SUPERVISOR_WORK_ORDER.md) for every milestone's exact scope and evidence thresholds.
+
 ## IMPORTANT: External Coding Agent must use Browser + ZIP + Local Git + Sync-only
 
 **This section is the direct task and communication contract for the current external Coding Agent. Read it first. The Agent CANNOT run Git commands against GitHub, CANNOT clone/pull/push the remote repository, and CANNOT write any remote source file other than this Sync file via the GitHub web editor. It CAN use local Git on its own machine.**
@@ -27,6 +39,21 @@ branch: main
 sync_branch: main
 sync_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 architecture_baseline: "3.1"
+supervisor_coordination:
+  directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
+  current_directive_id: SF-DIR-20261108-01
+  last_seen_directive_id: null
+  directive_poll_at_utc: null
+  directive_ack_at_utc: null
+  directive_application_state: PENDING_AGENT_ACK
+  polling_mode: ACTIVE_SESSION_ONLY_UNCONFIRMED
+  active_gate: G0
+  active_gate_state: PENDING_AGENT_RESUME
+  local_artifact_state: NOT_CREATED
+  local_artifact_sha256: null
+  artifact_transfer_state: UNAVAILABLE
+  remote_source_integrated_commit: null
+  next_executable_action: Read docs/19, acknowledge directive, close A0 local gate, prepare source/evidence bundle, then start A0X.
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
