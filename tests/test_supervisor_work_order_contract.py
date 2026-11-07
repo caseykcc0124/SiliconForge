@@ -19,7 +19,7 @@ class SupervisorWorkOrderContractTests(unittest.TestCase):
         sync=(ROOT/"SiliconForge_Working_SYNC.md").read_text(encoding="utf-8")
         match=re.search(r"^> \*\*DIRECTIVE_ID: ([\w-]+)\*\*",directive,re.M)
         self.assertIsNotNone(match)
-        self.assertIn("current_directive_id: "+match.group(1),sync)
+        # The supervisor may advance docs/19 independently. Sync stores only\n        # bootstrap and the last version acknowledged by the external Agent.\n        self.assertIn("bootstrap_directive_id:",sync)
         self.assertIn("docs/19_SUPERVISOR_WORK_ORDER.md",sync)
         self.assertIn("last_seen_directive_id:",sync)
         self.assertIn("directive_application_state:",sync)
