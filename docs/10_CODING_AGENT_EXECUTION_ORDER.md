@@ -65,3 +65,16 @@ If a requested cloud service cannot be reached, continue on local A0 work where 
 ### First message to another Coding Agent (copyable)
 
 > Read `AGENTS.md`, `docs/00_MISSION_AND_BOUNDARIES.md`, `docs/01_ARCHITECTURE_AND_OWNERSHIP.md`, `docs/02_EVENT_RUNTIME_PROTOCOL.md`, `docs/08_IMPLEMENTATION_PLAN.md`, `docs/09_ACCEPTANCE_TEST_MATRIX.md`, `docs/10_CODING_AGENT_EXECUTION_ORDER.md`, and `SiliconForge_Working_SYNC.md`. Implement and objectively verify milestones in order. The Super Agent Runtime handles event lifecycle while each Domain Owner makes domain engineering decisions through P-Stack skills. The user talks to SiliconForge through native Codex/Claude Code + MCP/Skills, not a custom CLI. Keep EDA Environment ownership centralized and evidence gates independent. Update and commit `SiliconForge_Working_SYNC.md` on progress and every 15 minutes during active work. Start by auditing A0 IDs and implementing missing ones, do not stop after a plan. Never claim real EDA from mock tests. Use a PR and report exact commits/test evidence.
+
+## v3.1 mandatory execution amendment
+
+**This repository is now the canonical home for all SiliconForge execution instructions.** Follow [CODING_AGENT_START_HERE.md](../CODING_AGENT_START_HERE.md), [14｜Exploration Architecture](14_PARALLEL_EXPLORATION_ARCHITECTURE.md), [15｜Acceptance](15_PARALLEL_EXPLORATION_ACCEPTANCE.md), [16｜Implementation](16_PARALLEL_EXPLORATION_IMPLEMENTATION.md). Do not copy updates into `caseykcc0124/codex_coding/SiliconForge` or start a new project.
+
+Do not model RTL, Verification, Formal, PPA, Spec or any Domain Role as a globally single Owner instance. The deterministic Runtime may run many instances of the same Role, independently scoped to `exploration_id`, `branch_id`, `ticket_id` and `lease_epoch`. P-Stack `arena` and `swarm` stay inside each Owner Instance, while Runtime maintains the inter-branch DAG, routing, budgets, stop conditions and durable state.
+
+Implement A0X immediately after core A0: Branch Registry, ID schema, Router/Outbox Fanout, lease fencing, lineage and bounded Fork admission. Implement A3X for real Git Branch/Worktree/Owner instance isolation, including direct peer requests and model/harness switching. Implement A4X for the real three-way APB CRC32 exploration with independent EDA evidence and nested fork; select Pareto candidates and require an explicit MergeProposal, conflict handling, a new merge SHA and complete re-gate. Implement A5X/A6X for visual DAG/PDCA and multi-branch reliability.
+
+**Acceptance:** existing 60 A0–A6 cases + 20 E cases = **80 required**. E20 must prove three independent paths genuinely overlap in time, one descendant fork exists, at least one failure was contained, and all final results use real tool fingerprints. Source-branch `PASS` never transfers to merge result. Quotas bound all branches; lack of measurable engineering progress stops further expansion. Continue autonomously within policies, record exact commands, commits, logs and EDA/environment digests; update the canonical `SiliconForge_Working_SYNC.md` every meaningful transition and at least every 15 minutes while active.
+
+When blocked, give a narrow explicit reason and a next executable action. Do not ask the human to manually relay normal peer results. Do not declare completion from mock or textual claims.
+
