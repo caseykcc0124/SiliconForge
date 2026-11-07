@@ -1,5 +1,7 @@
 # 10. Coding Agent implementation order, bounded autonomy and mandatory reporting
 
+> **Current external Coding Agent I/O restriction**: Browser reads GitHub, Code → Download ZIP for local source acquisition, Local Git only, and GitHub Web Edit to `SiliconForge_Working_SYNC.md` only. **No remote Git clone/fetch/pull/push, no agent-created GitHub PR, no source upload capability.** Source integration is a separate responsibility after an accessible ZIP/Patch Bundle is handed off. `docs/18_BROWSER_ZIP_CODING_AGENT_HANDOFF.md` and the top of Sync override Git/PR requirements below for this agent.
+
 ## Mission handed to the Coding Agent
 
 Build and verify **SiliconForge** from this repository. The goal is a continuously recoverable, event-driven autonomous chip-development framework with deterministic Super Agent Runtime, independent domain owners powered by replaceable native coding harnesses, P-Stack practices inside owners, controlled real EDA execution, and objective evidence. The point is **maximum autonomy with minimal human interruption and explicit failure bounds**, not producing many files or endlessly running. The existing `simulator/` is solely an architecture demonstration.
@@ -24,7 +26,7 @@ Proceed autonomously from A0 through successive milestones in order, respecting 
 
 ### Git workflow and sync channel
 
-The new public repo's `main` is the authoritative published baseline. Work in branches and PRs. For the status file, use short, factual sync commits and merge or cherry-pick approved status changes to main; if PR cannot merge yet, keep `sync_branch` and `sync_commit` pointers in the top of the current status. **Never race-overwrite the file**. GitHub update must check the current file SHA and resolve conflicts. Refresh source before every status update. Append critical updates to the progress section (or use changelog file with immutable events for larger history), don't rewrite passed/failed history.
+The public repo's `main` is the authoritative published baseline. **This Coding Agent** downloads it as ZIP via Chrome, works with Local Git branches only, and cannot upload source or create GitHub PRs. The Agent edits **only `SiliconForge_Working_SYNC.md` through the GitHub web editor**. A web edit of Sync is a status update, not a source-code commit. Any eventual GitHub source submission is done by a separate authorized Integrator who has actually received the ZIP/Patch artifact. **Never race-overwrite the Sync file**; re-read the live web page and resolve conflicts before saving. Refresh source before every status update. Append critical updates to the progress section (or use changelog file with immutable events for larger history), don't rewrite passed/failed history.
 
 Mandatory sync times:
 1. On starting a coding session (set mission state and plan).
@@ -56,11 +58,11 @@ Next action: one executable step and owner
 3. Add explicit A0 tests for every A0-01..18, including process restart against file-backed SQLite. Run standard library tests and write machine-readable evidence JSON with commit hash.
 4. Review Source/Ingress trust so no external untrusted endpoint is writable without proper auth. A0 in-process mock may remain local only.
 5. Demonstrate user harness is not needed for domain routing. Do not build GUI or chat terminal in A0.
-6. Record final results in sync file and PR, then start A1 if A0 acceptance is truly achieved.
+6. Record final LOCAL results in Sync, including ZIP/Patch artifact hash and whether transfer to an Integrator actually occurred. Do not claim a PR or remote source update. Start A1 only when relevant A0 requirements are truly achieved and the next stage is accessible.
 
 ### No false-block policy
 
-If a requested cloud service cannot be reached, continue on local A0 work where possible. Record a true blocker with evidence and a specific approval/input request only if the milestone **cannot** continue. Do not request the human to relay every Owner/Worker status; peers communicate through Runtime. Worktree/code changes must stay within the currently authorized scope.
+If a requested cloud service cannot be reached, continue on local A0 work where possible. Record a true blocker with evidence and a specific approval/input request only if the milestone **cannot** continue. Do not request the human to relay every Owner/Worker status; peers communicate through Runtime. Local worktree/code changes must stay within the authorized scope. GitHub remote source must be reported NOT_INTEGRATED until an authorized Integrator verifies actual delivered artifact bytes.
 
 ### First message to another Coding Agent (copyable)
 
@@ -82,4 +84,4 @@ When blocked, give a narrow explicit reason and a next executable action. Do not
 
 ## Standalone enforcement
 
-Before reporting any milestone, execute `python -m unittest discover -s tests -v` from a clean clone of this repository and verify the standalone checks in `docs/17_STANDALONE_REPOSITORY_CONTRACT.md`. No source, test or instruction may be fetched from another SiliconForge repository as a prerequisite. All future work and status must remain here.
+Before reporting any milestone, execute `python -m unittest discover -s tests -v` from a clean **GitHub Download ZIP extract** of this repository (with necessary local environment setup) and verify the standalone checks in `docs/17_STANDALONE_REPOSITORY_CONTRACT.md`. No source, test or instruction may be fetched from another SiliconForge repository as a prerequisite. All future work and status must remain here.
