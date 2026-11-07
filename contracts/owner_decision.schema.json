@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SiliconForge Owner Decision",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "decision_id",
+    "owner_id",
+    "ticket_id",
+    "event_id",
+    "chosen_action"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ticket_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "skill_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "skill_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "chosen_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tool_budget": {
+      "type": "object"
+    },
+    "decision_status": {
+      "enum": [
+        "PROPOSED",
+        "EXECUTED",
+        "REJECTED",
+        "BLOCKED"
+      ]
+    }
+  }
+}

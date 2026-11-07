@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SiliconForge Engineering Event",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "event_type",
+    "project_id",
+    "source_kind",
+    "source_actor_id",
+    "idempotency_key",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ip_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ticket_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_actor_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "received_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "correlation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "causation_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "payload": {
+      "type": "object"
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "spec_sha": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_sha": {
+      "type": "string",
+      "minLength": 1
+    },
+    "toolchain_profile_digest": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

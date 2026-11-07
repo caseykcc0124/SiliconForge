@@ -1,0 +1,7 @@
+# Developer-only example, not authenticated. Do not expose outside localhost.
+[mcp_servers.siliconforge]
+command = "python"
+args = ["-m", "siliconforge.mcp_server"]
+[mcp_servers.siliconforge.env]
+SF_DEV_MODE = "1"
+SF_DB = "./local_dev_runtime.sqlite"

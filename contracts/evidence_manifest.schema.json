@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SiliconForge Engineering Evidence",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "evidence_id",
+    "source_sha",
+    "spec_sha",
+    "toolchain_profile_digest",
+    "tool_name",
+    "execution_status",
+    "raw_log_sha256"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ip_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_sha": {
+      "type": "string",
+      "minLength": 1
+    },
+    "spec_sha": {
+      "type": "string",
+      "minLength": 1
+    },
+    "toolchain_profile_digest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tool_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tool_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "command": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "execution_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "UNKNOWN",
+        "TIMEOUT",
+        "UNVERIFIED"
+      ]
+    },
+    "raw_log_sha256": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "started_at_utc": {
+      "type": "string",
+      "minLength": 1
+    },
+    "completed_at_utc": {
+      "type": "string",
+      "minLength": 1
+    },
+    "constraints_digest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "seed": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "metrics": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "max_same_failure_without_progress": 3,
+  "max_candidate_workers": 3,
+  "max_owner_workers": 2,
+  "max_attempts_per_delivery": 3,
+  "max_ticket_duration_seconds": 21600,
+  "require_human_approval": [
+    "spec_acceptance_change",
+    "scope_expansion",
+    "new_paid_resource",
+    "unapproved_toolchain",
+    "external_publish",
+    "global_policy_change"
+  ],
+  "forbid": [
+    "weaken_tests_for_green",
+    "edit_requirements_for_green",
+    "unapproved_framework_expansion",
+    "owner_direct_eda_install",
+    "budget_reset_on_harness_switch",
+    "auto_publish",
+    "unapproved_pdca_promotion"
+  ],
+  "mock_eda_can_satisfy_evidence_gate": false
+}

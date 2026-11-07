@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "human_interfaces": [
+    "codex",
+    "claude_code"
+  ],
+  "owner_harness_default": "codex",
+  "owners": [
+    "spec",
+    "rtl",
+    "verification",
+    "formal",
+    "ppa",
+    "integration",
+    "environment",
+    "improvement"
+  ],
+  "persistence": "runtime_ticket",
+  "require_budget_across_harness_switch": true,
+  "allow_fallback_only_if_policy_allows": true
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SiliconForge EDA Job",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "job_id",
+    "requesting_owner",
+    "project_id",
+    "ip_id",
+    "source_sha",
+    "spec_sha",
+    "toolchain_profile_digest",
+    "tool_name"
+  ],
+  "properties": {
+    "job_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requesting_owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ip_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ticket_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_sha": {
+      "type": "string",
+      "minLength": 1
+    },
+    "spec_sha": {
+      "type": "string",
+      "minLength": 1
+    },
+    "toolchain_profile_digest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tool_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "test_suite": {
+      "type": "string",
+      "minLength": 1
+    },
+    "constraints_digest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "output_contract": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "timeout_seconds": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "correlation_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

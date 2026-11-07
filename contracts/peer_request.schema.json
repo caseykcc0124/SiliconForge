@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SiliconForge Peer Request",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "request_id",
+    "project_id",
+    "ticket_id",
+    "sender_owner",
+    "recipient_owner",
+    "expected_output",
+    "artifact_refs"
+  ],
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ticket_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sender_owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recipient_owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_output": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "completion_contract": {
+      "type": "object"
+    },
+    "correlation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "causation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "deadline_utc": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "OPEN",
+        "ACKED",
+        "RESPONDED",
+        "REFUSED",
+        "EXPIRED"
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "siliconforge-autonomy"
+version = "3.0.0a0"
+description = "SiliconForge autonomous engineering runtime (reference scaffold)"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.optional-dependencies]
+mcp = ["mcp>=1,<3"]

@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "durable_outbox": true,
+  "default_channels": [
+    "dashboard",
+    "harness_resume_sync"
+  ],
+  "notify_on": [
+    "APPROVAL_REQUIRED",
+    "BLOCKED",
+    "VERIFIED",
+    "POLICY_DENIED"
+  ],
+  "suppress_progress_noise": true,
+  "quiet_on_regular_running": true,
+  "external_push_disabled_by_default": true
+}

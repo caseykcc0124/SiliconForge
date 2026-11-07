@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "event_type": "SIM.REGRESSION_FAILED",
+  "project_id": "siliconforge-demo",
+  "ip_id": "APB_CRC32",
+  "source_kind": "eda_runner",
+  "source_actor_id": "verilator_cocotb",
+  "idempotency_key": "regression:crc32:r001:seed173",
+  "correlation_id": "trace-apb-001",
+  "causation_id": null,
+  "occurred_at_utc": "2026-11-07T00:00:00Z",
+  "payload": {
+    "seed": 173,
+    "source_sha": "EXAMPLE_ONLY",
+    "spec_sha": "EXAMPLE_ONLY",
+    "environment_digest": "EXAMPLE_ONLY",
+    "failure_signature": "crc32_reset_carryover",
+    "expected": "CRC reset state cleared",
+    "actual": "previous result visible",
+    "waveform_ref": "artifact://example/mock.vcd"
+  }
+}

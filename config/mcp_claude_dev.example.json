@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "siliconforge": {
+      "command": "python",
+      "args": [
+        "-m",
+        "siliconforge.mcp_server"
+      ],
+      "env": {
+        "SF_DEV_MODE": "1",
+        "SF_DB": "./local_dev_runtime.sqlite"
+      }
+    }
+  }
+}

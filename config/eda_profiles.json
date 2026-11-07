@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "profiles": [],
+  "status": "UNPROVISIONED",
+  "environment_owner": "environment",
+  "policy": "Only Environment Owner may approve or change immutable EDA profile digests; other owners may only request jobs. Real A2 not yet complete."
+}

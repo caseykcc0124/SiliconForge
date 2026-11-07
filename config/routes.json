@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "default": "DEAD_LETTER",
+  "routes": {
+    "SPEC.CHANGED": [
+      "spec"
+    ],
+    "SPEC.ACCEPTED": [
+      "rtl",
+      "verification",
+      "formal"
+    ],
+    "RTL.CHANGED": [
+      "rtl"
+    ],
+    "RTL.CANDIDATE_READY": [
+      "verification",
+      "formal",
+      "ppa"
+    ],
+    "SIM.FAILED": [
+      "verification"
+    ],
+    "SIM.REGRESSION_FAILED": [
+      "verification"
+    ],
+    "SIM.PASSED": [
+      "verification",
+      "integration"
+    ],
+    "FORMAL.FAILED": [
+      "formal"
+    ],
+    "FORMAL.PASSED": [
+      "formal",
+      "integration"
+    ],
+    "PPA.TARGET_CHANGED": [
+      "ppa"
+    ],
+    "PPA.TARGET_CHANGE": [
+      "ppa"
+    ],
+    "SYNTH.COMPLETE": [
+      "ppa"
+    ],
+    "ENV.DRIFT": [
+      "environment"
+    ],
+    "ENV.PROFILE_READY": [
+      "environment"
+    ],
+    "GATE.CHECK_REQUESTED": [
+      "integration"
+    ],
+    "IMPROVEMENT.REVIEW_DUE": [
+      "improvement"
+    ],
+    "PEER.RTL_REPAIR_REQUESTED": [
+      "rtl"
+    ],
+    "HUMAN.MESSAGE": [
+      "human_interface"
+    ]
+  }
+}
