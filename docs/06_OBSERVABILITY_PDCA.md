@@ -20,3 +20,7 @@ Plan: identify repeated failure and quantify baseline cases/cost. Do: create new
 
 ## Retention
 Audit records immutable with privacy filtering and redacted secrets; large raw traces and waveforms retained as content-addressed artifacts. Store evidence hashes, not all tool logs inline in Ticket. Support export and replay without leaking sensitive design.
+
+## v3.1 exploration observability
+
+In addition to linear Event Trace, the Dashboard must reconstruct a Branch DAG: Requirement → Exploration → Branch/Parent → Candidate/Commit → Owner Instance → EDA Jobs/Evidence → Comparison/Pareto → Merge/Promotion. Store branch/owner IDs, fork SHA, lineage edge, cost/quota, stale spec marker, merge decision and new-SHA re-gate outcomes. PDCA must retain losing branches' hypotheses, failure signatures and resource use. Event Journal and immutable Engineering Evidence remain authoritative, not a decorative graph. See E19, docs/14–16.

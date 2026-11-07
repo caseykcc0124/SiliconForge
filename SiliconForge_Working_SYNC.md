@@ -11,17 +11,17 @@ repo: caseykcc0124/SiliconForge
 branch: main
 sync_branch: main
 sync_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
-architecture_baseline: "3.0"
+architecture_baseline: "3.1"
 mission_state: NOT_STARTED
 phase: A0
 owner_agent: unassigned
-updated_at_utc: "2026-11-07T08:14:54Z"
+updated_at_utc: "2026-11-07T15:26:04.246Z"
 last_progress_at_utc: "2026-11-07T08:14:54Z"
 last_heartbeat_at_utc: null
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
 current_task: "A0 acceptance gap audit and implementation, see GitHub Issue #1"
-next_action: "Coding Agent: follow Issue #1 and docs/10; audit and implement A0-01 to A0-18 with executed evidence"
+next_action: "Coding Agent: follow Issue #1 and docs/10; audit existing A0-01..A0-18, then implement v3.1 docs/14-16 E01..E20 using A0X/A3X/A4X/A5X/A6X gates."
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -31,6 +31,23 @@ policy_flags:
   allow_unapproved_framework_expansion: false
   allow_unapproved_eda_tool_install: false
   allow_owner_control_plane_edit: false
+acceptance_baseline:
+  original_A0_to_A6_required: 60
+  new_E01_to_E20_required: 20
+  total_required: 80
+  exploration_extension_status: SPEC_PUBLISHED_AWAITING_IMPLEMENTATION
+  E_cases_passed: 0
+  E_cases_failed: 0
+  E_cases_not_run: 20
+  exploration_policy_file: config/exploration_policy.json
+  exploration_acceptance_file: contracts/parallel_exploration_acceptance.json
+  exploration_spec: docs/14_PARALLEL_EXPLORATION_ARCHITECTURE.md
+exploration_metrics:
+  groups_implemented: NOT_VERIFIED
+  parallel_owner_instances_verified: false
+  nested_git_fork_verified: false
+  cross_branch_evidence_gate_verified: false
+  post_merge_real_eda_regate_verified: false
 milestones:
   A0: NOT_VERIFIED
   A1: NOT_STARTED
@@ -47,6 +64,13 @@ actual_tests:
 last_evidence:
   - "GitHub main 6fe2c6b243adf399420fbfb9815c807a0ff728cb; 54 tracked files; A0 reference CI 22/22 PASS"
 ``` 
+
+## v3.1 specification and acceptance synchronization
+
+- Separate canonical GitHub repo remains `caseykcc0124/SiliconForge`. The older `caseykcc0124/codex_coding/SiliconForge/` is not the Coding Agent handoff location.
+- v3.1 adds multi-instance Domain Owners, simultaneous exploration branches and nested forks, branch-scoped event/EDA evidence, Pareto comparison, controlled merge and post-merge real EDA re-gating.
+- Original A0–A6 acceptance remains 60 cases. New E01–E20 adds 20 cases; total required 80. **All newly added E cases are NOT_RUN**; this is a specification handoff, not implementation progress.
+- Coding Agent must update exploration/branch/owner/merge IDs and Git SHA / toolchain fingerprint for every substantive event. Heartbeat does not imply a new verified branch or EDA result.
 
 ## Engineering status summary
 

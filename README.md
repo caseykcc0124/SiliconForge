@@ -47,3 +47,12 @@ DeepSeek [dsh-superagent-prototype](https://github.com/deepseek-ai/dsh-superagen
 ## License and scope
 
 No open-source license is assigned yet; the repository being public does not imply permission to reuse external proprietary code. Do not import confidential chip data, PDK assets, company specifications, model credentials, or source material you do not have permission to publish. Select a license only after owner approval.
+
+## v3.1 extension: concurrent design exploration
+
+SiliconForge supports **multiple Owner Instances for each Domain Role**, not one singleton per specialty. A single Requirement may fork into Performance, Low Power and Area candidates, with nested Git branch/worktree exploration, independent EDA validation, a traceable Pareto comparison, controlled merge and mandatory merged-SHA re-verification.
+
+The canonical [Coding Agent entry point](CODING_AGENT_START_HERE.md) includes the updated work order. Read [Parallel Exploration Architecture](docs/14_PARALLEL_EXPLORATION_ARCHITECTURE.md), [E01–E20 Additional Acceptance](docs/15_PARALLEL_EXPLORATION_ACCEPTANCE.md), and [Implementation Mapping](docs/16_PARALLEL_EXPLORATION_IMPLEMENTATION.md). Policy: [config/exploration_policy.json](config/exploration_policy.json).
+
+**The original A0–A6 60 cases remain mandatory. The 20 new E cases bring the project to 80 Required Acceptance cases.** Documentation publication is not implementation acceptance.
+

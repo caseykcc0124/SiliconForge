@@ -104,3 +104,12 @@ For each ID record `test_id`, `milestone`, `implementation_commit`, `command`, `
 ## First real milestone acceptance checklist
 
 A0 must run from a clean checkout using Python stdlib, generate an actual report, and meet all *implemented* A0 reference tests. `A0-07`–`A0-15` may require later A0 implementation beyond initial reference and must not be marked PASS from a conceptual model. A0 complete only after **all 18** test IDs have executed and passed with evidence. Do not release an A0 badge based solely on the included scaffold test count.
+
+## v3.1 additive E01–E20 acceptance
+
+The A0–A6 acceptance IDs above (18 + 8 + 7 + 7 + 6 + 7 + 7 = **60 Required Cases**) remain unchanged. The additional [E01–E20 matrix](15_PARALLEL_EXPLORATION_ACCEPTANCE.md) contains **20 new Required Cases**, giving **80 total**.
+
+The new cases include simultaneous Owner Instances, nested forks, branch-scoped event routing, git worktree isolation, cross-branch evidence rejection, parallel real EDA, Pareto comparability, managed merge and re-gate, budget-limited spawning, restart recovery, and DAG/PDCA reconstruction.
+
+Machine-readable tracker: [contracts/parallel_exploration_acceptance.json](../contracts/parallel_exploration_acceptance.json). All E cases are `NOT_RUN` until executed with matching evidence. Tests written but not run do not count as PASS. Mock/Stub may verify early contracts but cannot satisfy real Harness/EDA requirements.
+

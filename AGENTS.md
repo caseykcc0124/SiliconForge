@@ -26,3 +26,15 @@ Read in order: README.md, docs/00_MISSION_AND_BOUNDARIES.md, docs/01_ARCHITECTUR
 ## Reply to human
 
 Always include phase, actual implemented changes, commit SHA, commands/tests and pass/fail count, concrete evidence, resource usage when available, remaining risks, approvals required, and next executable work. Explicitly differentiate MOCK, STUB, EXPERIMENTAL and REAL EDA.
+
+## Mandatory v3.1: Multi-Owner Parallel Exploration
+
+Before coding or architectural decisions, read `CODING_AGENT_START_HERE.md`, `docs/14_PARALLEL_EXPLORATION_ARCHITECTURE.md`, `docs/15_PARALLEL_EXPLORATION_ACCEPTANCE.md` and `docs/16_PARALLEL_EXPLORATION_IMPLEMENTATION.md`. These extend, and do not replace, the A0–A6 baseline. **Existing 60 required cases + E01–E20 = 80 required cases.**
+
+- Domain Role is not a singleton Owner. The Runtime instantiates multiple Owner Instances with independent work leases per exploration branch and Ticket.
+- P-Stack stays inside each Domain Owner Instance. The Runtime, not Main, maintains Branch Lineage DAG, event fan-out, fork admission, budgets, watchdog, recovery and merge provenance.
+- Same Requirement can yield Performance, Low Power and Area candidates concurrently, each isolated with real Git branch/worktree and separately pinned Simulation, Formal, Synthesis and PPA evidence.
+- Every accepted merge yields a new SHA requiring fresh relevant gates. An Owner must not copy another candidate's PASS, auto-promote a candidate, force main, or use false PPA comparability.
+- Branch spawn must have bounded explicit hypothesis, stop criterion and quota. One blocked branch must not stop healthy branches.
+- Implement A0X/A3X/A4X/A5X/A6X at the milestones specified by docs/16. Never create another framework or overwrite the existing Working Sync state.
+

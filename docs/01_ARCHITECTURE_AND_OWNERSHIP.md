@@ -24,3 +24,7 @@ One active writer/lease per mutable RTL worktree; parallel candidate worktrees a
 
 ## Deployment
 Start with a Python modular backend, SQLite WAL with transactions, subprocess workers and pinned containers, a thin MCP/HTTP gateway, and a read-only first Dashboard. No Kafka/Kubernetes/Redis until measured bottlenecks justify ADR. Security boundary: user-to-gateway authentication, owner capabilities, artifact path allowlist, network restrictions and human approval for privileged operations.
+
+## v3.1 multi-instance decision boundary
+
+A `Domain Role` is not a singleton execution Owner. Runtime resolves many independent `owner_instance_id` values per Role and assigns them to branch-scoped Tickets. Instances choose their own domain engineering actions, while the deterministic Exploration Service holds Branch/Lineage Registry, admission, quotas, event routing, recovery and authorized merge. The human Main Agent remains an interface and never decides winning RTL or PPA designs on behalf of other Owners. See docs/14–16.

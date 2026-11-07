@@ -31,3 +31,7 @@ silicon-reflect aggregates event/signature/peer/decision/cost logs, produces PDC
 
 ## Acceptance
 Each owner must demonstrate a nontrivial workflow on real outputs, with worker lineage, objective artifacts and bounded retry. README and docs/09 are authoritative.
+
+## v3.1 parallel P-Stack adaptations
+
+The same Domain Role may have concurrent instances for Performance, Low Power and Area candidates. Each has its own P-Stack `arena/swarm/interrogate` run, isolated Git worktree, ticket, evidence, owner lease and stop condition. An RTL instance may fork nested candidates only within the group's approved budget and depth, never silently mutate other branches. Verification/Formal/PPA results belong to exact Candidate/Commit/Spec/Toolchain/Constraints fingerprints; cross-branch PASS reuse is forbidden. The Runtime records their branch DAG and fan-out/fan-in; the P-Stack skills remain local to each Owner Instance. See docs/14–16 and E01–E20.
