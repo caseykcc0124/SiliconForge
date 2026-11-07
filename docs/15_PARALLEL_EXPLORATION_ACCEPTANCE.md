@@ -2,11 +2,11 @@
 
 # 15｜平行探索與合併驗收案例 E01–E20（v3.1 REQUIRED）
 
-本章為本 Repository 原 A0–A6 共 60 個 Required Cases 的**增量**。總數變為 **80**。既有 PASS / NOT_RUN 狀態不由規格發布自動改變。E 類皆 `required=true`，並須加入兩個機器可讀 Tracker。
+本章為本 Repository 原 A0–A6 共 60 個 Required Cases 的**增量**。總數變為 **80**。既有 PASS / NOT_RUN 狀態不由規格發布自動改變。E 類皆 `required=true`，並須列入 `contracts/parallel_exploration_acceptance.json` 機器可讀追蹤表。
 
 ## 必要執行條件
 
-1. A0/M1 可用 Stub Harness、Fake EDA 驗證路由、交易、隔離與恢復；這類執行只能標記為 `MOCK_PASS` 的開發備註，正式 E 類仍為 `NOT_RUN`。
+1. A0 / A0X 可用 Stub Harness、Fake EDA 驗證路由、交易、隔離與恢復；這類執行只能標記為 `MOCK_PASS` 的開發備註，正式 E 類仍為 `NOT_RUN`。
 2. 正式 E 類除 E01–E08 的 Runtime contract 測試外，E09–E20 必須使用真實 Git Branch/Worktree；E11、E12、E14、E16、E20 需真實 EDA 和源資料一致性證據，不得使用在瀏覽器規則模擬生成的 Pass。
 3. 最低 `requirement_id=R_CRC_01`，Spec/Golden SHA 固定；建立 `performance`、`low_power`、`area` 三個並發 Branch，另由 performance 再 Fork 一個衍生 Branch。需要記錄所有 EDA Environment Digest 和約束 SHA。
 4. 驗收紀錄須含 `test_command, branch_id, owner_instance_id, git_ref, head_sha, evidence_paths, evidence_sha256, env_digest, event/trace_id, result, elapsed, notes`；若 `NOT_RUN`，不能有虛構證據。
@@ -49,6 +49,6 @@
 ## 完成門檻
 
 - `E01–E20` 每一項都要 `PASS`，若有任何 `NOT_RUN/FAIL/BLOCKED`，整體不得標 `VERIFIED`。
-- 既有 A01–D12 58 項仍然有效，任何修改不能減少既有範圍。
+- 既有 A0–A6 60 項仍然有效，任何修改不能減少既有範圍。
 - 1 個真正完整的多分支自主 Demo，且有 fail-injection 實驗（B1 故障、證據污染、過期 Lease、Merge Conflict、資源耗盡）。
 - 不得把單一 Candidate 的 EDA Pass 計入另兩個 Candidate；不得因 LLM 給出「很可能合格」而略過正式 Gate。
