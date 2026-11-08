@@ -43,8 +43,8 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261108-01
-  directive_poll_at_utc: "2026-11-08T01:32:22.7905829Z"
-  directive_ack_at_utc: "2026-11-08T01:33:14.3384841Z"
+  directive_poll_at_utc: "2026-11-08T01:44:02.1986956Z"
+  directive_ack_at_utc: "2026-11-08T01:47:36.7469793Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   active_gate: G1
@@ -55,6 +55,7 @@ supervisor_coordination:
   G1_scoped_watchdog_checkpoint_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
+  G1_branch_failure_receipt_unit: IMPLEMENTATION_ACTIVE_NOT_VERIFIED
   local_git_commit: "1581c7405e3e66216f2bd8e5f7d97088249a1559"
   local_artifact_state: PREPARED_LOCAL
   local_artifact_sha256: "e5f14e284be604e35b4e2cf441ad310b9e8fad18a1f4cfab3916c88c901446b6"
@@ -71,7 +72,7 @@ supervisor_coordination:
   blocked_items:
     - "No verified source ZIP/Patch transport to an authorized Integrator; local work continues"
   next_executable_action: Canonical watchdog failure receipts and branch event; actual usage and registered-job retry remain pending.
-  last_heartbeat_at_utc: "2026-11-08T01:33:14.3384841Z"
+  last_heartbeat_at_utc: "2026-11-08T01:47:36.7469793Z"
   last_effective_progress_at_utc: "2026-11-08T01:31:52.1176089Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -86,12 +87,12 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T01:33:14.3384841Z"
+updated_at_utc: "2026-11-08T01:47:36.7469793Z"
 last_progress_at_utc: "2026-11-08T01:31:52.1176089Z"
-last_heartbeat_at_utc: "2026-11-08T01:33:14.3384841Z"
+last_heartbeat_at_utc: "2026-11-08T01:47:36.7469793Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
-current_task: "G1 registry-only ArchiveBranch frozen and bundled; watchdog failure receipt grounding active"
+current_task: "G1 failure receipt/BRANCH.BLOCKED implementation active in isolated worktree; archive unit remains independently verified"
 next_action: "Implement bounded failure receipt and canonical branch event; preserve quotas and native/real EDA gate boundaries"
 next_action_owner: Coding Agent
 blockers: []
@@ -240,4 +241,6 @@ external_coding_agent:
 2026-11-08T01:26:06.2009168Z. Session resumed and directive reread unchanged. Archive backlog defect reproduced and repaired locally without weakening64KiB event limit. Worker focused45 tests PASS including1812 READY delivery cancellation; full IDs retained in immutable receipt and per-delivery audit, journal uses count/hash/receipt reference. Final local commit and independent review pending; main remainsc39672e. Frozen-unit progress unchanged. G1 ACTIVE; transport UNAVAILABLE; remote source NOT_INTEGRATED; formal E/native Harness/real EDA NOT_RUN.
 
 2026-11-08T01:33:14.3384841Z. Local ArchiveBranch unit frozen1581c7405e3e66216f2bd8e5f7d97088249a1559 and independently signed. Clean132/132 suite plus18/18 original A0 IDs, all source/per-ID logs/five reviewer hashes verified. Atomic ownerless service command checks project/revision/status/head and lease/job/peer/candidate quiescence. READY work becomes audited DEAD_LETTER; tickets CANCELLED, owners/branch ARCHIVED, retained identity/evidence/history/lineage unchanged.1812 READY backlog uses bounded count/hash/receipt journal with complete immutable receipt and per-delivery audit. Nested fork from healthy sibling succeeds under unchanged total/depth/budget limits. Tested-byte ZIP SHA256e5f14e284be604e35b4e2cf441ad310b9e8fad18a1f4cfab3916c88c901446b6, main ff-only integrated. No physical worktree release or budget refund. Watchdog failure receipt grounding next. G1 ACTIVE, formal E/native Harness/real EDA NOT_RUN; transport UNAVAILABLE, remote source NOT_INTEGRATED. Directive unchanged.
+
+2026-11-08T01:47:36.7469793Z. Directive Chrome reread unchanged. Failure receipt grounding confirmed current repeated-call and per-ticket-vs-branch gaps. Compared typed-command reuse and separate failure ledger designs, independently crossjudged, selected existing typed receipt with event-per-report and explicit blocked-before-job state. Implementation active isolated g1-failure-work from1581c74. Preserve lease/AuthZ/replay, pinned branch threshold, bounded stopped-work trace and healthy sibling recovery. Registered jobs and peers get only narrow terminal settlement, not general blocked-work allowance. Existing DB candidate-state migration and truthful historical unpinned noncandidate settlement required. No new tests or failure unit commit yet; frozen archive progress timestamp unchanged01:31:52.1176089Z. G1 ACTIVE; formal E/native Harness/real EDA NOT_RUN; transport UNAVAILABLE, remote source NOT_INTEGRATED.
 
