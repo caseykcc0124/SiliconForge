@@ -42,34 +42,34 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: SF-DIR-20261108-03
-  directive_poll_at_utc: "2026-11-08T04:26:12.1937124Z"
-  directive_ack_at_utc: "2026-11-08T03:23:28.1471987Z"
+  last_seen_directive_id: SF-DIR-20261108-05
+  directive_poll_at_utc: "2026-11-08T06:08:33.875357Z"
+  directive_ack_at_utc: "2026-11-08T06:15:08.751932Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: PARTIAL_DEV_TOOL_BLOCKED
+  dev_capability_state: DEV_USABLE_E2E_LOCAL
   dev_delivery_state: DEV_LOCAL_ONLY_PENDING_TRANSFER
   dev_usable_capabilities:
-    - Existing Runtime demo actually starts with PYTHONPATH=src python -m siliconforge.demo, exit0.
-    - Native codex-cli0.166.0 gpt-6-luna read-only probe completed via configured existing provider, exit0; not RTL or A1 acceptance.
-  dev_demo_reproduction: Independent clean source.zip extraction followed README; python -m siliconforge.demo exit0;42 source hashes match.
-  dev_bundle_sha256: 132568812969ff8364b319ba8902340c549bef588da676f41b5c8feabf8c8a9c
-  dev_bundle_contents: Tested-byte93-file source.zip, startup README, acquisition blocker, raw137-suite/A018-ID logs, independent blocked-startup and committed-snapshot checks, manifest and SHA256.
-  vertical_slice_last_run: NOT_RUN
-  remaining_mock_or_stub: Existing demo mock owners; MCP unauthenticated development stub and MODE_MOCK Runtime heads. APB fixture/controller now implemented but actual native RTL/EDA stages NOT_RUN.
-  external_harness_blocker: Real native probe remains available; bounded Runtime-to-native controller implemented but actual repair NOT_RUN because baseline EDA unavailable.
-  real_eda_blocker: Official Chrome download stalled at about1254KB/577MB; Pause/Resume and one fresh official asset retry did not complete. Archive SHA/licenses/tools not verified; root cause unknown. No admin/policy changes.
-  oss_eda_install_state: DOWNLOAD_STALLED_NOT_VERIFIED
-  oss_eda_source: https://github.com/YosysHQ/oss-cad-suite-build/releases/tag/2026-11-07
-  oss_eda_archive: oss-cad-suite-windows-x64-20261107.tgz
+    - Fixed Runtime task to real native RTL-only repair, actual Icarus simulation and Yosys structural smoke, independently reproduced.
+    - Existing Runtime demo and frozen earlier local unit evidence remain available.
+  dev_demo_reproduction: Independent clean H0/H1 Git archive actual Icarus baseline FAIL, repaired PASS, Yosys PASS. Raw logs in current bundle.
+  dev_bundle_sha256: 81fbb9b2c13db4e5a19f6cdb091d2e3b68fac4da961c05198864e1d95082bb7b
+  dev_bundle_contents: H0 and H1 source archives, RTL-only patch, actual controller raw logs and Runtime DB, independent clean reproduction script/logs, distribution provenance and manifest.
+  vertical_slice_last_run: PASS; run984640dfe55e481d905fd933ed009e35; H0 8f084ed baseline expected exit1, native gpt-6-luna RTL-only repair H1 21ec027, Icarus/VVP exit0 PASS, Yosys exit0 zero structural problems, Runtime COMPLETED.
+  remaining_mock_or_stub: MODE_MOCK Runtime branch heads; unauthenticated MCP development stub; formal80 cases, PPA/timing/power and commercial adapters not verified. Git H1 is NOT_A_RUNTIME_CANDIDATE.
+  external_harness_blocker: NONE_FOR_FIXED_LOCAL_TASK; real native Codex0.166.0 repair completed. General authenticated external Gateway acceptance remains unverified.
+  real_eda_blocker: NONE_FOR_THIS_LOCAL_SLICE
+  oss_eda_install_state: PORTABLE_EXTRACTED_ACTUAL_TOOLS_EXECUTED
+  oss_eda_source: https://github.com/caseykcc0124/SiliconForge/releases; USER_PROVIDED_SPLIT_ZIP
+  oss_eda_archive: USER_PROVIDED_59_VOLUME_SPLIT_ZIP; archive profile pin refers only to final ZIP volume; original official tgz not verified; further volume verification skipped per user.
   oss_eda_expected_sha256: 3d7f21c829cce34fd79eb61f72aedb462877bb08d6ca307e5a562cf04e6e5bf0
   oss_eda_actual_sha256: null
-  eda_provider: NOT_YET_AVAILABLE
-  eda_actual_executions: NOT_RUN
-  commercial_adapter_contract_state: THIN_OSS_PROFILE_REQUEST_RESULT_IMPLEMENTED_REAL_TOOL_PATH_NOT_VERIFIED_NO_COMMERCIAL_IMPLEMENTATION
-  active_gate: G1
-  active_gate_state: ACTIVE
+  eda_provider: OSS_CAD_SUITE; Icarus14.0 devel, VVP14.0 devel, Yosys0.70+360
+  eda_actual_executions: REAL baseline compile0/simulation1 EXPECTED_FAIL, final compile0/simulation0 PASS/Yosys0 PASS; commands, RTL hashes and raw logs in execution-evidence and independent-reproduction.
+  commercial_adapter_contract_state: THIN_OSS_PROFILE_REQUEST_RESULT_IMPLEMENTED; commercial adapters NOT_IMPLEMENTED
+  active_gate: DEV_REAL_VERTICAL_SLICE
+  active_gate_state: LOCAL_SLICE_CLOSED_WITH_INDEPENDENT_REPRODUCTION; FORMAL_GATES_NOT_PROMOTED
   G0_local_gate: CLOSED_LOCAL_WITH_INDEPENDENT_REVIEW
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -77,10 +77,10 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "8f084edc124569e14f7f3ba21d2e8ea70347100c"
+  local_git_commit: "21ec027012bab629561a53c02b64b49d26499b91"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "132568812969ff8364b319ba8902340c549bef588da676f41b5c8feabf8c8a9c"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/dev-real-8f084ed-final/SiliconForge-DEV-PARTIAL-8f084ed.zip"
+  local_artifact_sha256: "81fbb9b2c13db4e5a19f6cdb091d2e3b68fac4da961c05198864e1d95082bb7b"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-DEV-REAL-21ec027.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
@@ -94,9 +94,9 @@ supervisor_coordination:
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items:
     - "No verified source ZIP/Patch transport to an authorized Integrator; local work continues"
-  next_executable_action: Obtain complete official portable archive through authorized Chrome transport and verify digest/licenses/versions, then run existing real slice with approved scoped Runtime DB.
-  last_heartbeat_at_utc: "2026-11-08T04:27:54.7473650Z"
-  last_effective_progress_at_utc: "2026-11-08T04:27:54.7473650Z"
+  next_executable_action: Local real DEV package ready; continue only concrete authorized DEV needs. Remote source transfer remains unavailable; formal gates remain separate.
+  last_heartbeat_at_utc: "2026-11-08T06:15:08.751932Z"
+  last_effective_progress_at_utc: "2026-11-08T06:15:08.751932Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -292,4 +292,7 @@ Actual Chrome poll2026-11-08T04:26:12.1937124Z confirms full directive03 unchang
 Actual full Chrome poll2026-11-08T04:26:12.1937124Z confirms directive03 unchanged. Local delivery8f084edc124569e14f7f3ba21d2e8ea70347100c has two thin modules, fixed defective APB CRC32 spec/golden/RTL/TB, profile example and DEV guide. Tested codeac53e4bf9a875eea5d2de785d94c46729df658af passed137/137 existing suite and18/18 A0 local IDs. Final difference is DEV guide only; code bytes unchanged. Independent final check verified93 source files/digests, actual committed snapshot helper equals4 Git blobs with Windows autocrlftrue, help exit0 and missing-profile exit2/allactualstagesNOT_RUN/DBabsent. SourceZIP394f436ed78f6db994e88c573aef08c94fad22de244739830b74d019236f65d7; final bundle132568812969ff8364b319ba8902340c549bef588da676f41b5c8feabf8c8a9c,639363bytes,61payload hashes and ZIP CRC verified. Medium timeout-documentation finding resolved by final guide-only commit;8redundantdocstrings removed, no holds changed without evidence.
 
 Official download stalled twice at about1.25MB/577MB0B/s, Pause/Resume and fresh official asset retry unsuccessful; canceled after bounded attempts. Root cause unknown. Expected official SHA3d7f21c829cce34fd79eb61f72aedb462877bb08d6ca307e5a562cf04e6e5bf0; actual archive/license/tool versions/profile NOT_VERIFIED. Baseline FAIL, native RTL repair/H1, repaired simulation and Yosys allNOT_RUN. PARTIAL_DEV_TOOL_BLOCKED, DEVELOPMENT VERSION / 非量產版. No DEV_USABLE_E2E_LOCAL or formalA1/A2/E/Release claim. All source/evidence LOCAL_ONLY/NOT_TRANSFERRED, remote source null. Previous DEVMOCK bundle7255f28cc7ad0d65f290d8ab85a8ccc166f6158dfee9b9b702844fb1dad0ee7e and original main9bb2677 retained. No admin/network-shell/policy/quota changes. ACTIVE_SESSION_ONLY; no exited-session polling service.
+
+
+2026-11-08T06:15:08.751932Z. ACK SF-DIR-20261108-05. All59 split volumes present and 7-Zip extraction exit0. Per user, no further per-volume checksum verification. Real fixed Runtime task run984640dfe55e481d905fd933ed009e35 completed. Baseline reproduced SOFTWARE_CLEAR_CARRYOVER exit1, native Codex0.166.0 gpt-6-luna changed only RTL software-clear seed, H1 simulation PASS exit0 and Yosys PASS exit0 with0 structural problems. H0 8f084edc124569e14f7f3ba21d2e8ea70347100c; H1 21ec027012bab629561a53c02b64b49d26499b91. Independent clean Git archive reproduction PASS; spec/golden/TB bytes unchanged. DEVELOPMENT VERSION local source/evidence bundle D:/mtk32712/SiliconForge/deliveries/SiliconForge-DEV-REAL-21ec027.zip SHA256 81fbb9b2c13db4e5a19f6cdb091d2e3b68fac4da961c05198864e1d95082bb7b. Source transfer remains UNAVAILABLE and remote integration null. MODE_MOCK Runtime head unchanged, NOT_A_RUNTIME_CANDIDATE; no formal80-case/PPA/timing/power acceptance claimed. Distribution archive pin is final ZIP volume only, original official tgz not verified. Raw run.json retains older hardcoded directive03 metadata; actual coordination directive05 is recorded here and in bundle. Earlier history is retained.
 
