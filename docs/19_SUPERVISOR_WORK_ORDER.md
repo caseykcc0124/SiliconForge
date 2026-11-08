@@ -1,10 +1,10 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261108-08**
+> **DIRECTIVE_ID: SF-DIR-20261108-09**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-08T07:03:19Z**
+> **UPDATED_AT_UTC: 2026-11-08T07:55:01Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
@@ -124,6 +124,16 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 4. **開發版與範圍保持。** 已完成可設定 Local RTL/EDA 開發版本即為合法交付，不要求 Source GitHub 上傳、Integrator、遠端 PR、傳輸通道或額外人類動作；不要把 artifact_transfer_state=UNAVAILABLE 列 Blocker。對既有二個 Local Real EDA 案例保留原始證據與已知限制，不重跑未受影響的工作。A0 補證完成或確實受限後，繼續下一項真正可用的 Domain Owner/RTL 工程功能。
 5. **完成條件**：於 Sync 回報十八個 A0 ID 的實際新驗收狀態總表、四項斷言對應證據、環境指紋、Reviewer 結果、精確 Local SHA 和 Local Bundle SHA256；缺少的項目和下一步要具體，不用再次要求 Supervisor 為此開新 Directive。整個工作是一個限縮 A0 收斂任務，不得自行擴張成無界測試／Review 系統。
 
+### 2.10 Directive 08 驗收發現：只收斂 A0-09 與 A0-13 的實際 Runtime 能力（2026-11-08）
+
+**本次變更的具體依據：** Coding Agent 已 ACK Directive 08，於本地執行一次有當次 environment_digest 的 18 個 A0 原案例，獨立 Reviewer 回報 **16 個 LOCAL_EVIDENCE_VERIFIED，A0-09／A0-13 仍 NEEDS_EVIDENCE**。本地新驗證證據包含來源 b99a624、該輪 18 個 Logs、環境指紋及 Reviewer SHA256；Supervisor 只讀到 GitHub Sync 的記錄，未拿到 Local Source/Raw Logs 直接重驗。A0 Gate 仍 OPEN，正式 80 案不得升格。以下為真正需要實作的兩個缺口，不得以重新解釋測試、補寫自評或放寬 Assertion 收斂。
+
+1. **A0-09：確立可觀測的獨立 IP 完工語義。** 目前第二個 IP 的 Delivery 雖 ACKED，但 Ticket 仍 READY，不能證明該 IP 任務獨立完成。沿用既有 Runtime Event/Delivery/Ticket/Lifecycle 及 AuthZ，做最薄的合法 success completion transition（或採用既有真正終態及事件，如已存在）；在第一 IP 因阻礙保持相應狀態時，使第二 IP 有真實成功終態、正確因果 Decision/History，且反覆 Callback 不得重複推進。以原 A0-09 斷言執行並保存確切來源 SHA、命令、原始 Logs、環境 Digest、結果及 Reviewer。不增加新通用流程框架、不改政策或多 Owner 架構。
+2. **A0-13：確認真實 Native Harness 退出後既有 Owner 工作的存續與恢復。** 既有測試只證明 Worker Exit，而本次 Native 修正只驗證啟動/終止 PID 與 Controller-driven Recovery，尚不能證明 Owner Work 自主持續。請用已允許的 Native Harness 和既有持久化 Runtime 機制，重現使用者關閉/離開 Harness 後 Event、Ticket、Owner Work 持久，且下一次既有 Local Runtime/Owner 執行路徑能接續；清楚區分「持久保存」「下次啟動恢復」與「無人值守持續運轉」，**不得虛稱第三項**。若實際要求在 Session 關閉時仍有獨立背景服務，而現有架構/權限尚未授權，不得私設 Windows Service、新 Agent、排程守護進程或新控制平面；精確記錄欠缺能力與需要的人類架構核准，並將此 Case 保持 NEEDS_EVIDENCE／BLOCKED。
+3. **保存 Native Harness 真實工具證據。** 前次 A0-13 修正欠 contemporaneous environment_digest，且未 pin native CLI/wrapper 版本。此次只對實際執行回合記錄工具版本、現時 OS/Python/Runtime/CLI/必要 Wrapper Digest、Local Git SHA、開始/結束時間、完整 Command/Exit Code、事件與 Owner 狀態截圖或 Raw Log 及 SHA256，不能倒填歷史環境指紋。保留既有安全、Sandbox、Authenticated Actor/Scope 和原測試限制；不得為了成功而削弱 AuthZ 或批准 Policy。
+4. **有界驗收與轉段。** 先針對 A0-09 和 A0-13 兩項執行定點 Case，修復迴圈遵循既有最多三次相同 Failure Signature 迭代，最後只做一次必要的受影響 A0 合約回歸與獨立 Reviewer。其餘已有 16 個 LOCAL_EVIDENCE_VERIFIED 的固定證據維持版本可追溯，不要為了提高測試數反覆驗證未受影響模組。若兩案都符合原 docs/09 契約及 docs/09 Passing Evidence Format 才可報 A0 Local Gate CLOSED_WITH_EVIDENCE；若 A0-13 牽涉未授權架構或其他真正阻礙，就保持 OPEN、清楚標示，並繼續下一個有用的 Local 開發版本功能，不無限卡在 A0。
+5. **Sync 時間欄位一致性及權限**：本次 GitHub Sync 追加了 07:18:01 UTC 的有效進度，但 YAML machine-readable 的 heartbeat/last_effective_progress 仍停在 06:55:20 UTC，任務頂層 mission_state timestamp 更舊。下次活躍 Session 編輯 Sync 時，依真實當次時間更新機器可讀的 Heartbeat、Last Effective Progress、updated_at 與 Directive ACK，讓 Dashboard 可依真實門檻監督；不要回填或偽造 15 分鐘輪詢。Local Source/Evidence Bundle 仍只須保存在 Coding Agent 自己的 Local，**不能要求上傳 GitHub、找 Integrator 或建立遠端 Source 傳遞通道**。既有 80 個 Case、安全與正式發布 Gate 都不改。
+
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
 | Gate | 工作範圍 | 本地完成證據與自動移轉 |
@@ -206,4 +216,6 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 **前版更新原因／下一步（SF-DIR-20261108-07，2026-11-08T06:33:16Z）**：撤銷要求 Coding Agent 處理遠端 Source 傳輸的工作，明確 Local-only 就是本輪可用開發版交付；要求先將既有 A0 的 18/18 Local PASS 逐 Case 對照原始證據，改善誤導性的 0/80 報表。其餘依現行 Vertical Slice 方向推進。原有 G0–G7、80 個 Required Cases、正式 Gate、資安與權限限制全部保留。
 
-**本版更新原因／下一步（SF-DIR-20261108-08，2026-11-08T07:03:19Z）**：Agent 在 Directive 07 下完成第二個真實、可設定的 Local RTL 修復與獨立 EDA 重現，並對 A0 18 個 Case 做了逐項 Mapping，明確找出 4 個實際斷言缺口及全部 18 個舊紀錄缺少環境指紋。依 §2.9 只修補 A0-03/A0-09/A0-13/A0-18，執行一次帶當次 environment_digest 的有限 A0 原定驗收輪次，證據足夠後逐項改列 Local Evidence Verified；維持功能優先、不建立新框架、不要求 GitHub Source 整合、不降低 80 個 Required Cases 或安全限制。
+**前版更新原因／下一步（SF-DIR-20261108-08，2026-11-08T07:03:19Z）**：Agent 在 Directive 07 下完成第二個真實、可設定的 Local RTL 修復與獨立 EDA 重現，並對 A0 18 個 Case 做了逐項 Mapping，明確找出 4 個實際斷言缺口及全部 18 個舊紀錄缺少環境指紋。依 §2.9 只修補 A0-03/A0-09/A0-13/A0-18，執行一次帶當次 environment_digest 的有限 A0 原定驗收輪次，證據足夠後逐項改列 Local Evidence Verified；維持功能優先、不建立新框架、不要求 GitHub Source 整合、不降低 80 個 Required Cases 或安全限制。
+
+**本版更新原因／下一步（SF-DIR-20261108-09，2026-11-08T07:55:01Z）**：Directive 08 完成一次真實 18 案取證，獨立 Local Reviewer 回報 16 個案例已符合本地證據要求，A0-09 Ticket 未達成功終態、A0-13 缺少 Harness Exit 後 Owner 工作存續/恢復原證據與當次 Native 工具指紋。依 §2.10 限縮補足這兩項實際 Runtime 能力、驗證並維持 A0 Gate 嚴格狀態；Sync 機器時間欄位同步採真實當次值；不增加無關測試框架、不要求 GitHub Source 傳遞、不擅建新背景服務或放寬原 80 項正式驗收及安全規則。
