@@ -43,8 +43,8 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261108-01
-  directive_poll_at_utc: "2026-11-08T01:56:53.9339648Z"
-  directive_ack_at_utc: "2026-11-08T01:57:22.4270427Z"
+  directive_poll_at_utc: "2026-11-08T02:20:19.0173000Z"
+  directive_ack_at_utc: "2026-11-08T02:21:41.0542368Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   active_gate: G1
@@ -55,15 +55,17 @@ supervisor_coordination:
   G1_scoped_watchdog_checkpoint_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  G1_branch_failure_receipt_unit: IMPLEMENTATION_ACTIVE_NOT_VERIFIED
-  local_git_commit: "1581c7405e3e66216f2bd8e5f7d97088249a1559"
+  G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
+  local_git_commit: "9bb26774a36fdb8601bee32a40d67f39188d6978"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "e5f14e284be604e35b4e2cf441ad310b9e8fad18a1f4cfab3916c88c901446b6"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/g1-archive-1581c74-final/SiliconForge-G1-archive-local.zip"
+  local_artifact_sha256: "b2507828ef87f8b861b10cdd70d57f36e170120ca1e2ae72c255e8f64a7e64a1"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/g1-failure-9bb2677-final/SiliconForge-G1-failure-local.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
   local_test_evidence:
+    - "Frozen9bb2677 clean137/137 suite and18/18 original A0 IDs; source/per-ID log hashes and seven independent reviewer source hashes verified"
+    - "Final correctness and comments gates PASS; immutable populated prior-DB fixture upgrade and observational callback verified; F1/F2 CLOSED_WITH_EVIDENCE"
     - "Frozen1581c74 clean132/132 suite and18/18 A0 IDs; all source/per-ID log/five independent reviewer hashes verified"
     - "ArchiveBranch independent correctness signoff;1812 READY backlog cancelled with count/hash/receipt/audit trace; no high/medium finding"
     - "Frozen c39672e: 127/127 stdlib tests, including 8 candidate, 8 lifecycle and prior 21 A0X MOCK checks"
@@ -71,9 +73,9 @@ supervisor_coordination:
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items:
     - "No verified source ZIP/Patch transport to an authorized Integrator; local work continues"
-  next_executable_action: Canonical watchdog failure receipts and branch event; actual usage and registered-job retry remain pending.
-  last_heartbeat_at_utc: "2026-11-08T01:57:22.4270427Z"
-  last_effective_progress_at_utc: "2026-11-08T01:31:52.1176089Z"
+  next_executable_action: Design trusted run-bound usage accounting and parent-child charge semantics; registered-job retry remains pending.
+  last_heartbeat_at_utc: "2026-11-08T02:21:41.0542368Z"
+  last_effective_progress_at_utc: "2026-11-08T02:21:41.0542368Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -87,13 +89,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T01:57:22.4270427Z"
-last_progress_at_utc: "2026-11-08T01:31:52.1176089Z"
-last_heartbeat_at_utc: "2026-11-08T01:57:22.4270427Z"
+updated_at_utc: "2026-11-08T02:21:41.0542368Z"
+last_progress_at_utc: "2026-11-08T02:21:41.0542368Z"
+last_heartbeat_at_utc: "2026-11-08T02:21:41.0542368Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
-current_task: "G1 failure receipt/BRANCH.BLOCKED implementation active in isolated worktree; archive unit remains independently verified"
-next_action: "Implement bounded failure receipt and canonical branch event; preserve quotas and native/real EDA gate boundaries"
+current_task: "G1 failure receipt unit locally closed at9bb2677; G1 overall ACTIVE"
+next_action: "Design trusted usage measurement and parent-child accounting without inventing missing costs or changing policy caps"
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -193,7 +195,7 @@ external_coding_agent:
   input_zip_baseline_sha: efe183b726de8392371b4271bb57ea5cf3d76f2b
   input_zip_sha256: 9ceeaa748872bbe77c5a1b61480a343266a753a9f1d3a52c40b71abb369eefdc
   local_workspace_state: ACTIVE
-  local_git_commit: "1581c7405e3e66216f2bd8e5f7d97088249a1559"
+  local_git_commit: "9bb26774a36fdb8601bee32a40d67f39188d6978"
   code_artifact_state: PREPARED_LOCAL
   code_artifact_access: LOCAL_WORKSPACE_ONLY
   artifact_transfer_state: UNAVAILABLE
@@ -208,8 +210,8 @@ external_coding_agent:
   tests_executed:
     - command: PYTHONPATH=src python -m unittest discover -s tests -q
       result: PASS
-      count: 132
-      scope: FROZEN_LOCAL_1581C74_INCLUDES_ARCHIVE_BACKLOG_REGRESSION_AND_PRIOR_MOCK_CHECKS
+      count: 137
+      scope: FROZEN_LOCAL_9BB2677_FAILURE_UNIT_AND_PRIOR_MOCK_CHECKS
     - command: PYTHONPATH=src python tests/run_a0_acceptance.py
       result: PASS
       cases: A0-01..A0-18
@@ -245,4 +247,7 @@ external_coding_agent:
 2026-11-08T01:47:36.7469793Z. Directive Chrome reread unchanged. Failure receipt grounding confirmed current repeated-call and per-ticket-vs-branch gaps. Compared typed-command reuse and separate failure ledger designs, independently crossjudged, selected existing typed receipt with event-per-report and explicit blocked-before-job state. Implementation active isolated g1-failure-work from1581c74. Preserve lease/AuthZ/replay, pinned branch threshold, bounded stopped-work trace and healthy sibling recovery. Registered jobs and peers get only narrow terminal settlement, not general blocked-work allowance. Existing DB candidate-state migration and truthful historical unpinned noncandidate settlement required. No new tests or failure unit commit yet; frozen archive progress timestamp unchanged01:31:52.1176089Z. G1 ACTIVE; formal E/native Harness/real EDA NOT_RUN; transport UNAVAILABLE, remote source NOT_INTEGRATED.
 
 2026-11-08T01:57:22.4270427Z. Active directive reread unchanged. Failure unit remains in isolated implementation, not independently verified. Main diff inspection found candidate block-history projection leakage across siblings and exact-owner receipt replay binding gap; worker acknowledged both corrections, focused verification pending. Immutable populated upgrade fixture built with frozen1581c74 code includes priorcompleted/pending/waiting candidate states and historical unpinned noncandidate job; original fixture retained. Read-only accounting audit confirms admission/reservations only, no actual tokens/EDA CPU/elapsed usage; default policy config lacks those caps. No usage estimates, new Harness turn or EDA provisioning. Main remains clean1581c74 and last frozen engineering progress stays01:31:52.1176089Z. G1 ACTIVE, formal E/native/real EDA NOT_RUN, transfer UNAVAILABLE and remote source NOT_INTEGRATED.
+
+
+2026-11-08T02:21:41.0542368Z. Failure receipt unit locally closed at9bb26774a36fdb8601bee32a40d67f39188d6978 after independent final correctness and comments review. Clean137/137 suite and18/18 original A0 IDs PASS; source/per-ID log and seven reviewer hashes match frozen bytes. F1 candidate sibling block projection and F2 exactowner replay binding corrected with evidence. Branch-level digest streak reaches pinned3 atomically; blocked jobs/peers settle narrowly without new work or fabricated candidate results. Immutable prior DB fixture upgrade preserves old results; historical unpinned noncandidate callback explicitly observational. Tested-byte ZIP SHA256b2507828ef87f8b861b10cdd70d57f36e170120ca1e2ae72c255e8f64a7e64a1; main ff-only integrated. Bundle NOT_TRANSFERRED, transfer UNAVAILABLE, remote source NOT_INTEGRATED. Directive actual full Chrome polls02:14:14.9255926Z and02:20:19.0173000Z unchanged; previous02:11:53.9339648 deadline missed by about141 seconds, recorded honestly without backdating. Next trusted run-bound usage accounting design and parent-child enforcement; no invented zero usage or changed caps. G1 ACTIVE; formal E/native Harness/real EDA NOT_RUN.
 
