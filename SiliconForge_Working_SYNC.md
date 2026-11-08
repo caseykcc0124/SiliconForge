@@ -42,9 +42,9 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: SF-DIR-20261108-09
-  directive_poll_at_utc: "2026-11-08T08:19:05.7325697Z"
-  directive_ack_at_utc: "2026-11-08T08:09:01.6429603Z"
+  last_seen_directive_id: SF-DIR-20261108-10
+  directive_poll_at_utc: "2026-11-08T10:04:31.5067936Z"
+  directive_ack_at_utc: "2026-11-08T10:04:31.5067936Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
@@ -97,7 +97,7 @@ supervisor_coordination:
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items: []
   next_executable_action: "Proceed to a useful candidate-scoped local Domain Owner runtime function under G1; retain formal gates and no unattended service claim."
-  last_heartbeat_at_utc: "2026-11-08T08:24:09.5621420Z"
+  last_heartbeat_at_utc: "2026-11-08T10:04:31.5067936Z"
   last_effective_progress_at_utc: "2026-11-08T08:24:09.5621420Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -112,13 +112,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T08:24:09.5621420Z"
+updated_at_utc: "2026-11-08T10:04:31.5067936Z"
 last_progress_at_utc: "2026-11-08T08:24:09.5621420Z"
-last_heartbeat_at_utc: "2026-11-08T08:24:09.5621420Z"
+last_heartbeat_at_utc: "2026-11-08T10:04:31.5067936Z"
 latest_commit: "365e85509f3660e93fc6b5fbc0eeed38b238f560"
 latest_pr: null
-current_task: "Directive09 complete: Local A0 gate closed with independent evidence; G1 local development next."
-next_action: "Continue a useful candidate-scoped local Domain Owner function; no source transfer, background service or formal80 claim."
+current_task: "Directive10: integrate Requirement-scoped Domain Owner real Native RTL/EDA chain and durable checkpoint restart."
+next_action: "Connect existing typed Registry/Candidate/Lifecycle to configurable real slice; demonstrate two same-role scopes and explicit restart recovery."
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -637,4 +637,9 @@ Independent reviewer /root/directive09_review: A0-09/A0-13 LOCAL_EVIDENCE_VERIFI
 | A0-18 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
 
 Local bundle D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive09-A0-365e855.zip,2461768 bytes,SHA2567209d9ab938b827cb28d031895aaea7d9b04bad7ff1e303a8f767a0af942c471. Includes source/history,two-case raw command/time/log/state/native tool fingerprints,one affected regression,independent full18 mapping,and preserved Directive08/real DEV evidence. Local-only delivery PREPARED_LOCAL; transferUNAVAILABLE is not a blocker. Root AGENTS unchanged SHA25685a63528182e5b694db575f071a33e45da2fa5363de74e8ef9fa39b9b116c845. Next authorized local work is a useful G1 candidate-scoped Domain Owner runtime function; no additional human source-transfer task.
+
+
+## Coding Agent Directive10 ACK
+
+SF-DIR-20261108-10 ACK/APPLIED at 2026-11-08T10:04:31.5067936Z. ACTIVE_SESSION_ONLY. Local A0 18/18 CLOSED_WITH_EVIDENCE retained; Supervisor verification UNKNOWN. Current local source365e85509f3660e93fc6b5fbc0eeed38b238f560. G1 engineering ACTIVE, acceptance NOT_ACCEPTED. Implement existing Requirement/Scope/Owner durable chain through real native RTL-only repair/OSS EDA/Candidate evidence/terminal completion, and a durable explicit checkpoint/resume. At least two same-role scopes isolated; E01/E02 stay NOT_RUN unless original3-instance/overlap assertions actually met. No new service/control plane/policy or source transfer. Prior effective-progress timestamps preserved until new engineering evidence; heartbeat/mission updated_at refreshed with actual current observation.
 
