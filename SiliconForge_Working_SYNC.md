@@ -42,9 +42,9 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: SF-DIR-20261108-02
-  directive_poll_at_utc: "2026-11-08T02:44:30.2516719Z"
-  directive_ack_at_utc: "2026-11-08T02:45:42.5021252Z"
+  last_seen_directive_id: SF-DIR-20261108-03
+  directive_poll_at_utc: "2026-11-08T03:14:54.8773356Z"
+  directive_ack_at_utc: "2026-11-08T03:23:28.1471987Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
@@ -59,7 +59,15 @@ supervisor_coordination:
   vertical_slice_last_run: NOT_RUN
   remaining_mock_or_stub: Runtime demo uses mock owners and mock evidence; MCP unauthenticated development stub; no APB RTL or real EDA flow.
   external_harness_blocker: Native model turn available; runtime-to-native RTL workflow not integrated or demonstrated.
-  real_eda_blocker: No Verilator/iverilog/Yosys found on PATH; WSL reports not installed; profiles UNPROVISIONED. No install or quota change authorized.
+  real_eda_blocker: Official portable download in progress via Chrome, not verified/extracted yet. No administrator or system install required/requested.
+  oss_eda_install_state: DOWNLOADING_NOT_VERIFIED
+  oss_eda_source: https://github.com/YosysHQ/oss-cad-suite-build/releases/tag/2026-11-07
+  oss_eda_archive: oss-cad-suite-windows-x64-20261107.tgz
+  oss_eda_expected_sha256: 3d7f21c829cce34fd79eb61f72aedb462877bb08d6ca307e5a562cf04e6e5bf0
+  oss_eda_actual_sha256: null
+  eda_provider: NOT_YET_AVAILABLE
+  eda_actual_executions: NOT_RUN
+  commercial_adapter_contract_state: MINIMAL_OSS_PROFILE_DESIGN_IN_PROGRESS_NO_COMMERCIAL_IMPLEMENTATION
   active_gate: G1
   active_gate_state: ACTIVE
   G0_local_gate: CLOSED_LOCAL_WITH_INDEPENDENT_REVIEW
@@ -86,8 +94,8 @@ supervisor_coordination:
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items:
     - "No verified source ZIP/Patch transport to an authorized Integrator; local work continues"
-  next_executable_action: Real RTL vertical slice awaits approved available EDA profile/tools. Retain runnable DEV_MOCK_DEMO; no unauthorized install or source transfer.
-  last_heartbeat_at_utc: "2026-11-08T02:45:42.5021252Z"
+  next_executable_action: Verify official portable SHA256/licenses, extract in user directory and record actual versions; then native RTL repair with real simulation and Yosys.
+  last_heartbeat_at_utc: "2026-11-08T03:23:28.1471987Z"
   last_effective_progress_at_utc: "2026-11-08T02:21:41.0542368Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -102,13 +110,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T02:45:42.5021252Z"
+updated_at_utc: "2026-11-08T03:23:28.1471987Z"
 last_progress_at_utc: "2026-11-08T02:21:41.0542368Z"
-last_heartbeat_at_utc: "2026-11-08T02:45:42.5021252Z"
+last_heartbeat_at_utc: "2026-11-08T03:23:28.1471987Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
-current_task: "DEVELOPMENT VERSION / 非量產版 DEV_MOCK_DEMO packaged and independently reproduced, fixed9bb2677"
-next_action: "Use approved available EDA tool/profile for native Harness→RTL→EDA slice; tools/profile remain unavailable, do not claim E2E"
+current_task: "APPLIED SF-DIR-20261108-03. Official OSS Windows portable acquisition and minimal real RTL vertical slice active; fixed9bb2677 retained"
+next_action: "Complete portable OSS tool verification and thin request/result design, then actual FAIL→native repair commit→simulation PASS and synthesis smoke"
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -269,4 +277,7 @@ external_coding_agent:
 
 
 2026-11-08T02:45:42.5021252Z. DEVELOPMENT VERSION / 開發版本，非量產版. Prepared executable DEV_MOCK_DEMO ZIP at D:/mtk32712/SiliconForge/deliveries/dev-9bb2677-final/SiliconForge-DEV-MOCK-DEMO-9bb2677.zip SHA2567255f28cc7ad0d65f290d8ab85a8ccc166f6158dfee9b9b702844fb1dad0ee7e. Fixed source9bb2677 unchanged. Included startup README, real sample output, raw demo/native probe/environment logs, independent clean reproduction, manifest and source.zip. Reviewer extracted42 source hash matches and actually ran documented demo exit0; known WAITING_FOR_PEER remains and mock owners/evidence clearly labeled. Native Codex turnprobe works, but no RTL or real EDA run. DEV_USABLE_E2E_LOCAL NOT_ESTABLISHED; formal80-case gates unchanged. DEV_LOCAL_ONLY_PENDING_TRANSFER, bundle NOT_TRANSFERRED and remote source null. EDA PATH tools absent, WSL notinstalled and approved profilesUNPROVISIONED; no install or new privileges. Usage/retry BACKLOG. Actual full directive reread02:44:30.2516719Z unchangedSF-DIR-20261108-02. Prove It Works led to clean startup reproduction and exact ZIP-byte checks, without adding unit tests or repeating unaffected full suites. Last frozen runtime progress remains02:21:41.0542368Z; this is a new usable mock-only local artifact, not a new formal gate.
+
+
+2026-11-08T03:23:28.1471987Z. APPLIED SF-DIR-20261108-03 from actual full Chrome read03:14:54.8773356Z, version03:02:20Z. User authorizes official free/open-source OSS CAD Suite Windows x64 portable in existing user permissions. Chrome official release2026-11-07 asset oss-cad-suite-windows-x64-20261107.tgz577MB, copied official SHA2563d7f21c829cce34fd79eb61f72aedb462877bb08d6ca307e5a562cf04e6e5bf0. Download started, not yet verified/extracted; no EDA provider availability or tool PASS claimed. No UAC/admin/system install/firewall/policy/PDK/quota change. Minimal request/result/profile designs active, no commercial provider implementation or G1 accounting/retry expansion. Existing DEV_MOCK_DEMO bundle and clean9bb2677 preserved. Next verify SHA/license/version then one actual native RTL repair and Icarus/Verilator plus Yosys evidence. True E2E and formal80case gates NOT_RUN; artifact transfer still UNAVAILABLE, remote source null. Polling ACTIVE_SESSION_ONLY with no inactive-session polling claimed.
 
