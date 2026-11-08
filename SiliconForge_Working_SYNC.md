@@ -43,23 +43,23 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261108-07
-  directive_poll_at_utc: "2026-11-08T06:39:10.5805714Z"
+  directive_poll_at_utc: "2026-11-08T06:53:41.822681Z"
   directive_ack_at_utc: "2026-11-08T06:39:10.5805714Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: DEV_USABLE_E2E_LOCAL
+  dev_capability_state: "DEV_USABLE_E2E_LOCAL_CONFIGURED_SINGLE_RTL_TASK"
   dev_delivery_state: DEV_LOCAL_ONLY_PENDING_TRANSFER
   dev_usable_capabilities:
-    - Fixed Runtime task to real native RTL-only repair, actual Icarus simulation and Yosys structural smoke, independently reproduced.
-    - Existing Runtime demo and frozen earlier local unit evidence remain available.
-  dev_demo_reproduction: Independent clean H0/H1 Git archive actual Icarus baseline FAIL, repaired PASS, Yosys PASS. Raw logs in current bundle.
-  dev_bundle_sha256: 81fbb9b2c13db4e5a19f6cdb091d2e3b68fac4da961c05198864e1d95082bb7b
-  dev_bundle_contents: H0 and H1 source archives, RTL-only patch, actual controller raw logs and Runtime DB, independent clean reproduction script/logs, distribution provenance and manifest.
-  vertical_slice_last_run: PASS; run984640dfe55e481d905fd933ed009e35; H0 8f084ed baseline expected exit1, native gpt-6-luna RTL-only repair H1 21ec027, Icarus/VVP exit0 PASS, Yosys exit0 zero structural problems, Runtime COMPLETED.
-  remaining_mock_or_stub: MODE_MOCK Runtime branch heads; unauthenticated MCP development stub; formal80 cases, PPA/timing/power and commercial adapters not verified. Git H1 is NOT_A_RUNTIME_CANDIDATE.
-  external_harness_blocker: NONE_FOR_FIXED_LOCAL_TASK; real native Codex0.166.0 repair completed. General authenticated external Gateway acceptance remains unverified.
-  real_eda_blocker: NONE_FOR_THIS_LOCAL_SLICE
+    - Manifest-driven fixed-argv Runtime to native RTL-only repair, actual Icarus simulation and Yosys smoke.
+    - Default software-clear task and distinct configured polynomial fault demonstrated; one scoped owner per invocation.
+  dev_demo_reproduction: "Independent clean H0/H1 archive actual Icarus/VVP and Yosys PASS for second polynomial fault; native original logs reviewed, not reinvoked."
+  dev_bundle_sha256: "ffdc0cafca37894a274537b936a36d55d7d8c1f9db3bc2eb3699f9a1d0ed813b"
+  dev_bundle_contents: "Configured H0/H1 source.zip, local Git history bundle, RTL-only patch, actual Runtime/native/EDA raw evidence, independent clean reproduction script/logs, A0 per-ID mapping and frozen raw evidence."
+  vertical_slice_last_run: "PASS; configured polynomial task run3e00232d33aa480ca0caa84633f616e5; H0 93250f8 baseline compile0 simulation1 INITIAL_CRC_MISMATCH, native RTL-only repair H1 34c96be; simulation0 PASS/Yosys0 PASS; Runtime COMPLETED."
+  remaining_mock_or_stub: "MODE_MOCK Runtime heads; unauthenticated MCP development stub; no complete A1-A6 or E01-E20 acceptance; no multi-owner/PPA/formal claim."
+  external_harness_blocker: "NONE_FOR_THIS_CONFIGURED_LOCAL_TASK; prompt command restrictions are advisory, native used readonly Git and Python CRC sanity; controller EDA/diff gates provide actual outcome."
+  real_eda_blocker: "NONE_FOR_THIS_LOCAL_SLICE"
   oss_eda_install_state: PORTABLE_EXTRACTED_ACTUAL_TOOLS_EXECUTED
   oss_eda_source: https://github.com/caseykcc0124/SiliconForge/releases; USER_PROVIDED_SPLIT_ZIP
   oss_eda_archive: USER_PROVIDED_59_VOLUME_SPLIT_ZIP; archive profile pin refers only to final ZIP volume; original official tgz not verified; further volume verification skipped per user.
@@ -68,19 +68,19 @@ supervisor_coordination:
   eda_provider: OSS_CAD_SUITE; Icarus14.0 devel, VVP14.0 devel, Yosys0.70+360
   eda_actual_executions: REAL baseline compile0/simulation1 EXPECTED_FAIL, final compile0/simulation0 PASS/Yosys0 PASS; commands, RTL hashes and raw logs in execution-evidence and independent-reproduction.
   commercial_adapter_contract_state: THIN_OSS_PROFILE_REQUEST_RESULT_IMPLEMENTED; commercial adapters NOT_IMPLEMENTED
-  active_gate: DEV_REAL_VERTICAL_SLICE
-  active_gate_state: LOCAL_SLICE_CLOSED_WITH_INDEPENDENT_REPRODUCTION; FORMAL_GATES_NOT_PROMOTED
-  G0_local_gate: CLOSED_LOCAL_WITH_INDEPENDENT_REVIEW
+  active_gate: "DEV_CONFIGURABLE_RTL_LOCAL_DELIVERY"
+  active_gate_state: "LOCAL_CONFIGURED_SLICE_CLOSED_WITH_INDEPENDENT_REPRODUCTION; FORMAL_GATES_NOT_PROMOTED"
+  G0_local_gate: "RECORDED_18_LOCAL_PASS_WITH_ENVIRONMENT_AND_FOUR_ASSERTION_EVIDENCE_GAPS"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_scoped_watchdog_checkpoint_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "21ec027012bab629561a53c02b64b49d26499b91"
+  local_git_commit: "34c96bebcf8d8f64a7dbe63359c3f7255f2bbbe3"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "81fbb9b2c13db4e5a19f6cdb091d2e3b68fac4da961c05198864e1d95082bb7b"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-DEV-REAL-21ec027.zip"
+  local_artifact_sha256: "ffdc0cafca37894a274537b936a36d55d7d8c1f9db3bc2eb3699f9a1d0ed813b"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-DEV-CONFIGURABLE-34c96be.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
@@ -93,9 +93,9 @@ supervisor_coordination:
     - "Frozen c39672e: A0-01..A0-18 each PASS; clean revision, per-ID logs and source hashes verified"
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items: []
-  next_executable_action: Map existing A0 evidence per ID and make the real RTL workflow accept task-manifest inputs and a second actual fault.
-  last_heartbeat_at_utc: "2026-11-08T06:39:10.5805714Z"
-  last_effective_progress_at_utc: "2026-11-08T06:15:08.751932Z"
+  next_executable_action: "Configured single-task local DEV delivery complete. Future authorized work can address concrete A0 evidence gaps and Windows DOS top-name limitation; remote transfer is not a task or blocker."
+  last_heartbeat_at_utc: "2026-11-08T06:55:20.455176Z"
+  last_effective_progress_at_utc: "2026-11-08T06:55:20.455176Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -114,8 +114,8 @@ last_progress_at_utc: "2026-11-08T04:27:54.7473650Z"
 last_heartbeat_at_utc: "2026-11-08T04:27:54.7473650Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
-current_task: "Directive03 PARTIAL_DEV_TOOL_BLOCKED local delivery8f084ed completed; actual native RTL and EDA stages NOT_RUN"
-next_action: "Resume real slice after complete verified official OSS tools; source transfer remains UNAVAILABLE"
+current_task: "Directive07 configurable local RTL development delivery completed; A0 existing evidence mapped per ID."
+next_action: "Use the configured local task entry. Source transfer is not a task or blocker under Directive07."
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -153,8 +153,8 @@ milestones:
 actual_tests:
   a0_reference_tests: "GITHUB_ACTIONS_REFERENCE_22_PASSED_NOT_FULL_A0_ACCEPTANCE"
   reference_ci_run: "https://github.com/caseykcc0124/SiliconForge/actions/runs/42354537870"
-  real_eda_tests: NOT_RUN
-  native_harness_tests: NOT_RUN
+  real_eda_tests: REAL_DEV_Icarus_FAIL_TO_PASS_AND_YOSYS_SMOKE_TWO_FAULTS; NOT_COMPLETE_A2_ACCEPTANCE
+  native_harness_tests: REAL_DEV_CODEX_RTL_REPAIR; NOT_COMPLETE_A1_ACCEPTANCE
 last_evidence:
   - "GitHub main 6fe2c6b243adf399420fbfb9815c807a0ff728cb; 54 tracked files; A0 reference CI 22/22 PASS"
 ``` 
@@ -297,4 +297,253 @@ Official download stalled twice at about1.25MB/577MB0B/s, Pause/Resume and fresh
 
 
 2026-11-08T06:39:10.5805714Z. ACK SF-DIR-20261108-07. Local-only usable development package is the required delivery. Source transfer UNAVAILABLE and remote integration null are environment facts, not blockers or human tasks. Existing fixed real slice and local bundle retained. A0 per-ID evidence reconciliation and configurable real RTL task entry are active; no unrelated tests repeated. Second real fault run remains NOT_RUN until actual execution. Prior remote-delivery next actions are superseded by section2.8. This ACK alone is not engineering progress.
+
+
+
+## Directive07 local acceptance evidence reconciliation
+
+```json
+{
+  "acceptance_local_summary": {
+    "local_recorded_pass": 18,
+    "local_assertion_coverage_sufficient": 14,
+    "specific_assertion_gaps": [
+      "A0-03",
+      "A0-09",
+      "A0-13",
+      "A0-18"
+    ],
+    "local_evidence_verified": 0,
+    "a0_needs_evidence": 18,
+    "evidence_format_gap": "Frozen report has no environment_digest; no historical environment fingerprint fabricated.",
+    "supervisor_directly_verified": "UNKNOWN/0",
+    "a1_to_a6_complete_per_id_evidence": "NOT_ESTABLISHED",
+    "e01_to_e20_not_run": 20,
+    "source_sha": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+    "mapping_path": "D:\\mtk32712\\SiliconForge\\.audit\\directive07-a0-mapping.json",
+    "mapping_sha256": "e2228f42c68f3eaa27974da675d0d44356d8394af4b7cf5fe346fd9bdd51ae2f",
+    "note": "18 recorded local PASS remain visible. These are distinct from complete verified acceptance. No unrelated A0 tests rerun."
+  },
+  "acceptance_local_evidence_mapping": [
+    {
+      "id": "A0-01",
+      "requirement": "Ingest accepted SIM.FAILED; one immutable event, direct Verification delivery, no Main Agent dependency.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_boundary.BoundaryAcceptanceTests.test_A0_01_authenticated_direct_verification_delivery test_a0_boundary.BoundaryAcceptanceTests.test_canonical_event_has_verified_runtime_fields",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-01.log",
+      "raw_log_sha256": "83a5ed3182da94fd45e8ac9f4feda781b85472c4aede3a99d742e088320e3238",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-02",
+      "requirement": "Re-ingest same source/idempotency key/payload; same event ID, one delivery, no duplicate run.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_runtime.RuntimeContractTests.test_02_idempotent_event",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-02.log",
+      "raw_log_sha256": "56010462608ce69bba152948b9448d0f4bf7dbf464740d9e38e48e35ac8a8578",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-03",
+      "requirement": "Same key with different payload; reject conflict and preserve original.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_runtime.RuntimeContractTests.test_03_idempotency_conflict_rejected test_a0_boundary.BoundaryAcceptanceTests.test_actor_conflict_without_metadata_is_rejected",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-03.log",
+      "raw_log_sha256": "b9ef0fff5a45cd646436009fe43210e9e867a4d50d82158406db41762b98146b",
+      "content_coverage": "GAP",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED. The original event payload/row is not compared before and after the rejected conflict; row count alone does not prove unchanged original content."
+    },
+    {
+      "id": "A0-04",
+      "requirement": "Crash after event commit before worker starts; recovery claims committed delivery and event is not lost.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_runtime.A0RuntimeDurabilityTests.test_process_crash_after_commit_before_worker_starts test_a0_runtime.A0RuntimeDurabilityTests.test_outbox_failure_rolls_back_event_history_and_ticket",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-04.log",
+      "raw_log_sha256": "89d07048992c366637c2656ce71155ccab1d4627a4ea1ea9dc9189e200ff93d2",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-05",
+      "requirement": "Worker lease expires; new lease token can claim and stale ACK is rejected.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_runtime.A0RuntimeDurabilityTests.test_expired_completion_and_failure_are_fenced_before_reclaim",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-05.log",
+      "raw_log_sha256": "62d189fbf4c9a448829f2abcff0c5431a933512d47fc67f1b7c8d4b9b72a05b7",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-06",
+      "requirement": "Direct Verification to RTL Peer Request; one typed peer message and direct RTL inbox delivery.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_runtime.RuntimeContractTests.test_10_direct_peer_request test_a0_boundary.BoundaryAcceptanceTests.test_authenticated_peer_response_preserves_wait_until_causal_wake test_a0_boundary.BoundaryAcceptanceTests.test_recovery_expires_peer_request_without_user_harness",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-06.log",
+      "raw_log_sha256": "3729516df647ee1b5d44a7a612af0b79a2303309338b2b9b65d5f9543596953d",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-07",
+      "requirement": "Owner waits for EDA; persistent WAITING state and no LLM busy polling.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_runtime.A0RuntimeDurabilityTests.test_waiting_job_survives_restart_and_blocks_same_ticket",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-07.log",
+      "raw_log_sha256": "62afa66f890689b0c46bcccaabaf0aef26c97083fdc0cabd36c27058d1479a02",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-08",
+      "requirement": "EDA completion event preserves causal links and wakes waiting Owner.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_runtime.A0RuntimeDurabilityTests.test_duplicate_job_callback_is_idempotent_after_restart",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-08.log",
+      "raw_log_sha256": "f2fa4d24ff9e4c9d5bbb1ce86194f941d676ef6d431e8cce7f942a2e331a5999",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-09",
+      "requirement": "Two IPs, one blocked; the other independently completes.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_runtime.A0RuntimeDurabilityTests.test_blocked_ip_does_not_block_other_ip_in_same_project",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-09.log",
+      "raw_log_sha256": "e0dffa27d8cf8bc4eba1b0ddea7312d213737873e8cba07e5eee17698ed20a5f",
+      "content_coverage": "GAP",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED. The test does not assert the AES delivery status/result after complete; AES ticket remaining READY does not demonstrate independently completed work."
+    },
+    {
+      "id": "A0-10",
+      "requirement": "Duplicate failure signature with no progress; bounded task blocked, reason emitted, PDCA candidate emitted.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_runtime.A0RuntimeDurabilityTests.test_no_progress_emits_one_durable_pdca_request",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-10.log",
+      "raw_log_sha256": "1b9f17c7b79a3ab7963be5a67e330a439d460675fac2a757125ce31052b808ba",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-11",
+      "requirement": "Unauthorized Owner/workstream crossing; policy denies and journals reason.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_boundary.BoundaryAcceptanceTests.test_A0_11_actor_project_event_and_peer_scope_denied test_a0_boundary.BoundaryAcceptanceTests.test_completion_cannot_override_route_to_main test_a0_boundary.BoundaryAcceptanceTests.test_forged_peer_ticket_is_denied_and_audited test_a0_boundary.BoundaryAcceptanceTests.test_owner_cannot_emit_another_workstream_event",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-11.log",
+      "raw_log_sha256": "8a967bd8d2874a0eed94ac0d370daf71e1926aa5084ff1e6e632e289f73bc38e",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-12",
+      "requirement": "Stale spec/toolchain evidence promotion attempt; gate refuses and requires current evidence.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_boundary.BoundaryAcceptanceTests.test_A0_12_stale_spec_environment_and_mock_evidence_refused",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-12.log",
+      "raw_log_sha256": "9470e461c87518facda258f63de4d0ff72d423ed32c8073c54ebb388c2ce8421",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-13",
+      "requirement": "Simulated user exits harness; event and Owner work persist.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_runtime.A0RuntimeDurabilityTests.test_process_exit_after_commit_preserves_event_and_lease",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-13.log",
+      "raw_log_sha256": "9a76f92e0848f62ac554c1f070433020f166b11abe442f13cf85750b223a2b05",
+      "content_coverage": "GAP",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED. This simulates a worker process exit, not a user closing/exiting the harness, and does not assert persisted Owner work state."
+    },
+    {
+      "id": "A0-14",
+      "requirement": "Event/peer/decision journal replay reconstructs the same ordered dashboard history.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_history.A0OrderedHistoryTests.test_live_triggers_keep_cross_table_insertion_order_and_project_it test_a0_history.A0OrderedHistoryTests.test_projection_can_be_cleared_or_corrupted_and_rebuilt_from_immutable_ledger test_a0_history.A0OrderedHistoryTests.test_history_and_projection_survive_a_python_process_restart test_a0_history.A0OrderedHistoryTests.test_ledger_rejects_row_edits_and_deletes",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-14.log",
+      "raw_log_sha256": "5e3df6b0584e2d423b76cec8da586332cefcd7596fffb941b74c958d3f03effd",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-15",
+      "requirement": "Unknown or ambiguous route; dead letter with no guessing or fallback to Main.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_runtime.A0RuntimeDurabilityTests.test_unknown_and_ambiguous_routes_are_immutable_dead_letters test_a0_boundary.BoundaryAcceptanceTests.test_unknown_emitted_event_is_durable_dead_letter",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-15.log",
+      "raw_log_sha256": "7daf245306d6af385f9ce98ac934d6e2203349dd43e0785d5dad160b2562f3a6",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-16",
+      "requirement": "Attempt to edit an immutable journal row; database rejects mutation.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_runtime.RuntimeContractTests.test_14_immutable_events",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-16.log",
+      "raw_log_sha256": "a4c526be00f7296c3c1575068c53a1659f52c363a8d0617ac037b5c2759011c2",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-17",
+      "requirement": "Delivery attempts exhausted; dead letter without unbounded retry.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_a0_runtime.A0RuntimeDurabilityTests.test_expired_final_attempt_is_durable_dead_letter",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-17.log",
+      "raw_log_sha256": "fe71c6ec4e10e6dc0a1d4e972b644619c181c6c2d98b525e5db92278c7a9b5d2",
+      "content_coverage": "SUFFICIENT_FOR_LOCAL_CONTROL_PLANE",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED."
+    },
+    {
+      "id": "A0-18",
+      "requirement": "Idle then new event; new work begins and original history remains.",
+      "local_recorded_status": "PASS",
+      "status": "NEEDS_EVIDENCE",
+      "source_revision": "1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae",
+      "command": "C:\\Program Files\\Python312\\python.exe -m unittest -v test_runtime.RuntimeContractTests.test_15_idle_reawakening",
+      "raw_log_path": "verify-a0-1c4f55f/.audit/a0-acceptance/A0-18.log",
+      "raw_log_sha256": "dab57f3b21fefce2cc44b7bf326ef9328c19444aa3fdb4869509c2378b1f722d",
+      "content_coverage": "GAP",
+      "status_reason": "docs/09 evidence format requires environment_digest; the A0 report has scope and Python executable path but no environment_digest, so per-ID evidence cannot be promoted to LOCAL_EVIDENCE_VERIFIED. The test does not assert the first event/history remains after new work begins."
+    }
+  ]
+}
+```
+
+2026-11-08T06:55:20.455176Z. Completed Directive07 local-only development delivery. Configurable task manifest selected a distinct reflected CRC polynomial fault, real baseline expected e3069283 vs cbf43926 exit1, native repaired only RTL at H1 34c96bebcf8d8f64a7dbe63359c3f7255f2bbbe3, actual Icarus/VVP PASS and Yosys PASS with netlist; Runtime COMPLETED. Independent clean archive reproduction PASS and source review found no major correctness/security issue. Bundle D:/mtk32712/SiliconForge/deliveries/SiliconForge-DEV-CONFIGURABLE-34c96be.zip, 1191018 bytes, SHA256 ffdc0cafca37894a274537b936a36d55d7d8c1f9db3bc2eb3699f9a1d0ed813b. Reproduction entry is independent-reproduction/reproduce.py with --repo, --profile, --run-json, --h0, --h1 and --out arguments; complete command in bundle README. Native is not reinvoked by that EDA reproduction. A0 frozen raw logs record18 PASS,14 content-covered,4 assertion gaps; missing historical environment_digest prevents promotion, no retrospective evidence fabricated. A0 mapping and all18 rawlogs are in bundle. OFFICIAL_ORIGINAL_ARCHIVE_NOT_VERIFIED remains. Low-risk DOS top-module names are unsupported. Prompt command restrictions are advisory; native did readonlyGit/zlib sanity, while controller isolated-source and immutable-input gates passed. Local-only delivery is sufficient; artifact_transfer_state UNAVAILABLE/remote integration null are environment facts, not blockers/human tasks. Prior requests to move source are superseded. No formal80/PPA/multi-owner/production claim.
 
