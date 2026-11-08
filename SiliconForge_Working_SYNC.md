@@ -43,22 +43,22 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261108-03
-  directive_poll_at_utc: "2026-11-08T03:48:39.3782869Z"
+  directive_poll_at_utc: "2026-11-08T04:26:12.1937124Z"
   directive_ack_at_utc: "2026-11-08T03:23:28.1471987Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: DEV_MOCK_DEMO
+  dev_capability_state: PARTIAL_DEV_TOOL_BLOCKED
   dev_delivery_state: DEV_LOCAL_ONLY_PENDING_TRANSFER
   dev_usable_capabilities:
     - Existing Runtime demo actually starts with PYTHONPATH=src python -m siliconforge.demo, exit0.
     - Native codex-cli0.166.0 gpt-6-luna read-only probe completed via configured existing provider, exit0; not RTL or A1 acceptance.
   dev_demo_reproduction: Independent clean source.zip extraction followed README; python -m siliconforge.demo exit0;42 source hashes match.
-  dev_bundle_sha256: 7255f28cc7ad0d65f290d8ab85a8ccc166f6158dfee9b9b702844fb1dad0ee7e
-  dev_bundle_contents: source.zip, startup README, actual sample output/raw logs, native probe evidence, reviewer reproduction, manifest and SHA256.
+  dev_bundle_sha256: 132568812969ff8364b319ba8902340c549bef588da676f41b5c8feabf8c8a9c
+  dev_bundle_contents: Tested-byte93-file source.zip, startup README, acquisition blocker, raw137-suite/A018-ID logs, independent blocked-startup and committed-snapshot checks, manifest and SHA256.
   vertical_slice_last_run: NOT_RUN
-  remaining_mock_or_stub: Runtime demo uses mock owners and mock evidence; MCP unauthenticated development stub; no APB RTL or real EDA flow.
-  external_harness_blocker: Native model turn available; runtime-to-native RTL workflow not integrated or demonstrated.
+  remaining_mock_or_stub: Existing demo mock owners; MCP unauthenticated development stub and MODE_MOCK Runtime heads. APB fixture/controller now implemented but actual native RTL/EDA stages NOT_RUN.
+  external_harness_blocker: Real native probe remains available; bounded Runtime-to-native controller implemented but actual repair NOT_RUN because baseline EDA unavailable.
   real_eda_blocker: Official Chrome download stalled at about1254KB/577MB; Pause/Resume and one fresh official asset retry did not complete. Archive SHA/licenses/tools not verified; root cause unknown. No admin/policy changes.
   oss_eda_install_state: DOWNLOAD_STALLED_NOT_VERIFIED
   oss_eda_source: https://github.com/YosysHQ/oss-cad-suite-build/releases/tag/2026-11-07
@@ -67,7 +67,7 @@ supervisor_coordination:
   oss_eda_actual_sha256: null
   eda_provider: NOT_YET_AVAILABLE
   eda_actual_executions: NOT_RUN
-  commercial_adapter_contract_state: ACCEPTED_THIN_OSS_DESIGN_IMPLEMENTATION_ACTIVE_NO_COMMERCIAL_IMPLEMENTATION
+  commercial_adapter_contract_state: THIN_OSS_PROFILE_REQUEST_RESULT_IMPLEMENTED_REAL_TOOL_PATH_NOT_VERIFIED_NO_COMMERCIAL_IMPLEMENTATION
   active_gate: G1
   active_gate_state: ACTIVE
   G0_local_gate: CLOSED_LOCAL_WITH_INDEPENDENT_REVIEW
@@ -77,10 +77,10 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "9bb26774a36fdb8601bee32a40d67f39188d6978"
+  local_git_commit: "8f084edc124569e14f7f3ba21d2e8ea70347100c"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "7255f28cc7ad0d65f290d8ab85a8ccc166f6158dfee9b9b702844fb1dad0ee7e"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/dev-9bb2677-final/SiliconForge-DEV-MOCK-DEMO-9bb2677.zip"
+  local_artifact_sha256: "132568812969ff8364b319ba8902340c549bef588da676f41b5c8feabf8c8a9c"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/dev-real-8f084ed-final/SiliconForge-DEV-PARTIAL-8f084ed.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
@@ -94,9 +94,9 @@ supervisor_coordination:
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items:
     - "No verified source ZIP/Patch transport to an authorized Integrator; local work continues"
-  next_executable_action: Verify official portable SHA256/licenses, extract in user directory and record actual versions; then native RTL repair with real simulation and Yosys.
-  last_heartbeat_at_utc: "2026-11-08T03:53:30.3649077Z"
-  last_effective_progress_at_utc: "2026-11-08T02:21:41.0542368Z"
+  next_executable_action: Obtain complete official portable archive through authorized Chrome transport and verify digest/licenses/versions, then run existing real slice with approved scoped Runtime DB.
+  last_heartbeat_at_utc: "2026-11-08T04:27:54.7473650Z"
+  last_effective_progress_at_utc: "2026-11-08T04:27:54.7473650Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -110,13 +110,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T03:53:30.3649077Z"
-last_progress_at_utc: "2026-11-08T02:21:41.0542368Z"
-last_heartbeat_at_utc: "2026-11-08T03:53:30.3649077Z"
+updated_at_utc: "2026-11-08T04:27:54.7473650Z"
+last_progress_at_utc: "2026-11-08T04:27:54.7473650Z"
+last_heartbeat_at_utc: "2026-11-08T04:27:54.7473650Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
-current_task: "APPLIED SF-DIR-20261108-03. Official OSS Windows portable acquisition and minimal real RTL vertical slice active; fixed9bb2677 retained"
-next_action: "Complete portable OSS tool verification and thin request/result design, then actual FAIL→native repair commit→simulation PASS and synthesis smoke"
+current_task: "Directive03 PARTIAL_DEV_TOOL_BLOCKED local delivery8f084ed completed; actual native RTL and EDA stages NOT_RUN"
+next_action: "Resume real slice after complete verified official OSS tools; source transfer remains UNAVAILABLE"
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -216,7 +216,7 @@ external_coding_agent:
   input_zip_baseline_sha: efe183b726de8392371b4271bb57ea5cf3d76f2b
   input_zip_sha256: 9ceeaa748872bbe77c5a1b61480a343266a753a9f1d3a52c40b71abb369eefdc
   local_workspace_state: ACTIVE
-  local_git_commit: "9bb26774a36fdb8601bee32a40d67f39188d6978"
+  local_git_commit: "8f084edc124569e14f7f3ba21d2e8ea70347100c"
   code_artifact_state: PREPARED_LOCAL
   code_artifact_access: LOCAL_WORKSPACE_ONLY
   artifact_transfer_state: UNAVAILABLE
@@ -284,5 +284,12 @@ external_coding_agent:
 
 ## Directive03 local implementation and tool checkpoint
 
-Actual Chrome poll2026-11-08T03:48:39.3782869Z confirms full directive03 unchanged. Sync ACK6104ae8c30b03e2e1ae2e85bff6f31189d8203d0 pinned full text verified. Main accepted two explored designs and independent judge, A base with B per-tool evidence and simulation-before-synthesis. Isolated worktree work/dev-real-20261108 from9bb2677 now implementing two thin modules, fixture/profile and DEV README. Luna high worker used because requested Terra unavailable. Actual baseline simulation, native RTL repair and synthesis remain NOT_RUN. No new formal gate, no source transfer, no production claim. Local main and existing DEV_MOCK bundle retained. Next finish bounded implementation and execute documented missing-tool path; verify official download before real tools/native repair.
+Actual Chrome poll2026-11-08T04:26:12.1937124Z confirms full directive03 unchanged. Sync ACK6104ae8c30b03e2e1ae2e85bff6f31189d8203d0 pinned full text verified. Main accepted two explored designs and independent judge, A base with B per-tool evidence and simulation-before-synthesis. Isolated worktree work/dev-real-20261108 from9bb2677 now implementing two thin modules, fixture/profile and DEV README. Luna high worker used because requested Terra unavailable. Actual baseline simulation, native RTL repair and synthesis remain NOT_RUN. No new formal gate, no source transfer, no production claim. Local main and existing DEV_MOCK bundle retained. Next finish bounded implementation and execute documented missing-tool path; verify official download before real tools/native repair.
+
+
+## Directive03 final partial DEV delivery
+
+Actual full Chrome poll2026-11-08T04:26:12.1937124Z confirms directive03 unchanged. Local delivery8f084edc124569e14f7f3ba21d2e8ea70347100c has two thin modules, fixed defective APB CRC32 spec/golden/RTL/TB, profile example and DEV guide. Tested codeac53e4bf9a875eea5d2de785d94c46729df658af passed137/137 existing suite and18/18 A0 local IDs. Final difference is DEV guide only; code bytes unchanged. Independent final check verified93 source files/digests, actual committed snapshot helper equals4 Git blobs with Windows autocrlftrue, help exit0 and missing-profile exit2/allactualstagesNOT_RUN/DBabsent. SourceZIP394f436ed78f6db994e88c573aef08c94fad22de244739830b74d019236f65d7; final bundle132568812969ff8364b319ba8902340c549bef588da676f41b5c8feabf8c8a9c,639363bytes,61payload hashes and ZIP CRC verified. Medium timeout-documentation finding resolved by final guide-only commit;8redundantdocstrings removed, no holds changed without evidence.
+
+Official download stalled twice at about1.25MB/577MB0B/s, Pause/Resume and fresh official asset retry unsuccessful; canceled after bounded attempts. Root cause unknown. Expected official SHA3d7f21c829cce34fd79eb61f72aedb462877bb08d6ca307e5a562cf04e6e5bf0; actual archive/license/tool versions/profile NOT_VERIFIED. Baseline FAIL, native RTL repair/H1, repaired simulation and Yosys allNOT_RUN. PARTIAL_DEV_TOOL_BLOCKED, DEVELOPMENT VERSION / 非量產版. No DEV_USABLE_E2E_LOCAL or formalA1/A2/E/Release claim. All source/evidence LOCAL_ONLY/NOT_TRANSFERRED, remote source null. Previous DEVMOCK bundle7255f28cc7ad0d65f290d8ab85a8ccc166f6158dfee9b9b702844fb1dad0ee7e and original main9bb2677 retained. No admin/network-shell/policy/quota changes. ACTIVE_SESSION_ONLY; no exited-session polling service.
 
