@@ -552,3 +552,42 @@ Official download stalled twice at about1.25MB/577MB0B/s, Pause/Resume and fresh
 
 Directive SF-DIR-20261108-08 acknowledged at 2026-11-08T07:14:17.9678216Z. ACTIVE_SESSION_ONLY; G0 ACTIVE. Scope: four A0 assertion gaps plus one bounded current-environment 18-case evidence round. Existing two real RTL/EDA demonstrations preserved without rerun. A0-09 ticket terminal state is absent (actual READY after ACKED delivery); A0-13 persistent Owner service must not be inferred from worker exit. Local-only delivery remains sufficient. Root AGENTS.md unchanged.
 
+
+
+## Coding Agent Directive 08 evidence result
+
+Updated at 2026-11-08T07:18:01.1880032Z. Directive SF-DIR-20261108-08 APPLIED. ACTIVE_SESSION_ONLY. Local A0 gate OPEN / NEEDS_EVIDENCE; formal80 unchanged. Current source SHA b99a624abf3906bd400f0bda9e08ece1b5a6b95a; original bounded18 round commit ed5b198bb9f5c52cff4c98a0f6489d3f16088723, clean source. Round started 2026-11-08T07:14:52.773144+00:00, ended 2026-11-08T07:15:09.706730+00:00. Canonical environment.json SHA256 2d36e15db8152cc167b38d435fbfd12029092f0e11e1573ca7e92e93807a2b49. Raw commands, timestamps, OS/Python executable hash, configuration/source fingerprints and per-case raw log SHA are in local bundle.
+
+| A0 ID | New recorded result | Local evidence | Supervisor directly verified |
+|---|---|---|---|
+| A0-01 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-02 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-03 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-04 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-05 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-06 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-07 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-08 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-09 | NEEDS_EVIDENCE | NEEDS_EVIDENCE | UNKNOWN |
+| A0-10 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-11 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-12 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-13 | FAIL | NEEDS_EVIDENCE | UNKNOWN |
+| A0-14 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-15 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-16 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-17 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+| A0-18 | PASS | LOCAL_EVIDENCE_VERIFIED | UNKNOWN |
+
+A0-03 compares original complete Event row and payload bytes before/after rejected conflict. A0-18 checks old Event row and history prefix after new Event delivery starts. A0-09 independently completes AES delivery ACKED with linked completion decision; ticket stays READY and Runtime has no terminal success state, therefore NEEDS_EVIDENCE.
+
+A0-13 original native launch failed trusted-directory check: raw FAIL preserved. Scoped correction at b99a624 adds skip-git-repo-check only; actual native thread.started observed, exact launched PID3252 tree terminated, Event/Delivery/History retained, recovered delivery ACKED. Owner recovery was controller-driven rather than independent persistent service. Correction lacks contemporaneous environment_digest and does not reuse original fingerprint. A0-13 NEEDS_EVIDENCE, not a gate PASS. No further full-round rerun.
+
+Prior two usable real RTL/EDA cases and preserved bundle remain unchanged and were not rerun. Remote source transfer UNAVAILABLE is not a blocker. Root AGENTS unchanged SHA256 85a63528182e5b694db575f071a33e45da2fa5363de74e8ef9fa39b9b116c845. Next usable engineering work is independent persistent Owner lifecycle after native closure and explicit ticket-success semantics; current partial probe does not supply those capabilities.
+
+
+A0-13 native tool provenance limitation: original full-round environment fingerprint covers local Python/OS/source/config but does not hash the native CCH wrapper or pin native CLI version. Native startup alone therefore supplies partial lifecycle evidence, not complete Harness acceptance.
+
+
+Independent reviewer /root/directive07_review: PARTIAL EVIDENCE,16 LOCAL_EVIDENCE_VERIFIED, A0-09/A0-13 NEEDS_EVIDENCE. All18 raw log digests/commits/ordered timestamps and canonical environment bytes validated; historical results unmodified. Review JSON SHA256 0666a01d451578e76a7184edc29e8661ab64357e71bf327403ebfcd4068f2ebc. Local bundle D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive08-A0-b99a624.zip,1805661 bytes,SHA256 29b4ea95de2b3a1dd3e2e5055c9ce5c87fdddd7d9935cc50dcc234663e5e3073. Includes exact source archive/local Git history,18 raw logs/environment/report,separate native correction,independent reviewer mapping,and preserved real DEV bundle. Local-only delivery PREPARED_LOCAL; no external transfer task. Local A0 gate remains OPEN.
+
