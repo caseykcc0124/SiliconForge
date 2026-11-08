@@ -1,10 +1,10 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261108-02**
+> **DIRECTIVE_ID: SF-DIR-20261108-03**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-08T02:23:38Z**
+> **UPDATED_AT_UTC: 2026-11-08T03:02:20Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
@@ -40,7 +40,7 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 
 1. **停止以 G1 細項無限延伸為預設工作模式。** 先固定目前已收斂且無已知重大缺陷的 Local 基準。僅修正會使最小端到端流程無法執行、造成資料／權限越界、不可恢復錯誤、或妨礙必要證據的實際缺陷；其他 G1 增強（例如完整實際 Usage Accounting、進階 Registered-job Retry、額外框架抽象化）除非證明為最小可用流程的硬性依賴，先記錄 Backlog，不以其全部完成作為開始整合的前提。若發現真正的安全漏洞或必要政策 Gate，不能略過。
 2. **優先建立一條可重現的 Vertical Slice：** 使用既有 Runtime 接受一項 APB CRC32／RTL 修復工作，經由**真實 Codex 或 Claude Harness**（使用現有授權方式，非 Fake/Mock）、產生 Local RTL 修改與 Commit、執行**實際可合法使用的 EDA 工具**（例如已安裝或合法可用的 Verilator，依現有環境與權限選擇），保存 FAIL → 修復 → 重跑 PASS 的原始輸出及版本關聯。先做單一 Task、單一 Owner 最小閉環，再擴至多 Owner、分支與 PPA。不要為了第一個 Demo 先建置全新 Agent 框架、完整 Dashboard 或額外大型測試平台。
-3. **若真實 Harness 或 EDA 尚不可用：** 立即以具體命令、環境、所缺工具/權限與重現結果記錄阻礙，不擅自安裝、增加權限或用 Mock 冒充。可先交付能在 Local 啟動的 Runtime 加明確標示 `DEV_MOCK_DEMO` 的示範流程，但不得標 `DEV_USABLE_E2E`、A1/A2 PASS 或 Real EDA Verified。同步執行其他已授權、與工具阻礙無關的實作。
+3. **若真實 Harness 或 EDA 尚不可用：** 優先依 §2.4 在既有權限內啟用合法開源 EDA；若仍不可用，立即以具體命令、環境、所缺工具/權限與重現結果記錄阻礙，不擅自提升權限、違反政策或用 Mock 冒充。可先交付能在 Local 啟動的 Runtime 加明確標示 `DEV_MOCK_DEMO` 的示範流程，但不得標 `DEV_USABLE_E2E`、A1/A2 PASS 或 Real EDA Verified。同步執行其他已授權、與工具阻礙無關的實作。
 4. **每一次開發交付必須有可以使用的實體成果：** 可啟動的 Code、清楚的入口命令及 README/操作步驟、固定 Local SHA、必要設定/依賴、實際 Sample Input/Output、已執行的最小重現與原始 Logs、已知限制，以及 Source + Evidence ZIP/Patch Bundle 與 SHA256。優先讓 Reviewer 從乾淨 Local Snapshot 使用文件中的命令重現功能。若只有 Spec、Mock 報告、測試清單或 Sync 心跳，標示 `NO_USABLE_DELIVERABLE_YET`。
 5. **Local → GitHub 交付明確分離：** Coding Agent 只能本地製作 Bundle 並用 GitHub Web Edit 更新根目錄 Sync。傳遞管道若仍 `UNAVAILABLE`，正確標記 `DEV_LOCAL_ONLY_PENDING_TRANSFER`，不可宣稱 `DEV_DELIVERED_REMOTE`；由有權 Integrator 真正拿到檔案、核對 SHA256 並提交遠端 Source Commit 後，才可進行遠端 CI/驗證。不能讓 Coding Agent 嘗試遠端 Git、PR 或批次上傳。
 6. **最小開發版驗收（與正式 80 項分離）：** 僅在第三方可用相同 Local 原始碼、設定和可用工具重現前述真實 Harness + RTL 修改 + 真實 EDA 結果時標 `DEV_USABLE_E2E_LOCAL`；若已由 Integrator 真正整合並重現，標 `DEV_DELIVERED_REMOTE` 並記錄 Commit/CI。這是開發版使用性檢查，**不取代、減少或自動通過任何正式 Acceptance ID**。發布或宣稱量產就緒仍需既有全部適用正式 Gate；未授權不得公開發布。
@@ -60,6 +60,17 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 - 哪些地方仍依賴 Mock／Stub，哪些 Native Harness、真實 EDA 與 80 項正式驗收尚未執行；列出已知限制與後續工作；
 - 若 `DEV_USABLE_E2E_LOCAL` 不成立，直接說明尚未能完整使用，禁止用測試總數代替。
 
+### 2.4 使用者新決策：EDA 先採免費開源工具，保留商業替換能力（2026-11-08）
+
+**使用者已決定：開發版本優先使用免費、開源、合法可用的 EDA，立刻排除「尚未採購商業工具」作為第一個可運作 Demo 的等待理由。未來可以換接商業 EDA，但現在不得為了抽象相容性開發大型 Framework。**
+
+1. **優先工具與安裝路徑。** Coding Agent 應優先選用 YosysHQ **OSS CAD Suite** 官方 Windows x64 封裝（https://github.com/YosysHQ/oss-cad-suite-build/releases），因目前 Local 是 Windows、WSL 未安裝。先用其中 **Icarus Verilog 或 Verilator** 對 APB CRC32 RTL 做真實編譯、Testbench、Bug Reproduction、修復與 Regression；以 **Yosys** 做最小可執行的 Synthesis Smoke；Formal 若本次需求確實需要、且工具已可用，再用 **SymbiYosys/SBY + 可用的開源 Solver**。cocotb 可用但不是第一版必要前提。不要求為了選工具建置新測試平台、搭建 WSL、購買 License 或等待商業 EDA。
+2. **使用授權邊界。** 本決策授權採用上述免費開源工具，在 Coding Agent **現有本機、現有合法權限及原有工具／連線政策允許的範圍內**，從官方來源下載並以使用者目錄的 portable 解壓方式供本開發任務使用；先核對供應來源、發行檔 SHA256、適用 License、實際版本／環境。**不授權**管理員權限、系統全域安裝、變更防火牆或公司 Policy、接觸受限 PDK、增加 Token/EDA 額度、使用未核准商業 License 或把開源原始碼／專案內容對外公開。如果 Local 政策禁止下載／執行、需提高權限或無法驗證可信來源，具體回報當前阻礙與實際嘗試，不得假稱已裝好。
+3. **先跑一條真實可重現的最小流程。** 不等待 G1 進階 Accounting/Retry：使用已存在的 Native Codex/Claude Harness 在 Local 產生或修改 APB CRC32 RTL，保存修改前真實 EDA FAIL、Local Git 修復 Commit、修改後真實 EDA PASS，並保存 Verilator/iverilog/Yosys 的實際 CLI 命令、exit code、標準輸出與錯誤輸出、工具版本、RTL/Golden/Testbench SHA、環境與 Bundle SHA256。測試只需覆蓋足以說明這條流程和既有硬性 Gate 的必要案例；完成後即產生 **DEVELOPMENT VERSION / 非量產版** 的可啟動交付包。若只能做到部分流程，逐段標 `NOT_RUN`／`BLOCKED`，不得填寫不存在的 EDA PASS。
+4. **保留輕量、可替換的 EDA Tool Adapter。** Runtime/Domain Owner 只透過一份穩定的 EDA Request/Result Contract 呼叫工具；由配置 Profile 指定 Provider、執行檔路徑、命令模板、版本、Timeout、Input／Output 路徑和可選的 Corner/Constraint。Result 至少記錄 run/job ID、project/branch/candidate/source SHA、Spec/Golden SHA、Provider+Tool Version、完整執行命令、Exit Code、PASS/FAIL/BLOCKED/NOT_RUN、原始 Log/Result Paths 與 SHA256、Environment Digest。第一版只做**一個** OSS Provider 與必要的極薄 Adapter，不先實作沒實際工具可驗證的商業 Provider；在設計和範例配置中預留未來的 **VCS/Questa/Xcelium** Simulation、**Design Compiler/Genus** Synthesis、**JasperGold/VC Formal** Formal Provider。
+5. **證據不可跨工具偽造。** 開源 EDA 的真實執行結果可作為開發版的真實工具證據；它不會自動等價於特定商業 Toolchain 的 Timing、Power、Area、Formal 能力或流片資格。未來換用商業 EDA 時，必須使用該工具重新跑適用案例，記錄 License、Library、Corner、Constraint 和工具版本，不能沿用不同 Provider 的 PPA PASS 或 Merge ReGate 結論。
+6. **Sync/交付記錄。** Coding Agent 下次輪詢 ACK 本 Directive，於 Sync 回報 `eda_provider=OSS_CAD_SUITE`（僅實際可用時）、本地安裝或解壓是否完成、各工具 `--version` 實際輸出、真正執行過的命令與原始 Logs、可跑通的 Vertical Slice 階段、未完成的步驟、Blocker 和下一步。Local ZIP/Patch 仍須按現有 Transport Contract 處理；可交付的功能性成果優先於增加測試計數。
+
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
 | Gate | 工作範圍 | 本地完成證據與自動移轉 |
@@ -67,7 +78,7 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 | **G0：A0 CLOSE** | 關閉 18 個 A0 ID、獨立 Review、固定 Local Commit、交付包 | 所有 A0 正式契約通過、原始 Logs/Hash、Reviewer Sign-off、Local Bundle；完成立即進入 G1 |
 | **G1：A0X / E Runtime** | Exploration / Branch Registry、Owner Role 與 Instance 分離、多同 Role Instance、Candidate-scoped Routing、Durable Fan-out/Fan-in、Lease Epoch、Quota、Lineage DAG、Crash Replay | 在本地用可執行單元/失效注入證明 E01–E08 適用的 Runtime Contracts；Fake EDA 只能標 MOCK；完成進 G2 |
 | **G2：A1 / MCP & Harness** | native Codex / Claude Code + MCP/Skills、AuthZ、Session 換裝、持久化通知，不自造聊天 CLI | 原 A1-01..A1-08 逐項真實 Harness 證據；不可達的外部 Harness 需具體標示，不可用 Mock 替代；獨立可行工作可平行進 G3 前置準備 |
-| **G3：A2 / Real EDA** | Environment Owner pin tools、APB CRC32 golden model、Verilator/cocotb、Formal、Yosys/netlist 等真實工具 | 原 A2-01..A2-07 的實際工具與 profile/spec/source hashes；授權或無法安裝阻礙不阻止其他 Local 模組準備 |
+| **G3：A2 / Real EDA** | 開發版優先 OSS CAD Suite 的 Icarus/Verilator + Yosys（必要時 SBY）；Environment Owner pin tools、APB CRC32 golden model、Formal、netlist 與可替換工具 Profile | 原 A2-01..A2-07 的實際工具與 profile/spec/source hashes；授權或無法安裝阻礙不阻止其他 Local 模組準備 |
 | **G4：A3 + A3X** | RTL/Verification/Formal 多 Owner Instance、Git Branch/Worktree 隔離、真實 defect→repair→verify、Lease/Wakeup/Peer | 原 A3-01..A3-07、E09/E10 與相關隔離/重啟證據。Local Runtime 所管理的 Branch 不需要此 Coding Agent 具有遠端 Push 權限 |
 | **G5：A4 + A4X** | 同一 Requirement 三路 Performance/Power/Area 真正重疊探索、一次 Nested Fork、候選個別 Simulation/Formal/Synthesis/PPA、Pareto、Merge Conflict、合併後新 SHA 重新驗證 | A4-01..A4-06；E11–E18 與 E20，必須有真實可比較 EDA 報告和 Merge 版 Evidence。沒有合理 Power 證據顯示 INCOMPARABLE，不自行宣稱通過 |
 | **G6：A5 + A5X** | Event Journal Replay、Dashboard DAG、Owner/Branch/Evidence/Cost Trace、PDCA、通知 | A5-01..A5-07 及 E19；DAG 查詢完整可追溯，失敗候選也保留 |
@@ -111,6 +122,8 @@ supervisor_coordination:
   last_effective_progress_at_utc: "<actual UTC, only update on evidence>"
 ```
 
+**EDA 專用回報**：oss_eda_install_state、oss_eda_source_and_sha256、eda_provider/profile/version、eda_actual_executions（Command/Exit Code/RTL SHA/Raw Logs）、commercial_adapter_contract_state，未執行就標 NOT_RUN；這些屬於 Coding Agent 自行回報，不得由 Supervisor 偽填。
+
 **額外回報**：dev_version_label（必標 DEVELOPMENT VERSION / 非量產版）、dev_usable_capabilities、vertical_slice_last_run（命令、輸入、輸出、工具/環境版本、Local SHA、原始 Evidence；未執行則 NOT_RUN）、dev_delivery_state、remaining_mock_or_stub、external_harness_blocker、real_eda_blocker、bundle_transfer_state。這些屬於 Agent 自行回報欄位，Supervisor 不得直接替它寫入 Sync。
 
 **必須回報**：每次 Gate 啟動／完成、Local Commit、真實測試新結果、重大缺陷、阻礙、指令版本改變、Artifact Ready、遠端 Integration、Session 停止。一般在活躍執行期間至少每 15 分鐘檢查一次指令並更新 Heartbeat；不活躍時不能偽造輪詢。若無實質改變，不要把 Heartbeat 或重新跑同一套測試當新工程進展。
@@ -128,4 +141,6 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 不得以 README/AGENTS.md/本指引更新、GitHub Sync Web Commit、Local Git Commit、79 個 Local Unit Tests、三個假平行 Worker、模擬 EDA、漂亮 Dashboard、或 A0 Mock CI Green 當成正式 SiliconForge Release。每個驗收結論必須回到 `docs/09_ACCEPTANCE_TEST_MATRIX.md` 和 `docs/15_PARALLEL_EXPLORATION_ACCEPTANCE.md`，並有對應版本的真實 Raw Evidence。
 
-**本版更新原因／下一步（SF-DIR-20261108-02）**：使用者明確要求以可使用、可交付的「開發版本」為當前產品目標，制止 G1 局部測試與框架持續擴張。Coding Agent 下次活躍輪詢時 ACK 本版，保留既有已完成 G0 與已凍結 G1 證據；從目前 Local 版本收斂必要缺陷後，**優先啟動最小真實 Codex/Claude Harness → RTL 修改 → 真實 EDA 的 Vertical Slice**，並製作可重現、清楚標註非量產版的 Local 交付包；傳遞受阻則如實標示 Local-only，不得偽稱遠端整合。G0–G7 及正式 80 項驗收原則全部保留。
+**前版更新原因／下一步（SF-DIR-20261108-02）**：使用者明確要求以可使用、可交付的「開發版本」為當前產品目標，制止 G1 局部測試與框架持續擴張。Coding Agent 下次活躍輪詢時 ACK 本版，保留既有已完成 G0 與已凍結 G1 證據；從目前 Local 版本收斂必要缺陷後，**優先啟動最小真實 Codex/Claude Harness → RTL 修改 → 真實 EDA 的 Vertical Slice**，並製作可重現、清楚標註非量產版的 Local 交付包；傳遞受阻則如實標示 Local-only，不得偽稱遠端整合。G0–G7 及正式 80 項驗收原則全部保留。
+
+**本版更新原因／下一步（SF-DIR-20261108-03，2026-11-08T03:02:20Z）**：使用者明確授權先用免費開源 EDA 完成可用開發版本，並保留商業 EDA 可替換接口。Agent 收到新 Directive 後，優先在既有許可範圍內取得官方 Windows x64 OSS CAD Suite、以 Verilator/Icarus + Yosys 完成 Native Harness → RTL → Real EDA 最小完整修復閉環，保留輕量 Provider/Profile 結構，隨實際結果打包原始 Logs 與 SHA256，並保持 DEVELOPMENT VERSION 標記。遇到必須管理員安裝、違反政策或無法驗證來源的問題才進行精確上報；不再因缺少商業工具或未完成進階測試框架停在 Mock。原有 G0–G7、80 Required Cases、授權、正式 Gate 及 Local→GitHub 限制均維持不變。
