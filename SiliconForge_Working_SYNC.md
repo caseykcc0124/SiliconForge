@@ -43,8 +43,8 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261108-02
-  directive_poll_at_utc: "2026-11-08T02:32:41.1810254Z"
-  directive_ack_at_utc: "2026-11-08T02:36:05.6908144Z"
+  directive_poll_at_utc: "2026-11-08T02:44:30.2516719Z"
+  directive_ack_at_utc: "2026-11-08T02:45:42.5021252Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
@@ -53,6 +53,9 @@ supervisor_coordination:
   dev_usable_capabilities:
     - Existing Runtime demo actually starts with PYTHONPATH=src python -m siliconforge.demo, exit0.
     - Native codex-cli0.166.0 gpt-6-luna read-only probe completed via configured existing provider, exit0; not RTL or A1 acceptance.
+  dev_demo_reproduction: Independent clean source.zip extraction followed README; python -m siliconforge.demo exit0;42 source hashes match.
+  dev_bundle_sha256: 7255f28cc7ad0d65f290d8ab85a8ccc166f6158dfee9b9b702844fb1dad0ee7e
+  dev_bundle_contents: source.zip, startup README, actual sample output/raw logs, native probe evidence, reviewer reproduction, manifest and SHA256.
   vertical_slice_last_run: NOT_RUN
   remaining_mock_or_stub: Runtime demo uses mock owners and mock evidence; MCP unauthenticated development stub; no APB RTL or real EDA flow.
   external_harness_blocker: Native model turn available; runtime-to-native RTL workflow not integrated or demonstrated.
@@ -68,8 +71,8 @@ supervisor_coordination:
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   local_git_commit: "9bb26774a36fdb8601bee32a40d67f39188d6978"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "b2507828ef87f8b861b10cdd70d57f36e170120ca1e2ae72c255e8f64a7e64a1"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/g1-failure-9bb2677-final/SiliconForge-G1-failure-local.zip"
+  local_artifact_sha256: "7255f28cc7ad0d65f290d8ab85a8ccc166f6158dfee9b9b702844fb1dad0ee7e"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/dev-9bb2677-final/SiliconForge-DEV-MOCK-DEMO-9bb2677.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
@@ -83,8 +86,8 @@ supervisor_coordination:
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items:
     - "No verified source ZIP/Patch transport to an authorized Integrator; local work continues"
-  next_executable_action: Package reproducible DEV_MOCK_DEMO from fixed9bb2677; native Codex probe works but EDA profile/tools unavailable. Usage/retry enhancements BACKLOG.
-  last_heartbeat_at_utc: "2026-11-08T02:36:05.6908144Z"
+  next_executable_action: Real RTL vertical slice awaits approved available EDA profile/tools. Retain runnable DEV_MOCK_DEMO; no unauthorized install or source transfer.
+  last_heartbeat_at_utc: "2026-11-08T02:45:42.5021252Z"
   last_effective_progress_at_utc: "2026-11-08T02:21:41.0542368Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -99,13 +102,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T02:36:05.6908144Z"
+updated_at_utc: "2026-11-08T02:45:42.5021252Z"
 last_progress_at_utc: "2026-11-08T02:21:41.0542368Z"
-last_heartbeat_at_utc: "2026-11-08T02:36:05.6908144Z"
+last_heartbeat_at_utc: "2026-11-08T02:45:42.5021252Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
-current_task: "DEVELOPMENT VERSION / 非量產版. Usable deliverable first per SF-DIR-20261108-02; fixed9bb2677"
-next_action: "Prepare mock-only startup README, actual sample output/raw logs/source ZIP and independent clean reproduction; real EDA remains blocked"
+current_task: "DEVELOPMENT VERSION / 非量產版 DEV_MOCK_DEMO packaged and independently reproduced, fixed9bb2677"
+next_action: "Use approved available EDA tool/profile for native Harness→RTL→EDA slice; tools/profile remain unavailable, do not claim E2E"
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -263,4 +266,7 @@ external_coding_agent:
 
 
 2026-11-08T02:36:05.6908144Z. APPLIED updated SF-DIR-20261108-02 from full Chrome poll02:32:41.1810254Z. Preserve fixed9bb2677 and existing signed evidence; usage accounting and advanced retry moved BACKLOG before source implementation. DEVELOPMENT VERSION / 非量產版. Existing Runtime demo actually ran exit0 with raw .audit/dev-baseline-demo.log. Native Codex0.166.0 gpt-6-luna probe returned DEV_HARNESS_PROBE and exit0 using existing configuration; stdin wrapper failure corrected using argument, not a model outage. This does not prove RTL edit, MCP integration or A1. Real EDA unavailable on PATH, WSL not installed, profiles UNPROVISIONED; no install attempted. True Harness→RTL→EDA vertical slice NOT_RUN and DEV_USABLE_E2E_LOCAL not established. Next package executable DEV_MOCK_DEMO with entry commands/sample output/known limits and clean third-party reproduction. Delivery remains DEV_LOCAL_ONLY_PENDING_TRANSFER, transport UNAVAILABLE; no remote source integration or formal80-case promotion. Last frozen engineering progress remains02:21:41.0542368Z.
+
+
+2026-11-08T02:45:42.5021252Z. DEVELOPMENT VERSION / 開發版本，非量產版. Prepared executable DEV_MOCK_DEMO ZIP at D:/mtk32712/SiliconForge/deliveries/dev-9bb2677-final/SiliconForge-DEV-MOCK-DEMO-9bb2677.zip SHA2567255f28cc7ad0d65f290d8ab85a8ccc166f6158dfee9b9b702844fb1dad0ee7e. Fixed source9bb2677 unchanged. Included startup README, real sample output, raw demo/native probe/environment logs, independent clean reproduction, manifest and source.zip. Reviewer extracted42 source hash matches and actually ran documented demo exit0; known WAITING_FOR_PEER remains and mock owners/evidence clearly labeled. Native Codex turnprobe works, but no RTL or real EDA run. DEV_USABLE_E2E_LOCAL NOT_ESTABLISHED; formal80-case gates unchanged. DEV_LOCAL_ONLY_PENDING_TRANSFER, bundle NOT_TRANSFERRED and remote source null. EDA PATH tools absent, WSL notinstalled and approved profilesUNPROVISIONED; no install or new privileges. Usage/retry BACKLOG. Actual full directive reread02:44:30.2516719Z unchangedSF-DIR-20261108-02. Prove It Works led to clean startup reproduction and exact ZIP-byte checks, without adding unit tests or repeating unaffected full suites. Last frozen runtime progress remains02:21:41.0542368Z; this is a new usable mock-only local artifact, not a new formal gate.
 
