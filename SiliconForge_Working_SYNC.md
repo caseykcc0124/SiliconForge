@@ -43,8 +43,8 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261108-01
-  directive_poll_at_utc: "2026-11-08T01:25:07.5249394Z"
-  directive_ack_at_utc: "2026-11-08T01:26:06.2009168Z"
+  directive_poll_at_utc: "2026-11-08T01:32:22.7905829Z"
+  directive_ack_at_utc: "2026-11-08T01:33:14.3384841Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   active_gate: G1
@@ -54,23 +54,25 @@ supervisor_coordination:
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_scoped_watchdog_checkpoint_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  G1_registry_lifecycle_unit: FOCUSED_TESTS_PASS_PENDING_INDEPENDENT_REVIEW
-  local_git_commit: "c39672e1e648c46729bf8277f0d44367d2f9fc82"
+  G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
+  local_git_commit: "1581c7405e3e66216f2bd8e5f7d97088249a1559"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "9fb8eda2e920c4ce3e25345f65ff0039a4f29d3f1dc8e0dd7c851dc522fcdfec"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/g1-commands-c39672e-final/SiliconForge-G1-commands-local.zip"
+  local_artifact_sha256: "e5f14e284be604e35b4e2cf441ad310b9e8fad18a1f4cfab3916c88c901446b6"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/g1-archive-1581c74-final/SiliconForge-G1-archive-local.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
   local_test_evidence:
+    - "Frozen1581c74 clean132/132 suite and18/18 A0 IDs; all source/per-ID log/five independent reviewer hashes verified"
+    - "ArchiveBranch independent correctness signoff;1812 READY backlog cancelled with count/hash/receipt/audit trace; no high/medium finding"
     - "Frozen c39672e: 127/127 stdlib tests, including 8 candidate, 8 lifecycle and prior 21 A0X MOCK checks"
     - "Frozen c39672e: A0-01..A0-18 each PASS; clean revision, per-ID logs and source hashes verified"
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items:
     - "No verified source ZIP/Patch transport to an authorized Integrator; local work continues"
-  next_executable_action: Implement controlled branch/owner lifecycle reclamation; canonical watchdog failure receipts and real usage remain pending.
-  last_heartbeat_at_utc: "2026-11-08T01:26:06.2009168Z"
-  last_effective_progress_at_utc: "2026-11-08T00:57:58.471739+00:00"
+  next_executable_action: Canonical watchdog failure receipts and branch event; actual usage and registered-job retry remain pending.
+  last_heartbeat_at_utc: "2026-11-08T01:33:14.3384841Z"
+  last_effective_progress_at_utc: "2026-11-08T01:31:52.1176089Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -84,13 +86,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T01:26:06.2009168Z"
-last_progress_at_utc: "2026-11-08T00:57:58.471739+00:00"
-last_heartbeat_at_utc: "2026-11-08T01:26:06.2009168Z"
+updated_at_utc: "2026-11-08T01:33:14.3384841Z"
+last_progress_at_utc: "2026-11-08T01:31:52.1176089Z"
+last_heartbeat_at_utc: "2026-11-08T01:33:14.3384841Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
-current_task: "G1 controlled ArchiveBranch implementation active in isolated worktree; G2 MCP AuthZ audit ready"
-next_action: "Finish and independently review registry-only archive, quota reclamation and fences; keep real Git/EDA and native A1 gates NOT_RUN"
+current_task: "G1 registry-only ArchiveBranch frozen and bundled; watchdog failure receipt grounding active"
+next_action: "Implement bounded failure receipt and canonical branch event; preserve quotas and native/real EDA gate boundaries"
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -190,13 +192,14 @@ external_coding_agent:
   input_zip_baseline_sha: efe183b726de8392371b4271bb57ea5cf3d76f2b
   input_zip_sha256: 9ceeaa748872bbe77c5a1b61480a343266a753a9f1d3a52c40b71abb369eefdc
   local_workspace_state: ACTIVE
-  local_git_commit: "c39672e1e648c46729bf8277f0d44367d2f9fc82"
+  local_git_commit: "1581c7405e3e66216f2bd8e5f7d97088249a1559"
   code_artifact_state: PREPARED_LOCAL
   code_artifact_access: LOCAL_WORKSPACE_ONLY
   artifact_transfer_state: UNAVAILABLE
   remote_source_integrated_commit: null
   a0_local_commit: 1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae
   a0_bundle_sha256: 8b9b9fc9405e0c0a534e3e300155c3969e7b1a0aa327b47a341c9a333afb4fed
+  g1_archive_bundle_sha256: e5f14e284be604e35b4e2cf441ad310b9e8fad18a1f4cfab3916c88c901446b6
   g1_registry_commands_bundle_sha256: 9fb8eda2e920c4ce3e25345f65ff0039a4f29d3f1dc8e0dd7c851dc522fcdfec
   g1_watchdog_bundle_sha256: abebd7df2385054f12cbab8c00ed2f07f6e0855650ffd9d85219b410ae24e2f0
   g1_candidate_bundle_sha256: 5d7f286b87a5790754ee7194982c8b9201d5e770797b73a02fee0d86eeb52f27
@@ -204,8 +207,8 @@ external_coding_agent:
   tests_executed:
     - command: PYTHONPATH=src python -m unittest discover -s tests -q
       result: PASS
-      count: 127
-      scope: FROZEN_LOCAL_C39672E_INCLUDES_10_COMMAND_8_LIFECYCLE_8_CANDIDATE_AND_21_PRIOR_A0X_MOCK_CHECKS
+      count: 132
+      scope: FROZEN_LOCAL_1581C74_INCLUDES_ARCHIVE_BACKLOG_REGRESSION_AND_PRIOR_MOCK_CHECKS
     - command: PYTHONPATH=src python tests/run_a0_acceptance.py
       result: PASS
       cases: A0-01..A0-18
@@ -235,4 +238,6 @@ external_coding_agent:
 2026-11-08T01:14:25.081775+00:00. Chrome reread SF-DIR-20261108-01 unchanged. Controlled registry-only ArchiveBranch design accepted after comparing one atomic branch-wide command with per-owner closure. No extra outcome writer requirement, no QUALIFIED/PASS promotion. Ownerless operator archive capability, project/status/head/revision checks and lease/job/peer/candidate quiescence are required. READY work stops as audited DEAD_LETTER, all lineage/evidence/identities remain; total/depth/budget limits and real worktree retention are unchanged. Implementation is active in isolated g1-lifecycle-work fromc39672e; no lifecycle source integrated or verified yet. G2 read-only audit found the native MCP stub needs credential-bound LocalIngress, project-scoped read capabilities and durable nonce checks. No native model turns, client configuration, installation or A1 case executed. Last effective engineering progress stays00:57:58.471739Z, the verified command bundle. G1 ACTIVE, transfer UNAVAILABLE, remote source NOT_INTEGRATED, formal E/native Harness/real EDA NOT_RUN.
 
 2026-11-08T01:26:06.2009168Z. Session resumed and directive reread unchanged. Archive backlog defect reproduced and repaired locally without weakening64KiB event limit. Worker focused45 tests PASS including1812 READY delivery cancellation; full IDs retained in immutable receipt and per-delivery audit, journal uses count/hash/receipt reference. Final local commit and independent review pending; main remainsc39672e. Frozen-unit progress unchanged. G1 ACTIVE; transport UNAVAILABLE; remote source NOT_INTEGRATED; formal E/native Harness/real EDA NOT_RUN.
+
+2026-11-08T01:33:14.3384841Z. Local ArchiveBranch unit frozen1581c7405e3e66216f2bd8e5f7d97088249a1559 and independently signed. Clean132/132 suite plus18/18 original A0 IDs, all source/per-ID logs/five reviewer hashes verified. Atomic ownerless service command checks project/revision/status/head and lease/job/peer/candidate quiescence. READY work becomes audited DEAD_LETTER; tickets CANCELLED, owners/branch ARCHIVED, retained identity/evidence/history/lineage unchanged.1812 READY backlog uses bounded count/hash/receipt journal with complete immutable receipt and per-delivery audit. Nested fork from healthy sibling succeeds under unchanged total/depth/budget limits. Tested-byte ZIP SHA256e5f14e284be604e35b4e2cf441ad310b9e8fad18a1f4cfab3916c88c901446b6, main ff-only integrated. No physical worktree release or budget refund. Watchdog failure receipt grounding next. G1 ACTIVE, formal E/native Harness/real EDA NOT_RUN; transport UNAVAILABLE, remote source NOT_INTEGRATED. Directive unchanged.
 
