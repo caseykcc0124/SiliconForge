@@ -1,10 +1,10 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261108-06**
+> **DIRECTIVE_ID: SF-DIR-20261108-07**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-08T06:27:19Z**
+> **UPDATED_AT_UTC: 2026-11-08T06:33:16Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
@@ -104,6 +104,16 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 5. **保留供應鏈事實邊界。** 目前 Agent 自述 59 卷本地可執行，但依 Sync 原始官方 `.tgz` SHA256 並未重驗，只有分卷最末 ZIP 的 Profile pin。應在交付中照實標示 `OFFICIAL_ORIGINAL_ARCHIVE_NOT_VERIFIED`，無原始字節證據不得宣稱官方 Archive 完整 Hash 已核對；如不需新授權且能從現有文件/工具核對，可補實際驗證，不得宣稱自己執行過未實作的檢查。不得降低安全要求或正式驗收證據門檻。
 6. **停止條件與報告。** 若第二個實際工作流程被外部權限、工具、Source 交付或必要安全條件卡住，有限次重現並回報可複製的錯誤與確切人工核可需求。可持續處理其他有直接開發版使用價值的工作；不反覆新增抽象層或測試以填補阻礙。每次本地交付均標 `DEVELOPMENT VERSION / 非量產版`、`DEV_USABLE_E2E_LOCAL`（僅有確實可重現的範圍）及 `DEV_LOCAL_ONLY_PENDING_TRANSFER`（若仍受限）。
 
+### 2.8 Local-only 開發交付與 80 案驗收對帳（使用者澄清，2026-11-08）
+
+**最高優先澄清：這一輪 Coding Agent 只須在自己的 Local 交付能使用的開發版本。使用者從未要求它將 Source Bundle 上傳 GitHub。過往各節中 Source Transfer/Integrator/Remote Integration 被列為開發進度阻礙或本輪待辦的語句全部撤銷；本節優先適用。**
+
+1. **Coding Agent 有限權限**：只使用 Chrome 讀取正式 GitHub、下載授權的工具 ZIP；GitHub Web Edit 僅限根目錄 SiliconForge_Working_SYNC.md。可在自己的 Local Git、寫程式、執行 EDA 和測試、產生 Source/Evidence ZIP 與 SHA256。禁止要求遠端 Git/PR、上傳 Source、建立 Release 或找 Integrator。Local 可用功能及可重現交付包就是本輪開發版成果。
+2. **遠端不是本輪阻礙**：artifact_transfer_state=UNAVAILABLE、remote_source_integrated_commit=null、Local-only 仍須如實保留，但只是已知環境限制，不得列作 blocked_items、human_approval_required、next_executable_action，亦不能要求人類搬移 Source。GitHub EDA Release 只是工具配送，不代表 Source 已整合。未授權不能宣稱遠端 CI/Release 完成。
+3. **修正 0/80 的誤導**：Sync 已回報 A0-01..A0-18 在 Local 18/18 PASS，且固定 SHA/逐 ID Logs/Reviewer Hash 存在；Agent 亦回報 Native Codex 修復 APB CRC32 RTL、Icarus FAIL→PASS、Yosys 結構檢查 PASS、獨立 Local 重現。Supervisor 尚未直接取得 Local Raw Evidence 重驗。E01..E20 仍全部 NOT_RUN，A1..A6 尚無完整逐 ID 正式驗收證據。Dashboard 必須分列：(a) Agent 回報有證據的 Local PASS，(b) 已由 Supervisor 可直接檢視且符合 Case 原定斷言的 Verified PASS，(c) NOT_RUN/BLOCKED/未取得證據；不得把 Local PASS 淹沒成『一件都沒通過』，也不可冒稱已正式驗收。
+4. **立即逐 ID 對帳現成 A0 證據**：沿用凍結的 Local 原始碼、A0-01..A0-18 逐 Case Raw Log、Local SHA、命令、Evidence SHA256、環境/Profile 與獨立 Reviewer 結果，在 Sync 新增 acceptance_local_summary 和每項 Evidence Mapping。證據符合 docs/09 原文才標 LOCAL_EVIDENCE_VERIFIED，欠缺證據標 NEEDS_EVIDENCE；不修改正式 60+20 Required Cases、不自行更改 Gate、不為了提高 PASS 數重跑無關測試或擴張測試框架。
+5. **開發版繼續向前**：保持 DEVELOPMENT VERSION / 非量產版，優先將已跑通的 Runtime→Native Harness→RTL→Real EDA 固定案例做成可以接受另一項真實 RTL 工作輸入的可重複流程，保留最小必要修復與真實 Logs。Local Reviewer 可重現就能標相應 DEV_USABLE_E2E_LOCAL，不需要 GitHub Source Commit。完整正式 80 案仍依既有 Case 原要求驗收，不能以 Local Mock 或 Sync 文字自行宣告 PASS。
+
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
 | Gate | 工作範圍 | 本地完成證據與自動移轉 |
@@ -182,4 +192,6 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 **前版更新原因／下一步（SF-DIR-20261108-05，2026-11-08T05:50:43Z）**：使用者已將 59 個 OSS CAD Suite 的完整分卷公開至正式 SiliconForge GitHub Release，先前 577 MB 單檔下載阻礙有新的合法分片替代路徑。Coding Agent 在下次活躍輪詢後按 §2.6 先下載並驗證末卷 `.zip` 與 `.z01`，能下載才完成 `.z01` 至 `.z58` 全部 59 份、重組核對官方原始 SHA256、實際執行 APB CRC32 Native Harness→RTL→EDA 最小閉環；否則提交具體下載／解壓阻礙與證據。保留現有 G0–G7、正式 80 案、安全與 Local Source Transfer 邊界，禁止以活動數或額外框架取代交付。
 
-**本版更新原因／下一步（SF-DIR-20261108-06，2026-11-08T06:27:19Z）**：Sync 新增可信的本地開發版事件：Icarus/Yosys 真正執行、Native Codex 修復 RTL、固定工作任務本地 E2E PASS，Local Source Bundle 已製作但仍無法取得遠端驗證。依 §2.7 優先讓這條已跑通的 Runtime→Harness→RTL→EDA 流程可用於另一項實際工作輸入，建立可重複的開發版入口與真實證據，並具體呈報 Source Bundle 交付阻礙，不新增框架或無界回歸。保留 G0–G7、60+20 正式驗收、原權限與正式發布/安全政策。
+**前版更新原因／下一步（SF-DIR-20261108-06，2026-11-08T06:27:19Z）**：Sync 新增可信的本地開發版事件：Icarus/Yosys 真正執行、Native Codex 修復 RTL、固定工作任務本地 E2E PASS，Local Source Bundle 已製作但仍無法取得遠端驗證。依 §2.7 優先讓這條已跑通的 Runtime→Harness→RTL→EDA 流程可用於另一項實際工作輸入，建立可重複的開發版入口與真實證據，並具體呈報 Source Bundle 交付阻礙，不新增框架或無界回歸。保留 G0–G7、60+20 正式驗收、原權限與正式發布/安全政策。
+
+**本版更新原因／下一步（SF-DIR-20261108-07，2026-11-08T06:33:16Z）**：撤銷要求 Coding Agent 處理遠端 Source 傳輸的工作，明確 Local-only 就是本輪可用開發版交付；要求先將既有 A0 的 18/18 Local PASS 逐 Case 對照原始證據，改善誤導性的 0/80 報表。其餘依現行 Vertical Slice 方向推進。原有 G0–G7、80 個 Required Cases、正式 Gate、資安與權限限制全部保留。
