@@ -716,3 +716,45 @@ implementation_remaining: finish operation command wiring, resolve delivery-bloc
 
 New effective engineering progress is the completed modules and corrected initial-child binding/evidence path contract; minimal compile/import checks only. Formal80 remains20 Local PASS/60 NOT_RUN inherited, Supervisor verification UNKNOWN. Next executable action is one bounded three-branch Native/EDA integration after local source commit.
 
+
+
+## Coding Agent Directive11 local development delivery
+
+DEVELOPMENT VERSION / ??????????SF-DIR-20261108-11 APPLIED. Chrome final poll confirmed unchanged directive11 updated11:48:03Z. Heartbeat 2026-11-08T12:33:15.693300Z; ACTIVE_SESSION_ONLY. Implementation mission ALL_AUTHORIZED_FEASIBLE_FUNCTIONS_IMPLEMENTED_LOCAL; formal acceptance remains pending. Source c1ee4c63ffcc33533c1f481c7bed8dda42620806, clean local tree. Root AGENTS unchanged SHA25685a63528182e5b694db575f071a33e45da2fa5363de74e8ef9fa39b9b116c845.
+
+implementation_inventory:
+- G1 IMPLEMENTED; modules=runtime.py,candidates.py,scope_migration.py,ingress.py; entry=run; typed MCP owner/candidate tools; REAL scoped candidate fanout/fanin, immutable pins, leases and receipt recovery.
+- G2 IMPLEMENTED; modules=harness.py,mcp_server.py; entry=run; stdio MCP; Native Codex durable sessions/turns, notifications, typed auth tools. Dependencies/execution limits: Claude CLI absent; Codex Luna actual3 turns completed.
+- G3 IMPLEMENTED; modules=eda_providers.py,oss_eda.py; entry=run; --formal-provider; Pinned real Icarus/Yosys, golden fixture, synthesis report, optional formal provider. Dependencies/execution limits: No approved proof/configuration; measured timing/power and commercial tools absent.
+- G4 IMPLEMENTED; modules=workspace.py,operations.py; entry=run; advance; fork; archive; Separate Git worktrees/refs, controlled fenced commits, same-role Owner isolation.
+- G5 IMPLEMENTED_UNVERIFIED; modules=comparison.py,integration.py,operation_commands.py; entry=compare; select; merge; regate; Pareto policies, immutable selection, conflict retention and new-SHA mandatory ReGate callbacks. Dependencies/execution limits: Source formal BLOCKED means actual merge/ReGate and eligible Pareto selection NOT_RUN.
+- G6 IMPLEMENTED; modules=dashboard.py; entry=dashboard; status; pdca; Scoped DAG, events/evidence/native usage trace, failure retention, notifications and sandbox PDCA.
+- G7 IMPLEMENTED_UNVERIFIED; modules=runtime.py,exploration.py,harness.py,operations.py; entry=run/repeat; existing scoped recovery/watchdog/quotas; Existing authorized no-progress/lease/branch caps retained; restart reuses completed native/EDA work. Dependencies/execution limits: Long chaos/fairness/formal80 NOT_RUN; usage token counts observed, monetary cost has no configured rate.
+implementation_remaining: [] for feasible local implementation; external dependencies and unexecuted validation remain listed above.
+
+Actual bounded integration campaign used the same Requirement, three separate performance/low_power/area branches and RTL Owner instances. Three Native Codex Luna turns completed, each with its own durable session/source/usage and RTL-only commit. All three actual Icarus simulations PASS. Corrected actual Yosys synthesis reports each186 cells; generic cell count is not physical area. Candidate verification PASS, formal BLOCKED, PPA INCOMPARABLE. Default comparison retained missing data and formal ineligibility. Select and merge correctly refused absent candidate-specific formal PASS, so actual merge/new-SHA ReGate is NOT_RUN. No claim full E2E PASS or formal Gate closure.
+
+An archived low_power branch retains candidate and lineage. An area_nested branch was materialized at its exact parent SHA within the existing quota. Sandbox PDCA CHECK recorded. Chrome displayed the generated offline Dashboard with real and historical lineage. New-process repeat produced zero new event/delivery/job/candidate/result/native-session/native-turn/head-history records. Raw failed launch/Yosys attempts retained. Final formal-log identity and completed-turn crash-window fixes were compile-checked, without extra Native/EDA or crash-injection reruns.
+
+Formal80 remains inherited20 Local PASS/60 NOT_RUN, Supervisor direct verification UNKNOWN. No full80, historical A0/EDA reruns, independent review panel, new service/daemon/scheduler, new control plane, policy/quota/auth expansion, remote source Git or PR.
+
+Local Source+Evidence+History bundle D:\mtk32712\SiliconForge\deliveries\SiliconForge-Directive11-c1ee4c6.zip; 5562784 bytes; SHA256 3f7d7973fb258c91903a1dd06a7174e31af3d8d54a00c31025c86a03070780af. Local-only PREPARED_LOCAL. artifact_transfer_state=UNAVAILABLE; remote_source_integrated_commit=null. Entry and payload reference are LOCAL_DEVELOPMENT.md / python -m siliconforge.operations. Full inventory, actual inputs/outputs, native trace, raw tool evidence, final SQLite snapshot and prior evidence are included.
+
+Next executable action after an approved proof/configuration and valid timing/power data is available: run the already implemented provider/candidate flow, select an eligible candidate, then merge/regate at a fresh SHA. No human transfer task is requested. The active implementation session stops after this local delivery; no unattended polling is claimed.
+
+```yaml
+latest_directive11_status:
+  last_seen_directive_id: SF-DIR-20261108-11
+  directive_application_state: APPLIED
+  directive_poll_at_utc: "2026-11-08T12:30:20.036359Z"
+  heartbeat_at_utc: "2026-11-08T12:33:34.617969Z"
+  last_progress_at_utc: "2026-11-08T12:32:28.631481Z"
+  implementation_state: ALL_AUTHORIZED_FEASIBLE_FUNCTIONS_IMPLEMENTED_LOCAL
+  implementation_remaining: []
+  smoke_state: INTEGRATED_SMOKE_PARTIAL_WITH_EXPLICIT_DEPENDENCIES
+  formal_acceptance: PENDING
+  polling_mode: ACTIVE_SESSION_ONLY
+  artifact_transfer_state: UNAVAILABLE
+  remote_source_integrated_commit: null
+```
+
