@@ -43,7 +43,7 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261108-01
-  directive_poll_at_utc: "2026-11-08T00:22:09.239613+00:00"
+  directive_poll_at_utc: "2026-11-08T00:57:21.886404+00:00"
   directive_ack_at_utc: "2026-11-07T23:39:47.059320Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
@@ -53,22 +53,23 @@ supervisor_coordination:
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_scoped_watchdog_checkpoint_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "d9c2f6b9361f2fecdf421b5b80bbaa85b1fc613e"
+  G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
+  local_git_commit: "c39672e1e648c46729bf8277f0d44367d2f9fc82"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "abebd7df2385054f12cbab8c00ed2f07f6e0855650ffd9d85219b410ae24e2f0"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/g1-watchdog-d9c2f6b/SiliconForge-G1-watchdog-local.zip"
+  local_artifact_sha256: "9fb8eda2e920c4ce3e25345f65ff0039a4f29d3f1dc8e0dd7c851dc522fcdfec"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/g1-commands-c39672e-final/SiliconForge-G1-commands-local.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
   local_test_evidence:
-    - "Frozen d9c2f6b: 117/117 stdlib tests, including 8 candidate, 8 lifecycle and prior 21 A0X MOCK checks"
-    - "Frozen d9c2f6b: A0-01..A0-18 each PASS; clean revision, per-ID logs and source hashes verified"
-    - "Independent Luna final d9c2f6b watchdog signoff; signature-size MEDIUM fixed; no remaining high/medium issue"
+    - "Frozen c39672e: 127/127 stdlib tests, including 8 candidate, 8 lifecycle and prior 21 A0X MOCK checks"
+    - "Frozen c39672e: A0-01..A0-18 each PASS; clean revision, per-ID logs and source hashes verified"
+    - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items:
     - "No verified source ZIP/Patch transport to an authorized Integrator; local work continues"
-  next_executable_action: Implement typed Registry AuthZ/context/revision/receipts with existing branch-scoped deliveries; lifecycle reclamation and true usage accounting remain separate.
-  last_heartbeat_at_utc: "2026-11-08T00:34:01.784236+00:00"
-  last_effective_progress_at_utc: "2026-11-08T00:33:22.130578+00:00"
+  next_executable_action: Implement controlled branch/owner lifecycle reclamation; canonical watchdog failure receipts and real usage remain pending.
+  last_heartbeat_at_utc: "2026-11-08T00:58:53.126116+00:00"
+  last_effective_progress_at_utc: "2026-11-08T00:57:58.471739+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -82,13 +83,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T00:34:01.784236+00:00"
-last_progress_at_utc: "2026-11-08T00:33:22.130578+00:00"
-last_heartbeat_at_utc: "2026-11-08T00:34:01.784236+00:00"
+updated_at_utc: "2026-11-08T00:58:53.126116+00:00"
+last_progress_at_utc: "2026-11-08T00:57:58.471739+00:00"
+last_heartbeat_at_utc: "2026-11-08T00:58:53.126116+00:00"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
-current_task: "G1 scoped watchdog/checkpoint unit locally verified; typed registry command outbox active"
-next_action: "Finish authenticated typed registry command receipts/revisions and causal branch-scoped outbox without relaxing quota"
+current_task: "G1 typed registry commands locally verified and bundled; controlled lifecycle reclamation next"
+next_action: "Implement controlled branch/owner lifecycle reclamation while preserving lineage, existing quotas and lease fences"
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -188,21 +189,22 @@ external_coding_agent:
   input_zip_baseline_sha: efe183b726de8392371b4271bb57ea5cf3d76f2b
   input_zip_sha256: 9ceeaa748872bbe77c5a1b61480a343266a753a9f1d3a52c40b71abb369eefdc
   local_workspace_state: ACTIVE
-  local_git_commit: "d9c2f6b9361f2fecdf421b5b80bbaa85b1fc613e"
+  local_git_commit: "c39672e1e648c46729bf8277f0d44367d2f9fc82"
   code_artifact_state: PREPARED_LOCAL
   code_artifact_access: LOCAL_WORKSPACE_ONLY
   artifact_transfer_state: UNAVAILABLE
   remote_source_integrated_commit: null
   a0_local_commit: 1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae
   a0_bundle_sha256: 8b9b9fc9405e0c0a534e3e300155c3969e7b1a0aa327b47a341c9a333afb4fed
+  g1_registry_commands_bundle_sha256: 9fb8eda2e920c4ce3e25345f65ff0039a4f29d3f1dc8e0dd7c851dc522fcdfec
   g1_watchdog_bundle_sha256: abebd7df2385054f12cbab8c00ed2f07f6e0855650ffd9d85219b410ae24e2f0
   g1_candidate_bundle_sha256: 5d7f286b87a5790754ee7194982c8b9201d5e770797b73a02fee0d86eeb52f27
   a0x_scope_bundle_sha256: a5f6609c20cc122d8b0512c87d7b0cab6e98d8ac6fac3f4b0481bb8ce65a531b
   tests_executed:
     - command: PYTHONPATH=src python -m unittest discover -s tests -q
       result: PASS
-      count: 117
-      scope: FROZEN_LOCAL_D9C2F6B_INCLUDES_8_LIFECYCLE_8_CANDIDATE_AND_21_PRIOR_A0X_MOCK_CHECKS
+      count: 127
+      scope: FROZEN_LOCAL_C39672E_INCLUDES_10_COMMAND_8_LIFECYCLE_8_CANDIDATE_AND_21_PRIOR_A0X_MOCK_CHECKS
     - command: PYTHONPATH=src python tests/run_a0_acceptance.py
       result: PASS
       cases: A0-01..A0-18
@@ -226,4 +228,6 @@ external_coding_agent:
 2026-11-08T00:14:12.519846Z. G1 candidate unit frozen locally at eea169e8787587b639a9051f12f81f1dd2486368. Exact clean source passed 109/109 suite and all18 A0 IDs with raw logs and verified hashes. Independent Luna reviewer signed the final bytes. Candidate identity, three frozen recipients, job/check/head binding, MOCK-only durable fan-in, nested claim rejection and restart replay are implemented. ACK, peer wait and run wait produce no candidate result. Registered-job retry remains unimplemented. Prepared local ZIP SHA256 5d7f286b87a5790754ee7194982c8b9201d5e770797b73a02fee0d86eeb52f27; transfer UNAVAILABLE and remote source NOT_INTEGRATED. G1 remains ACTIVE with scoped watchdog/checkpoint and registry command outbox pending. Formal E01-E20, native Harness acceptance and real EDA are NOT_RUN. Installed CLI version observations are Codex0.166.0 and Claude Code2.1.267 only, not A1 acceptance.
 
 2026-11-08T00:34:01.784236+00:00. Local G1 watchdog/checkpoint unit frozen at d9c2f6b9361f2fecdf421b5b80bbaa85b1fc613e; clean117/117 suite and18/18 A0 IDs verified with matching raw log/source/reviewer hashes. Scoped failures use fenced target ticket and pinned threshold; missing improvement recipient leaves durable dead-letter intent without reverting BLOCKED. Checkpoint content is immutable and persistent and does not reset failure/progress. Reviewer found oversized signatures could prevent blocking; fixed with1024UTF8-byte input bound and a reproduced regression, then independently signed exact final bytes. Local source/evidence ZIP SHA256 abebd7df2385054f12cbab8c00ed2f07f6e0855650ffd9d85219b410ae24e2f0; NOT_TRANSFERRED, transport UNAVAILABLE, remote source NOT_INTEGRATED. Failure API counts deliberate calls without failure-command receipt dedup; per-ticket only. Canonical BRANCH event, Registry command receipts/outbox, lifecycle reclamation and real usage remain pending. Typed Registry command implementation is active in isolated worktree. G1 remains ACTIVE; formal E/native Harness acceptance/real EDA NOT_RUN.
+
+2026-11-08T00:58:53.126116+00:00. G1 typed Registry command unit locally frozen and independently signed atc39672e1e648c46729bf8277f0d44367d2f9fc82. Clean127/127 suite plus18/18 original A0 IDs PASS; all source/log/six reviewer hashes match. Commands create immutable receipts, serialized revisions and causal branch-scoped events with existing READY deliveries. Bootstrap three MODE_MOCK branches,12 owners,18 events,36 deliveries. Fixed replay scope bypass, missing canonical metadata, qualified-parent fork and empty actor identity. Full suite exposed legacy operation_id/history mismatch; fixed using existing regression, no weakened gate. Qualified-parent request stays journal-only; child receives work. Tested-byte ZIP SHA2569fb8eda2e920c4ce3e25345f65ff0039a4f29d3f1dc8e0dd7c851dc522fcdfec, NOT_TRANSFERRED, transport UNAVAILABLE, remote source NOT_INTEGRATED. Budget scope pins are caller-selected under project capability; admission caps do not prove shared usage accounting. Lifecycle reclamation, canonical watchdog failure receipts and registered-job retry remain pending. G1 ACTIVE; formal E/native Harness/real EDA NOT_RUN. Directive Chrome reread unchanged SF-DIR-20261108-01.
 
