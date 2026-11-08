@@ -43,7 +43,7 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261108-01
-  directive_poll_at_utc: "2026-11-07T23:52:48.5691363Z"
+  directive_poll_at_utc: "2026-11-08T00:07:41.806414Z"
   directive_ack_at_utc: "2026-11-07T23:39:47.059320Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
@@ -51,22 +51,23 @@ supervisor_coordination:
   active_gate_state: ACTIVE
   G0_local_gate: CLOSED_LOCAL_WITH_INDEPENDENT_REVIEW
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
-  local_git_commit: "9f8560d801eaff42eb0d67f765737e180dc98505"
+  G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
+  local_git_commit: "eea169e8787587b639a9051f12f81f1dd2486368"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "a5f6609c20cc122d8b0512c87d7b0cab6e98d8ac6fac3f4b0481bb8ce65a531b"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/a0x-scope-9f8560d/SiliconForge-A0X-scope-local.zip"
+  local_artifact_sha256: "5d7f286b87a5790754ee7194982c8b9201d5e770797b73a02fee0d86eeb52f27"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/g1-candidate-eea169e/SiliconForge-G1-candidate-local.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
   local_test_evidence:
-    - "Frozen 9f8560d: 101/101 stdlib tests, including 21 A0X development checks"
-    - "Frozen 9f8560d: A0-01..A0-18 each PASS with per-ID raw logs and SHA256"
-    - "Independent Luna review: no remaining high/medium correctness findings in this A0X scope-runtime unit"
+    - "Frozen eea169e: 109/109 stdlib tests, including 8 candidate MOCK checks and prior 21 A0X checks"
+    - "Frozen eea169e: A0-01..A0-18 each PASS; clean revision, per-ID logs and source hashes verified"
+    - "Independent Luna exact-commit signoff for eea169e candidate unit; no remaining high/medium correctness finding"
   blocked_items:
     - "No verified source ZIP/Patch transport to an authorized Integrator; local work continues"
-  next_executable_action: Audit and implement remaining G1 candidate-scoped fan-in, checkpoint/watchdog and quota contracts; then proceed to independent G2/G3 prerequisites without remote publishing.
-  last_heartbeat_at_utc: "2026-11-07T23:54:01.2762960Z"
-  last_effective_progress_at_utc: "2026-11-07T17:39:20.950730Z"
+  next_executable_action: Implement scoped watchdog/checkpoint and registry command causal outbox; registered-job retry and real Harness/EDA remain separate work.
+  last_heartbeat_at_utc: "2026-11-08T00:14:12.519846Z"
+  last_effective_progress_at_utc: "2026-11-08T00:13:41.369133+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -80,13 +81,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-07T23:39:47.059320Z"
-last_progress_at_utc: "2026-11-07T17:39:20.950730Z"
-last_heartbeat_at_utc: "2026-11-07T23:54:01.2762960Z"
+updated_at_utc: "2026-11-08T00:14:12.519846Z"
+last_progress_at_utc: "2026-11-08T00:13:41.369133+00:00"
+last_heartbeat_at_utc: "2026-11-08T00:14:12.519846Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
-current_task: "G0 locally closed; G1 A0X scope-runtime unit verified, remaining runtime contracts active"
-next_action: "Continue G1 contract gap audit and bounded implementation; source transport does not block local progress"
+current_task: "G1 candidate routing and durable MOCK fan-in unit locally verified; scoped watchdog and command outbox next"
+next_action: "Implement bounded G1 scoped watchdog/checkpoint and registry command causal outbox; retain formal E NOT_RUN"
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -161,6 +162,7 @@ The external Coding Agent edits **only this file via GitHub Web UI**. Its local 
 
 | UTC timestamp | Agent | Phase/state | Commit or PR | Executed evidence | Next |
 |---|---|---|---|---|---|
+| 2026-11-08T00:14:12.519846Z | Coding Agent | G1 ACTIVE / candidate unit LOCAL_MOCK_VERIFIED | Local-only eea169e | 109/109 suite, 18/18 A0 IDs, independent exact-commit signoff, tested-byte ZIP | Scoped watchdog/checkpoint and command outbox next; transfer UNAVAILABLE; formal E NOT_RUN |
 | 2026-11-07T23:39:47.059320Z | Coding Agent | G0 CLOSED_LOCAL / G1 ACTIVE | Local-only 9f8560d | Frozen 101/101 suite, 21 A0X MOCK checks, 18/18 A0 IDs, independent review and tested-byte ZIP | Continue G1 contracts; transfer UNAVAILABLE; no remote source integration |
 | 2026-11-07T08:14:54Z | Architecture handoff | A0 / NOT_STARTED | [6fe2c6b](https://github.com/caseykcc0124/SiliconForge/commit/6fe2c6b243adf399420fbfb9815c807a0ff728cb) | Public repository has 54 files; [GitHub CI 22/22 reference PASS](https://github.com/caseykcc0124/SiliconForge/actions/runs/42354537870); formal A0 acceptance NOT_RUN | Coding Agent starts [Issue #1](https://github.com/caseykcc0124/SiliconForge/issues/1) |
 | 2026-11-07T06:35:15Z | Architect | A0 / NOT_STARTED | Local-only | 22/22 stdlib reference tests passed; no production EDA or full A0 acceptance | Coding Agent to begin A0 gap audit |
@@ -184,19 +186,20 @@ external_coding_agent:
   input_zip_baseline_sha: efe183b726de8392371b4271bb57ea5cf3d76f2b
   input_zip_sha256: 9ceeaa748872bbe77c5a1b61480a343266a753a9f1d3a52c40b71abb369eefdc
   local_workspace_state: ACTIVE
-  local_git_commit: 9f8560d801eaff42eb0d67f765737e180dc98505
+  local_git_commit: "eea169e8787587b639a9051f12f81f1dd2486368"
   code_artifact_state: PREPARED_LOCAL
   code_artifact_access: LOCAL_WORKSPACE_ONLY
   artifact_transfer_state: UNAVAILABLE
   remote_source_integrated_commit: null
   a0_local_commit: 1c4f55f7d2b1fb451e3e0704cec9dbf9f32d94ae
   a0_bundle_sha256: 8b9b9fc9405e0c0a534e3e300155c3969e7b1a0aa327b47a341c9a333afb4fed
+  g1_candidate_bundle_sha256: 5d7f286b87a5790754ee7194982c8b9201d5e770797b73a02fee0d86eeb52f27
   a0x_scope_bundle_sha256: a5f6609c20cc122d8b0512c87d7b0cab6e98d8ac6fac3f4b0481bb8ce65a531b
   tests_executed:
     - command: PYTHONPATH=src python -m unittest discover -s tests -q
       result: PASS
-      count: 101
-      scope: FROZEN_LOCAL_9f8560d_INCLUDES_21_A0X_MOCK_CHECKS
+      count: 109
+      scope: FROZEN_LOCAL_EEA169E_INCLUDES_8_CANDIDATE_AND_21_PRIOR_A0X_MOCK_CHECKS
     - command: PYTHONPATH=src python tests/run_a0_acceptance.py
       result: PASS
       cases: A0-01..A0-18
@@ -216,4 +219,6 @@ external_coding_agent:
 
 
 2026-11-07T23:39:47.059320Z. Applied Supervisor directive SF-DIR-20261108-01. Reconciled stale Sync against existing frozen local evidence without repeating unaffected work. G0 local A0 CLOSE is complete at 1c4f55f with independent sign-off and a verified source/evidence ZIP. G1 scope-runtime unit is frozen at 9f8560d with 101/101 tests and 18/18 A0 IDs; independent Luna review found no remaining high/medium defect in this unit. G1 as a whole remains ACTIVE. Candidate fan-in, checkpoint/watchdog and complete resource governance require contract audit. The prepared A0 and A0X ZIPs have not been transferred; remote source remains NOT_INTEGRATED. Formal E01-E20, native harness and real EDA are NOT_RUN. Chrome physical input has recovered for this ACK. Directive polling is ACTIVE_SESSION_ONLY, with no background scheduler or Always-on service claimed. Last effective engineering progress remains 2026-11-07T17:39:20.950730Z; this directive ACK is a coordination update, not a new test result.
+
+2026-11-08T00:14:12.519846Z. G1 candidate unit frozen locally at eea169e8787587b639a9051f12f81f1dd2486368. Exact clean source passed 109/109 suite and all18 A0 IDs with raw logs and verified hashes. Independent Luna reviewer signed the final bytes. Candidate identity, three frozen recipients, job/check/head binding, MOCK-only durable fan-in, nested claim rejection and restart replay are implemented. ACK, peer wait and run wait produce no candidate result. Registered-job retry remains unimplemented. Prepared local ZIP SHA256 5d7f286b87a5790754ee7194982c8b9201d5e770797b73a02fee0d86eeb52f27; transfer UNAVAILABLE and remote source NOT_INTEGRATED. G1 remains ACTIVE with scoped watchdog/checkpoint and registry command outbox pending. Formal E01-E20, native Harness acceptance and real EDA are NOT_RUN. Installed CLI version observations are Codex0.166.0 and Claude Code2.1.267 only, not A1 acceptance.
 
