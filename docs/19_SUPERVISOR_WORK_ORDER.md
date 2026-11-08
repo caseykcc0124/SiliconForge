@@ -1,17 +1,17 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261108-11**
+> **DIRECTIVE_ID: SF-DIR-20261108-12**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-08T11:48:03Z**
+> **UPDATED_AT_UTC: 2026-11-08T12:57:08Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: 全部功能實作優先；只做妨礙交付或安全邊界的最小檢查。請直接依 §2.12 執行，不要等待逐 Gate 的正式驗收。**
+> **CURRENT MISSION PRIORITY: 全功能實作成果已回報；現在優先依 §2.13 打通真實 Select→Merge→ReGate，測試僅限必要阻斷點，正式80項保持待驗收。**
 
 
 ## 0. 任務與角色
@@ -175,6 +175,24 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 
 **指令效力：** 本節是最新的 User-directed 工作優先順序覆蓋。任何先前文字若要求「每個 Gate 先全部測試驗收才准寫下一 Gate 的功能」、「每項功能必須先 Reviewer 才能繼續」，於本輪 Implementation Mission 不適用；**原有規格、80 項 Formal Acceptance、G0–G7 名稱與正式 Release 要求繼續保留，並未撤銷。**
 
+
+### 2.13 Directive 12：真正的 Select → Merge → ReGate 工程閉環，限縮 Proof／PPA 阻礙（2026-11-08T12:57:08Z）
+
+**已確認的新工程依據：** Coding Agent 的 Directive11 Local Delivery（latest Local Source `c1ee4c63ffcc33533c1f481c7bed8dda42620806`，Local Bundle SHA256 `3f7d7973fb258c91903a1dd06a7174e31af3d8d54a00c31025c86a03070780af`）已回報 G1–G7 授權範圍內的主要實作、三個不同 RTL Owner/Branch 的真實 Codex/Icarus/Yosys、Nested Fork、Dashboard 與 Recovery。**但候選 Formal 證據 BLOCKED、Timing/Power INCOMPARABLE，Select/Merge/新 SHA ReGate 沒有實際完成，完整 E2E 仍為 PARTIAL。** 使用者要求下一階段；Supervisor 依已證實缺口指示接續，避免倒退到無限測試。與 §2.12 並行：優先完成真正可用的系統功能，不改原 80 項正式驗收要求。
+
+**本階段主目標：在現有權限與現有 Local 工作區，完成一條有真實來源證據的 Candidate Select → 受控 Merge → 新 SHA ReGate；若合法 Proof/PPA 前置條件確實不存在，精確終止在原 Gate，交付可執行流程、最小診斷及所需批准事項，不得用假資料越過安全門檻。**
+
+1. **立即 ACK／沿用既有成果。** 活躍 Session 讀到 `SF-DIR-20261108-12`，透過 GitHub Web UI 僅更新根目錄 Sync 的 ACK。從既有 Local `c1ee4c63ffcc33533c1f481c7bed8dda42620806` 及目前工作樹繼續，保留三條 performance、low_power、area 分支、nested fork、Source SHA、Raw Evidence、SQLite 與工具 Profile。禁止重建工程、新增大框架或為了再取得好看的數字重跑歷史 A0 和 80 案。
+2. **先查既有工具可用性，限定一次短診斷。** 在已授權／已安裝的 OSS CAD Suite 與本地設定中，檢查 Yosys 內建 SAT/equivalence 能力，以及既有可執行的 formal/STA/功耗工具、合法 Golden、clock/reset/constraints、library/corner、solver 和 provider/profile。**只用真正存在且可合法使用的工具**，先建立一個最小、可重現、對 Candidate SHA 綁定的 RTL 等價／性質證明通路；必要時補最薄 Provider Adapter 或合法設定。Formal PASS 必須具正確 property、assumption、Spec/Golden SHA、tool/env digest、command、exit code、原始 log；僅模擬 PASS、語法成功或腳本回傳 0 都不能代替 Proof。
+3. **PPA 資料分層，不製造假可比較性。** 使用既有真實 synthesis/STA/power 工具時，明確記錄 mapped/unmapped、constraints、library、corner、activity、units、Candidate SHA；同前提下才生成可比較數據。Yosys 186 generic cells 只作 generic synthesis evidence，不能標實體 Area/Timing/Power。若只有部分有效指標，保存有效部分，缺少的標 `UNKNOWN/INCOMPARABLE`，依原有 Comparison/Policy 決定是否可選；不自行改門檻或隱藏缺值。
+4. **只在原授權及原 Gate 條件均滿足時真正走通選擇與合併。** 在合格 Candidate、合法選擇權重/授權、Head SHA fence、可比較證據到齊後，使用現有 CLI `python -m siliconforge.operations` 的 `compare → select → merge → regate` 路徑，以實際 Git Merge SHA 重新執行必要 Simulation/Formal/Synthesis/PPA，保留 Merge Conflict/Decision/Branch DAG、原始 Logs/Hash。絕不能用未證實的 `FORMAL_PASS`、假造 PPA、人工改狀態或跳過 Merge ReGate 取得成功畫面。
+5. **若依賴確實不可用，不要反覆空轉。** 已存在且可合法修復的資料／接口缺陷才寫程式；同一失敗簽章最多三輪有界修復。如果缺外部 Proof Profile/solver、技術庫、真實 Timing/Power 或合法選擇權重，立即列出可複製的 `required_tool_or_input, version, purpose, existing_attempt, precise_missing_permission_or_data, smallest_safe_next_action`，將真實 Select/Merge/ReGate 標 `BLOCKED/NOT_RUN`；同時交付目前可操作的工程入口，停止無效重跑。未授權工具安裝、網路連線、外部服務、排程守護與額外權限均禁止。
+6. **只做阻礙交付的最小驗證。** 每個真正的 Source/Adapter 修正只做 compile/import 與針對缺陷的短檢查；條件具備時執行 **一次**具備真實 Evidence 的完整 `Select→Merge→New SHA ReGate` Smoke。條件不具備時，做一次精確的 Gate 拒絕證據即可，**不要啟動 80 案驗收、歷史回歸、反覆 Reviewer 或衍生測試框架**。原正式 A0–A6 60 項和 E01–E20 20 項維持規格不變；未跑仍 NOT_RUN，完成實作不等於正式 PASS。
+7. **回報與完成語義。** 在根目錄 Sync 回報 Directive ACK、Local Source SHA、可重現 CLI/工具設定、Proof/Timing/Power 的實際狀態、可比較性、候選/分支/合併 SHA、必要的 Raw Logs/Hash、Bundle SHA256、`implementation_remaining`、`next_executable_action`、人工核准事項。若真實 Merge/ReGate 完成，標 `LOCAL_REAL_E2E_MERGE_REGATE_REPRODUCED; FORMAL80_PENDING`（證據分級），不得自稱 Release/Remote CI 完成。若外部條件缺少，標 `LOCAL_IMPLEMENTATION_DELIVERED_WITH_EXTERNAL_GATE_DEPENDENCIES`，說清楚唯一缺口，不冒稱完成驗證。Local-only 交付即可，`artifact_transfer_state=UNAVAILABLE` 不是此輪的工程 Blocker。
+8. **既有排程和 Session 限制不變。** 活躍時 15 分鐘重新讀本文件與 GitHub Web Edit Sync，只有真實進展才更新 `last_effective_progress`；本地 Session 結束後不可宣稱 24/7 自主執行。Supervisor 不修改 Coding Agent 的 Sync，也不替它偽造任務完成。
+
+**注意：** 此指令為 G3/G5/G7 既有規格範圍的可執行工作排序與故障收斂，**不是新增 G8、不降低 PPA／Formal／Merge Release Gate、不擴張權限**。
+
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
 | Gate | 工作範圍 | 本地完成證據與自動移轉 |
@@ -266,3 +284,6 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 
 **本版更新原因／下一步（SF-DIR-20261108-11，2026-11-08T11:48:03Z）**：使用者明確要求「先全部做完全部的實作，測試只做最小部分，不妨礙功能交付就不做測試」。Coding Agent 下一次活躍輪詢立即 ACK，改為一次完成 G1–G7 功能實作並依 §2.12 的具體清單連續整合；只保留真正阻斷交付的最小測試與主流程 Smoke，不做非必要回歸或反覆 Reviewer，正式 80 案及安全權限不降低且不虛報 PASS。Local-only 交付邊界不變。
+
+
+**本版更新原因／下一步（SF-DIR-20261108-12，2026-11-08T12:57:08Z）**：Directive11 Local Development Delivery 已證明三個 Native Codex RTL Owner/Branch 有實際 Icarus/Yosys 執行，但原有候選 Formal BLOCKED、PPA INCOMPARABLE 導致實際 Select/Merge/ReGate 尚未執行。依 §2.13，優先使用現有已授權工具建立真實 Proof/可比較 PPA，再執行一次有界的候選選擇、受控合併及新 SHA ReGate；如果外部配置或數據確實缺少，精確呈報阻礙，不放寬任何 Gate，不重啟完整80項驗收或無效測試迴圈。Source Transfer 仍限本地。
