@@ -1,10 +1,10 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261108-07**
+> **DIRECTIVE_ID: SF-DIR-20261108-08**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-08T06:33:16Z**
+> **UPDATED_AT_UTC: 2026-11-08T07:03:19Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
@@ -114,6 +114,16 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 4. **立即逐 ID 對帳現成 A0 證據**：沿用凍結的 Local 原始碼、A0-01..A0-18 逐 Case Raw Log、Local SHA、命令、Evidence SHA256、環境/Profile 與獨立 Reviewer 結果，在 Sync 新增 acceptance_local_summary 和每項 Evidence Mapping。證據符合 docs/09 原文才標 LOCAL_EVIDENCE_VERIFIED，欠缺證據標 NEEDS_EVIDENCE；不修改正式 60+20 Required Cases、不自行更改 Gate、不為了提高 PASS 數重跑無關測試或擴張測試框架。
 5. **開發版繼續向前**：保持 DEVELOPMENT VERSION / 非量產版，優先將已跑通的 Runtime→Native Harness→RTL→Real EDA 固定案例做成可以接受另一項真實 RTL 工作輸入的可重複流程，保留最小必要修復與真實 Logs。Local Reviewer 可重現就能標相應 DEV_USABLE_E2E_LOCAL，不需要 GitHub Source Commit。完整正式 80 案仍依既有 Case 原要求驗收，不能以 Local Mock 或 Sync 文字自行宣告 PASS。
 
+### 2.9 A0 驗收收斂：已發現四項斷言缺口，限縮補證，不再空轉（2026-11-08）
+
+**本輪有實證的新發現：** 已 ACK Directive 07 的 Coding Agent 回報 A0-01..A0-18 均有 Local PASS 紀錄，逐 ID Log/來源 SHA/Reviewer Mapping 已整理；對照 docs/09 原斷言，其中 14 項內容覆蓋充分，但 A0-03、A0-09、A0-13、A0-18 四項仍有實際斷言缺口。此外舊版 18 項紀錄均欠缺符合 docs/09 Passing evidence format 的當次 environment_digest，故不得把歷史 Local PASS 自動升格正式驗收。另第二個可設定 CRC Polynomial 任務已於 Local 真實跑通 Codex→RTL→Icarus→Yosys，這項開發成果保留為可使用功能。**
+
+1. **這一輪唯一 A0 驗收工作是關閉四個已知缺口及環境證據。** A0-03：比較遭拒衝突前後原始 Event Payload/Row 不變；A0-09：證明另一 IP 真的獨立完成，包含可核對的 Delivery/Ticket Terminal Status；A0-13：真實呈現使用者離開/關閉 Native Harness 後 Event 與 Owner Work 持續存在（必要時精確標缺少的 Harness 能力，不得以 Worker process exit 充當）；A0-18：新事件啟動後證明舊 Event/History 仍完整保留。只增補上述四項必要斷言或測試，不創建新框架、新矩陣或無關回歸。
+2. **environment_digest 不得事後偽造。** 用既有 frozen A0 Local 工作區／可重現快照做一次有界的新取證輪次，執行既有 A0-01..A0-18 必要原 Case Commands，對實際新執行的每項記錄 implementation_commit、started_utc/ended_utc、environment_digest（工具/OS/Python/設定指紋與可追溯 SHA）、actual_result、raw log path/digest、Reviewer 與 limitations。對歷史 Logs 只保留它們原有 provenance，不以現時指紋冒稱舊環境。只要一項真正缺證便標 NEEDS_EVIDENCE 或 BLOCKED，不宣稱已閉合。
+3. **Gate 簽核與進度報告採雙層狀態。** 每項 Case 分別列 Local Recorded PASS、Local Evidence Verified（證據是否符合 docs/09）與 Supervisor Directly Verified（若原始 bytes/Log 不可取得則 UNKNOWN）。滿足原定義與完整證據的 A0 案例才可標 LOCAL_EVIDENCE_VERIFIED；完整 A0 18/18 達標與 Reviewer 簽核後才可記 Local A0 Gate CLOSED_WITH_EVIDENCE。保留 G0–G7、80 個 Required Cases 與正式發布控制。A1–A6 不以固定 EDA Demo 自動 PASS；E01–E20 仍以真實條件各自查核。
+4. **開發版與範圍保持。** 已完成可設定 Local RTL/EDA 開發版本即為合法交付，不要求 Source GitHub 上傳、Integrator、遠端 PR、傳輸通道或額外人類動作；不要把 artifact_transfer_state=UNAVAILABLE 列 Blocker。對既有二個 Local Real EDA 案例保留原始證據與已知限制，不重跑未受影響的工作。A0 補證完成或確實受限後，繼續下一項真正可用的 Domain Owner/RTL 工程功能。
+5. **完成條件**：於 Sync 回報十八個 A0 ID 的實際新驗收狀態總表、四項斷言對應證據、環境指紋、Reviewer 結果、精確 Local SHA 和 Local Bundle SHA256；缺少的項目和下一步要具體，不用再次要求 Supervisor 為此開新 Directive。整個工作是一個限縮 A0 收斂任務，不得自行擴張成無界測試／Review 系統。
+
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
 | Gate | 工作範圍 | 本地完成證據與自動移轉 |
@@ -194,4 +204,6 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 **前版更新原因／下一步（SF-DIR-20261108-06，2026-11-08T06:27:19Z）**：Sync 新增可信的本地開發版事件：Icarus/Yosys 真正執行、Native Codex 修復 RTL、固定工作任務本地 E2E PASS，Local Source Bundle 已製作但仍無法取得遠端驗證。依 §2.7 優先讓這條已跑通的 Runtime→Harness→RTL→EDA 流程可用於另一項實際工作輸入，建立可重複的開發版入口與真實證據，並具體呈報 Source Bundle 交付阻礙，不新增框架或無界回歸。保留 G0–G7、60+20 正式驗收、原權限與正式發布/安全政策。
 
-**本版更新原因／下一步（SF-DIR-20261108-07，2026-11-08T06:33:16Z）**：撤銷要求 Coding Agent 處理遠端 Source 傳輸的工作，明確 Local-only 就是本輪可用開發版交付；要求先將既有 A0 的 18/18 Local PASS 逐 Case 對照原始證據，改善誤導性的 0/80 報表。其餘依現行 Vertical Slice 方向推進。原有 G0–G7、80 個 Required Cases、正式 Gate、資安與權限限制全部保留。
+**前版更新原因／下一步（SF-DIR-20261108-07，2026-11-08T06:33:16Z）**：撤銷要求 Coding Agent 處理遠端 Source 傳輸的工作，明確 Local-only 就是本輪可用開發版交付；要求先將既有 A0 的 18/18 Local PASS 逐 Case 對照原始證據，改善誤導性的 0/80 報表。其餘依現行 Vertical Slice 方向推進。原有 G0–G7、80 個 Required Cases、正式 Gate、資安與權限限制全部保留。
+
+**本版更新原因／下一步（SF-DIR-20261108-08，2026-11-08T07:03:19Z）**：Agent 在 Directive 07 下完成第二個真實、可設定的 Local RTL 修復與獨立 EDA 重現，並對 A0 18 個 Case 做了逐項 Mapping，明確找出 4 個實際斷言缺口及全部 18 個舊紀錄缺少環境指紋。依 §2.9 只修補 A0-03/A0-09/A0-13/A0-18，執行一次帶當次 environment_digest 的有限 A0 原定驗收輪次，證據足夠後逐項改列 Local Evidence Verified；維持功能優先、不建立新框架、不要求 GitHub Source 整合、不降低 80 個 Required Cases 或安全限制。
