@@ -43,7 +43,7 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261108-09
-  directive_poll_at_utc: "2026-11-08T08:09:01.6429603Z"
+  directive_poll_at_utc: "2026-11-08T08:19:05.7325697Z"
   directive_ack_at_utc: "2026-11-08T08:09:01.6429603Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
@@ -68,8 +68,11 @@ supervisor_coordination:
   eda_provider: OSS_CAD_SUITE; Icarus14.0 devel, VVP14.0 devel, Yosys0.70+360
   eda_actual_executions: REAL baseline compile0/simulation1 EXPECTED_FAIL, final compile0/simulation0 PASS/Yosys0 PASS; commands, RTL hashes and raw logs in execution-evidence and independent-reproduction.
   commercial_adapter_contract_state: THIN_OSS_PROFILE_REQUEST_RESULT_IMPLEMENTED; commercial adapters NOT_IMPLEMENTED
-  active_gate: "DEV_CONFIGURABLE_RTL_LOCAL_DELIVERY"
-  active_gate_state: "LOCAL_CONFIGURED_SLICE_CLOSED_WITH_INDEPENDENT_REPRODUCTION; FORMAL_GATES_NOT_PROMOTED"
+  a0_local_gate: CLOSED_WITH_EVIDENCE
+  a0_local_evidence_verified: 18
+  supervisor_directly_verified: UNKNOWN
+  active_gate: "G1_LOCAL_RUNTIME_NEXT"
+  active_gate_state: "LOCAL_A0_CLOSED_WITH_EVIDENCE; G1_NOT_ACCEPTED"
   G0_local_gate: "RECORDED_18_LOCAL_PASS_WITH_ENVIRONMENT_AND_FOUR_ASSERTION_EVIDENCE_GAPS"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -77,10 +80,10 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "b99a624abf3906bd400f0bda9e08ece1b5a6b95a"
+  local_git_commit: "365e85509f3660e93fc6b5fbc0eeed38b238f560"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "ffdc0cafca37894a274537b936a36d55d7d8c1f9db3bc2eb3699f9a1d0ed813b"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-DEV-CONFIGURABLE-34c96be.zip"
+  local_artifact_sha256: "7209d9ab938b827cb28d031895aaea7d9b04bad7ff1e303a8f767a0af942c471"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive09-A0-365e855.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
@@ -93,9 +96,9 @@ supervisor_coordination:
     - "Frozen c39672e: A0-01..A0-18 each PASS; clean revision, per-ID logs and source hashes verified"
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items: []
-  next_executable_action: "Configured single-task local DEV delivery complete. Future authorized work can address concrete A0 evidence gaps and Windows DOS top-name limitation; remote transfer is not a task or blocker."
-  last_heartbeat_at_utc: "2026-11-08T08:09:01.6429603Z"
-  last_effective_progress_at_utc: "2026-11-08T07:18:01.1880032Z"
+  next_executable_action: "Proceed to a useful candidate-scoped local Domain Owner runtime function under G1; retain formal gates and no unattended service claim."
+  last_heartbeat_at_utc: "2026-11-08T08:24:09.5621420Z"
+  last_effective_progress_at_utc: "2026-11-08T08:24:09.5621420Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -109,13 +112,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T08:09:01.6429603Z"
-last_progress_at_utc: "2026-11-08T07:18:01.1880032Z"
-last_heartbeat_at_utc: "2026-11-08T08:09:01.6429603Z"
-latest_commit: "b99a624abf3906bd400f0bda9e08ece1b5a6b95a"
+updated_at_utc: "2026-11-08T08:24:09.5621420Z"
+last_progress_at_utc: "2026-11-08T08:24:09.5621420Z"
+last_heartbeat_at_utc: "2026-11-08T08:24:09.5621420Z"
+latest_commit: "365e85509f3660e93fc6b5fbc0eeed38b238f560"
 latest_pr: null
-current_task: "Directive09: implement explicit IP success completion and capture native closure/restart provenance."
-next_action: "Implement A0-09 thin success transition; verify A0-13 durable work and explicit next invocation recovery without unattended service."
+current_task: "Directive09 complete: Local A0 gate closed with independent evidence; G1 local development next."
+next_action: "Continue a useful candidate-scoped local Domain Owner function; no source transfer, background service or formal80 claim."
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -597,4 +600,41 @@ Independent reviewer /root/directive07_review: PARTIAL EVIDENCE,16 LOCAL_EVIDENC
 
 SF-DIR-20261108-09 acknowledged at 2026-11-08T08:09:01.6429603Z. ACTIVE_SESSION_ONLY. G0 OPEN. Two scoped implementation/evidence tasks only. Existing16 verified evidence and both real EDA runs preserved. Heartbeat/updated_at refreshed to current observation; effective-progress machine fields now reflect the prior completed Directive08 evidence checkpoint rather than this heartbeat. No background service, scheduler, new control plane, remote source transfer or policy changes. Native closure evidence will distinguish persistence, next invocation recovery and unproven unattended operation.
 
+
+
+
+## Coding Agent Directive09 local A0 closure
+
+2026-11-08T08:24:09.5621420Z. Directive09 APPLIED; latest Chrome poll at 2026-11-08T08:19:05.7325697Z remained SF-DIR-20261108-09. ACTIVE_SESSION_ONLY; no scheduler. Local source commit 365e85509f3660e93fc6b5fbc0eeed38b238f560, clean. A0-09/A0-13 new scoped round PASS, started2026-11-08T08:16:58.787082+00:00, ended2026-11-08T08:17:08.450461+00:00. Canonical environment SHA256 0c28235cd44a718172fb6c4e0bce3220f68ace3554a70d065a5c0807107e490e, including OS/Python/source/config and native codex-cli0.166.0; version probe exit0. CCH wrapperSHA39d18b2fd7794f81d038003762170dd36afeee34e4db6a739de8b4d9bc1b0cb2, vendor executableSHA9d563ee4e0441ff9d59d612013e0460ddf8e5709735c2d9f6b98b7ef8ca4eb42; launcher/package/binJS hashes also recorded. No historical digest backfilled.
+
+A0-09: opt-in EventStore.complete terminal_success=True requires active Ticket, no pending sibling Delivery and no child work; lease/Scope/AuthZ remain. CRC BLOCKED, AES COMPLETED, Delivery ACKED with causal Decision/History; repeated completion has zero effects, new Event reawakens Ticket. Raw logSHA45f42a587c2c4046181fffb0f1b1d4786b10e4ef69e83a9cdc9d8d7267bba26e.
+
+A0-13: real native thread.started, exact launched PID30008 tree taskkill; native exit1 is intentional closure, test exit0. Before/after-close Event/Delivery/Ticket/History retained. Explicit next Python process PID23844 claims same Event f8c7e22c-6ed8-47b5-97d5-e38d9855b5df / Delivery5d55999b-e6b4-4aa1-8e1f-0316e07f77c0, lease epoch2, completes ACKED via existing EventStore. Raw logSHAd237208072b24e4d204160378aa9ad356b9681d2adf85e66859296ed76bda2c8. This proves durable persistence and next invocation recovery, not unattended operation. Models endpoint404 and invalid skill frontmatter warnings remain; successful model turn is not claimed. No new service/daemon/control plane, no auth/policy weakening.
+
+One affected four-method regression PASS at same365e855: lease fencing, duplicate job callback, atomic ACK/child, invalid-child rollback. Started2026-11-08T08:17:37.796802+00:00, ended2026-11-08T08:17:38.910030+00:00; environmentSHA cabfdd78a2e426881da67c5d5bcf09551a220d914fe13bf110fd3c905299f379; raw logSHA6a5816ba0e1be740b5e7b81f949aa87d47a08e29e9852729ecf73564607773d3. Original16 evidence and both real RTL/EDA demos retained without rerun.
+
+Independent reviewer /root/directive09_review: A0-09/A0-13 LOCAL_EVIDENCE_VERIFIED,16 prior cases retained, Local A0 Gate CLOSED_WITH_EVIDENCE. Review JSON SHA2561f71024c37aa3bac11cbc4f57164206f5f7278f7b4e6edaa26de74de9e92a272. Supervisor Directly Verified remains UNKNOWN. Formal80, A1-A6/E01-E20, production and remote integration are not promoted.
+
+| ID | Local Recorded PASS | Local Evidence | Evidence source | Supervisor Direct |
+|---|---|---|---|---|
+| A0-01 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-02 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-03 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-04 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-05 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-06 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-07 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-08 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-09 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive09 /365e855 /run-20261108T081658.787082Z | UNKNOWN |
+| A0-10 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-11 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-12 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-13 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive09 /365e855 /run-20261108T081658.787082Z | UNKNOWN |
+| A0-14 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-15 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-16 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-17 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+| A0-18 | PASS | LOCAL_EVIDENCE_VERIFIED | Directive08 /ed5b198 /run-20261108T071452.773144Z | UNKNOWN |
+
+Local bundle D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive09-A0-365e855.zip,2461768 bytes,SHA2567209d9ab938b827cb28d031895aaea7d9b04bad7ff1e303a8f767a0af942c471. Includes source/history,two-case raw command/time/log/state/native tool fingerprints,one affected regression,independent full18 mapping,and preserved Directive08/real DEV evidence. Local-only delivery PREPARED_LOCAL; transferUNAVAILABLE is not a blocker. Root AGENTS unchanged SHA25685a63528182e5b694db575f071a33e45da2fa5363de74e8ef9fa39b9b116c845. Next authorized local work is a useful G1 candidate-scoped Domain Owner runtime function; no additional human source-transfer task.
 
