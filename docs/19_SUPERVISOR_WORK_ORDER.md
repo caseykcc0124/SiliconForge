@@ -1,10 +1,10 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261108-04**
+> **DIRECTIVE_ID: SF-DIR-20261108-05**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-08T05:13:06Z**
+> **UPDATED_AT_UTC: 2026-11-08T05:50:43Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
@@ -80,6 +80,18 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 3. **工具仍不可取得時，停止該下載 Ticket 並準確上報。** Sync 必須回報 `EDA_TOOL_ACQUISITION_BLOCKED`、失敗嘗試次數、完整錯誤/下載證據、已評估的合法替代途徑、下一項真正可執行的工程動作，與**明確待人工協助的取得方案**，例如由有權環境以原始官方 SHA256 供應離線 Archive 或開通既有允許的 Artifact Transfer。此類人工協助屬待核可事項，Coding Agent 不得自行宣稱已有傳輸能力。其餘不依賴 EDA 的原有薄型整合與交付文件維持可重現，禁止再以增加 Local Tests、Retry 或抽象化框架消耗空轉。
 4. **標示開發版與正式證據的區別。** `PARTIAL_DEV_TOOL_BLOCKED`／`DEV_LOCAL_ONLY_PENDING_TRANSFER` 可作客觀交付狀態，但不能記成真實 EDA PASS、A1/A2 或 E Case PASS，也不能把 Sync Web Commit 當原始碼整合。G0–G7、80 項驗收與所有既有安全及傳輸限制維持。
 
+### 2.6 GitHub Release 分片離線 EDA 已上架，恢復可用功能優先（2026-11-08）
+
+**可核實的新外部交付條件：** 使用者已由其有權環境上傳並正式發布 [SiliconForge OSS CAD Suite Windows x64 開發工具 Release](https://github.com/caseykcc0124/SiliconForge/releases/tag/eda-oss-cad-suite-20261107)，GitHub Release tag `eda-oss-cad-suite-20261107`；GitHub 元資料顯示 **59 個 Assets 均為 uploaded**，名稱為 `oss-cad-suite-windows-x64-20261107.z01` 至 `.z58` 全部連續、加最後的 `oss-cad-suite-windows-x64-20261107.zip`。其中 z01 大小 10485760 bytes、GitHub Asset SHA256 `80ff68fb2b174cd93d740bc946782b4ce2355b064937750805c1d6ad0790c9d9`；末卷 zip 大小 3174935 bytes、GitHub Asset SHA256 `617fad027f5db1346ec5e91c2b4dc0056fc367dfafc9e54a2ec76351a951bf0c`。**這僅證實 GitHub 上有可下載的分片清單，尚未證明受限 Coding Agent 成功下載、重組、執行或原始 Archive SHA 正確。**
+
+**立即工作指令，取代 §2.5 對 577 MB 原始大檔重試的下一動作：**
+
+1. **在活躍 Session 以 Chrome／Computer Use 瀏覽上面的正式 Release URL，優先做小規模可達性測試。** 先下載末卷 `oss-cad-suite-windows-x64-20261107.zip`（約 3.0 MiB），再下載 `oss-cad-suite-windows-x64-20261107.z01`（10 MiB），兩份都核對檔案實際存在、大小及上列 SHA256（Windows PowerShell `Get-FileHash -Algorithm SHA256`）。若其中任一份受到政策限制、傳輸超時或未完整下載，採有限次恢復後記錄 Browser/Download 原始錯誤，**不要立刻發起其餘 57 份下載**。不得以修改下載域名、外部網路腳本、Proxy 或規避政策方式突破。
+2. **小樣本成功才完成全部分片下載。** 使用同一 Release 的 Assets，從 `.z01` 依序至 `.z58` 與末卷 `.zip` 下載到**同一個本地目錄**，逐一檢查無缺卷、無重名、實際位元組數與 SHA256；必要時以 GitHub Release 頁面或瀏覽器查閱該 Release 的 Asset Metadata/個別 SHA。下載權限僅限已授權的 Browser/Computer Use，不能要求 Remote Git/PR、程式化未核准下載或擴大權限。
+3. **使用既有合法可用、支援 Multi-volume Split ZIP 的本地解壓工具**（例如環境已裝的 7-Zip）從末卷 `oss-cad-suite-windows-x64-20261107.zip` 啟動重組／解壓，保留所有 `.z01`～`.z58` 同目錄；可用 `7z x "<path>\\oss-cad-suite-windows-x64-20261107.zip" -o"<target>"` 作為現有 7-Zip 的示例，實際工具可用性先確認。**不要把它當單純分割 raw `.tgz` 用 Copy/Concat 隨意拼接，也不要只對 `.z01` 解壓。** 若缺少支援分卷 ZIP 的解壓器，明確回報缺少的工具，不能擅自管理員安裝。若重組會產生原始 `oss-cad-suite-windows-x64-20261107.tgz`，對產物核對 YosysHQ 官方原始 SHA256 `3d7f21c829cce34fd79eb61f72aedb462877bb08d6ca307e5a562cf04e6e5bf0`，不符則停止執行並回報。
+4. **完成完整可信工具驗證後才實際執行 EDA：** 檢查原始工具包 License、解壓、`iverilog`／`verilator`／`yosys` 可執行版本和實際 PATH/Profile，使用已完成的 Local `8f084ed` APB CRC32 fixture/薄型 Adapter，先實際跑出 baseline FAIL，再透過已授權 Native Codex/Claude 修復 RTL，執行 Simulation PASS、能跑的 Yosys Synthesis，記錄實際版本、命令、exit codes、Raw Logs、Local Git SHA 和證據檔 SHA256。必要的測試與安全 Gate 保留；**不得再擴張測試框架或重新建大型抽象層**。與商業 EDA 相容只保留既有輕量 Provider/Profile 設計。
+5. **成果回報與權限邊界：** 於根目錄 Sync 以 GitHub Web Edit 回報最後看到的 Directive ID/ACK、分片是否下載完整、分卷數、雜湊結果、`eda_provider`/版本、實際 RTL↔EDA 結果、最新版 Local SHA/交付包及必要 blocker。保留 `DEVELOPMENT VERSION / 非量產版` 標籤。這個 GitHub Release 是**工具配送路徑**，不能擅自改寫 `artifact_transfer_state` 為專案 Source Bundle 已可傳遞；`remote_source_integrated_commit` 沒有實際 Integrator Commit 仍為 null。不得以 GitHub Sync/Release/Mock CI 當正式 80 Required Case PASS。若 Coding Agent Session 不活躍，只有下次啟動並輪詢指引後才能接續，Supervisor 不得假稱遠端 Agent 已被強制喚醒。
+
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
 | Gate | 工作範圍 | 本地完成證據與自動移轉 |
@@ -154,4 +166,6 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 **本版更新原因／下一步（SF-DIR-20261108-03，2026-11-08T03:02:20Z）**：使用者明確授權先用免費開源 EDA 完成可用開發版本，並保留商業 EDA 可替換接口。Agent 收到新 Directive 後，優先在既有許可範圍內取得官方 Windows x64 OSS CAD Suite、以 Verilator/Icarus + Yosys 完成 Native Harness → RTL → Real EDA 最小完整修復閉環，保留輕量 Provider/Profile 結構，隨實際結果打包原始 Logs 與 SHA256，並保持 DEVELOPMENT VERSION 標記。遇到必須管理員安裝、違反政策或無法驗證來源的問題才進行精確上報；不再因缺少商業工具或未完成進階測試框架停在 Mock。原有 G0–G7、80 Required Cases、授權、正式 Gate 及 Local→GitHub 限制均維持不變。
 
-**本版更新原因／下一步（SF-DIR-20261108-04，2026-11-08T05:13:06Z）**：最新 Sync 證實官方 OSS CAD Suite 577 MB 下載兩度停滯，形成 G2/G3 最小實際 EDA 功能的具體阻礙。Coding Agent 收到新 Directive 後，依 §2.5 停止無效重試；在既有授權內嘗試可信且更小的開源 RTL Simulation 執行檔，能執行則先跑真實 FAIL/修復/PASS，不能執行則留存證據並明確提出所需的人類離線工具傳遞協助，不再擴張 G1 框架或重複增加測試。原 G0–G7、80 項、工具與傳輸 Policy 不變。
+**前版更新原因／下一步（SF-DIR-20261108-04，2026-11-08T05:13:06Z）**：最新 Sync 證實官方 OSS CAD Suite 577 MB 下載兩度停滯，形成 G2/G3 最小實際 EDA 功能的具體阻礙。Coding Agent 收到新 Directive 後，依 §2.5 停止無效重試；在既有授權內嘗試可信且更小的開源 RTL Simulation 執行檔，能執行則先跑真實 FAIL/修復/PASS，不能執行則留存證據並明確提出所需的人類離線工具傳遞協助，不再擴張 G1 框架或重複增加測試。原 G0–G7、80 項、工具與傳輸 Policy 不變。
+
+**本版更新原因／下一步（SF-DIR-20261108-05，2026-11-08T05:50:43Z）**：使用者已將 59 個 OSS CAD Suite 的完整分卷公開至正式 SiliconForge GitHub Release，先前 577 MB 單檔下載阻礙有新的合法分片替代路徑。Coding Agent 在下次活躍輪詢後按 §2.6 先下載並驗證末卷 `.zip` 與 `.z01`，能下載才完成 `.z01` 至 `.z58` 全部 59 份、重組核對官方原始 SHA256、實際執行 APB CRC32 Native Harness→RTL→EDA 最小閉環；否則提交具體下載／解壓阻礙與證據。保留現有 G0–G7、正式 80 案、安全與 Local Source Transfer 邊界，禁止以活動數或額外框架取代交付。
