@@ -43,21 +43,21 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261108-10
-  directive_poll_at_utc: "2026-11-08T10:17:21.4554360Z"
+  directive_poll_at_utc: "2026-11-08T10:33:50.795538Z"
   directive_ack_at_utc: "2026-11-08T10:04:31.5067936Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: "DEV_USABLE_E2E_LOCAL_CONFIGURED_SINGLE_RTL_TASK"
+  dev_capability_state: "DEV_LOCAL_ONLY_PENDING_TRANSFER; TWO_REAL_OWNER_CHAINS_ON_029c87c; FINAL_LABEL_FIX_NOT_REAL_RERUN"
   dev_delivery_state: DEV_LOCAL_ONLY_PENDING_TRANSFER
   dev_usable_capabilities:
     - Manifest-driven fixed-argv Runtime to native RTL-only repair, actual Icarus simulation and Yosys smoke.
     - Default software-clear task and distinct configured polynomial fault demonstrated; one scoped owner per invocation.
-  dev_demo_reproduction: "Independent clean H0/H1 archive actual Icarus/VVP and Yosys PASS for second polynomial fault; native original logs reviewed, not reinvoked."
-  dev_bundle_sha256: "ffdc0cafca37894a274537b936a36d55d7d8c1f9db3bc2eb3699f9a1d0ed813b"
-  dev_bundle_contents: "Configured H0/H1 source.zip, local Git history bundle, RTL-only patch, actual Runtime/native/EDA raw evidence, independent clean reproduction script/logs, A0 per-ID mapping and frozen raw evidence."
-  vertical_slice_last_run: "PASS; configured polynomial task run3e00232d33aa480ca0caa84633f616e5; H0 93250f8 baseline compile0 simulation1 INITIAL_CRC_MISMATCH, native RTL-only repair H1 34c96be; simulation0 PASS/Yosys0 PASS; Runtime COMPLETED."
-  remaining_mock_or_stub: "MODE_MOCK Runtime heads; unauthenticated MCP development stub; no complete A1-A6 or E01-E20 acceptance; no multi-owner/PPA/formal claim."
+  dev_demo_reproduction: "Two real Owner executions reviewed from raw logs/snapshots; next-process status/resume and repeat idempotence executed. No independent clean EDA rerun this round."
+  dev_bundle_sha256: "c5287cb5d9838749fd66fa117095bd25e945deb51b2442f2bb2d55d23cc3e07b"
+  dev_bundle_contents: "Final source/history, both real source H0/H1/patches, Typed input/output, process logs and DB snapshots, checkpoint/causal trace, one affected regression, original80 map, single independent review, preserved09 A0 bundle."
+  vertical_slice_last_run: "Two sequential RTL scopes on029c87c:659a6762 baseline FAIL/native RTL repair/Icarus and Yosys PASS, exit3 then PID22688 resume COMPLETED; fa1268e5 normal COMPLETED. Final9b81128 corrects inherited Directive07 payload label, no new real run."
+  remaining_mock_or_stub: "MODE_MOCK registry branch heads; candidate_id=null REAL_CANDIDATE_NOT_REGISTERED; no three-instance overlap/PPA/formal/full A1-A6 or E gates."
   external_harness_blocker: "NONE_FOR_THIS_CONFIGURED_LOCAL_TASK; prompt command restrictions are advisory, native used readonly Git and Python CRC sanity; controller EDA/diff gates provide actual outcome."
   real_eda_blocker: "NONE_FOR_THIS_LOCAL_SLICE"
   oss_eda_install_state: PORTABLE_EXTRACTED_ACTUAL_TOOLS_EXECUTED
@@ -71,19 +71,19 @@ supervisor_coordination:
   a0_local_gate: CLOSED_WITH_EVIDENCE
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
-  active_gate: "G1_LOCAL_RUNTIME_NEXT"
-  active_gate_state: "LOCAL_A0_CLOSED_WITH_EVIDENCE; G1_NOT_ACCEPTED"
-  G0_local_gate: "RECORDED_18_LOCAL_PASS_WITH_ENVIRONMENT_AND_FOUR_ASSERTION_EVIDENCE_GAPS"
+  active_gate: "G1_RUNTIME_WITH_G2_G3_REAL_INTEGRATION"
+  active_gate_state: "G1_PARTIAL_LOCAL"
+  G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_scoped_watchdog_checkpoint_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "365e85509f3660e93fc6b5fbc0eeed38b238f560"
+  local_git_commit: "9b81128454cbd148c19e2de5940376f177a05e63"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "7209d9ab938b827cb28d031895aaea7d9b04bad7ff1e303a8f767a0af942c471"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive09-A0-365e855.zip"
+  local_artifact_sha256: "c5287cb5d9838749fd66fa117095bd25e945deb51b2442f2bb2d55d23cc3e07b"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive10-OwnerChain-9b81128.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
@@ -96,9 +96,9 @@ supervisor_coordination:
     - "Frozen c39672e: A0-01..A0-18 each PASS; clean revision, per-ID logs and source hashes verified"
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items: []
-  next_executable_action: "Finish existing CLI integration, fix local SHA, execute two sequential RTL Owner scopes plus new-process checkpoint resume, then one affected regression and independent review."
-  last_heartbeat_at_utc: "2026-11-08T10:17:21.4554360Z"
-  last_effective_progress_at_utc: "2026-11-08T08:24:09.5621420Z"
+  next_executable_action: "Use completed owner checkpoint/evidence integration as G2/G3 baseline; address original authenticated Harness contracts without new service or control plane."
+  last_heartbeat_at_utc: "2026-11-08T10:33:50.795538Z"
+  last_effective_progress_at_utc: "2026-11-08T10:33:32.207012Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -112,13 +112,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T10:17:21.4554360Z"
-last_progress_at_utc: "2026-11-08T08:24:09.5621420Z"
-last_heartbeat_at_utc: "2026-11-08T10:17:21.4554360Z"
-latest_commit: "365e85509f3660e93fc6b5fbc0eeed38b238f560"
+updated_at_utc: "2026-11-08T10:33:50.795538Z"
+last_progress_at_utc: "2026-11-08T10:33:32.207012Z"
+last_heartbeat_at_utc: "2026-11-08T10:33:50.795538Z"
+latest_commit: "9b81128454cbd148c19e2de5940376f177a05e63"
 latest_pr: null
-current_task: "Directive10: integrate Requirement-scoped Domain Owner real Native RTL/EDA chain and durable checkpoint restart."
-next_action: "Connect existing typed Registry/Candidate/Lifecycle to configurable real slice; demonstrate two same-role scopes and explicit restart recovery."
+current_task: "Directive10 two real scoped Owner chains and explicit process restart completed; local delivery and review."
+next_action: "Continue authorized minimal G2/G3 integration from pinned source; retain real Candidate registration and original parallel gates as incomplete."
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -218,7 +218,7 @@ external_coding_agent:
   input_zip_baseline_sha: efe183b726de8392371b4271bb57ea5cf3d76f2b
   input_zip_sha256: 9ceeaa748872bbe77c5a1b61480a343266a753a9f1d3a52c40b71abb369eefdc
   local_workspace_state: ACTIVE
-  local_git_commit: "b99a624abf3906bd400f0bda9e08ece1b5a6b95a"
+  local_git_commit: "9b81128454cbd148c19e2de5940376f177a05e63"
   code_artifact_state: PREPARED_LOCAL
   code_artifact_access: LOCAL_WORKSPACE_ONLY
   artifact_transfer_state: UNAVAILABLE
@@ -239,7 +239,7 @@ external_coding_agent:
       result: PASS
       cases: A0-01..A0-18
       scope: LOCAL_A0_ACCEPTANCE_WITH_RAW_LOGS_AND_HASHES
-  next_action: Complete remaining G1 runtime contracts; native Harness, real EDA and formal E01-E20 remain NOT_RUN.
+  next_action: "Continue authorized minimal G2/G3 integration from pinned source; retain real Candidate registration and original parallel gates as incomplete."
 ```
 
 2026-11-07T16:37:46Z. Downloaded main through Chrome Code -> Download ZIP and initialized local-only Git. Original 30 reference tests passed. Read-only audit reproduced expired lease ACK, stranded final lease, unknown-route loss and same-project IP scope gaps. Core repairs and boundary modules are in progress. A0 remains NOT_VERIFIED; real EDA, native harness and E01-E20 remain NOT_RUN. No remote source file has been changed. Local source artifact transfer is not established; this does not block authorized local A0 work.
@@ -648,4 +648,36 @@ SF-DIR-20261108-10 ACK/APPLIED at 2026-11-08T10:04:31.5067936Z. ACTIVE_SESSION_O
 ### Directive10 active heartbeat 2026-11-08T10:17:21.4554360Z
 
 Chrome reloaded docs/19: SF-DIR-20261108-10 unchanged. Existing CLI implementation in progress; new real executions NOT_RUN. Typed Requirement/Branch/Owner setup will link durable work to independent real H0/H1 and evidence. Candidate Registry remains MOCK-only: candidate_id=null / REAL_CANDIDATE_NOT_REGISTERED; G1_PARTIAL_LOCAL, E01/E02 NOT_RUN. Effective-progress timestamps retained pending executed evidence. No unattended service or remote source operation.
+
+
+
+## Coding Agent Directive10 real Owner runtime result — 2026-11-08T10:33:50.795538Z
+
+DEVELOPMENT VERSION / 開發版本，非量產版。G1_PARTIAL_LOCAL; ACTIVE_SESSION_ONLY.
+Chrome post-run reload confirmed SF-DIR-20261108-10 unchanged. Two distinct same-role RTL
+Owner/Branch/Ticket scopes under Requirement R_CRC_POLYNOMIAL_DIRECTIVE10 executed real
+Native Codex gpt-6-luna RTL-only polynomial repair, actual Icarus14/VVP14 and Yosys0.70+360.
+Run659a6762aea74caeabc5f98637ac7262 H1=32fd0f988be6634304e01a80ba93ea2d188487b9;
+runfa1268e522484aa7a2ac36156720a25b H1=21da883ccdda1b258f3327f17e95d8a738344ee2.
+Both H0=029c87c7146a5187ddc04ea5e90e59da79afdc20, environment_digest
+9c3eddd6e350b14989bb31389ac1c2df0e29e443f2f1f87fca1e8e20f7d7397a.
+Both tickets now COMPLETED; scoped assignment-to-repair causation checked from raw SQLite.
+
+Owner1 controller naturally exited3 after real EDA PASS with persistent checkpoint; status
+ran in a new subprocess, PID22688 resumed the same completion Delivery to terminal success.
+Repeat resume exit0 changed no Event/Delivery/Decision/Checkpoint counts; native_rerun=false,
+eda_rerun=false. This proves explicit next-process recovery, not unattended operation.
+
+Final source9b81128454cbd148c19e2de5940376f177a05e63 fixes the inherited Directive07
+durable repair payload label. Original real run metadata remains Directive07 and is not relabeled;
+there is no corrected-revision real Native/EDA rerun. One final affected checkpoint/status/resume
+regression exit0, environment_digest1d369385dacaea78737171e375af040054f8d110b52eadca6d769346ebd324c8,
+raw log SHA256fd1882188fe00c023e2ec8d22f632e83d0d0d4f0ad3782de5f1c43c8b8d713e2.
+Single independent review: COMPLETE_WITH_LIMITATIONS. Full original80 mapping:20 Local PASS/60 NOT_RUN
+(18 preserved A0 plus narrow A2-05 generic Yosys netlist/A3-03 isolated RTL red-to-green).
+Supervisor verification UNKNOWN; A2-03 and E01/E02 NOT_RUN. Registry Candidate remains MOCK-only,
+real candidate_id=null; no3-instance overlap, PPA, formal, merge, remote source or release claim.
+Root AGENTS unchanged SHA25685a63528182e5b694db575f071a33e45da2fa5363de74e8ef9fa39b9b116c845.
+
+Local Source+Evidence ZIP: D:\mtk32712\SiliconForge\deliveries\SiliconForge-Directive10-OwnerChain-9b81128.zip; 3841930 bytes; SHA256 c5287cb5d9838749fd66fa117095bd25e945deb51b2442f2bb2d55d23cc3e07b. Local-only PREPARED_LOCAL; transfer UNAVAILABLE is not a blocker.
 
