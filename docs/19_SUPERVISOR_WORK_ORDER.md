@@ -1,10 +1,10 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261108-01**
+> **DIRECTIVE_ID: SF-DIR-20261108-02**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-07T23:25:10.380Z**
+> **UPDATED_AT_UTC: 2026-11-08T02:23:38Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
@@ -30,17 +30,35 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 7. 如 Supervisor 指令與 `AGENTS.md`、安全 Policy、使用者核可、這份 Transport Contract 衝突，標 `REJECTED_POLICY_CONFLICT` 並指出衝突，執行仍合法的其他工作；不允許靠動態指令繞過 Policy。
 8. **只有 Supervisor／授權 Integrator 修改本文件。外部 Coding Agent 不應在 GitHub 編輯本文件**。Supervisor 改本文件時一定遞增 `DIRECTIVE_ID`，保留主要決策摘要與有效里程碑。不直接編輯 Agent 回報欄位，以免競爭覆蓋。
 
-## 2. 本輪立即工作：從 Local A0 收斂，避免測試無限擴張
+## 2. 本輪最新工作指示：先交付可使用的開發版本（DEV），避免測試框架循環
 
-上次 Sync 記錄：Local Git `c5f3194` 乾淨版本 18/18 A0 ID 與 67/67 Local suite，後續未提交修改 79/79 suite 與 18/18 A0 ID，Peer Lifecycle、Ingress、Immutable Journal 的 Review 尚未正式閉合；Local 產物尚未製作，無遠端 Source Integration。
+**2026-11-08 使用者決策，優先於本文件較早的 A0-CLOSE 順序描述：SiliconForge 目前製作的是可使用、可展示、可交付的開發版本，不以一開始達到量產等級為目標。** 以真正能跑通的功能、取得實際產物、可重現的操作流程衡量進度。Coding Agent 不得將持續增加測試、回歸案例、Reviewer 次數、治理框架或 Mock PASS 數量當成主要交付目標。這項優先順序調整**不降低**既有 A0–A6 60 項與 E01–E20 20 項 Required Acceptance、既有安全 Policy、授權要求或正式 Release 門檻。
 
-**A0-CLOSE（本輪第一優先）**：
-1. 從上次 Local 工作區恢復，清點 Dirty Diff 與已完成的審查；只處理真實發現的缺陷或未覆蓋的正式 A0 契約。禁止為了追求更多測試數量自行延長 A0。
-2. 合併 Review 修正，確認 Peer Reply／Refusal／Expiry、WAITING 狀態、過期 Lease ACK 拒絕、Replay、Ingress AuthZ、Scope 隔離、失效 Evidence 拒絕、Watchdog 與重啟。
-3. 固定一個新 **Local Commit**，記錄真正的 Local SHA、Input ZIP Baseline SHA、Runtime/Policy/Test SHA256；在隔離乾淨 Local Worktree 或 Snapshot 重跑 `A0-01..A0-18`、完整 stdlib suite、必要 fault injection。若有 FAIL，最多三次相同失敗簽名的修復迭代，仍無有效進展就停止該子問題、保存可重現證據、轉處理不依賴它的工作。
-4. 請獨立 Reviewer 明確檢查通過標準；不允許僅由實作者文字自評 PASS。A0 成立條件是 18/18 Case 符合證據契約且完整測試真實通過，不能以「79/79」替代。
-5. 製作 `SiliconForge_A0_<localSHA>_source_evidence.zip` 或完整 Patch Bundle：包含 changed source、tests、config、完整 raw logs、`manifest.json`、SHA256、input_zip_baseline_sha、Local Commit 與重跑命令；在 Sync 標 `PREPARED_LOCAL`。**有產物不代表已傳到 GitHub**。
-6. 如果沒有實際可取得的 Local → Integrator 傳輸管道，在 Sync 標 `artifact_transfer_state=UNAVAILABLE`、`remote_source_integrated_commit=null`。**不因這項外部傳輸阻礙停止 Local A0X 等可獨立繼續的開發**；但不能稱 A0 已 Remote Verified。
+**已知基準（僅 Sync 聲稱，尚未取得 Local 原始檔重驗）：** G0 本地已閉合；G1 的 Scope、Candidate、Watchdog、Typed Commands、ArchiveBranch 及 Failure Receipt 等子單元由 Agent 回報本地凍結，最新 Local Git `9bb2677`，137/137 Local Suite、18/18 A0 IDs PASS；Local Bundle 已製作但傳遞仍為 UNAVAILABLE，remote_source_integrated_commit=null；正式 Native Harness、Real EDA 與 E01–E20 無完成證據。不要為了照本節舊文字重新做 G0，也不要把本地數字視為遠端驗收。
+
+### 2.1 立即執行順序：可用成果優先
+
+1. **停止以 G1 細項無限延伸為預設工作模式。** 先固定目前已收斂且無已知重大缺陷的 Local 基準。僅修正會使最小端到端流程無法執行、造成資料／權限越界、不可恢復錯誤、或妨礙必要證據的實際缺陷；其他 G1 增強（例如完整實際 Usage Accounting、進階 Registered-job Retry、額外框架抽象化）除非證明為最小可用流程的硬性依賴，先記錄 Backlog，不以其全部完成作為開始整合的前提。若發現真正的安全漏洞或必要政策 Gate，不能略過。
+2. **優先建立一條可重現的 Vertical Slice：** 使用既有 Runtime 接受一項 APB CRC32／RTL 修復工作，經由**真實 Codex 或 Claude Harness**（使用現有授權方式，非 Fake/Mock）、產生 Local RTL 修改與 Commit、執行**實際可合法使用的 EDA 工具**（例如已安裝或合法可用的 Verilator，依現有環境與權限選擇），保存 FAIL → 修復 → 重跑 PASS 的原始輸出及版本關聯。先做單一 Task、單一 Owner 最小閉環，再擴至多 Owner、分支與 PPA。不要為了第一個 Demo 先建置全新 Agent 框架、完整 Dashboard 或額外大型測試平台。
+3. **若真實 Harness 或 EDA 尚不可用：** 立即以具體命令、環境、所缺工具/權限與重現結果記錄阻礙，不擅自安裝、增加權限或用 Mock 冒充。可先交付能在 Local 啟動的 Runtime 加明確標示 `DEV_MOCK_DEMO` 的示範流程，但不得標 `DEV_USABLE_E2E`、A1/A2 PASS 或 Real EDA Verified。同步執行其他已授權、與工具阻礙無關的實作。
+4. **每一次開發交付必須有可以使用的實體成果：** 可啟動的 Code、清楚的入口命令及 README/操作步驟、固定 Local SHA、必要設定/依賴、實際 Sample Input/Output、已執行的最小重現與原始 Logs、已知限制，以及 Source + Evidence ZIP/Patch Bundle 與 SHA256。優先讓 Reviewer 從乾淨 Local Snapshot 使用文件中的命令重現功能。若只有 Spec、Mock 報告、測試清單或 Sync 心跳，標示 `NO_USABLE_DELIVERABLE_YET`。
+5. **Local → GitHub 交付明確分離：** Coding Agent 只能本地製作 Bundle 並用 GitHub Web Edit 更新根目錄 Sync。傳遞管道若仍 `UNAVAILABLE`，正確標記 `DEV_LOCAL_ONLY_PENDING_TRANSFER`，不可宣稱 `DEV_DELIVERED_REMOTE`；由有權 Integrator 真正拿到檔案、核對 SHA256 並提交遠端 Source Commit 後，才可進行遠端 CI/驗證。不能讓 Coding Agent 嘗試遠端 Git、PR 或批次上傳。
+6. **最小開發版驗收（與正式 80 項分離）：** 僅在第三方可用相同 Local 原始碼、設定和可用工具重現前述真實 Harness + RTL 修改 + 真實 EDA 結果時標 `DEV_USABLE_E2E_LOCAL`；若已由 Integrator 真正整合並重現，標 `DEV_DELIVERED_REMOTE` 並記錄 Commit/CI。這是開發版使用性檢查，**不取代、減少或自動通過任何正式 Acceptance ID**。發布或宣稱量產就緒仍需既有全部適用正式 Gate；未授權不得公開發布。
+
+### 2.2 測試與 Review 收斂規則
+
+- **測試是證明功能的工具，不能自行成為任務目標。** 每個新測試必須直接綁定一個實際修復的缺陷、一項已實作的外部可觀測行為、一個既定 Required Case，或阻止交付的明確風險；否則先不新增。禁止為了提高 PASS 數而設計新框架、重構測試架構或增加無界矩陣。
+- 一般工作先跑受影響模組的必要回歸，於**固定交付 Revision／Gate 轉換／真實整合前後**執行完整既有回歸與必要驗收。若出現新 FAIL，按同一 Failure Signature 最多三次修復迭代原則處理；不要對完全未受影響的模組反覆全量重測。
+- Reviewer 以「可使用功能、真正阻斷交付的缺陷、安全問題、可重現性」作優先順序；不因細枝末節或新提出的測試喜好無限延長開發版交付。Reviewer 發現實質高風險缺陷則必須阻擋相關功能的 PASS，不得遮掩或降低 Gate。
+- 每次 Sync 與 Supervisor Dashboard 的**首要 KPI**：可實際啟動的功能、端到端工作是否真正執行、真實工具與證據、可取得的 ZIP/Patch、遠端 Source Integration、阻礙與下一步。Local Test Count、Agent 活動數、Mock PASS、Heartbeat 僅為輔助指標。
+
+### 2.3 明確的開發版標籤
+
+交付標題、README、Bundle manifest、Sync 摘要與報告中，必須清楚標註：
+- `DEVELOPMENT VERSION / 開發版本，非量產版`；
+- `DEV_MOCK_DEMO`、`DEV_LOCAL_ONLY_PENDING_TRANSFER`、`DEV_USABLE_E2E_LOCAL`、`DEV_DELIVERED_REMOTE` 中**有證據支持**的實際能力／交付狀態，勿把「已製作 Local ZIP」當成已交付；
+- 哪些地方仍依賴 Mock／Stub，哪些 Native Harness、真實 EDA 與 80 項正式驗收尚未執行；列出已知限制與後續工作；
+- 若 `DEV_USABLE_E2E_LOCAL` 不成立，直接說明尚未能完整使用，禁止用測試總數代替。
 
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
@@ -55,9 +73,11 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 | **G6：A5 + A5X** | Event Journal Replay、Dashboard DAG、Owner/Branch/Evidence/Cost Trace、PDCA、通知 | A5-01..A5-07 及 E19；DAG 查詢完整可追溯，失敗候選也保留 |
 | **G7：A6 + A6X** | 多分支 Chaos、長期 Restart/Crash、No-progress Watchdog、資源公平、安全與 Scope Gate | A6-01..A6-07、E20 回歸及剩餘全部 Required，逐 Case 回報。**全專案遠端完成**還需實際 Source Bundle 交付、Remote Integration、CI 與適用真實 EDA Gate，不能靠 Local Sync 自評 |
 
-**自動推進政策**：每個 Gate 的 Local 實作與驗證完成即可轉入下個不依賴遠端發布的 Gate；未達正式 Gate 不能把它升格 `VERIFIED`。依賴可並行，不做一關卡卡死全專案。正式全體 80 Required Cases 不降低、不自行擴充成無限測試清單，也不擅改架構、Autonomy Policy 或批准權限。
+**自動推進政策（以 §2 的可用開發版為近期最高優先）**：G1 現有基礎可支撐 Vertical Slice 的部分應立即用於 G2/G3 的最小真實整合，不需等 G1 所有非必要增強完成；各 Gate 的正式驗收與終局定義仍維持不變。每個 Gate 的 Local 實作與驗證完成即可轉入下個不依賴遠端發布的 Gate；未達正式 Gate 不能把它升格 `VERIFIED`。依賴可並行，不做一關卡卡死全專案。正式全體 80 Required Cases 不降低、不自行擴充成無限測試清單，也不擅改架構、Autonomy Policy 或批准權限。
 
 ## 4. 有限失敗處理與資源治理
+
+- 開發版優先追求可執行功能與交付證據；新測試框架或額外測試僅在具體缺陷、既有 Gate 或實際交付風險需要時才可擴充。不得以測試數量、Reviewer 迴圈或抽象層增長取代 Vertical Slice 的進展。
 
 - 相同 Failure Signature 連續三輪未有新證據就停止當前 Ticket，記錄 Root Cause、Attempts、Evidence、已驗證替代路徑，繼續無關的其他任務。
 - `WAITING_FOR_TOOL`／`WAITING_FOR_ENV` 只能用在具體工具、版本或權限問題，禁止以「Agent 不知道怎麼做」作為無限 Blocker。
@@ -91,6 +111,8 @@ supervisor_coordination:
   last_effective_progress_at_utc: "<actual UTC, only update on evidence>"
 ```
 
+**額外回報**：dev_version_label（必標 DEVELOPMENT VERSION / 非量產版）、dev_usable_capabilities、vertical_slice_last_run（命令、輸入、輸出、工具/環境版本、Local SHA、原始 Evidence；未執行則 NOT_RUN）、dev_delivery_state、remaining_mock_or_stub、external_harness_blocker、real_eda_blocker、bundle_transfer_state。這些屬於 Agent 自行回報欄位，Supervisor 不得直接替它寫入 Sync。
+
 **必須回報**：每次 Gate 啟動／完成、Local Commit、真實測試新結果、重大缺陷、阻礙、指令版本改變、Artifact Ready、遠端 Integration、Session 停止。一般在活躍執行期間至少每 15 分鐘檢查一次指令並更新 Heartbeat；不活躍時不能偽造輪詢。若無實質改變，不要把 Heartbeat 或重新跑同一套測試當新工程進展。
 
 ## 6. Supervisor 的定時監督與指令修改責任
@@ -106,4 +128,4 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 不得以 README/AGENTS.md/本指引更新、GitHub Sync Web Commit、Local Git Commit、79 個 Local Unit Tests、三個假平行 Worker、模擬 EDA、漂亮 Dashboard、或 A0 Mock CI Green 當成正式 SiliconForge Release。每個驗收結論必須回到 `docs/09_ACCEPTANCE_TEST_MATRIX.md` 和 `docs/15_PARALLEL_EXPLORATION_ACCEPTANCE.md`，並有對應版本的真實 Raw Evidence。
 
-**此工作指引的預設下一動作**：Coding Agent 恢復工作時立即確認本 Directive，先完成 G0 A0 CLOSE，再自主推進 G1 A0X，之後依 Gate 表繼續，不必等人逐段傳令。
+**本版更新原因／下一步（SF-DIR-20261108-02）**：使用者明確要求以可使用、可交付的「開發版本」為當前產品目標，制止 G1 局部測試與框架持續擴張。Coding Agent 下次活躍輪詢時 ACK 本版，保留既有已完成 G0 與已凍結 G1 證據；從目前 Local 版本收斂必要缺陷後，**優先啟動最小真實 Codex/Claude Harness → RTL 修改 → 真實 EDA 的 Vertical Slice**，並製作可重現、清楚標註非量產版的 Local 交付包；傳遞受阻則如實標示 Local-only，不得偽稱遠端整合。G0–G7 及正式 80 項驗收原則全部保留。
