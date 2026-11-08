@@ -43,8 +43,8 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261108-01
-  directive_poll_at_utc: "2026-11-08T00:57:21.886404+00:00"
-  directive_ack_at_utc: "2026-11-07T23:39:47.059320Z"
+  directive_poll_at_utc: "2026-11-08T01:13:00.649572+00:00"
+  directive_ack_at_utc: "2026-11-08T01:14:25.081775+00:00"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   active_gate: G1
@@ -54,6 +54,7 @@ supervisor_coordination:
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_scoped_watchdog_checkpoint_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
+  G1_registry_lifecycle_unit: IMPLEMENTATION_ACTIVE_NOT_VERIFIED
   local_git_commit: "c39672e1e648c46729bf8277f0d44367d2f9fc82"
   local_artifact_state: PREPARED_LOCAL
   local_artifact_sha256: "9fb8eda2e920c4ce3e25345f65ff0039a4f29d3f1dc8e0dd7c851dc522fcdfec"
@@ -68,7 +69,7 @@ supervisor_coordination:
   blocked_items:
     - "No verified source ZIP/Patch transport to an authorized Integrator; local work continues"
   next_executable_action: Implement controlled branch/owner lifecycle reclamation; canonical watchdog failure receipts and real usage remain pending.
-  last_heartbeat_at_utc: "2026-11-08T00:58:53.126116+00:00"
+  last_heartbeat_at_utc: "2026-11-08T01:14:25.081775+00:00"
   last_effective_progress_at_utc: "2026-11-08T00:57:58.471739+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -83,13 +84,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T00:58:53.126116+00:00"
+updated_at_utc: "2026-11-08T01:14:25.081775+00:00"
 last_progress_at_utc: "2026-11-08T00:57:58.471739+00:00"
-last_heartbeat_at_utc: "2026-11-08T00:58:53.126116+00:00"
+last_heartbeat_at_utc: "2026-11-08T01:14:25.081775+00:00"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
-current_task: "G1 typed registry commands locally verified and bundled; controlled lifecycle reclamation next"
-next_action: "Implement controlled branch/owner lifecycle reclamation while preserving lineage, existing quotas and lease fences"
+current_task: "G1 controlled ArchiveBranch implementation active in isolated worktree; G2 MCP AuthZ audit ready"
+next_action: "Finish and independently review registry-only archive, quota reclamation and fences; keep real Git/EDA and native A1 gates NOT_RUN"
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -230,4 +231,6 @@ external_coding_agent:
 2026-11-08T00:34:01.784236+00:00. Local G1 watchdog/checkpoint unit frozen at d9c2f6b9361f2fecdf421b5b80bbaa85b1fc613e; clean117/117 suite and18/18 A0 IDs verified with matching raw log/source/reviewer hashes. Scoped failures use fenced target ticket and pinned threshold; missing improvement recipient leaves durable dead-letter intent without reverting BLOCKED. Checkpoint content is immutable and persistent and does not reset failure/progress. Reviewer found oversized signatures could prevent blocking; fixed with1024UTF8-byte input bound and a reproduced regression, then independently signed exact final bytes. Local source/evidence ZIP SHA256 abebd7df2385054f12cbab8c00ed2f07f6e0855650ffd9d85219b410ae24e2f0; NOT_TRANSFERRED, transport UNAVAILABLE, remote source NOT_INTEGRATED. Failure API counts deliberate calls without failure-command receipt dedup; per-ticket only. Canonical BRANCH event, Registry command receipts/outbox, lifecycle reclamation and real usage remain pending. Typed Registry command implementation is active in isolated worktree. G1 remains ACTIVE; formal E/native Harness acceptance/real EDA NOT_RUN.
 
 2026-11-08T00:58:53.126116+00:00. G1 typed Registry command unit locally frozen and independently signed atc39672e1e648c46729bf8277f0d44367d2f9fc82. Clean127/127 suite plus18/18 original A0 IDs PASS; all source/log/six reviewer hashes match. Commands create immutable receipts, serialized revisions and causal branch-scoped events with existing READY deliveries. Bootstrap three MODE_MOCK branches,12 owners,18 events,36 deliveries. Fixed replay scope bypass, missing canonical metadata, qualified-parent fork and empty actor identity. Full suite exposed legacy operation_id/history mismatch; fixed using existing regression, no weakened gate. Qualified-parent request stays journal-only; child receives work. Tested-byte ZIP SHA2569fb8eda2e920c4ce3e25345f65ff0039a4f29d3f1dc8e0dd7c851dc522fcdfec, NOT_TRANSFERRED, transport UNAVAILABLE, remote source NOT_INTEGRATED. Budget scope pins are caller-selected under project capability; admission caps do not prove shared usage accounting. Lifecycle reclamation, canonical watchdog failure receipts and registered-job retry remain pending. G1 ACTIVE; formal E/native Harness/real EDA NOT_RUN. Directive Chrome reread unchanged SF-DIR-20261108-01.
+
+2026-11-08T01:14:25.081775+00:00. Chrome reread SF-DIR-20261108-01 unchanged. Controlled registry-only ArchiveBranch design accepted after comparing one atomic branch-wide command with per-owner closure. No extra outcome writer requirement, no QUALIFIED/PASS promotion. Ownerless operator archive capability, project/status/head/revision checks and lease/job/peer/candidate quiescence are required. READY work stops as audited DEAD_LETTER, all lineage/evidence/identities remain; total/depth/budget limits and real worktree retention are unchanged. Implementation is active in isolated g1-lifecycle-work fromc39672e; no lifecycle source integrated or verified yet. G2 read-only audit found the native MCP stub needs credential-bound LocalIngress, project-scoped read capabilities and durable nonce checks. No native model turns, client configuration, installation or A1 case executed. Last effective engineering progress stays00:57:58.471739Z, the verified command bundle. G1 ACTIVE, transfer UNAVAILABLE, remote source NOT_INTEGRATED, formal E/native Harness/real EDA NOT_RUN.
 
