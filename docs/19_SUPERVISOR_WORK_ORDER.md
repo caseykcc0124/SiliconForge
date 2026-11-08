@@ -1,10 +1,10 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261108-03**
+> **DIRECTIVE_ID: SF-DIR-20261108-04**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-08T03:02:20Z**
+> **UPDATED_AT_UTC: 2026-11-08T05:13:06Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
@@ -70,6 +70,15 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 4. **保留輕量、可替換的 EDA Tool Adapter。** Runtime/Domain Owner 只透過一份穩定的 EDA Request/Result Contract 呼叫工具；由配置 Profile 指定 Provider、執行檔路徑、命令模板、版本、Timeout、Input／Output 路徑和可選的 Corner/Constraint。Result 至少記錄 run/job ID、project/branch/candidate/source SHA、Spec/Golden SHA、Provider+Tool Version、完整執行命令、Exit Code、PASS/FAIL/BLOCKED/NOT_RUN、原始 Log/Result Paths 與 SHA256、Environment Digest。第一版只做**一個** OSS Provider 與必要的極薄 Adapter，不先實作沒實際工具可驗證的商業 Provider；在設計和範例配置中預留未來的 **VCS/Questa/Xcelium** Simulation、**Design Compiler/Genus** Synthesis、**JasperGold/VC Formal** Formal Provider。
 5. **證據不可跨工具偽造。** 開源 EDA 的真實執行結果可作為開發版的真實工具證據；它不會自動等價於特定商業 Toolchain 的 Timing、Power、Area、Formal 能力或流片資格。未來換用商業 EDA 時，必須使用該工具重新跑適用案例，記錄 License、Library、Corner、Constraint 和工具版本，不能沿用不同 Provider 的 PPA PASS 或 Merge ReGate 結論。
 6. **Sync/交付記錄。** Coding Agent 下次輪詢 ACK 本 Directive，於 Sync 回報 `eda_provider=OSS_CAD_SUITE`（僅實際可用時）、本地安裝或解壓是否完成、各工具 `--version` 實際輸出、真正執行過的命令與原始 Logs、可跑通的 Vertical Slice 階段、未完成的步驟、Blocker 和下一步。Local ZIP/Patch 仍須按現有 Transport Contract 處理；可交付的功能性成果優先於增加測試計數。
+
+### 2.5 開源 EDA 取得失敗的有限恢復方案（2026-11-08）
+
+**觸發證據：** Coding Agent 已依 Directive 03 經 Chrome 從 YosysHQ 官方 GitHub Release 下載 Windows x64 OSS CAD Suite（約 577 MB），兩輪下載均停在約 1.25 MB，Pause/Resume 與新下載仍未成功；未取得完整可驗 SHA256 的 Archive，也未執行任何實際 EDA。最新本地 `8f084ed` 已有 APB CRC32 defective RTL/Golden/Testbench、薄型 EDA Profile/Request/Result Adapter 與可執行但實際工具缺席的開發版本，Bundle 仍僅本地可存取。
+
+1. **立即停止對同一個 577 MB GitHub Asset 的無界重試。** 先查明 Chrome 的實際 Download 狀態、Disk Space、是否遭瀏覽器／權限／網路限制。在現有瀏覽器讀取與下載權限內，可有界嘗試官方供應者提供的另一個已驗證完整版本、官方鏡像或更小的獨立 **Icarus/Verilator** Windows Binary；必須核對官方專案／維護者來源、平台、License、SHA256、工具版本並實際執行。不要把「Source Tarball 下載成功」當作已具有可執行 EDA，亦不得使用未經允許的第三方安裝程式、非官方鏡像、系統管理員權限、改變防火牆、WSL 部署或未批准的下載方法。
+2. **恢復先做最小可用閉環。** 若取得可信任的 Icarus 或 Verilator，可**先完成真實 RTL FAIL → Codex/Claude 修復 → 真實 RTL Simulation PASS**，再取得 Yosys 執行 Synthesis；如缺少 Synthesis，將該階段標 `NOT_RUN`，整體 `DEV_USABLE_E2E_LOCAL` 仍不得宣稱完成。無需先建好完整 Toolchain、Formal、PPA、多 Branch 或新測試框架才開始已可執行的部分。
+3. **工具仍不可取得時，停止該下載 Ticket 並準確上報。** Sync 必須回報 `EDA_TOOL_ACQUISITION_BLOCKED`、失敗嘗試次數、完整錯誤/下載證據、已評估的合法替代途徑、下一項真正可執行的工程動作，與**明確待人工協助的取得方案**，例如由有權環境以原始官方 SHA256 供應離線 Archive 或開通既有允許的 Artifact Transfer。此類人工協助屬待核可事項，Coding Agent 不得自行宣稱已有傳輸能力。其餘不依賴 EDA 的原有薄型整合與交付文件維持可重現，禁止再以增加 Local Tests、Retry 或抽象化框架消耗空轉。
+4. **標示開發版與正式證據的區別。** `PARTIAL_DEV_TOOL_BLOCKED`／`DEV_LOCAL_ONLY_PENDING_TRANSFER` 可作客觀交付狀態，但不能記成真實 EDA PASS、A1/A2 或 E Case PASS，也不能把 Sync Web Commit 當原始碼整合。G0–G7、80 項驗收與所有既有安全及傳輸限制維持。
 
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
@@ -144,3 +153,5 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 **前版更新原因／下一步（SF-DIR-20261108-02）**：使用者明確要求以可使用、可交付的「開發版本」為當前產品目標，制止 G1 局部測試與框架持續擴張。Coding Agent 下次活躍輪詢時 ACK 本版，保留既有已完成 G0 與已凍結 G1 證據；從目前 Local 版本收斂必要缺陷後，**優先啟動最小真實 Codex/Claude Harness → RTL 修改 → 真實 EDA 的 Vertical Slice**，並製作可重現、清楚標註非量產版的 Local 交付包；傳遞受阻則如實標示 Local-only，不得偽稱遠端整合。G0–G7 及正式 80 項驗收原則全部保留。
 
 **本版更新原因／下一步（SF-DIR-20261108-03，2026-11-08T03:02:20Z）**：使用者明確授權先用免費開源 EDA 完成可用開發版本，並保留商業 EDA 可替換接口。Agent 收到新 Directive 後，優先在既有許可範圍內取得官方 Windows x64 OSS CAD Suite、以 Verilator/Icarus + Yosys 完成 Native Harness → RTL → Real EDA 最小完整修復閉環，保留輕量 Provider/Profile 結構，隨實際結果打包原始 Logs 與 SHA256，並保持 DEVELOPMENT VERSION 標記。遇到必須管理員安裝、違反政策或無法驗證來源的問題才進行精確上報；不再因缺少商業工具或未完成進階測試框架停在 Mock。原有 G0–G7、80 Required Cases、授權、正式 Gate 及 Local→GitHub 限制均維持不變。
+
+**本版更新原因／下一步（SF-DIR-20261108-04，2026-11-08T05:13:06Z）**：最新 Sync 證實官方 OSS CAD Suite 577 MB 下載兩度停滯，形成 G2/G3 最小實際 EDA 功能的具體阻礙。Coding Agent 收到新 Directive 後，依 §2.5 停止無效重試；在既有授權內嘗試可信且更小的開源 RTL Simulation 執行檔，能執行則先跑真實 FAIL/修復/PASS，不能執行則留存證據並明確提出所需的人類離線工具傳遞協助，不再擴張 G1 框架或重複增加測試。原 G0–G7、80 項、工具與傳輸 Policy 不變。
