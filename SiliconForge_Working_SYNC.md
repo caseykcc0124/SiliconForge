@@ -42,9 +42,9 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: SF-DIR-20261108-07
-  directive_poll_at_utc: "2026-11-08T06:53:41.822681Z"
-  directive_ack_at_utc: "2026-11-08T06:39:10.5805714Z"
+  last_seen_directive_id: SF-DIR-20261108-09
+  directive_poll_at_utc: "2026-11-08T08:09:01.6429603Z"
+  directive_ack_at_utc: "2026-11-08T08:09:01.6429603Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
@@ -77,7 +77,7 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "34c96bebcf8d8f64a7dbe63359c3f7255f2bbbe3"
+  local_git_commit: "b99a624abf3906bd400f0bda9e08ece1b5a6b95a"
   local_artifact_state: PREPARED_LOCAL
   local_artifact_sha256: "ffdc0cafca37894a274537b936a36d55d7d8c1f9db3bc2eb3699f9a1d0ed813b"
   local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-DEV-CONFIGURABLE-34c96be.zip"
@@ -94,8 +94,8 @@ supervisor_coordination:
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items: []
   next_executable_action: "Configured single-task local DEV delivery complete. Future authorized work can address concrete A0 evidence gaps and Windows DOS top-name limitation; remote transfer is not a task or blocker."
-  last_heartbeat_at_utc: "2026-11-08T06:55:20.455176Z"
-  last_effective_progress_at_utc: "2026-11-08T06:55:20.455176Z"
+  last_heartbeat_at_utc: "2026-11-08T08:09:01.6429603Z"
+  last_effective_progress_at_utc: "2026-11-08T07:18:01.1880032Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -109,13 +109,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T04:27:54.7473650Z"
-last_progress_at_utc: "2026-11-08T04:27:54.7473650Z"
-last_heartbeat_at_utc: "2026-11-08T04:27:54.7473650Z"
-latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
+updated_at_utc: "2026-11-08T08:09:01.6429603Z"
+last_progress_at_utc: "2026-11-08T07:18:01.1880032Z"
+last_heartbeat_at_utc: "2026-11-08T08:09:01.6429603Z"
+latest_commit: "b99a624abf3906bd400f0bda9e08ece1b5a6b95a"
 latest_pr: null
-current_task: "Directive07 configurable local RTL development delivery completed; A0 existing evidence mapped per ID."
-next_action: "Use the configured local task entry. Source transfer is not a task or blocker under Directive07."
+current_task: "Directive09: implement explicit IP success completion and capture native closure/restart provenance."
+next_action: "Implement A0-09 thin success transition; verify A0-13 durable work and explicit next invocation recovery without unattended service."
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -215,7 +215,7 @@ external_coding_agent:
   input_zip_baseline_sha: efe183b726de8392371b4271bb57ea5cf3d76f2b
   input_zip_sha256: 9ceeaa748872bbe77c5a1b61480a343266a753a9f1d3a52c40b71abb369eefdc
   local_workspace_state: ACTIVE
-  local_git_commit: "8f084edc124569e14f7f3ba21d2e8ea70347100c"
+  local_git_commit: "b99a624abf3906bd400f0bda9e08ece1b5a6b95a"
   code_artifact_state: PREPARED_LOCAL
   code_artifact_access: LOCAL_WORKSPACE_ONLY
   artifact_transfer_state: UNAVAILABLE
@@ -590,4 +590,11 @@ A0-13 native tool provenance limitation: original full-round environment fingerp
 
 
 Independent reviewer /root/directive07_review: PARTIAL EVIDENCE,16 LOCAL_EVIDENCE_VERIFIED, A0-09/A0-13 NEEDS_EVIDENCE. All18 raw log digests/commits/ordered timestamps and canonical environment bytes validated; historical results unmodified. Review JSON SHA256 0666a01d451578e76a7184edc29e8661ab64357e71bf327403ebfcd4068f2ebc. Local bundle D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive08-A0-b99a624.zip,1805661 bytes,SHA256 29b4ea95de2b3a1dd3e2e5055c9ce5c87fdddd7d9935cc50dcc234663e5e3073. Includes exact source archive/local Git history,18 raw logs/environment/report,separate native correction,independent reviewer mapping,and preserved real DEV bundle. Local-only delivery PREPARED_LOCAL; no external transfer task. Local A0 gate remains OPEN.
+
+
+
+## Coding Agent Directive09 ACK
+
+SF-DIR-20261108-09 acknowledged at 2026-11-08T08:09:01.6429603Z. ACTIVE_SESSION_ONLY. G0 OPEN. Two scoped implementation/evidence tasks only. Existing16 verified evidence and both real EDA runs preserved. Heartbeat/updated_at refreshed to current observation; effective-progress machine fields now reflect the prior completed Directive08 evidence checkpoint rather than this heartbeat. No background service, scheduler, new control plane, remote source transfer or policy changes. Native closure evidence will distinguish persistence, next invocation recovery and unproven unattended operation.
+
 
