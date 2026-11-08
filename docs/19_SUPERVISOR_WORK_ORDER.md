@@ -1,16 +1,18 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261108-10**
+> **DIRECTIVE_ID: SF-DIR-20261108-11**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-08T09:59:00Z**
+> **UPDATED_AT_UTC: 2026-11-08T11:48:03Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
+> **CURRENT MISSION PRIORITY: 全部功能實作優先；只做妨礙交付或安全邊界的最小檢查。請直接依 §2.12 執行，不要等待逐 Gate 的正式驗收。**
+
 
 ## 0. 任務與角色
 
@@ -148,6 +150,31 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 6. **本輪交付與自主接續。** Local 提供可啟動的開發版、README 重現步驟、固定 Local Git SHA、Source+Evidence ZIP/Patch 及 SHA256；在 Sync 寫入本輪實際完成功能、實際測試及 Mock 邊界、last_effective_progress、heartbeat、Gate 狀態、具體下一動作。Local-only 即為本輪交付，不要求遠端 Source/Integrator/PR；artifact_transfer_state=UNAVAILABLE 只作事實，不列為阻礙。若 G1 所有適用正式契約有原始證據才標 Local Gate 完成並自主轉 G2；否則標部分完成，持續執行合法的 G2/G3 最小整合前置工作，不等待 Supervisor 再次分派。
 7. **停止條件與升級。** 相同失敗簽章最多三次有界修復；遇到 AuthZ、安全、權限、配額、重大架構或正式 Gate 變更，保留原限制並在 Sync 提出精確人工決策，不能自行擴權。活躍 Session 每 15 分鐘輪詢本文件並更新真實 Heartbeat，Gate 轉換立即回報；無工程進展不得刷新 last_effective_progress。
 
+
+### 2.12 Directive 11：全部功能實作優先，測試縮減至不妨礙功能交付的最小集合（2026-11-08）
+
+**授權來源與最高優先任務：** 使用者明確要求「先全部做完全部的實作，測試只做最小部分，不妨礙功能交付就不做測試」。立即停止以局部 Gate PASS、反覆 Reviewer、補齊環境指紋、測試矩陣、文件整備為當前主要目標的開發方式。**從此 Directive 起，核心目標是把 v3.1 已定義的功能範圍一次實作完成並整合為可操作的 Local DEVELOPMENT VERSION。** 本節在本輪優先順序、轉段和最小測試策略上優先於 §2.8–2.11 與 §3 的先驗收再轉段語句；其餘安全、權限、架構與正式驗收要求不變。
+
+**立即執行規則（不得等待 Supervisor 再分派）：**
+1. **ACK 並接續本地實作。** 活躍 Session 讀到 `SF-DIR-20261108-11` 後在根目錄 Sync Web Edit 寫入 last_seen_directive_id、ACK 時間與實際狀態。從既有 Local `9b81128454cbd148c19e2de5940376f177a05e63` 和工作樹開始，先核對當前真正存在的能力，再直接寫缺少的功能。不要重建 Repo、新專案、重做 A0、重下載工具或重跑歷史測試。
+2. **一次涵蓋所有未完成的實作，不以正式 Case 驗收當作開發依賴。** 將 G1–G7 的實作視為一個持續工程 Mission，可按功能依賴順序開發且跨 Gate 進行；**G1/G2 等 Formal Gate 未 PASS，不得阻止繼續實作後續功能**。但不得將「實作已完成」寫成「正式 Gate 已通過」。唯一有效終點是各項原定可執行功能均已實作與整合，未完成的真實依賴明確列出。
+3. **完整實作清單，禁止停在 Mock：**
+   - **G1 Runtime / A0X：** Requirement、Candidate 與 Branch Registry 真實持久化；Owner Role 與多個 Owner Instance 完全分離；Candidate-scoped Work Routing、Durable Fan-out/Fan-in、Lease Epoch、Quota、Lineage DAG、Crash Replay/Checkpoint、失敗隔離及可恢復的 terminal lifecycle。至少能建立同 Requirement 下多個可辨識 Owner、Candidate 與 Branch，並真正分派工作；Mock Registry 不能冒充完工。
+   - **G2 Harness / MCP：** 以既有 AuthZ、Scope、typed tools、Skills/MCP 與 Session Adapter，接上本地 Native Codex，並完成架構所要求的 Claude Code 相容接口、換裝/恢復/通知處理；工具或帳號在現場不可用時可交付實作與可替換 Adapter，明確標未實際執行，不得偽造成功。
+   - **G3 EDA：** 以已可執行 Icarus/VVP/Yosys 的真實 EDA Profile，完成可配置 RTL 修改、模擬、必要 Formal 流程接口、Synthesis、原始 Log/Version/SHA、Golden Model、Environment Owner、候選個別 Evidence 和可替換的商業 EDA Provider Contract；不得假造未執行之商用工具或 Formal 結果。
+   - **G4 多 Owner / Branch：** 真正的 Local Git Branch/Worktree 隔離、同 Role 多個 Owner Instance、不同 Candidate 的 real defect→edit→verify、Peer/Lease/Wakeup/Recovery。Coding Agent 的本地 Git 不代表 GitHub Push 權限。
+   - **G5 Parallel Exploration / Merge：** 同 Requirement 的 performance、low_power、area 三條 Branch/Owner 流程、至少一條 Nested Fork、各 Candidate 專屬 EDA/Synthesis/PPA Evidence、可重現 Pareto Selection、可稽核 Merge Conflict/Decision，以及 Merge 後以新 SHA 執行 ReGate 的完整實作。可合法取得的工具數據才算 Real PPA；Power 缺乏有效來源時標 INCOMPARABLE 並讓流程可操作，不能捏造數值。
+   - **G6 可觀測性 / UI：** Event Journal/Replay、Dashboard/API 的 Owner/Branch/Candidate DAG、Status/成本/決策/Evidence Trace、失敗候選保留、PDCA 與通知鏈路，使使用者能看見系統實際執行與下一動作。
+   - **G7 自主運作 / 韌性 / Governance：** Existing Authorized Control Plane 內的 Crash Recovery、No-progress Watchdog、資源公平、Quota、Scope/AuthZ、安全拒絕與故障處置，支援可中斷、可接續、不重複副作用的 Local Runtime；不得私設未授權 Windows Service、長駐背景守護者、外部連線或權限擴張。
+4. **測試策略立即變更為 MINIMAL DELIVERY-BLOCKING ONLY。** 開發每個功能時只做讓下一個功能能整合的最小檢查，例如必要的匯入/編譯、啟動檢查、明顯合約錯誤、關鍵資料損壞/越權風險檢查。若測試失敗會直接阻斷功能完成，才作最小修復與重試。**不為了提高測試數或覆蓋率而新增測試；不重跑未受影響模組、全套 80 案、大型回歸、每功能獨立 Reviewer 或多輪報告。** 各功能整合完畢後，執行一次有界的最小完整 E2E Smoke，確認 Requirement→多 Owner/Branch→真實 EDA→候選選擇→Merge/ReGate→Dashboard/Event Trace 的主路徑可以啟動與前進；若這項 Smoke 失敗且阻斷產品操作，只修正阻斷缺陷。安全/授權/資料完整性已知的致命問題不能被測試策略忽略。
+5. **保留 80 案正式驗收規格，但不在本輪以通過它們為交付先決條件。** docs/09 的 A0–A6 60 案與 docs/15/contracts 的 E01–E20 20 案以及 G0–G7 的 Formal PASS 條件原封不動。未真正執行的 Case 仍為 NOT_RUN；未驗證的功能標 `IMPLEMENTED_UNVERIFIED`，完成最小串接後可標 `INTEGRATED_SMOKE_PASS`（需可核對 Log）；只有符合原 Case 證據門檻才可標 `FORMAL_PASS`。本輪目標可達 `ALL_FUNCTIONS_IMPLEMENTED_LOCAL; FORMAL_ACCEPTANCE_PENDING`，不得把它寫成 Release Ready、80/80 PASS 或遠端整合。
+6. **阻礙處理以完成所有可做功能為準。** 相同具體故障簽章最多三次有界修復，仍無法解決就記錄並切換其他未完成功能，不要持續困在同一測試或等待工具。工具授權、商業 EDA、外部模型不可用時實作明確的 Provider Contract 與 Local 可用路徑，誠實標示真實執行缺口；不得自行降低安全與准入條件。對於能在現有架構/權限內完成的功能，不得以「待人工核准」無限擱置。
+7. **進度回報只量實作完成度。** 在 Coding Agent 的 Sync 中維護 `implementation_inventory`：每個 G1–G7 功能的 `IMPLEMENTED / PARTIAL / NOT_IMPLEMENTED / EXTERNAL_DEPENDENCY`、Local path/module、Local SHA、具體入口、上下游依賴、實際可運作範圍、剩餘缺口與 next executable action；再以一條 `implementation_remaining` 明列尚未實作功能。Heartbeats 在活躍 Session 維持原規則，只有新增實作、消除真實整合阻礙或完成可用工作鏈才算有效進展。禁止把測試數、Review 數量、Sync Commits 算成完成比例。
+8. **交付收斂。** 以同一既有 Local Workspace 持續完成剩餘功能。最後交付可操作的 Local DEVELOPMENT VERSION、單一最小啟動/重現方式、功能清單、已知限制、來源與 Evidence 固定 Local SHA、ZIP/Patch SHA256，必要的 Smoke Logs；不要求無法執行的 GitHub Source Push、遠端 PR、Integrator、Artifact Transfer。Local-only 是本輪授權交付邊界，未有合法 bytes 傳遞時保持 `artifact_transfer_state=UNAVAILABLE` 且不視為開發阻礙。
+9. **停止/回報規則。** 不因某一 Gate 未驗收、某個非阻斷測試未跑或 Reviewer 缺少簽核就停工。直到所有授權範圍內功能均已實作才把 Mission Implementation 標完成；若存在不能自主解除的真正權限/架構決策，精確記錄受限功能，繼續其他功能。每次重要功能群完成或阻礙改變時回報 Sync，15 分鐘輪詢只在 Session 活躍時適用。Supervisor 不會用新增測試與文件整理替代工程前進。
+
+**指令效力：** 本節是最新的 User-directed 工作優先順序覆蓋。任何先前文字若要求「每個 Gate 先全部測試驗收才准寫下一 Gate 的功能」、「每項功能必須先 Reviewer 才能繼續」，於本輪 Implementation Mission 不適用；**原有規格、80 項 Formal Acceptance、G0–G7 名稱與正式 Release 要求繼續保留，並未撤銷。**
+
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
 | Gate | 工作範圍 | 本地完成證據與自動移轉 |
@@ -236,3 +263,6 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 
 **本版更新原因／下一步（SF-DIR-20261108-10，2026-11-08T09:59:00Z）**：使用者要求明確發布下一輪可執行指令；Sync 已回報 A0 本地 18/18 證據閉合且 G1 局部單元已有 Mock/Reviewer 證據，但真正 Domain Owner Runtime 尚未整合驗收。依 §2.11 優先完成真實 Owner→Native Harness→RTL→EDA→Evidence→Completion，驗證有限恢復及同 Role 多 Instance 的實際隔離，交付 Local 可重現版本並自主推進。原正式 80 項、G0–G7、安全與 Local-only 權限均維持。
+
+
+**本版更新原因／下一步（SF-DIR-20261108-11，2026-11-08T11:48:03Z）**：使用者明確要求「先全部做完全部的實作，測試只做最小部分，不妨礙功能交付就不做測試」。Coding Agent 下一次活躍輪詢立即 ACK，改為一次完成 G1–G7 功能實作並依 §2.12 的具體清單連續整合；只保留真正阻斷交付的最小測試與主流程 Smoke，不做非必要回歸或反覆 Reviewer，正式 80 案及安全權限不降低且不虛報 PASS。Local-only 交付邊界不變。
