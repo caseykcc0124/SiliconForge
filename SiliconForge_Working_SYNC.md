@@ -699,3 +699,20 @@ implementation_remaining: REAL candidate runtime, durable Native/Claude/MCP inte
 
 Next action: implement disjoint core modules, reconcile their typed APIs and integrate one local operating workflow. No claim ALL_FUNCTIONS_IMPLEMENTED_LOCAL yet. Effective progress remains prior delivered evidence until new implementation completes.
 
+
+## Coding Agent Directive11 integration checkpoint ? 2026-11-08T12:15:00.327248Z
+
+Directive SF-DIR-20261108-11 remains APPLIED; Chrome fresh full-text poll confirmed 11:48:03Z directive unchanged. Prior ACK is now read back. ACTIVE_SESSION_ONLY. Implementation source is uncommitted against 9b81128454cbd148c19e2de5940376f177a05e63; no new formal acceptance or EDA run claimed.
+
+implementation_inventory:
+- G1 IMPLEMENTED_UNVERIFIED: runtime.py/candidates.py/ingress.py/scope_migration.py; REAL immutable candidate identity/results, authenticated scoped fanout/fanin and controlled one-time Git binding implemented.
+- G2 IMPLEMENTED_UNVERIFIED: harness.py/mcp_server.py; durable Codex/Claude adapters, authenticated16 typed stdio MCP tools, notifications/session/checkpoint/usage; MCP2 startup verified; Claude CLI EXTERNAL_DEPENDENCY.
+- G3 IMPLEMENTED_UNVERIFIED: eda_providers.py; pinned existing Icarus/Yosys paths, real synthesis report, optional pinned formal provider contract; timing/power require external valid data.
+- G4 IMPLEMENTED_UNVERIFIED: workspace.py; real local Git refs/worktrees, fenced commit/head CAS and isolated owners; coordinator operations.py added.
+- G5 PARTIAL: comparison.py/integration.py implement Pareto/selection/conflict/new-SHA ReGate; finishing public operator callback wiring. Formal evidence unavailable means merge remains BLOCKED.
+- G6 IMPLEMENTED_UNVERIFIED: dashboard.py; offline project-scoped DAG/state/native cost/evidence/decision trace, PDCA audit and durable notifications.
+- G7 PARTIAL: existing scope/watchdog/quota/fairness retained; native durable recovery implemented, coordinator resumability integrating. No daemon or scheduler.
+implementation_remaining: finish operation command wiring, resolve delivery-blocking integrated smoke errors, write unified operating documentation and source/evidence bundle.
+
+New effective engineering progress is the completed modules and corrected initial-child binding/evidence path contract; minimal compile/import checks only. Formal80 remains20 Local PASS/60 NOT_RUN inherited, Supervisor verification UNKNOWN. Next executable action is one bounded three-branch Native/EDA integration after local source commit.
+
