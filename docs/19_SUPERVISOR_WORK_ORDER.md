@@ -1,10 +1,10 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261108-05**
+> **DIRECTIVE_ID: SF-DIR-20261108-06**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-08T05:50:43Z**
+> **UPDATED_AT_UTC: 2026-11-08T06:27:19Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
@@ -92,6 +92,18 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 4. **完成完整可信工具驗證後才實際執行 EDA：** 檢查原始工具包 License、解壓、`iverilog`／`verilator`／`yosys` 可執行版本和實際 PATH/Profile，使用已完成的 Local `8f084ed` APB CRC32 fixture/薄型 Adapter，先實際跑出 baseline FAIL，再透過已授權 Native Codex/Claude 修復 RTL，執行 Simulation PASS、能跑的 Yosys Synthesis，記錄實際版本、命令、exit codes、Raw Logs、Local Git SHA 和證據檔 SHA256。必要的測試與安全 Gate 保留；**不得再擴張測試框架或重新建大型抽象層**。與商業 EDA 相容只保留既有輕量 Provider/Profile 設計。
 5. **成果回報與權限邊界：** 於根目錄 Sync 以 GitHub Web Edit 回報最後看到的 Directive ID/ACK、分片是否下載完整、分卷數、雜湊結果、`eda_provider`/版本、實際 RTL↔EDA 結果、最新版 Local SHA/交付包及必要 blocker。保留 `DEVELOPMENT VERSION / 非量產版` 標籤。這個 GitHub Release 是**工具配送路徑**，不能擅自改寫 `artifact_transfer_state` 為專案 Source Bundle 已可傳遞；`remote_source_integrated_commit` 沒有實際 Integrator Commit 仍為 null。不得以 GitHub Sync/Release/Mock CI 當正式 80 Required Case PASS。若 Coding Agent Session 不活躍，只有下次啟動並輪詢指引後才能接續，Supervisor 不得假稱遠端 Agent 已被強制喚醒。
 
+### 2.7 開發版下一階段：固定 Demo 已跑通，收斂為可重複使用的功能（2026-11-08）
+
+**有根據的新進展：** Coding Agent 在根目錄 Sync 回報，已 ACK Directive 05，59 卷 OSS CAD Suite 於本機解壓並可執行 Icarus/VVP/Yosys；本地 H0 `8f084ed` 的 CRC32 缺陷重現為預期 FAIL，Native Codex 實際修改 RTL 產生 H1 `21ec027012bab629561a53c02b64b49d26499b91`，修復後模擬 PASS、Yosys 結構檢查 PASS，第三方於 Local Git Archive 回報獨立重現；開發包 `SiliconForge-DEV-REAL-21ec027.zip` SHA256 `81fbb9b2c13db4e5a19f6cdb091d2e3b68fac4da961c05198864e1d95082bb7b`，**仍僅 LOCAL_WORKSPACE_ONLY，Supervisor 未取得原始碼/Logs 重驗，遠端 Source 未整合**。最小單次 Demo 已有實體成果，請勿重新追求額外單元測試數量，亦不得把固定 Demo 當多 Owner／全流程正式驗收。
+
+**下個可執行工作（使用現有權限與架構，不新增大型框架）：**
+1. **由固定示範改為可設定的開發工作流程。** 使用目前既有 Runtime、Native Codex/Claude Harness、精簡 OSS EDA Adapter 與已合法可用的工具，提供可重複的最小任務入口。把 Requirement／Spec、RTL 檔路徑、Testbench／Golden、工作目錄、EDA Profile 與必要輸出位置做為明確輸入，避免只對硬編碼 `SOFTWARE_CLEAR_CARRYOVER` 範例成功。至少在本地用**另一個實際可觀測的 RTL 故障／修復情境**展示：接受任務 → 產生修復 → Simulation 檢查 → 保存源碼版本、原始 Logs、結果。以功能可重用性為目標，非新加測試框架或擴建通用調度平台。若既有 API 已足夠，只需寫最薄的實際入口／操作指南，不進行重構。
+2. **逐步連接真正 Domain Owner 使用流程。** 先完成單一真實任務的「Request／Owner → Native Harness → RTL Edit → EDA → Evidence → Runtime Completion」可重現鏈路；若仍使用 `MODE_MOCK` Branch Head 或 unauthenticated MCP development stub，於報告標示確切 Mock 範圍，不能說已完成多 Owner、正式 Authenticated Gateway 或 A1–A3。之後才進入同 Role 多 Instance、Branch DAG、PPA、Merge/ReGate 的原有 G4–G7 目標。
+3. **只做必要功能驗證。** 保存一個乾淨 Local Snapshot、版本／工具簽章、成功與失敗的原始輸出及 Reviewer 重現方法；保留原來已有的 80 Required Cases 與安全 Gate，對此次未動到的模組不無端擴充回歸。完成真正能重複執行的功能才記 `last_effective_progress`，測試數、模型活動和 Heartbeat 不是交付。
+4. **立刻區分工具配送與專案成果交付。** GitHub Release 的 59 個 EDA Assets 僅能證明工具送達，不能當作 Coding Agent 的開發 Source Bundle 已送達。請在 Sync 記錄已完成的本地開發版 ZIP、大小、SHA256、完整目錄、重現命令及所需 Integrator 操作，並具體回報目前 `artifact_transfer_state=UNAVAILABLE` 的受限點；**不得自行嘗試 Remote Git、PR、Binary Upload、外傳或增權**。沒有可供 Integrator 存取的檔案及 GitHub 真正 Source Commit，`DEV_DELIVERED_REMOTE` 與正式 CI/80 Cases 都不能晉級。
+5. **保留供應鏈事實邊界。** 目前 Agent 自述 59 卷本地可執行，但依 Sync 原始官方 `.tgz` SHA256 並未重驗，只有分卷最末 ZIP 的 Profile pin。應在交付中照實標示 `OFFICIAL_ORIGINAL_ARCHIVE_NOT_VERIFIED`，無原始字節證據不得宣稱官方 Archive 完整 Hash 已核對；如不需新授權且能從現有文件/工具核對，可補實際驗證，不得宣稱自己執行過未實作的檢查。不得降低安全要求或正式驗收證據門檻。
+6. **停止條件與報告。** 若第二個實際工作流程被外部權限、工具、Source 交付或必要安全條件卡住，有限次重現並回報可複製的錯誤與確切人工核可需求。可持續處理其他有直接開發版使用價值的工作；不反覆新增抽象層或測試以填補阻礙。每次本地交付均標 `DEVELOPMENT VERSION / 非量產版`、`DEV_USABLE_E2E_LOCAL`（僅有確實可重現的範圍）及 `DEV_LOCAL_ONLY_PENDING_TRANSFER`（若仍受限）。
+
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
 | Gate | 工作範圍 | 本地完成證據與自動移轉 |
@@ -168,4 +180,6 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 **前版更新原因／下一步（SF-DIR-20261108-04，2026-11-08T05:13:06Z）**：最新 Sync 證實官方 OSS CAD Suite 577 MB 下載兩度停滯，形成 G2/G3 最小實際 EDA 功能的具體阻礙。Coding Agent 收到新 Directive 後，依 §2.5 停止無效重試；在既有授權內嘗試可信且更小的開源 RTL Simulation 執行檔，能執行則先跑真實 FAIL/修復/PASS，不能執行則留存證據並明確提出所需的人類離線工具傳遞協助，不再擴張 G1 框架或重複增加測試。原 G0–G7、80 項、工具與傳輸 Policy 不變。
 
-**本版更新原因／下一步（SF-DIR-20261108-05，2026-11-08T05:50:43Z）**：使用者已將 59 個 OSS CAD Suite 的完整分卷公開至正式 SiliconForge GitHub Release，先前 577 MB 單檔下載阻礙有新的合法分片替代路徑。Coding Agent 在下次活躍輪詢後按 §2.6 先下載並驗證末卷 `.zip` 與 `.z01`，能下載才完成 `.z01` 至 `.z58` 全部 59 份、重組核對官方原始 SHA256、實際執行 APB CRC32 Native Harness→RTL→EDA 最小閉環；否則提交具體下載／解壓阻礙與證據。保留現有 G0–G7、正式 80 案、安全與 Local Source Transfer 邊界，禁止以活動數或額外框架取代交付。
+**前版更新原因／下一步（SF-DIR-20261108-05，2026-11-08T05:50:43Z）**：使用者已將 59 個 OSS CAD Suite 的完整分卷公開至正式 SiliconForge GitHub Release，先前 577 MB 單檔下載阻礙有新的合法分片替代路徑。Coding Agent 在下次活躍輪詢後按 §2.6 先下載並驗證末卷 `.zip` 與 `.z01`，能下載才完成 `.z01` 至 `.z58` 全部 59 份、重組核對官方原始 SHA256、實際執行 APB CRC32 Native Harness→RTL→EDA 最小閉環；否則提交具體下載／解壓阻礙與證據。保留現有 G0–G7、正式 80 案、安全與 Local Source Transfer 邊界，禁止以活動數或額外框架取代交付。
+
+**本版更新原因／下一步（SF-DIR-20261108-06，2026-11-08T06:27:19Z）**：Sync 新增可信的本地開發版事件：Icarus/Yosys 真正執行、Native Codex 修復 RTL、固定工作任務本地 E2E PASS，Local Source Bundle 已製作但仍無法取得遠端驗證。依 §2.7 優先讓這條已跑通的 Runtime→Harness→RTL→EDA 流程可用於另一項實際工作輸入，建立可重複的開發版入口與真實證據，並具體呈報 Source Bundle 交付阻礙，不新增框架或無界回歸。保留 G0–G7、60+20 正式驗收、原權限與正式發布/安全政策。
