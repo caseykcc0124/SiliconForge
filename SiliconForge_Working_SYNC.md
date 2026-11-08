@@ -42,11 +42,21 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: SF-DIR-20261108-01
-  directive_poll_at_utc: "2026-11-08T02:20:19.0173000Z"
-  directive_ack_at_utc: "2026-11-08T02:21:41.0542368Z"
+  last_seen_directive_id: SF-DIR-20261108-02
+  directive_poll_at_utc: "2026-11-08T02:32:41.1810254Z"
+  directive_ack_at_utc: "2026-11-08T02:36:05.6908144Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
+  dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
+  dev_capability_state: DEV_MOCK_DEMO
+  dev_delivery_state: DEV_LOCAL_ONLY_PENDING_TRANSFER
+  dev_usable_capabilities:
+    - Existing Runtime demo actually starts with PYTHONPATH=src python -m siliconforge.demo, exit0.
+    - Native codex-cli0.166.0 gpt-6-luna read-only probe completed via configured existing provider, exit0; not RTL or A1 acceptance.
+  vertical_slice_last_run: NOT_RUN
+  remaining_mock_or_stub: Runtime demo uses mock owners and mock evidence; MCP unauthenticated development stub; no APB RTL or real EDA flow.
+  external_harness_blocker: Native model turn available; runtime-to-native RTL workflow not integrated or demonstrated.
+  real_eda_blocker: No Verilator/iverilog/Yosys found on PATH; WSL reports not installed; profiles UNPROVISIONED. No install or quota change authorized.
   active_gate: G1
   active_gate_state: ACTIVE
   G0_local_gate: CLOSED_LOCAL_WITH_INDEPENDENT_REVIEW
@@ -73,8 +83,8 @@ supervisor_coordination:
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
   blocked_items:
     - "No verified source ZIP/Patch transport to an authorized Integrator; local work continues"
-  next_executable_action: Design trusted run-bound usage accounting and parent-child charge semantics; registered-job retry remains pending.
-  last_heartbeat_at_utc: "2026-11-08T02:21:41.0542368Z"
+  next_executable_action: Package reproducible DEV_MOCK_DEMO from fixed9bb2677; native Codex probe works but EDA profile/tools unavailable. Usage/retry enhancements BACKLOG.
+  last_heartbeat_at_utc: "2026-11-08T02:36:05.6908144Z"
   last_effective_progress_at_utc: "2026-11-08T02:21:41.0542368Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -89,13 +99,13 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T02:21:41.0542368Z"
+updated_at_utc: "2026-11-08T02:36:05.6908144Z"
 last_progress_at_utc: "2026-11-08T02:21:41.0542368Z"
-last_heartbeat_at_utc: "2026-11-08T02:21:41.0542368Z"
+last_heartbeat_at_utc: "2026-11-08T02:36:05.6908144Z"
 latest_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
 latest_pr: null
-current_task: "G1 failure receipt unit locally closed at9bb2677; G1 overall ACTIVE"
-next_action: "Design trusted usage measurement and parent-child accounting without inventing missing costs or changing policy caps"
+current_task: "DEVELOPMENT VERSION / 非量產版. Usable deliverable first per SF-DIR-20261108-02; fixed9bb2677"
+next_action: "Prepare mock-only startup README, actual sample output/raw logs/source ZIP and independent clean reproduction; real EDA remains blocked"
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -250,4 +260,7 @@ external_coding_agent:
 
 
 2026-11-08T02:21:41.0542368Z. Failure receipt unit locally closed at9bb26774a36fdb8601bee32a40d67f39188d6978 after independent final correctness and comments review. Clean137/137 suite and18/18 original A0 IDs PASS; source/per-ID log and seven reviewer hashes match frozen bytes. F1 candidate sibling block projection and F2 exactowner replay binding corrected with evidence. Branch-level digest streak reaches pinned3 atomically; blocked jobs/peers settle narrowly without new work or fabricated candidate results. Immutable prior DB fixture upgrade preserves old results; historical unpinned noncandidate callback explicitly observational. Tested-byte ZIP SHA256b2507828ef87f8b861b10cdd70d57f36e170120ca1e2ae72c255e8f64a7e64a1; main ff-only integrated. Bundle NOT_TRANSFERRED, transfer UNAVAILABLE, remote source NOT_INTEGRATED. Directive actual full Chrome polls02:14:14.9255926Z and02:20:19.0173000Z unchanged; previous02:11:53.9339648 deadline missed by about141 seconds, recorded honestly without backdating. Next trusted run-bound usage accounting design and parent-child enforcement; no invented zero usage or changed caps. G1 ACTIVE; formal E/native Harness/real EDA NOT_RUN.
+
+
+2026-11-08T02:36:05.6908144Z. APPLIED updated SF-DIR-20261108-02 from full Chrome poll02:32:41.1810254Z. Preserve fixed9bb2677 and existing signed evidence; usage accounting and advanced retry moved BACKLOG before source implementation. DEVELOPMENT VERSION / 非量產版. Existing Runtime demo actually ran exit0 with raw .audit/dev-baseline-demo.log. Native Codex0.166.0 gpt-6-luna probe returned DEV_HARNESS_PROBE and exit0 using existing configuration; stdin wrapper failure corrected using argument, not a model outage. This does not prove RTL edit, MCP integration or A1. Real EDA unavailable on PATH, WSL not installed, profiles UNPROVISIONED; no install attempted. True Harness→RTL→EDA vertical slice NOT_RUN and DEV_USABLE_E2E_LOCAL not established. Next package executable DEV_MOCK_DEMO with entry commands/sample output/known limits and clean third-party reproduction. Delivery remains DEV_LOCAL_ONLY_PENDING_TRANSFER, transport UNAVAILABLE; no remote source integration or formal80-case promotion. Last frozen engineering progress remains02:21:41.0542368Z.
 
