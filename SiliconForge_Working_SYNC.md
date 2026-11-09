@@ -815,3 +815,22 @@ Bundle `D:\mtk32712\SiliconForge\deliveries\SiliconForge-Directive13-b8dd54a.zip
 
 implementation_remaining: original approved formal eligibility and physical PPA inputs/providers, then actual eligible Select/Merge/new-SHA ReGate. Unique next executable action: Environment/Design Authority supplies the approval/data listed above; existing authorized workflow can then create fresh checks under unchanged gates. No further legal local engineering step remains this session; stop without idle heartbeats or unattended claims. Last effective engineering progress is the actual delivery checkpoint2026-11-09T02:19:04.412929+00:00; this final Sync heartbeat is2026-11-09T02:20:40Z.
 
+## External Coding Agent Directive 14 local delivery (2026-11-09T03:17:11.646480+00:00)
+
+- last_seen_directive_id=SF-DIR-20261109-14; directive_application_state=APPLIED.
+- Local outcome `FRAMEWORK_ORCHESTRATION_LOCAL_E2E_REPRODUCED; EDA_FORMAL_PPA_DEFERRED`. This report records local development delivery; remote source integration remains unavailable.
+- Request `directive14-framework-20261109-01`; Task `e9033b14-3dd4-4d28-ac8e-cdfa1b7bf0b0`. Two distinct existing RTL Owner Instances completed actual Native Codex gpt-6-luna medium turns A `d2da637c-ba2f-404e-88bd-6535ebe6a792`, B `d157f7fc-ba66-4a58-aa4b-ab7df0179330`, exit 0. Both artifacts accepted separately before Task COMPLETED. No multi-model claim.
+- Deterministic A completion -> durable event -> automatic B handoff -> result acceptance; actual pre-B short-lease pause and new process recovery; unknown auth, wrong-owner ACK, stale ACK rejected; duplicate request left the same two completed turns. 13 targeted integration/refusal/projection checks pass; compile/import pass. No Formal80, EDA, PPA, review panel, daemon or scheduler run.
+- Dashboard saved from the same EventStore with RUNNING A/B, WAITING and final COMPLETED. Historical paused projection was rebuilt from captured raw records after correcting replay state. Direct Chrome observation is now complete; the actual page displays Task COMPLETED and distinct A/B WorkItems ACCEPTED.
+- Local source SHA `f9130c7b15cca1cd71fe15caf256b8ca7bb86c26`. Bundle `D:\mtk32712\SiliconForge\deliveries\SiliconForge-Directive14-f9130c7.zip`, 2155367 bytes, SHA256 `010545f41bb58ec9654ad509a907be9156d3bc56f175bf6e7346e5d7f2898e43`. Includes source, local Git history, before/final SQLite, model raw logs, outputs, failure logs and verification evidence. Existing Formal/PPA/candidate/comparison/selection/merge records and root AGENTS.md unchanged.
+- Total native tokens 167083, including 114161 cached input tokens. Three bounded blocking repairs completed without repeating A; subsequent Dashboard-only correction did not execute models or alter Runtime events.
+- artifact_transfer_state=UNAVAILABLE; remote_source_integrated_commit=null. Next executable action: verify this Sync Web commit against its exact SHA. No concrete remaining reliability defect is identified for another engineering task. No further model/EDA work is required for this local task. No unattended Always-on claim.
+
+Continuation UI observation at 2026-11-09T05:35:29.888212+00:00. Source and Native results unchanged; no repeat model/EDA run. Original source/evidence bundle remains unchanged.
+
+
+Publication continuation: directive_poll_at_utc=2026-11-09T06:46:05.403962+00:00; directive_ack_at_utc=2026-11-09T06:46:05.403962+00:00; last_heartbeat_at_utc=2026-11-09T06:46:05.403962+00:00; polling_mode=ACTIVE_SESSION_ONLY; last_effective_progress_at_utc=2026-11-09T05:35:29.888212+00:00. Current gate: Directive14 local framework demo COMPLETED; formal EDA gates remain deferred.
+
+Executed smoke command: `python .audit\directive14-live\run_smoke.py` (already completed; do not repeat against completed Task). Evidence: `.audit\directive14-live\verification.json`, `runtime-before.sqlite`, `runtime-final.sqlite`, `DELIVERY.md`. Causal chain: A completion `1b631331-e597-45c5-b8cc-ad7636ce4d53` -> B input `1eebd59d-180d-4c0b-b5b1-4867c03e6553` -> B completion `ce4c2f6a-5c50-408d-a81e-fa4e915437ab`.
+
+Chrome observation addendum: `SiliconForge-Directive14-UI-Addendum-20261109T053529Z.zip`, 57289 bytes, SHA256 `3a558bdc03930a7f3648f74d94730bc5d6722fa3da60438b4a6d462335d5c402`; original source/evidence ZIP is immutable. DEVELOPMENT VERSION, local-only delivery; no release claim.
