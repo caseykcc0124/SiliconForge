@@ -42,22 +42,22 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: SF-DIR-20261108-11
-  directive_poll_at_utc: "2026-11-08T11:55:11.0877027Z"
-  directive_ack_at_utc: "2026-11-08T11:55:11.0877027Z"
+  last_seen_directive_id: "SF-DIR-20261108-12"
+  directive_poll_at_utc: "2026-11-09T01:56:44Z"
+  directive_ack_at_utc: "2026-11-09T01:56:44Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: "DEV_LOCAL_ONLY_PENDING_TRANSFER; TWO_REAL_OWNER_CHAINS_ON_029c87c; FINAL_LABEL_FIX_NOT_REAL_RERUN"
-  dev_delivery_state: DEV_LOCAL_ONLY_PENDING_TRANSFER
+  dev_capability_state: "LOCAL_REAL_RUNTIME_AND_NATIVE_CRC32_EQUIVALENCE; PHYSICAL_PPA_DEPENDENCIES"
+  dev_delivery_state: "LOCAL_IMPLEMENTATION_DELIVERED_WITH_EXTERNAL_GATE_DEPENDENCIES"
   dev_usable_capabilities:
     - Manifest-driven fixed-argv Runtime to native RTL-only repair, actual Icarus simulation and Yosys smoke.
     - Default software-clear task and distinct configured polynomial fault demonstrated; one scoped owner per invocation.
   dev_demo_reproduction: "Two real Owner executions reviewed from raw logs/snapshots; next-process status/resume and repeat idempotence executed. No independent clean EDA rerun this round."
-  dev_bundle_sha256: "c5287cb5d9838749fd66fa117095bd25e945deb51b2442f2bb2d55d23cc3e07b"
-  dev_bundle_contents: "Final source/history, both real source H0/H1/patches, Typed input/output, process logs and DB snapshots, checkpoint/causal trace, one affected regression, original80 map, single independent review, preserved09 A0 bundle."
+  dev_bundle_sha256: "890f1e4b669cedcfb0e2d2526578ad3d7e6703d54b274f37b873a86ce6328182"
+  dev_bundle_contents: "Source35a4d55/history, SQLite snapshot, native proof and wrong-polynomial rejection, gate logs and exact dependency records."
   vertical_slice_last_run: "Two sequential RTL scopes on029c87c:659a6762 baseline FAIL/native RTL repair/Icarus and Yosys PASS, exit3 then PID22688 resume COMPLETED; fa1268e5 normal COMPLETED. Final9b81128 corrects inherited Directive07 payload label, no new real run."
-  remaining_mock_or_stub: "MODE_MOCK registry branch heads; candidate_id=null REAL_CANDIDATE_NOT_REGISTERED; no three-instance overlap/PPA/formal/full A1-A6 or E gates."
+  remaining_mock_or_stub: "Formal80 pending; existing completed formal BLOCKED immutable; reference-relative proof requires approved profile/fresh candidate run; physical PPA absent."
   external_harness_blocker: "NONE_FOR_THIS_CONFIGURED_LOCAL_TASK; prompt command restrictions are advisory, native used readonly Git and Python CRC sanity; controller EDA/diff gates provide actual outcome."
   real_eda_blocker: "NONE_FOR_THIS_LOCAL_SLICE"
   oss_eda_install_state: PORTABLE_EXTRACTED_ACTUAL_TOOLS_EXECUTED
@@ -71,8 +71,8 @@ supervisor_coordination:
   a0_local_gate: CLOSED_WITH_EVIDENCE
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
-  active_gate: "G1_RUNTIME_WITH_G2_G3_REAL_INTEGRATION"
-  active_gate_state: "G1_PARTIAL_LOCAL"
+  active_gate: "G3_G5_G7_ORIGINAL_PROOF_PPA_SELECT_MERGE_REGATE"
+  active_gate_state: "BLOCKED_WITH_EXTERNAL_GATE_DEPENDENCIES"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -80,10 +80,10 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "9b81128454cbd148c19e2de5940376f177a05e63"
+  local_git_commit: "35a4d5582bc31d97f6c5ccb691701add43358e34"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "c5287cb5d9838749fd66fa117095bd25e945deb51b2442f2bb2d55d23cc3e07b"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive10-OwnerChain-9b81128.zip"
+  local_artifact_sha256: "890f1e4b669cedcfb0e2d2526578ad3d7e6703d54b274f37b873a86ce6328182"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive12-35a4d55.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
@@ -95,10 +95,12 @@ supervisor_coordination:
     - "Frozen c39672e: 127/127 stdlib tests, including 8 candidate, 8 lifecycle and prior 21 A0X MOCK checks"
     - "Frozen c39672e: A0-01..A0-18 each PASS; clean revision, per-ID logs and source hashes verified"
     - "Independent Luna exact c39672e command signoff; canonical envelope, replay scope, qualified fork, actor identity and legacy migration repaired; no remaining high/medium issue"
-  blocked_items: []
-  next_executable_action: "Use completed owner checkpoint/evidence integration as G2/G3 baseline; address original authenticated Harness contracts without new service or control plane."
-  last_heartbeat_at_utc: "2026-11-08T11:55:11.0877027Z"
-  last_effective_progress_at_utc: "2026-11-08T10:33:32.207012Z"
+  blocked_items:
+    - "Approved formal acceptance profile/fresh authenticated run absent"
+    - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
+  next_executable_action: "Provide approved formal profile/fresh authenticated candidate run, technology library/corner, SDC/STA and power activity/provider; then unchanged compare/select/merge/regate."
+  last_heartbeat_at_utc: "2026-11-09T01:56:44Z"
+  last_effective_progress_at_utc: "2026-11-08T13:13:15.874475Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -112,12 +114,12 @@ coding_agent_transport:
 mission_state: ACTIVE
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-08T11:55:11.0877027Z"
-last_progress_at_utc: "2026-11-08T10:33:32.207012Z"
-last_heartbeat_at_utc: "2026-11-08T11:55:11.0877027Z"
-latest_commit: "9b81128454cbd148c19e2de5940376f177a05e63"
+updated_at_utc: "2026-11-09T01:56:44Z"
+last_progress_at_utc: "2026-11-08T13:13:15.874475Z"
+last_heartbeat_at_utc: "2026-11-09T01:56:44Z"
+latest_commit: "35a4d5582bc31d97f6c5ccb691701add43358e34"
 latest_pr: null
-current_task: "Directive11 full v3.1 implementation mission; minimal delivery-blocking checks only."
+current_task: "Directive12 delivered locally; original proof/PPA gates blocked; Sync recovery and ACK in this active session."
 next_action: "Continue authorized minimal G2/G3 integration from pinned source; retain real Candidate registration and original parallel gates as incomplete."
 next_action_owner: Coding Agent
 blockers: []
@@ -757,4 +759,24 @@ latest_directive11_status:
   artifact_transfer_state: UNAVAILABLE
   remote_source_integrated_commit: null
 ```
+
+
+
+## Directive12 ACK and local delivery (2026-11-08)
+
+- ACK: SF-DIR-20261108-12, ACTIVE work order 35d34af, updated 2026-11-08T12:57:08Z. Executed in ACTIVE_SESSION_ONLY.
+- Local Source SHA: 35a4d5582bc31d97f6c5ccb691701add43358e34, based on c1ee4c63ffcc33533c1f481c7bed8dda42620806. Existing branches, SQLite history/profile and root AGENTS.md retained.
+- Added tools/crc32_equivalence.py and docs/LOCAL_CRC32_PROOF.md. Set PYTHONPATH=src; run python tools/crc32_equivalence.py --worktree <clean candidate worktree> --source-sha <H1> --candidate-id <candidate> --profile <existing profile.json> --output <new evidence directory>.
+- Actual Yosys 0.70+360 proof: 66 equivalence bits proven, 0 unproven, equiv_induct step 1 holds, equiv_status -assert succeeds. Candidate e2b864d2b04ee7961ce63ec35a7a411c69f09d9f. Exact Golden function, manually specified APB reference, spec, executable/profile and raw logs are hash-bound. Common inputs/corresponding initial state; synchronous active-low reset. This is reference-relative sequential equivalence, not Formal80 acceptance. Wrong CRC32C polynomial copied outside worktree was correctly rejected. Existing immutable formal BLOCKED records were not overwritten; fresh authenticated run/profile is required before gate consumption.
+- Existing physical PPA diagnosis: no provisioned approved ASIC Liberty/corner, STA executable/profile or SDC clock/I/O constraints, or power provider/activity/workload/methodology. 186 generic cells remain generic synthesis only; physical area/timing/power UNKNOWN, comparison INCOMPARABLE.
+- Ran existing CLI compare/select once under unchanged policy. Select rejected: incomparable selection cannot include an ineligible candidate. Merge and new-SHA ReGate NOT_RUN. No policy weakening, installations, network services or historical/full80/reviewer reruns.
+- Local bundle: deliveries/SiliconForge-Directive12-35a4d55.zip, 1101215 bytes; SHA256 890f1e4b669cedcfb0e2d2526578ad3d7e6703d54b274f37b873a86ce6328182. Includes source archive/history, SQLite snapshot, SHA-bound proof, negative-control and gate logs, dependency fields and manifests. artifact_transfer_state=UNAVAILABLE is not the engineering blocker.
+- Status: LOCAL_IMPLEMENTATION_DELIVERED_WITH_EXTERNAL_GATE_DEPENDENCIES. FORMAL80_PENDING; inherited 20 local PASS / 60 NOT_RUN unchanged. No Release/Remote CI/24x7 claim.
+- implementation_remaining: approved formal acceptance profile and fresh authenticated candidate result; approved physical PPA provider/data; actual Select/Merge/new-SHA ReGate. Precise dependency records are .audit/directive12-live/dependency-report.json, with required_tool_or_input, version, purpose, existing_attempt, precise_missing_permission_or_data, smallest_safe_next_action.
+- next_executable_action: supply approved existing library/corner, SDC, STA/power profile/activity, and formal acceptance assumptions; then execute fresh candidate proof/PPA through existing authenticated flow and unchanged compare/select/merge/regate.
+- Manual provisioning/approval items: listed target technology/corner and constraints/activity/provider acceptance. No additional permission was assumed. last_effective_progress: actual proof and negative rejection, gate rejection and local bundle completed this active session.
+
+### Sync recovery 2026-11-09T01:56:44Z
+
+Chrome foreground input recovered. Re-read docs/19: Directive12 remains ACTIVE with UPDATED_AT_UTC 2026-11-08T12:57:08Z. This ACK and heartbeat reflect the resumed session; the engineering progress timestamp retains the prior dependency-record checkpoint, not an invented overnight execution.
 
