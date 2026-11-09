@@ -43,21 +43,21 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261109-13
-  directive_poll_at_utc: "2026-11-09T02:11:52.0271110Z"
+  directive_poll_at_utc: "2026-11-09T02:20:40Z"
   directive_ack_at_utc: "2026-11-09T02:11:52.0271110Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: "LOCAL_REAL_RUNTIME_AND_NATIVE_CRC32_EQUIVALENCE; PHYSICAL_PPA_DEPENDENCIES"
-  dev_delivery_state: "LOCAL_IMPLEMENTATION_DELIVERED_WITH_EXTERNAL_GATE_DEPENDENCIES"
+  dev_capability_state: "FRESH_AUTHENTICATED_REFERENCE_PROOF_INTEGRATED; FORMAL_GATE_BLOCKED"
+  dev_delivery_state: "LOCAL_PROOF_INTEGRATED; EXTERNAL_PPA_INPUT_REQUIRED; MERGE_REGATE_NOT_RUN; FORMAL_ACCEPTANCE_PROFILE_REQUIRED"
   dev_usable_capabilities:
     - Manifest-driven fixed-argv Runtime to native RTL-only repair, actual Icarus simulation and Yosys smoke.
     - Default software-clear task and distinct configured polynomial fault demonstrated; one scoped owner per invocation.
-  dev_demo_reproduction: "Two real Owner executions reviewed from raw logs/snapshots; next-process status/resume and repeat idempotence executed. No independent clean EDA rerun this round."
-  dev_bundle_sha256: "890f1e4b669cedcfb0e2d2526578ad3d7e6703d54b274f37b873a86ce6328182"
-  dev_bundle_contents: "Source35a4d55/history, SQLite snapshot, native proof and wrong-polynomial rejection, gate logs and exact dependency records."
+  dev_demo_reproduction: "One new REAL candidate/Formal job: actual native Yosys proof with SHA-bound immutable receipt; wrong Head, producer/completion scope and altered source rejected. No historical proof rerun."
+  dev_bundle_sha256: "88daf512d5d4c2e7c4595d37c251322f887874a42b3ec54b31baaf217b7a4d24"
+  dev_bundle_contents: "Source b8dd54a and candidate e2b864d archives/history, fresh proof/immutable receipt/SQLite, exact PPA dependencies and targeted refusal evidence."
   vertical_slice_last_run: "Two sequential RTL scopes on029c87c:659a6762 baseline FAIL/native RTL repair/Icarus and Yosys PASS, exit3 then PID22688 resume COMPLETED; fa1268e5 normal COMPLETED. Final9b81128 corrects inherited Directive07 payload label, no new real run."
-  remaining_mock_or_stub: "Formal80 pending; existing completed formal BLOCKED immutable; reference-relative proof requires approved profile/fresh candidate run; physical PPA absent."
+  remaining_mock_or_stub: "Formal80 pending; reference-equivalence PASS is development evidence only. Approved formal acceptance assumptions/profile and physical PPA inputs/providers absent."
   external_harness_blocker: "NONE_FOR_THIS_CONFIGURED_LOCAL_TASK; prompt command restrictions are advisory, native used readonly Git and Python CRC sanity; controller EDA/diff gates provide actual outcome."
   real_eda_blocker: "NONE_FOR_THIS_LOCAL_SLICE"
   oss_eda_install_state: PORTABLE_EXTRACTED_ACTUAL_TOOLS_EXECUTED
@@ -72,7 +72,7 @@ supervisor_coordination:
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
   active_gate: "G3_G5_G7_ORIGINAL_PROOF_PPA_SELECT_MERGE_REGATE"
-  active_gate_state: "BLOCKED_WITH_EXTERNAL_GATE_DEPENDENCIES"
+  active_gate_state: "LOCAL_PROOF_INTEGRATED_EXTERNAL_FORMAL_PPA_INPUT_REQUIRED"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -80,10 +80,10 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "35a4d5582bc31d97f6c5ccb691701add43358e34"
+  local_git_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "890f1e4b669cedcfb0e2d2526578ad3d7e6703d54b274f37b873a86ce6328182"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive12-35a4d55.zip"
+  local_artifact_sha256: "88daf512d5d4c2e7c4595d37c251322f887874a42b3ec54b31baaf217b7a4d24"
+  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive13-b8dd54a.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
@@ -98,9 +98,9 @@ supervisor_coordination:
   blocked_items:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
-  next_executable_action: "Provide approved formal profile/fresh authenticated candidate run, technology library/corner, SDC/STA and power activity/provider; then unchanged compare/select/merge/regate."
-  last_heartbeat_at_utc: "2026-11-09T01:56:44Z"
-  last_effective_progress_at_utc: "2026-11-08T13:13:15.874475Z"
+  next_executable_action: "Environment/Design Authority supplies approved formal acceptance assumptions/binding plus target Liberty/corner, SDC/STA and power activity/provider; then fresh candidate checks and unchanged Select/Merge/ReGate."
+  last_heartbeat_at_utc: "2026-11-09T02:20:40Z"
+  last_effective_progress_at_utc: "2026-11-09T02:19:04.412929+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -111,15 +111,15 @@ coding_agent_transport:
   remote_source_delivery: NOT_AVAILABLE_FROM_CODING_AGENT
   local_artifact_transfer: NOT_ESTABLISHED
   actual_source_on_github_updated_by_agent: false
-mission_state: ACTIVE
+mission_state: "WAITING_FOR_HUMAN"
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-09T01:56:44Z"
-last_progress_at_utc: "2026-11-08T13:13:15.874475Z"
-last_heartbeat_at_utc: "2026-11-09T01:56:44Z"
-latest_commit: "35a4d5582bc31d97f6c5ccb691701add43358e34"
+updated_at_utc: "2026-11-09T02:20:40Z"
+last_progress_at_utc: "2026-11-09T02:19:04.412929+00:00"
+last_heartbeat_at_utc: "2026-11-09T02:20:40Z"
+latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
-current_task: "Directive12 delivered locally; original proof/PPA gates blocked; Sync recovery and ACK in this active session."
+current_task: "Directive13 LOCAL_PROOF_INTEGRATED; EXTERNAL_PPA_INPUT_REQUIRED; MERGE_REGATE_NOT_RUN; FORMAL_ACCEPTANCE_PROFILE_REQUIRED"
 next_action: "Continue authorized minimal G2/G3 integration from pinned source; retain real Candidate registration and original parallel gates as incomplete."
 next_action_owner: Coding Agent
 blockers: []
@@ -785,4 +785,33 @@ Chrome foreground input recovered. Re-read docs/19: Directive12 remains ACTIVE w
 ## Directive13 ACK — 2026-11-09T02:11:52.0271110Z
 
 SF-DIR-20261109-13 APPLIED. Start from local 35a4d5582bc31d97f6c5ccb691701add43358e34 and existing candidate/worktrees/SQLite. Implement fresh authenticated reference-equivalence evidence in the original Candidate receipt; DEV_REFERENCE_EQUIVALENCE_PASS remains separate from FORMAL_PASS. Existing Formal BLOCKED stays immutable. One existing PPA input check; no install, full80, historical proof replay or policy expansion. ACTIVE_SESSION_ONLY.
+
+
+
+## Directive13 local proof integration delivery ? 2026-11-09T02:20:40Z
+
+SF-DIR-20261109-13 APPLIED. Final Chrome poll confirmed unchanged ACTIVE directive updated2026-11-09T02:08:11Z. ACK remote Sync commit5d6bba443fc2af6a3ed4b44bab1630915f6319c8. Local Source SHA b8dd54a7004545027e9ebf1d8b747f8b4750b7fc, clean, based on35a4d5582bc31d97f6c5ccb691701add43358e34. Root AGENTS.md unchanged85a63528182e5b694db575f071a33e45da2fa5363de74e8ef9fa39b9b116c845.
+
+Status: LOCAL_PROOF_INTEGRATED; EXTERNAL_PPA_INPUT_REQUIRED; MERGE_REGATE_NOT_RUN; FORMAL_ACCEPTANCE_PROFILE_REQUIRED.
+
+New actual candidate `directive13-fresh-proof:candidate:a0x:branch:1d430e8353bd978b5f8a3eaf03113e49` owns Git SHA `e2b864d2b04ee7961ce63ec35a7a411c69f09d9f`. New job `directive13-fresh-proof:candidate:a0x:branch:1d430e8353bd978b5f8a3eaf03113e49:formal` registered under existing authorized Formal owner `a0x:owner-instance:def06dee608006ff86faa4a86b14959a` before Yosys was invoked. Tool process started2026-11-09T02:15:11.782532Z, finished2026-11-09T02:15:15.226960Z; raw stdout SHA2567f8e47928e6792ce11670342e2bd3604a8f41099b480fcb14c35eb674d69a834; stderr SHA256e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855. Actual result DEV_REFERENCE_EQUIVALENCE_PASS is recorded in immutable result `e65d03db-e9db-4141-8bdd-472a0f80f089` with completion event `1452443e-3eef-4c87-b06b-4f0ea2e5b3a2`. The original FORMAL result is BLOCKED. Verification/PPA siblings remain PENDING, no inherited result copied onto them.
+
+Implemented shared eda_providers.run_reference_equivalence(EdaJob,...), thin tools/crc32_equivalence.py driver and `python -m siliconforge.operations proof` entry. Existing actor/project/branch/owner capabilities, managed Git ref/current Head, exploration spec/Golden/profile pins, fresh job/directory and immutable Candidate Evidence APIs are enforced. Manifest includes Candidate/job/source SHA, exact Golden/spec/input hashes, property/configuration, stated common-input/synchronous-reset assumptions, profile/executable hashes, environment digest, command, tool/process timestamps and raw logs. No historical proof manifest is read or imported. No approved-profile bypass flag and no arbitrary FORMAL_PASS assignment.
+
+Minimal verification: affected modules compile/import; one actual fresh authenticated proof execution; old Head and wrong producer Scope rejected before candidate/tool effects; same-project wrong Formal completion owner rejected as job outside authenticated instance scope; altered wrong CRC32C polynomial input rejected as pinned fixture mismatch before tool launch. Every prior immutable Candidate result matches the Directive12 SQLite snapshot. Prior actual wrong-polynomial SAT/equivalence failure remains historical evidence, not rerun. Raw fresh receipt and refusal records in `.audit/directive13-live/targeted-verification.json`; proof-manifest/logs in `directive13-fresh-proof/reference-equivalence/`.
+
+PPA inventory performed once in existing config/examples/contracts and approved OSS suite. Only `share/yosys/sdc/graph-stubs.sdc` found; it is generic Tcl getter stub code, not target SDC. No approved matching Liberty/corner, STA provider or power provider/activity. Physical area/timing/power UNKNOWN; PPA INCOMPARABLE; inherited186 generic cells are not physical area and were not rerun. Precise `.audit/directive13-live/ppa-dependencies.json` records file_or_tool, library_corner, source_permission, constraint, activity_method, approver_or_owner and required_exact_action.
+
+| Required input | Owner / approval | Exact next action |
+| --- | --- | --- |
+| Formal acceptance profile/assumptions/trusted binding | Design/Formal acceptance authority, identity not provided | Approve spec/reference assumptions and existing trusted provider-binding contract; do not rewrite historical BLOCKED |
+| Approved target ASIC Liberty/PVT corner | Technology/Environment Owner, identity not provided | Provide existing permitted path/SHA256, target technology/voltage/temperature/units and approval reference |
+| Candidate SDC and pinned STA profile | Constraint/Environment Owner | Provide PCLK period/uncertainty, IO delay/load, reset mode and matching library/corner; approved existing executable/version/profile |
+| Power provider/profile and activity | Power/Environment Owner | Provide matching corner/voltage/clock/units, reproducible workload/VCD/SAIF/rates and method/confidence |
+
+Select/Merge/ReGate NOT_RUN because fresh Formal eligibility is BLOCKED and comparable PPA inputs are absent. No fake metrics, policy/weight/permission expansion, installation, PDK/network download, full80, reviewer panels or remote Source/Tests/Release writes. Formal80 remains inherited20 Local Recorded PASS/60 NOT_RUN; local evidence review is distinct from Supervisor Direct Verified UNKNOWN.
+
+Bundle `D:\mtk32712\SiliconForge\deliveries\SiliconForge-Directive13-b8dd54a.zip`, 1470656 bytes, SHA256 `88daf512d5d4c2e7c4595d37c251322f887874a42b3ec54b31baaf217b7a4d24`. Includes Source/candidate archives, local Git history, final SQLite, proof/receipt/raw logs, refusal checks and input-dependency record. Local-only PREPARED_LOCAL; artifact_transfer_state=UNAVAILABLE, remote_source_integrated_commit=null.
+
+implementation_remaining: original approved formal eligibility and physical PPA inputs/providers, then actual eligible Select/Merge/new-SHA ReGate. Unique next executable action: Environment/Design Authority supplies the approval/data listed above; existing authorized workflow can then create fresh checks under unchanged gates. No further legal local engineering step remains this session; stop without idle heartbeats or unattended claims. Last effective engineering progress is the actual delivery checkpoint2026-11-09T02:19:04.412929+00:00; this final Sync heartbeat is2026-11-09T02:20:40Z.
 
