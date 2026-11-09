@@ -834,3 +834,9 @@ Publication continuation: directive_poll_at_utc=2026-11-09T06:46:05.403962+00:00
 Executed smoke command: `python .audit\directive14-live\run_smoke.py` (already completed; do not repeat against completed Task). Evidence: `.audit\directive14-live\verification.json`, `runtime-before.sqlite`, `runtime-final.sqlite`, `DELIVERY.md`. Causal chain: A completion `1b631331-e597-45c5-b8cc-ad7636ce4d53` -> B input `1eebd59d-180d-4c0b-b5b1-4867c03e6553` -> B completion `ce4c2f6a-5c50-408d-a81e-fa4e915437ab`.
 
 Chrome observation addendum: `SiliconForge-Directive14-UI-Addendum-20261109T053529Z.zip`, 57289 bytes, SHA256 `3a558bdc03930a7f3648f74d94730bc5d6722fa3da60438b4a6d462335d5c402`; original source/evidence ZIP is immutable. DEVELOPMENT VERSION, local-only delivery; no release claim.
+
+## External Coding Agent Directive15 ACK
+
+- last_seen_directive_id=SF-DIR-20261109-15; directive_application_state=APPLIED; directive_poll_at_utc=2026-11-09T07:12:29.661160+00:00; directive_ack_at_utc=2026-11-09T07:12:29.661160+00:00; last_heartbeat_at_utc=2026-11-09T07:12:29.661160+00:00; polling_mode=ACTIVE_SESSION_ONLY.
+- Active work: one APB CRC32 sandbox requirement with Spec/RTL/Verification typed durable Peer workflow, Integration/PDCA and actual Chrome Dashboard observations. Continue local source f9130c7b15cca1cd71fe15caf256b8ca7bb86c26 and existing SQLite. No new EDA/Formal/PPA/Select/Merge/ReGate or full80 run.
+- Current state ACTIVE / grounding existing APIs; Native turns and Directive15 UI observations NOT_RUN. Last effective engineering progress remains Directive14 evidence, not this ACK. Source transfer UNAVAILABLE; remote_source_integrated_commit=null. Next executable action: implement minimal cross-role sandbox workflow using existing Runtime/Ingress/Harness, with owner-local methods honestly labelled.
