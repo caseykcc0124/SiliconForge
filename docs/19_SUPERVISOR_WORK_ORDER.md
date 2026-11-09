@@ -1,17 +1,17 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261109-14**
+> **DIRECTIVE_ID: SF-DIR-20261109-15**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-09T02:30:02Z**
+> **UPDATED_AT_UTC: 2026-11-09T07:07:06Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: Directive14，依 §2.15 優先完成真正的 Agent Orchestration 輪轉、訊息接入/交接、狀態持久化與 Dashboard 端到端 Demo；EDA/Formal/PPA 本輪暫緩，原 Gate/80 Cases 不變。**
+> **CURRENT MISSION PRIORITY: Directive15，依 §2.16 以 APB CRC32 Sandbox 串起 Super Agent 多 Owner 自動協作與 P-Stack 設計/驗證/PDCA；Coding Agent 必須用 Chrome 真正開啟 Dashboard 比對 EventStore。EDA/PPA 正式 Gate 暫緩，原80案不變。**
 
 
 ## 0. 任務與角色
@@ -229,6 +229,26 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 
 **成功判準：可用且可觀測的框架輪轉。** 交接、任務接續、狀態持久化、使用者訊息路由與 Dashboard 的同一條真實事件鏈比新增 EDA 功能、資料量、測試數量更重要。
 
+
+### 2.16 Directive 15：Super Agent 強化與 P-Stack 晶片設計工作流整合驗收，Coding Agent 必須實際開啟 Dashboard（2026-11-09T07:07:06Z）
+
+**使用者最新明確優先順序：** 延續 Directive14 已回報的本地兩個真實 Codex Owner Turn、Main 自動交接、Session 重啟/重送去重、EventStore 與 Dashboard E2E；本輪進一步強化 **Super Agent Runtime 的跨領域協作**，並對 **P-Stack for Chip Design** 進行真實任務級驗收。**Coding Agent 在驗證期間必須親自透過 Chrome/Computer Use 開啟 Dashboard、觀察並核對數據，單純生成 HTML 檔不算 Dashboard 驗收。** 本指令是既有規格（`docs/00`、`docs/01`、`docs/02`、`docs/03_PSTACK_DOMAIN_WORKFLOWS.md`、`docs/06`）的本地實作和驗收排序，非改變架構或新增正式驗收案例。EDA/Formal/實體 PPA/Select/Merge/ReGate 暫緩，原 Gate、60+20 正式 Required Cases、安全與配額完全不變。
+
+**成功情境：** 用一個新且可明確識別的 **APB CRC32 規格/設計變更開發沙盒任務**，經過 authenticated Ingress → deterministic Runtime → Spec Owner 的 P-Stack 方法 → RTL Owner 的 P-Stack 方法/候選 → Verification Owner 的 P-Stack 方法/質疑或 Peer Request → Integration/Evidence Owner 對齊設計產物與缺少的 Gate → PDCA CHECK（唯讀/沙盒）→ Dashboard，形成可重播且自動交接的真實工作鏈。Sandbox 中的設計提案不可偷改正式 Spec；沒執行 EDA 的設計仍保持 `UNVERIFIED`。
+
+1. **開局與權限。** Coding Agent 下一個活躍 Session 用 Chrome 開啟本文件，ACK `SF-DIR-20261109-15` 至 GitHub Web Edit 唯一可寫的根目錄 Sync；接續 Directive14 已回報的本地 Source `f9130c7b15cca1cd71fe15caf256b8ca7bb86c26`、原有 Local Git/SQLite/Events/Dashboard。不得重建 Repo、增設控制平面、擴張 Owner 實體權限、變更安全/預算、要求 GitHub Clone/Push/PR 或人類手工中繼。
+2. **真實晶片設計任務注入。** 使用原有合法 Local Ingress/CLI/MCP，注入一項 APB CRC32 開發沙盒的需求變動/模糊需求（例如 register software-clear 與 reset 優先次序，或既有配置允許的 CRC polynomial 變更），固定 `request_id, project_id, spec_revision, parent_sha, actor, authorization, correlation_id`。設計輸入可由 Coding Agent 在已允許沙盒內編製，但標明是測試需求，不能誤稱已核准的生產 Spec。Ingress 必須可核對授權及重送冪等，並將真正的 Task/DAG/Event 寫入既有 Event Store。
+3. **Spec P-Stack 專業輸出。** Spec Owner 依 `docs/03` 的 `silicon-architect + design-impact/interrogate` 語意，執行具體需求解讀、寄存器/介面/clock/reset/latency 假設、影響矩陣、版本/Golden/Constraint 依賴、未定問題分類，輸出有來源 SHA、Owner/WorkItem、假設、驗收條件的可用 Spec/Impact Artifact。真正有歧義時透過原有決策權限產生 `WAITING_FOR_HUMAN` 和具體問題，不能由 Main/Spec 私自猜測通過。若當前 Skill 只是方法學而未經真正 Runner/Tool 執行，標示 `METHOD_APPLIED` 與 `SKILL_EXECUTION_NOT_VERIFIED`，不得稱 P-Stack Skill 已實際被呼叫。
+4. **RTL 與 Verification P-Stack。** RTL Owner 依 `architect → bounded arena → interrogate`，在既有配額內至少產出一個真實 RTL 設計更動/修補候選，最好兩種有不同取捨的獨立 candidate/worktree；各自綁定 Spec SHA、RTL Source SHA、變更原因、設計假設及無法評估的 PPA。Verification Owner 以 `verification-swarm/interrogate` 對同一 Spec 與候選產出獨立的 APB/CRC32 directed vectors、reset/clear 邊界情境與可執行檢查/預期結果；識別至少一項值得 RTL/Spec 澄清的差異，**經由 typed Peer Request 自動送回正確 Owner**，Owner 回覆或修復後由 Runtime 自動喚醒後續 Task。若沒有真正執行驗證工具，只能記 `PLAN/REPRODUCER_READY/EDA_DEFERRED`，不可報 Simulation/Formal PASS。
+5. **Super Agent 真正跨 Role 協作。** 至少三個不同、受認證的 Domain Owner Instance（Spec、RTL、Verification；Integration/PDCA 可額外參與），在單一 `request_id` 的 Task/WorkItem DAG 中展示多次真實 durable Event/Delivery/Receipt/ACK、Owner A→Owner B 的自動任務轉接與一次由 Verification 回 RTL/Spec 的 Peer 往返。Main 只負責使用者意圖、狀態及通知，不做工程設計裁決，也不能成為 Peer 轉送的必經人工中繼。至少 **兩個 Native Agent 真實 Turn**，並可追到 Session/Turn ID、Prompt/Response 產物、Token/成本資訊（無合法費率則成本 UNKNOWN）；若模型額度或執行環境不足，誠實報出縮減範圍及不可驗證的 Owner，不可將 deterministic Worker 冒充 Native Agent。
+6. **記憶、重啟、重送及 PDCA。** 真實 Task/Decision/Owner checkpoint、Spec/RTL 版次與通信因果鏈持久化；本輪只做一次有界的 stale ACK/重送/新程序接續情境，以已完成的模型 Turn 不重跑為判準。Improvement Owner 根據這條實際 Trace 做短篇 PDCA `PLAN → DO → CHECK`：指出一個交接、浪費或訊息品質缺口，提出可量測改善和基線，`ACT` 僅是提案，不能自動升級 Skill/Policy 或發布。若無真實缺口，不得憑空捏造故障。
+7. **必須親自開啟並觀看 Dashboard，列為硬性驗收條件。** Coding Agent 以已有的 Dashboard 啟動/導出命令產生從當次 **同一 SQLite/EventStore** 投影的畫面，然後 **在本地 Chrome／Computer Use 中實際開啟該 HTML/頁面**（可用授權本地 `file://` 頁面或現有本地入口，不要部署外部服務）。在任務執行期間至少開啟一次觀察 `QUEUED/RUNNING/WAITING` 的真實投影；任務完成或合法停滯後重新開啟/重新整理一次觀察 `COMPLETED/BLOCKED/WAITING_FOR_HUMAN`，並檢查至少一條 Peer Request、三個 Owner 的狀態、Task/WorkItem、Spec/Source SHA、分支 DAG、Native Token、PDCA、最近 Event 時間。**逐項與同一次 EventStore 及原始 Event/Receipt ID 核對。** 可行時留本地截圖、頁面路徑/名稱、截圖 Hash、打開時間、實際可見的 ID/狀態與點擊/篩選檢查紀錄，並放入 Local Bundle；若環境無法真實打開，必須標 `DASHBOARD_UI_NOT_OBSERVED`，不可用 `HTML_GENERATED` 冒充驗收通過。任何視圖顯示成功但 EventStore 尚未成功均為需修正的真實缺陷。
+8. **Integration 的安全邊界。** Integration/Evidence Owner 僅檢查當次規格/候選 SHA、版本相容性、WorkItem 產物完整性及不存在越權／跨分支污染；對欠缺實體 EDA/Formal/PPA 的項目回傳具原因的 `WAITING_FOR_EDA / NOT_RUN / BLOCKED`，**可結束框架工作流的 Development Task，但不能聲稱工程候選已完成正式簽核、選出 PPA Winner、Merge 或 Release。** 任務成功與工程設計 Gate 成功分開呈現。
+9. **最小實際驗收，不建立新的 80+ 案。** 以一個 end-to-end 新 `request_id` 和必要的短修復檢查逐項檢視：Ingress 正確/冪等；Spec P-Stack 真實方法與 Artifact；RTL 候選與 Worktree；Verification 獨立方法/Peer 來回；跨 Role 自動交接；重啟後 idempotent continuation；PDCA CHECK；**Chrome 真實 Dashboard UI 開啟及 EventStore 對照**；Integration 明確不越過未驗證的 EDA Gate。每項標 `LOCAL_REPRODUCED/PARTIAL/BLOCKED/NOT_RUN`，附可複製命令、Event/Job/Owner/Turn IDs、Source SHA、Artifact Path/Hash、Local Bundle SHA256、Raw Evidence/SQLite before/after、畫面觀察證據與真正故障修正紀錄。最多三次有界修復同一 failure signature，不做歷史全面回歸/完整 80 項驗收/Reviewer Panel。**本清單只是這輪整合驗收觀察，不新增或改寫正式 A/E 案例及 Release 門檻。**
+10. **明確交付與後續接續。** 主路徑和 UI 觀測都成立時回報 `LOCAL_SUPER_AGENT_PSTACK_FLOW_REPRODUCED; DASHBOARD_UI_OBSERVED; EDA_GATES_DEFERRED`；若框架輪轉成功但 UI 未親自開啟，必須 `DASHBOARD_UI_PENDING`；P-Stack 方法/Skill 真實程度應分別列示，不能用提案當作已執行。若存在真正阻斷，先自行在現有授權內完成必需的最小修復，再記錄 Blocker 與 next executable action。活躍時 15 分鐘讀 Work Order 並 Sync ACK；Session 停止後不宣稱 24x7 自動輪詢。不得要求人工將 ZIP 上傳到 GitHub 或讓 Agent 遠端 Source Commit；只允許 GitHub Web Edit Sync 回報，本地 ZIP/Hash/Artifact Transfer 狀態照實列出。
+
+**監督重點：** 下次巡檢只把同一 `request_id` 的真實工程產物、跨 Owner 轉接鏈、P-Stack 操作和可親眼打開核對的 Dashboard 當作此階段進展。Docs、Mock、單純 HTML 輸出和未實際跑過的驗收描述皆不能冒充成功。
+
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
 | Gate | 工作範圍 | 本地完成證據與自動移轉 |
@@ -329,3 +349,6 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 
 **本版更新原因／下一步（SF-DIR-20261109-14，2026-11-09T02:30:02Z）**：使用者明確調整下一輪優先順序，要求「只以框架之間運作為主」，先確認自主 Agent 輪轉、訊息接入處理、跨 Owner 工作交接、狀態更新、Dashboard 及任務轉接，EDA 保留稍後執行。Directive13 已在 Local 完成 fresh authenticated reference proof 並確認 PPA 需外部資料，繼續追逐 PPA 不符合本輪交付優先。依 §2.15 立即改為一個有真實 Agent Turn、可追溯 Runtime Event Store、一次新 Process 恢復的 Local Framework E2E Demo；只修正阻斷接口。原 G0–G7、80 項正式驗收、Formal/PPA/Merge/Release Gate、Local-only 與安全權限全部保持。
+
+
+**本版更新原因／下一步（SF-DIR-20261109-15，2026-11-09T07:07:06Z）**：使用者要求「繼續強化 super agent 框架，還有 P-Stack for chip design 的驗收」，並加上「驗證框架時讓 Coding Agent 打開 Dashboard」。Directive14 Sync 已回報兩名真實 Codex Owner 的本地 E2E、EventStore 自動交接/恢復及 Dashboard 親自觀察。依 §2.16 本輪改為跨 Spec/RTL/Verification/Integration/PDCA 的 APB CRC32 開發沙盒工作鏈，要求可驗證的 P-Stack 工程產物、Typed Peer 往返、狀態持久化與 **Chrome 真正打開的 Dashboard + EventStore 對照**。EDA/Formal/實體 PPA/Select/Merge/ReGate 暫緩；保持原 G0–G7、60+20 Required Cases、資安/配額/遠端權限與正式工程 Gate 不變。
