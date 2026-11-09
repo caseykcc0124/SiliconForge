@@ -1,17 +1,17 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261108-12**
+> **DIRECTIVE_ID: SF-DIR-20261109-13**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-08T12:57:08Z**
+> **UPDATED_AT_UTC: 2026-11-09T02:08:11Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: 全功能實作成果已回報；現在優先依 §2.13 打通真實 Select→Merge→ReGate，測試僅限必要阻斷點，正式80項保持待驗收。**
+> **CURRENT MISSION PRIORITY: Directive13，依 §2.14 完成真實 Candidate Proof 接入與 G5 工程閉環的有限收斂；外部 PPA/Profile 未具備時停止重試並列明必要輸入。正式80項及 Gate 不變。**
 
 
 ## 0. 任務與角色
@@ -193,6 +193,23 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 
 **注意：** 此指令為 G3/G5/G7 既有規格範圍的可執行工作排序與故障收斂，**不是新增 G8、不降低 PPA／Formal／Merge Release Gate、不擴張權限**。
 
+
+### 2.14 Directive 13：將已成功的 Yosys Proof 接入真實 Candidate，精確收斂 PPA／Merge 外部依賴（2026-11-09）
+
+**觸發之新實證：** Directive12 已經在 Coding Agent 本地 Local SHA `35a4d5582bc31d97f6c5ccb691701add43358e34`，使用實際 Yosys 0.70+360 `equiv_induct/equiv_status -assert`，對候選 `e2b864d2b04ee7961ce63ec35a7a411c69f09d9f` 證明 **66/66 等價位元、0 未證明**，且錯誤 CRC32C Polynomial 確實被拒絕；既有 Formal BLOCKED 記錄保持不可變。這項結果僅是 **Reference-relative Local Proof**，尚未接入正式 Fresh Authenticated Candidate Acceptance。環境亦確認缺少批准的 ASIC Liberty/corner、SDC、STA、功耗 activity/provider，故 PPA 仍 INCOMPARABLE，Select/Merge/ReGate 正確拒絕。本次新工作只能消除真正可消除的整合缺口，不得要求重演已完成的 66-bit 證明或反覆寫報告。
+
+**Coding Agent 在下一個活躍 Session 直接執行以下有限工作單，不必等待逐項分派：**
+
+1. **ACK 本 Directive，沿用 Local Worktree。** Chrome 重新讀 docs/19 後，在唯一允許編輯的 GitHub Sync 回報 `SF-DIR-20261109-13` 的 ACK；從既有 Local SHA `35a4d5582bc31d97f6c5ccb691701add43358e34` 及 Source/Evidence/SQLite 直接接續。不新建 Repo、不下載新工具、不要求 GitHub Clone/Push/PR、不自改安全政策。
+2. **P0，收斂 Proof→Candidate Evidence 的真實程式功能。** 檢查 `tools/crc32_equivalence.py`、既有 `eda_providers.py`、`candidates.py`、`operations.py` 的契約銜接。若仍有缺口，做最小必要程式修改，讓一次**新的、授權 Actor/Scope 下執行的 Candidate 工作**能將其本身的 Git SHA、Golden/Spec SHA、Proof Assumptions、Profile/Executable SHA、開始結束時間、原始 Log SHA、success/failure 結果，寫入原有 Candidate-scoped immutable Evidence/Receipt；杜絕把已完成的歷史 Proof 貼到新 Candidate。使用原有 Source/Provider Profile 與 AuthZ，證明對錯誤 polynomial、舊 Head、錯 Scope 仍會拒絕或維持 BLOCKED。只做最小啟動/連結/拒絕檢查。
+3. **Proof 資格不得偷升級。** 區分 `DEV_REFERENCE_EQUIVALENCE_PASS` 和既有正式 Candidate `FORMAL_PASS`。若原契約所需的 approved formal acceptance profile、assumptions、trusted binding 等尚未核定，即使新 Proof 真正成功，Gate 仍保持 `FORMAL_BLOCKED`；僅當所有既有正式條件原本就成立，才允許現有系統自然計算 Gate 結果，絕不可由 Coding Agent 任意授權、覆寫資料庫或降低 Gate。
+4. **P1，實體 PPA 僅檢查一次已有的合法資料。** 在既有 Local 及已批准工具範圍內，確認是否已經有同一 technology/library/corner 的 Liberty、SDC/clock/IO、STA executable/profile，以及 power provider/activity/units；可用則僅整合最薄 Profile、輸出 candidate-specific 可比較 Evidence。不可用則將每個缺少的 `file_or_tool, library_corner, source/permission, constraint, activity_method, approver_or_owner, required_exact_action` 寫入一份簡潔依賴表，**停止相關嘗試**。不得自動下載 PDK、未授權安裝 STA、捏造 Timing/Power，也不能把 186 generic cells 當作 physical Area。
+5. **P2，條件式嘗試一次真實工程閉環。** **只有** Candidate Formal eligibility、可比較 PPA、選擇權重/Authority、Head SHA fence 都按原規格有效，才走既有 `compare → select → merge → regate`，將真實 Merge Commit SHA 上的 Simulation、Formal、Synthesis、PPA Evidence 完整保留。若任一前置條件缺少，立即返回精確 BLOCKED/INCOMPARABLE/NOT_RUN，**不做用假證據驅動的 Merge、不擴張測試、不再反覆要求 Supervisor 發同一條指令**。
+6. **結束條件明確。** (A) 若真實閉環完成，回報 `LOCAL_REAL_SELECT_MERGE_REGATE_REPRODUCED; FORMAL80_PENDING`，固定 Local Source SHA/Raw Evidence/Bundle SHA256；(B) 若只有 Proof 接入完成、物理 PPA 外部依賴仍缺，回報 `LOCAL_PROOF_INTEGRATED; EXTERNAL_PPA_INPUT_REQUIRED; MERGE_REGATE_NOT_RUN`；(C) 若連正式 Proof eligibility 都需外部批准，追加 `FORMAL_ACCEPTANCE_PROFILE_REQUIRED`。三種情況均要附唯一下一個實際可執行動作與必要外部輸入；若沒有任何進一步合法可執行的 Local 工作，就停止本地工程 Session，不製造空轉 Heartbeat 或假進展。
+7. **交付與原政策不變。** 僅保留交付必須的最小 Compilation/Smoke、拒絕案例和原始實證，不進行全部 80 Case／無關 Reviewer／全套回歸。每個 Case 繼續分離 Local Recorded、Evidence Verified、Supervisor Direct Verified；無證據仍 NOT_RUN。Artifact 可以只留 Local，傳輸 UNAVAILABLE 不算本地工程阻礙；不碰 Coding Agent 無權限的 GitHub Source/Tests/Release/外部發布。Supervisor 本次僅修改本 Work Order。
+
+**監督者判準：** 以新增的「Fresh Authenticated Candidate Proof Evidence」及「真實 Merge SHA + ReGate Evidence」兩項實質能力為里程碑。舊 Log 整理、Mock 計數、文件改動和每十五分鐘 Sync Heartbeat 不算功能完成。若外部 PPA 來源缺少且已精確列示，這是實際需要人類提供技術資料／核准的限制；Supervisor 不得自行授權替代物理 Corner 或放寬原 Formal/Merge Gate。
+
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
 | Gate | 工作範圍 | 本地完成證據與自動移轉 |
@@ -287,3 +304,6 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 
 **本版更新原因／下一步（SF-DIR-20261108-12，2026-11-08T12:57:08Z）**：Directive11 Local Development Delivery 已證明三個 Native Codex RTL Owner/Branch 有實際 Icarus/Yosys 執行，但原有候選 Formal BLOCKED、PPA INCOMPARABLE 導致實際 Select/Merge/ReGate 尚未執行。依 §2.13，優先使用現有已授權工具建立真實 Proof/可比較 PPA，再執行一次有界的候選選擇、受控合併及新 SHA ReGate；如果外部配置或數據確實缺少，精確呈報阻礙，不放寬任何 Gate，不重啟完整80項驗收或無效測試迴圈。Source Transfer 仍限本地。
+
+
+**本版更新原因／下一步（SF-DIR-20261109-13，2026-11-09T02:08:11Z）**：最新 GitHub Sync 已確認 Directive12 ACK、Local Source 35a4d55 的 Yosys 66/66 reference-relative equivalence 真實成功，並確立缺少正式 Candidate Proof Profile 與物理 PPA 所需 Liberty/corner、SDC/STA、power activity/provider。依 §2.14，下一輪不再重跑既有 Proof 或做非必要測試，優先實作 Fresh Authenticated Candidate Proof/Evidence 接入；合法 PPA 齊備時才執行真實 Select/Merge/ReGate，否則把依賴精確交付並停止無效工程循環。原 80 項驗收、G0–G7、安全與 Local-only 權限不變。
