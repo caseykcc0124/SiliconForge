@@ -860,3 +860,65 @@ Verification turn `299f592a-9fdf-476c-8595-4b02bff04f12` timed out at the unchan
 Concrete local fixes address Git porcelain leading whitespace and Windows long-path reads. No security, quota, EDA, formal, selection, merge or release gate changed. Engineering status remains CANDIDATE_UNVERIFIED_EDA_DEFERRED; simulation/Formal/EDA NOT_RUN. Named silicon P-Stack methods remain METHOD_APPLIED / SKILL_EXECUTION_NOT_VERIFIED. Final workflow success is NOT CLAIMED. Source transfer UNAVAILABLE, remote source integrated commit null. Polling is ACTIVE_SESSION_ONLY.
 
 last_heartbeat_at_utc: 2026-11-09T08:00:45.500443+00:00
+
+
+## Directive15 local development delivery
+
+Outcome: `LOCAL_SUPER_AGENT_PSTACK_FLOW_REPRODUCED; DASHBOARD_UI_OBSERVED; EDA_GATES_DEFERRED`.
+
+The one authenticated APB CRC32 sandbox request completed the actual Spec → RTL → independent Verification artifacts → typed Verification-to-RTL clarification → Integration → PDCA CHECK → RTL closeout chain. Main did not make the reset/clear engineering decision. Original Spec, historical candidate/proof/comparison/integration records and root AGENTS.md were preserved. Eleven protected engineering tables were compared row-for-row against the pre-run SQLite and remained identical.
+
+```yaml
+directive_id: SF-DIR-20261109-15
+directive_application_state: APPLIED_LOCAL_DELIVERED
+dev_version_label: DEVELOPMENT VERSION / non-production
+request_id: directive15-chip-flow-20261109-01
+task_id: 222718e8-dce2-4121-b28b-46767341c65f
+task_status: COMPLETED
+local_source_commit: fc1bb556e811d754bad63247eb7699ef17774a60
+sandbox_parent_commit: f9130c7b15cca1cd71fe15caf256b8ca7bb86c26
+sandbox_candidate_commit: 9abc076ee2571282246be57006b761926208624e
+accepted_spec_sha256: bc30cb00dd5d1f54944d3fcb2be0787d1d3d4f61bff4c08025e41a37af08f31e
+candidate_rtl_sha256: 67ac732134415a22d56fda08bf8ed895d8760612d93fbaa0d4320b58a9b88313
+engineering_status: CANDIDATE_UNVERIFIED_EDA_DEFERRED
+simulation: NOT_RUN
+formal: NOT_RUN
+physical_ppa: NOT_RUN
+select_merge_regate_release: NOT_RUN
+native_successful_turns: 4
+native_timed_out_turns: 1
+distinct_verification_recovery_turns: 1
+completed_native_turns_repeated: 0
+typed_peer_roundtrips_responded: 5
+owner_tickets_completed: 5
+integration_worker: deterministic evidence reconciliation / not a model
+improvement_worker: deterministic PDCA CHECK / not a model
+pstack_domain_methods: METHOD_APPLIED
+named_silicon_skill_runner_execution: SKILL_EXECUTION_NOT_VERIFIED
+native_recorded_input_tokens: 1773900
+native_recorded_cached_input_tokens: 1586467
+native_recorded_output_tokens: 41906
+native_cost: UNKNOWN
+timed_out_turn_usage: UNKNOWN / no terminal usage receipt
+local_bundle: D:\mtk32712\SiliconForge\.audit\directive15-delivery-20261109-fc1bb55.zip
+local_bundle_bytes: 6201839
+local_bundle_sha256: 16eca59668b9e390f718539f378634a4e4131b321afe288fcb6b0d2b6cf78a5d
+artifact_access: UNAVAILABLE
+bundle_transfer_state: PREPARED_LOCAL / NOT_TRANSFERRED
+remote_source_integrated_commit: null
+polling_mode: ACTIVE_SESSION_ONLY
+```
+
+Actual Native turns and raw JSONL are under `.audit/directive15-live/directive15-chip-flow-20261109-01/native/`. Spec `33b483c7-ded6-45ca-8522-d79be045eb6b` and RTL candidate `8d349a0d-fb4f-4986-9083-beacca72763d` completed. Original Verification `299f592a-9fdf-476c-8595-4b02bff04f12` remains TIMED_OUT. One separate same-Owner recovery accepted the four original artifact hashes without modifying them; subsequent RTL clarification completed. All five actual turns, session IDs, prompts, raw logs and final turn receipts are in the bundle manifest and SQLite.
+
+Verification produced `verification.md`, `peer.json`, `tb_apb_crc32_clear.sv` and `reproduce.ps1`, all REPRODUCER_READY / NOT_RUN. It asked a concrete reset/clear question based on their shared accumulator reset value and different PRDATA behavior. RTL independently answered CLARIFIED, response event `1b56e5b6-748a-41a3-8cae-881589015995`. Exact artifact hashes are recorded in the actual SQLite response and copied artifact receipts.
+
+Chrome actually opened the waiting/running and final Dashboard from the same EventStore. Visible checks covered three distinct Owner Instances, Task/WorkItems, candidate/Spec SHA, CLARIFIED peer response and event ID, Native recorded tokens/cost UNKNOWN, PDCA baseline/check, recent event UTC, and the baseline-to-candidate branch DAG. Screenshots and their hashes are in `ui-final-receipt.json`; Chrome Find on the branch heading returned 1/1. Final Task COMPLETED is separate from CANDIDATE_UNVERIFIED_EDA_DEFERRED.
+
+Bounded repairs corrected Windows Git/artifact long paths, porcelain leading-space parsing, HDL literal normalization, a real nested Peer deadlock in Runtime claim, the Verification RESPONDED terminal validator, and an unscoped synthetic Dashboard row. Runtime now permits incoming PEER.REQUEST while a ticket awaits another Peer, retaining identity/scope/branch/lease checks. One expired lease was recovered by existing Runtime recovery. Stale ACK and invalid credential were rejected. Completed-request replay in new processes returned the same task and candidate without starting Native turns. Compile and diff checks passed; no full80, historical regression, reviewer panel or EDA was run.
+
+PDCA includes an actual handoff gap: one Verification timeout after artifact production, followed by one successful hash-pinned acceptance. PLAN/DO/CHECK and measurable baseline are persisted; ACT proposes a separate artifact receipt checkpoint with a next-request timeout target of zero. No live Skill/Policy change was applied.
+
+Reproduce the completed-request replay locally with `PYTHONPATH=dev-real-work/src` and a trusted ephemeral `SF_OPERATOR_CREDENTIAL`: `python -m siliconforge.chip_flow --db .audit/dev-real-live/runtime.sqlite --request .audit/directive15-live/flow-request.json --output .audit/directive15-live`. Evidence includes stdout/stderr, runtime-before/final.sqlite, original artifacts, Native logs, source/candidate archives and source Git bundle. Next executable engineering action remains separately authorized simulation/Formal/PPA against the exact candidate SHA; this directive intentionally defers those gates. No remote source upload or integration is claimed, and no 24x7 polling is claimed.
+
+last_heartbeat_at_utc: 2026-11-09T08:20:05.188867+00:00
