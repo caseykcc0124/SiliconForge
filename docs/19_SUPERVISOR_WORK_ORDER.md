@@ -1,17 +1,17 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261109-15**
+> **DIRECTIVE_ID: SF-DIR-20261109-16**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-09T07:07:06Z**
+> **UPDATED_AT_UTC: 2026-11-09T08:27:51Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: Directive15，依 §2.16 以 APB CRC32 Sandbox 串起 Super Agent 多 Owner 自動協作與 P-Stack 設計/驗證/PDCA；Coding Agent 必須用 Chrome 真正開啟 Dashboard 比對 EventStore。EDA/PPA 正式 Gate 暫緩，原80案不變。**
+> **CURRENT MISSION PRIORITY: Directive16，依 §2.17 驗證具名 P-Stack/Owner-local Skill 真實呼叫、docs/ 契約追溯、Verification 逾時後 Artifact 恢復與 Chrome Dashboard 真實觀察；EDA/PPA Gate 暫緩，原80案不變。**
 
 
 ## 0. 任務與角色
@@ -249,6 +249,24 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 
 **監督重點：** 下次巡檢只把同一 `request_id` 的真實工程產物、跨 Owner 轉接鏈、P-Stack 操作和可親眼打開核對的 Dashboard 當作此階段進展。Docs、Mock、單純 HTML 輸出和未實際跑過的驗收描述皆不能冒充成功。
 
+
+### 2.17 Directive 16：具名 P-Stack Skill 執行證明、文件契約符合性與逾時交付恢復（2026-11-09T08:27:51Z）
+
+**新增指示的具體依據：** Directive15 在本地 `fc1bb556e811d754bad63247eb7699ef17774a60` 已回報 Spec→RTL→Verification→typed Peer→Integration→PDCA 的同一條 APB CRC32 Sandbox 工作鏈，4 個成功 Native Turn、1 個維持 TIMED_OUT 的 Verification Turn、5 筆 Peer 回覆、Chrome 真正觀看 Dashboard，且沒有執行或聲稱 EDA/Formal/PPA PASS。其仍明確標示 `pstack_domain_methods=METHOD_APPLIED`、`named_silicon_skill_runner_execution=SKILL_EXECUTION_NOT_VERIFIED`。另外，Verification 一度先寫出四項 Artifact 才因 300 秒逾時，需恢復 Turn 以原 Hash 收據完成。Sync 頂部主 YAML 的 Directive/Local SHA/Heartbeat/Active Gate 還停留 Directive13，與附錄最新 Directive15 Delivery 不一致。此輪僅針對已出現的缺口強化既有框架。
+
+**本輪最高目標：** 不再重跑已完成的 Directive15，而是在新小型 APB CRC32 開發 Sandbox 上，將「`docs/` 規範 → Owner Skill 執行 → Artifact/Receipt → 跨 Role 交接 → Dashboard」連成可驗證的因果鏈，並在既有 Harness/Runtime/EventStore 內補齊 **已產 Artifact 但模型 Turn 逾時** 的恢復機制。**正式 80 Cases、G0–G7、既有安全/配額/授權、EDA/Formal/PPA/Merge/ReGate Gate 全不修改。**
+
+1. **ACK、版本與 Sync 一致性。** Coding Agent 在下一個活躍 Session 透過 Chrome 重新讀此文件，GitHub Web Edit 只編輯 **根目錄 `SiliconForge_Working_SYNC.md`** 回報 `SF-DIR-20261109-16` ACK。接續本地固定 Source `fc1bb556e811d754bad63247eb7699ef17774a60`、原有 SQLite/Worktrees/Bundle，不重新下載 Repo，不要求 clone/push/PR，不額外公開 Source。**同時由 Agent 自己修正 Sync 頂部現行 machine-readable YAML 與其最新交付紀錄的矛盾**：現在的 `last_seen_directive_id`、`directive_poll_at_utc`、`last_heartbeat_at_utc`、`last_effective_progress_at_utc`、`active_gate`、`local_git_commit`、`local_artifact_sha256` 與 `mission_state` 應反映真實最新狀態，`remote_source_integrated_commit: null`、`artifact_transfer_state: UNAVAILABLE` 等事實仍保持。時間不得預填，歷史 Directive15 紀錄保持不可變。此 Sync 整理只算治理修正，不能冒充工程進展。
+2. **P0，文件契約建立追溯而不是再寫一套架構。** Coding Agent 必須真正以 Chrome 讀取正式 main 中 `docs/00_MISSION_AND_BOUNDARIES.md`、`docs/01_ARCHITECTURE_AND_OWNERSHIP.md`、`docs/02_EVENT_RUNTIME_PROTOCOL.md`、`docs/03_PSTACK_DOMAIN_WORKFLOWS.md`、`docs/05_HARNESS_MCP_HUMAN.md`、`docs/06_OBSERVABILITY_PDCA.md`、`docs/09_ACCEPTANCE_TEST_MATRIX.md` 及必要 `docs/14`、`docs/15` 與本 `docs/19`。以一份簡短 `Documentation Compliance Matrix` 列出每份被用到文件的 **路徑、GitHub Blob SHA、實際讀取時間、規範句/章節、對應 Local Module/Entry、Owner Skill/Tool Invocation、Event/Artifact SHA、真實驗證程度、仍缺失處**。讀取標記 `READ`、程式存在標記 `IMPLEMENTED`、有 raw invocation/receipt 才標記 `EXECUTED`；不猜測「原先有照著做」。
+3. **P1，執行器/Skill 能力盤點與既有契約整合。** 檢查已存在且可合法存取的 Codex Native Harness/Skills、專案 AGENTS.md、MCP、`docs/03` 定義的 `silicon-architect`、`design-impact/interrogate`、`waveform-tdd`、`rtl-arena`、`verification-swarm`、`engineering-evidence`、`silicon-reflect`。逐一區分 `SKILL_AVAILABLE_IN_HARNESS`、`OWNER_LOCAL_METHOD_ONLY`、`MISSING_OR_UNAUTHORIZED`，附真實查核證據。已有受授權 Skill Runner 則以既有 API 用明確 Skill ID + version/content SHA + 認證 Owner/Ticket + Spec/Source/Policy/Scope Pins 執行一到兩個**真正的** Spec/RTL/Verification 專業 Skill Call，保存 Native Turn/Tool Invocation ID、Skill 原始輸入/輸出、進出事件及 SHA；若無具名可用 Runner，可在現有 Harness Adapter 上做**最薄的專案內 Owner-local Skill binding**，固定名稱/版本/輸入輸出契約和不可變 Receipt，不新增第二個 Orchestrator、外部插件套件或未授權依賴。此時必須標 `PROJECT_LOCAL_SKILL_EXECUTED`，**不能冒稱第三方 P-Stack 原生插件已被呼叫**。若無法合法執行，明示 `SKILL_EXECUTION_NOT_VERIFIED` 並完成其它可做事項；不以 Prompt 中有 Skill 名字作證明。
+4. **P2，最小端到端新設計任務。** 注入一筆新的、與 Directive15 request_id 不同的 authenticated APB CRC32 Sandbox 需求或修改，僅選定一個可界定的小型 Spec/RTL/Verification 問題；利用原有 Runtime/Evidence/Owner Instance、Branch Git 工作區，串起 Spec Owner（需求/假設/Impact）→ RTL Owner（真實候選/變更）→ Verification Owner（獨立檢查、Peer 澄清）→ Integration（設計結果 `EDA_DEFERRED`）→ Improvement（PDCA CHECK）。在一條 `request_id` 下保存具名 Skill 執行紀錄及可驗證產物、不同 Owner 專業判斷、至少一次 Typed Peer 直接回覆、完整因果事件鏈。兩個真正不同的 Native Owner 轉接以已可用的既有 Harness 完成，避免重複耗費 Directive15 的高 Token 預算。所有 Spec/RTL/Verification 執行必須有版本 pin，沒有 EDA 仍不可算工程設計合格。
+5. **P3，修復已證實的 Timeout-after-artifact 交付缺口。** 以 Directive15 留下的 Verification TIMED_OUT、原 `verification.md/peer.json/tb_apb_crc32_clear.sv/reproduce.ps1` Hash 與 Recovery Turn 作 Root Cause 起點，檢查現有 Task/Owner Artifact Receipt 的 checkpoint 發生時間。若缺少可讓已產物先持久化且不重做成功 Native Turn 的步驟，在**既有 Harness/Runtime/SQLite 協定內**加最小 Artifact checkpoint/receipt、Actor/Lease/Owner/Head-SHA fence、idempotent accept 與恢復入口。進行一次短的有界故障注入或採新任務中可自然重現的失效，不重跑完整歷史流程；必須能由新 Process 取得原始 Artifact Hash、恢復尚未完成步驟且保留 TIMED_OUT 原始狀態。若分析發現既有機制已足夠且沒有新程式缺口，附證據並**不為完成任務而硬改程式**。
+6. **P4，Chrome 必須親自打開 Dashboard 並核對。** 使用同一新 `request_id` 的 EventStore 投影既有 Dashboard，Coding Agent 在 Chrome/Computer Use 中真的開啟 `RUNNING/WAITING` 畫面及最終 `COMPLETED/BLOCKED` 畫面，核對 Skill/Method 實際身分、Owner/Role/Instance、Peer 往返、Checkpoint/Retry、Event/Turn/Artifact/Source SHA、PDCA、Token/成本 UNKNOWN、最近進展與正式 EDA 未完成標記。留原始 screenshot/頁面開啟時間、可見欄位與 SQLite/Receipt 對照；若 UI 無具名 Skill Invocation 欄位，僅在原 Dashboard 加上有證據的欄位。不開啟 UI 就標 `DASHBOARD_UI_NOT_OBSERVED`，不可只產生 HTML 假裝驗收。
+7. **P5，有限驗收與完成條件。** 只需本輪的少量真實 Skill Call、完整的一條新 Task Trace、一次 Peer Roundtrip、一次限定的 Artifact Recovery 檢查及 Dashboard UI 對照。記錄 `SKILL_RUNNER_EXECUTED`（若確實存在）或 `PROJECT_LOCAL_SKILL_EXECUTED` 或 `METHOD_APPLIED_ONLY`，分別列出執行範圍與限制；將 Documentation Compliance Matrix、Event/Native/Skill Invocation ID、Spec/Source/Artifact Hash、Local SHA、Bundle SHA256、Task 與工程 Gate 的分離狀態、Root Cause 與下一個可執行動作全部交付。失敗只做必要的有限修復（同一 Failure Signature 最多三次），不新增測試庫或全部 80 案、不用模型文字自評冒充測試。若正式 Skills 不可用但框架端到端已證明，交付 `SUPER_AGENT_WORKFLOW_LOCAL_REPRODUCED; PSTACK_RUNNER_UNAVAILABLE; EDA_DEFERRED`，不能虛報 Skills PASS。
+8. **邊界保留。** Main 僅處理人類意圖與狀態；跨 Owner Peer 不經 Main 作技術仲裁。不可新建長駐服務、擴張額度、變更演算法權限、修改正式 Gate、下載未授權 PDK/插件、執行正式 PPA/EDA 或推送遠端 Source；本地候選與規格更動不可升格正式 Release。人類核准僅在確實需要新工具授權、技術範圍/政策/配額變更、正式工程驗收時提出具體選項。仍沿用 Active Session 每十五分鐘輪詢 Docs/19、Sync 更新 ACK/重大事件的規則；Local ZIP 不可直接從 Sync 假定可取得。
+
+**監督者下一輪只看三項實質結果：** （A）docs 契約是否有正確版本和可追溯實作；（B）有否實際具名 Skills/Owner-local Skill Invocation + Receipt；（C）timeout checkpoint 與 Dashboard 原始執行的同一條可重現事件鏈。沒有新的合法可做工程工作時即停在具體依賴，不發布無意義 Heartbeat/新指令。
+
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
 | Gate | 工作範圍 | 本地完成證據與自動移轉 |
@@ -352,3 +370,6 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 
 **本版更新原因／下一步（SF-DIR-20261109-15，2026-11-09T07:07:06Z）**：使用者要求「繼續強化 super agent 框架，還有 P-Stack for chip design 的驗收」，並加上「驗證框架時讓 Coding Agent 打開 Dashboard」。Directive14 Sync 已回報兩名真實 Codex Owner 的本地 E2E、EventStore 自動交接/恢復及 Dashboard 親自觀察。依 §2.16 本輪改為跨 Spec/RTL/Verification/Integration/PDCA 的 APB CRC32 開發沙盒工作鏈，要求可驗證的 P-Stack 工程產物、Typed Peer 往返、狀態持久化與 **Chrome 真正打開的 Dashboard + EventStore 對照**。EDA/Formal/實體 PPA/Select/Merge/ReGate 暫緩；保持原 G0–G7、60+20 Required Cases、資安/配額/遠端權限與正式工程 Gate 不變。
+
+
+**本版更新原因／下一步（SF-DIR-20261109-16，2026-11-09T08:27:51Z）**：Directive15 Sync 已回報本地 APB CRC32 Spec/RTL/Verification/Integration/PDCA 真實鏈與 Chrome Dashboard 観測，但原始具名 P-Stack Skill Runner 仍 `SKILL_EXECUTION_NOT_VERIFIED`；且 Verification 曾在產出四個 Artifact 後 300 秒逾時，需獨立恢復 Turn。Sync 主 YAML 尚落後 Directive15 的 SHA/ACK/Heartbeat。使用者要求下一輪繼續開發，故按 §2.17 針對已證明的缺口建立最小真實 Skill Invocation + docs 契約追溯 + Artifact checkpoint 恢復 + Dashboard UI 對照；由 Agent 自己更新其擁有的 Sync 現況，不觸碰 Supervisor 不擁有的文件。維持既有 G0–G7、80 正式案例、EDA/Formal/PPA/合併 Gate、資安權限、資源政策和僅本地 Source 交付。
