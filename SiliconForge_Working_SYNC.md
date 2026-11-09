@@ -847,3 +847,16 @@ Chrome observation addendum: `SiliconForge-Directive14-UI-Addendum-20261109T0535
 - Actual new request directive15-chip-flow-20261109-01. Exploration a0x:exploration:0f09bd2c2e9b25efec9467eec96d342d; candidate branch a0x:branch:13f762bd0882037a862b530b347b07d0, parent local source f9130c7b15cca1cd71fe15caf256b8ca7bb86c26. Spec/RTL/Verification/Integration/Improvement distinct scoped instances registered and one real isolated worktree prepared through existing APIs; setup announcements ACKED nonterminally.
 - Initial setup stopped after materialization due to missing Actor import. One targeted local repair and same-key setup continuation completed without duplicate branch creation. Before SQLite and 11 historical engineering-table fingerprints retained; existing candidate/comparison/proof/integration records unchanged. Constructor/request/worktree preflight and syntax checks pass.
 - State ACTIVE, bounded Spec Native process launched; completion receipt pending at publication, downstream Native turns NOT_RUN; no EDA or formal engineering PASS. Next executable action is bounded Spec Native turn, save queued RTL handoff, open its Dashboard in Chrome, then new-process continuation. P-Stack specialized methods will be labelled METHOD_APPLIED/SKILL_EXECUTION_NOT_VERIFIED where no named runner exists. Source transfer UNAVAILABLE, remote_source_integrated_commit=null. This real Runtime graph preparation is distinct from completed end-to-end acceptance.
+
+
+## Directive15 bounded recovery progress
+
+Directive `SF-DIR-20261109-15` remains active. Development request `directive15-chip-flow-20261109-01` has completed the actual Spec and RTL Native turns. WorkspaceService candidate commit is `9abc076ee2571282246be57006b761926208624e`, parent `f9130c7b15cca1cd71fe15caf256b8ca7bb86c26`, accepted Spec SHA256 `bc30cb00dd5d1f54944d3fcb2be0787d1d3d4f61bff4c08025e41a37af08f31e`.
+
+Chrome actually opened the same EventStore Dashboard and displayed Spec ACCEPTED, RTL ACCEPTED, Verification RUNNING, RTL clarification QUEUED. Screenshot is local `private-ui-evidence/d15-dashboard-verification.png`. Candidate/Spec SHA values matched durable records. One stale ACK was rejected without changing its ACKED delivery; invalid authentication was rejected by PolicyDenied.
+
+Verification turn `299f592a-9fdf-476c-8595-4b02bff04f12` timed out at the unchanged 300-second bound after writing verification.md, peer.json, tb_apb_crc32_clear.sv, and reproduce.ps1. It remains TIMED_OUT, never relabeled COMPLETED. One distinct same-Owner recovery turn is accepting the exact original artifact hashes without rewriting the artifacts; this is a bounded repair within Directive15, not a repeat of completed turns. The original timeout and recovery are both retained. RTL clarification, Integration and PDCA remain pending.
+
+Concrete local fixes address Git porcelain leading whitespace and Windows long-path reads. No security, quota, EDA, formal, selection, merge or release gate changed. Engineering status remains CANDIDATE_UNVERIFIED_EDA_DEFERRED; simulation/Formal/EDA NOT_RUN. Named silicon P-Stack methods remain METHOD_APPLIED / SKILL_EXECUTION_NOT_VERIFIED. Final workflow success is NOT CLAIMED. Source transfer UNAVAILABLE, remote source integrated commit null. Polling is ACTIVE_SESSION_ONLY.
+
+last_heartbeat_at_utc: 2026-11-09T08:00:45.500443+00:00
