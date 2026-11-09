@@ -42,9 +42,9 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: "SF-DIR-20261108-12"
-  directive_poll_at_utc: "2026-11-09T01:56:44Z"
-  directive_ack_at_utc: "2026-11-09T01:56:44Z"
+  last_seen_directive_id: SF-DIR-20261109-13
+  directive_poll_at_utc: "2026-11-09T02:11:52.0271110Z"
+  directive_ack_at_utc: "2026-11-09T02:11:52.0271110Z"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
@@ -746,9 +746,9 @@ Next executable action after an approved proof/configuration and valid timing/po
 
 ```yaml
 latest_directive11_status:
-  last_seen_directive_id: SF-DIR-20261108-11
+  last_seen_directive_id: SF-DIR-20261109-13
   directive_application_state: APPLIED
-  directive_poll_at_utc: "2026-11-08T12:30:20.036359Z"
+  directive_poll_at_utc: "2026-11-09T02:11:52.0271110Z"
   heartbeat_at_utc: "2026-11-08T12:33:34.617969Z"
   last_progress_at_utc: "2026-11-08T12:32:28.631481Z"
   implementation_state: ALL_AUTHORIZED_FEASIBLE_FUNCTIONS_IMPLEMENTED_LOCAL
@@ -779,4 +779,10 @@ latest_directive11_status:
 ### Sync recovery 2026-11-09T01:56:44Z
 
 Chrome foreground input recovered. Re-read docs/19: Directive12 remains ACTIVE with UPDATED_AT_UTC 2026-11-08T12:57:08Z. This ACK and heartbeat reflect the resumed session; the engineering progress timestamp retains the prior dependency-record checkpoint, not an invented overnight execution.
+
+
+
+## Directive13 ACK — 2026-11-09T02:11:52.0271110Z
+
+SF-DIR-20261109-13 APPLIED. Start from local 35a4d5582bc31d97f6c5ccb691701add43358e34 and existing candidate/worktrees/SQLite. Implement fresh authenticated reference-equivalence evidence in the original Candidate receipt; DEV_REFERENCE_EQUIVALENCE_PASS remains separate from FORMAL_PASS. Existing Formal BLOCKED stays immutable. One existing PPA input check; no install, full80, historical proof replay or policy expansion. ACTIVE_SESSION_ONLY.
 
