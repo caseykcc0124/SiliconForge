@@ -1,17 +1,17 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261109-13**
+> **DIRECTIVE_ID: SF-DIR-20261109-14**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-09T02:08:11Z**
+> **UPDATED_AT_UTC: 2026-11-09T02:30:02Z**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: Directive13，依 §2.14 完成真實 Candidate Proof 接入與 G5 工程閉環的有限收斂；外部 PPA/Profile 未具備時停止重試並列明必要輸入。正式80項及 Gate 不變。**
+> **CURRENT MISSION PRIORITY: Directive14，依 §2.15 優先完成真正的 Agent Orchestration 輪轉、訊息接入/交接、狀態持久化與 Dashboard 端到端 Demo；EDA/Formal/PPA 本輪暫緩，原 Gate/80 Cases 不變。**
 
 
 ## 0. 任務與角色
@@ -210,6 +210,25 @@ Coding Agent 從既有 Local 工作區繼續，不要為了讀新指令而重下
 
 **監督者判準：** 以新增的「Fresh Authenticated Candidate Proof Evidence」及「真實 Merge SHA + ReGate Evidence」兩項實質能力為里程碑。舊 Log 整理、Mock 計數、文件改動和每十五分鐘 Sync Heartbeat 不算功能完成。若外部 PPA 來源缺少且已精確列示，這是實際需要人類提供技術資料／核准的限制；Supervisor 不得自行授權替代物理 Corner 或放寬原 Formal/Merge Gate。
 
+
+### 2.15 Directive 14：AI Agent 框架的實際輪轉、事件交接與 Dashboard 閉環（2026-11-09T02:30:02Z）
+
+**本輪新的使用者優先順序（明確授權的工作排序）：** 暫停追逐正式 EDA/PPA/Formal、Select/Merge/ReGate。已交付的 G1–G7 框架需要先證明「訊息進來之後，真正的多 Agent 能否持續交接、維持狀態，直到任務完成，並在 Dashboard 追蹤」。**只調整下一輪工作順序與觀測範圍，原 G0–G7、80 個 Required Cases、原 EDA/Formal/PPA/Release Gate 與授權不改；缺少 PDK/STA/Power 不構成本階段阻礙。** EDA 接口和先前 Proof 證據保持原狀，此輪只走合法的軟體框架流程，EDA 的正式 PASS 仍不可聲稱。
+
+**本輪唯一工程目標：在既有 Local 系統，以實際可運作的 Main/Coordinator + 兩個以上 Domain Owner/Worker、既有 Runtime/Harness/MCP/Ingress/Event/SQLite/Dashboard，完成一次有可追溯狀態和真實 Agent 工作輸出的多步任務閉環。**
+
+1. **ACK 並沿用現有 Local Source。** 下次活躍 Session 用 Chrome 讀取此指引，透過 GitHub Web Edit *僅更新* 根目錄 Sync 的 `last_seen_directive_id=SF-DIR-20261109-14` 和當次真實 ACK/心跳。從已交付的 Local SHA `b8dd54a7004545027e9ebf1d8b747f8b4750b7fc`、SQLite、Workspace、Provider 與現有 Dashboard 繼續。不重建 Repo、改遠端 Source、擴張權限或建立新的 Always-on 服務。
+2. **Ingress 到任務建立（真實入口）。** 用既有已授權的本地 CLI、MCP 或 Ingress 接受 **一筆新外部訊息或用戶任務**（明確記錄是 Local 注入或真實整合通道，不得稱有 Slack/電話整合），正規化為具 `request_id / project_id / actor / correlation_id / payload schema / auth context` 的 Task/Intent/WorkItem；驗證非法來源/缺失權限會拒絕，合法輸入產生唯一任務與可查 Receipt。重送同一 `request_id` 不產生重複工作。
+3. **Main 真正調度與至少兩次完整交接。** Main/Coordinator 依現有政策先建立有依賴的任務 DAG，交給至少兩個真正不同的 Owner Instance 或 Agent Worker，包含一次「Owner A 完成 → durable completion event → Main 自動確認 → Owner B 接續」；再由 Owner B 產生結果回到 Main。若現有模型/Native Harness 可用，至少一段必須是**真正的 Codex/其他已授權模型 Turn**，紀錄 session/turn ID、實際輸入/輸出與用量；不允許只播預錄事件、手寫 PASS 或單一 Agent 假扮全流程。若環境只允許一個 Native Turn，清楚標示其它階段的 deterministic framework worker/mock，不得宣稱多模型實測。
+4. **事件、交接、狀態生命週期是本輪核心。** 每個 Task、Owner Assignment、Delivery、Receipt、ACK、Retry、Completion 都須由既有 Event Store/SQLite 真正記錄；可從 ingress `request_id` 一路追溯 Task ID、Branch/Owner Instance、correlation/causation、native turn 和最終成果。每次交接由系統自動判斷下一個可執行項，不需人類在 Main/Sub 間傳遞訊息或撰寫報告。WorkItem 驗收與 Task 驗收分開，不因 Step 成功就宣稱任務完成；明確顯示 `QUEUED/RUNNING/WAITING/BLOCKED/COMPLETED` 之類實際現有狀態與停留原因。
+5. **失敗與重啟只做一次有界情境。** 在其中一個 Owner 的合法等待/交接點，演示一次中斷或故意不回報，檢查 lease、timeout、重送、去重與錯誤可觀測；經由**新的本地 process/session** 恢復時，只續跑尚未完成的工作，不重作已完成 Native Turn、不可越權 ACK。若框架不能從錯誤自行恢復，修正實際阻斷的最小程式碼，最多三次針對性修復；不得新建 daemon/scheduler 或長時間 chaos test。所有自主輪轉限定活躍 Session/可合法啟動的現有程序，不宣稱無人值守 24/7。
+6. **Dashboard 真實接入。** 由既有 `dashboard.py` 從相同 Event Store 產生一份可直接開啟的本地 Dashboard，展示新訊息→Task/WorkItem→Main/Owner DAG→當前狀態→耗時/Token/失敗→交接紀錄→結果及最後更新時間，另可從單一 `request_id` 追查證據。Dashboard 狀態必須由執行結果驅動，不可手填成功圖；執行期間至少觀察一次 `RUNNING`，完成後觀察 `COMPLETED` 或具體 `BLOCKED` 的真實狀態轉換。若目前 Dashboard 缺少訊息/路由/接續欄位，**只修正必要視圖或資料接線**，不建立第二套控制台。
+7. **交付證據與明確完成條件。** 在同一個新任務 `request_id` 上展示：① ingress accepted + idempotent duplicate rejected/deduped；② Main assignment 和至少兩個 Owner Instance；③ 至少兩次實際 owner/main handoff 或回報交接；④ 真實模型 Turn 與 durable receipt（若環境允許）；⑤ 一次失敗/重啟續跑，不重複完成；⑥ Dashboard 可從原始紀錄追出整條因果鏈；⑦ 最終任務與 WorkItem 狀態、輸出 Artifact、尚存阻礙。附可複製命令、原始 Evidence/SQLite Snapshot/事件 ID、Local Source SHA、Bundle SHA256 與測試數；只有 compile/import 和最小一輪整合 Smoke，不跑 Formal80、EDA/PPA、Review Panel、歷史大回歸。各項未完成者明確標 `PARTIAL/BLOCKED`，不得以碼量/Agent 活動量代替完成。
+8. **結果與下一步限縮。** 若完整主路徑跑通，回報 `FRAMEWORK_ORCHESTRATION_LOCAL_E2E_REPRODUCED; EDA_FORMAL_PPA_DEFERRED`，之後僅針對真正缺失的可靠性再安排一個短任務。若主路徑未通，回報第一個具體阻斷接口、造成問題的 Event/State、修復狀態和一個可立即執行的下一步，不再空轉蒐證。本輪沒有新增人工批准才能進行的 PPA/PDK 前置要求；原 PPA 依賴仍在未來 EDA 階段處理。
+9. **權限與監督政策繼承。** Coding Agent 只能在 Local 寫 Source/Test/Bundle，GitHub Web Edit 僅根目錄 Sync；不能 GitHub git push/PR、不能未授權安裝工具、對外發送訊息、公開發佈、修改 Gate/安全/配額或讓 Main 擅自 Merge。Agent 活躍期間依原約定每 15 分鐘及里程碑重新讀 docs/19 並 Sync ACK；Session 結束後無 Always-on 承諾。正式 60+20 驗收 Case 不更動、不自動轉 PASS；這是一次 Framework Development E2E Demo。
+
+**成功判準：可用且可觀測的框架輪轉。** 交接、任務接續、狀態持久化、使用者訊息路由與 Dashboard 的同一條真實事件鏈比新增 EDA 功能、資料量、測試數量更重要。
+
 ## 3. 後續里程碑，自主往前，不用等待人工分派
 
 | Gate | 工作範圍 | 本地完成證據與自動移轉 |
@@ -307,3 +326,6 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 
 **本版更新原因／下一步（SF-DIR-20261109-13，2026-11-09T02:08:11Z）**：最新 GitHub Sync 已確認 Directive12 ACK、Local Source 35a4d55 的 Yosys 66/66 reference-relative equivalence 真實成功，並確立缺少正式 Candidate Proof Profile 與物理 PPA 所需 Liberty/corner、SDC/STA、power activity/provider。依 §2.14，下一輪不再重跑既有 Proof 或做非必要測試，優先實作 Fresh Authenticated Candidate Proof/Evidence 接入；合法 PPA 齊備時才執行真實 Select/Merge/ReGate，否則把依賴精確交付並停止無效工程循環。原 80 項驗收、G0–G7、安全與 Local-only 權限不變。
+
+
+**本版更新原因／下一步（SF-DIR-20261109-14，2026-11-09T02:30:02Z）**：使用者明確調整下一輪優先順序，要求「只以框架之間運作為主」，先確認自主 Agent 輪轉、訊息接入處理、跨 Owner 工作交接、狀態更新、Dashboard 及任務轉接，EDA 保留稍後執行。Directive13 已在 Local 完成 fresh authenticated reference proof 並確認 PPA 需外部資料，繼續追逐 PPA 不符合本輪交付優先。依 §2.15 立即改為一個有真實 Agent Turn、可追溯 Runtime Event Store、一次新 Process 恢復的 Local Framework E2E Demo；只修正阻斷接口。原 G0–G7、80 項正式驗收、Formal/PPA/Merge/Release Gate、Local-only 與安全權限全部保持。
