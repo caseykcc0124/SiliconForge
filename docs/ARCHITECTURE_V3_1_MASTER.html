@@ -1,0 +1,886 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="color-scheme" content="light dark"/><title>SiliconForge v3.1｜人類閱讀完整架構規格書</title><meta name="description" content="SiliconForge Super Agent v3.1 完整架構規格：Runtime、Owner、P-Stack、EDA、Branch DAG、Dashboard、PDCA 與 80 項驗收。"/><style>
+:root{--paper:#f6f8f8;--panel:#fff;--ink:#1b313e;--ink-soft:#3b5160;--muted:#627581;--line:#d9e4e6;--teal:#17687c;--teal-light:#eaf5f5;--accent:#14536c;--warm:#f7f1e7;--soft:#edf3f4;--table:#f5f8f9;--shadow:0 12px 40px rgba(20,50,65,.06)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--paper);color:var(--ink);font:15.5px/1.86 system-ui,-apple-system,'Noto Sans TC','Microsoft JhengHei',sans-serif;margin:0;text-rendering:optimizeLegibility}
+a{color:var(--teal);text-decoration:none;border-bottom:1px solid transparent}a:hover{border-bottom-color:var(--teal)}button{font:inherit;cursor:pointer}
+.topbar{height:59px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:0 max(26px,calc((100vw - 1530px)/2));background:rgba(255,255,255,.92);position:sticky;top:0;z-index:50;backdrop-filter:blur(10px)}.mark{font-size:14px;display:flex;align-items:center;gap:10px;font-weight:750;letter-spacing:.01em}.mark-icon{display:inline-grid;place-items:center;width:28px;height:28px;background:var(--ink);color:white;border-radius:7px;font-size:14px}.top-actions{display:flex;align-items:center;gap:10px}.ghost-btn{border:1px solid var(--line);background:transparent;color:var(--ink-soft);border-radius:8px;padding:4px 12px;font-size:12px;font-weight:650}.ghost-btn:hover{background:var(--teal-light)}.main-grid{display:grid;grid-template-columns:245px minmax(0,940px);gap:32px;max-width:1510px;margin:auto;padding:32px 29px 80px;justify-content:center;align-items:start}
+.sidebar{position:sticky;top:86px;max-height:calc(100vh - 102px);overflow:auto;padding:15px 6px 15px 0;scrollbar-width:thin}.sidebar .group-title{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:6px 0 11px}.nav-link{display:flex;gap:10px;padding:7px 9px 7px 7px;margin:2px 0;color:var(--muted);font-size:12.5px;line-height:1.45;border-left:2px solid transparent;border-bottom:0;align-items:start;border-radius:0 6px 6px 0}.nav-n{font-size:11px;font-variant-numeric:tabular-nums;font-weight:800;min-width:21px;color:#8b9ca5}.nav-link:hover,.nav-link.active{color:var(--teal);background:var(--teal-light);border-left-color:var(--teal);border-bottom:0}.sidebar-note{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding:15px 6px;margin-top:15px}
+.content-shell{min-width:0}.hero{border:1px solid var(--line);border-radius:15px;background:linear-gradient(142deg,#eef5f6,#fff 60%);padding:29px 32px 24px;box-shadow:var(--shadow);margin-bottom:20px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--teal);font-weight:800}.hero h1{font-size:30px;line-height:1.36;letter-spacing:-.025em;margin:10px 0 13px;max-width:760px}.hero p{margin:0;color:var(--muted);font-size:14px}.meta-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:19px}.meta-tag{font-size:12px;border:1px solid #c9dcdf;border-radius:6px;padding:4px 8px;color:#426b76;background:#f8fbfb}
+.article{border:1px solid var(--line);background:var(--panel);border-radius:15px;padding:27px 48px 59px;box-shadow:var(--shadow)}.article>h1{display:none}.article>p:first-of-type{display:none}.article h2{font-size:22px;line-height:1.48;letter-spacing:-.016em;font-weight:780;margin:50px 0 17px;padding-top:12px;border-top:1px solid var(--line);scroll-margin-top:86px}.article h2:first-of-type{border-top:0;margin-top:19px}.article h3{font-size:16px;line-height:1.5;margin:29px 0 11px;color:var(--ink);scroll-margin-top:84px}.article p{margin:12px 0}.article strong{font-weight:740}.article blockquote{background:#f3f8f8;padding:15px 20px;margin:17px 0 25px;border-left:3px solid #5892a0;color:var(--ink-soft);border-radius:0 7px 7px 0;font-size:14px}.article blockquote p{margin:7px 0}
+.article code{font-family:ui-monospace,Consolas,'SFMono-Regular',monospace;background:#f1f4f6;color:#23516a;border-radius:4px;font-size:.83em;padding:1px 4px}.article pre.code-block,.article pre.mermaid-source{background:#f2f6f7;color:#254252;border:1px solid #dce6e9;border-radius:8px;padding:18px;overflow-x:auto;line-height:1.55;margin:14px 0 22px;font-size:12px}.article pre code{background:none;padding:0;color:inherit;font-size:inherit}.article .table-wrap{max-width:100%;overflow-x:auto;margin:18px 0 25px;border:1px solid var(--line);border-radius:9px}.article table{border-collapse:collapse;min-width:620px;width:100%;font-size:12.8px;line-height:1.67}.article th{text-align:left;background:#edf4f5;color:#234c5b;font-weight:730;border-bottom:1px solid var(--line)}.article td,.article th{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}.article tbody tr:nth-child(even){background:#fbfcfc}.article tr:last-child td{border-bottom:0}.article ul,.article ol{padding-left:25px}.article li{margin:5px 0}.article li::marker{color:#6a9aaa}
+.diagram-panel{background:#fcfefe;border:1px solid #dce7e8;border-radius:10px;padding:13px;margin:16px 0 25px}.diagram-kicker{font-size:10px;letter-spacing:.11em;font-weight:800;color:#56707d;margin:0 0 7px}.svg-scroller{overflow:auto}.overview-svg,.branch-svg,.sequence-svg{display:block;width:100%;height:auto;min-width:660px}.diagram-caption{color:var(--muted);font-size:11.5px;margin:3px 3px 1px!important;line-height:1.7}.svg-box{stroke:#b5cbd0;stroke-width:1.3}.svg-light{fill:#f0f6f6}.svg-bright{fill:#e1f1f1}.svg-accent{fill:#295b6b;stroke:#295b6b}.svg-runtime{fill:#e5f0f3}.svg-owners{fill:#f4f8f8}.svg-evidence{fill:#f1ece3;stroke:#d8c7a6}.svg-cell{fill:white;stroke:#c9dadd;stroke-width:1}.svg-main{font:650 15px system-ui,'Noto Sans TC',sans-serif;fill:#1e4554;text-anchor:middle}.svg-small{font-size:13px}.svg-sub{font:12px system-ui,'Noto Sans TC',sans-serif;fill:#567581;text-anchor:middle}.svg-mini{font:11px system-ui,'Noto Sans TC',sans-serif;fill:#607987;text-anchor:middle}.svg-white{fill:#fff}.svg-label{font:750 12px system-ui,'Noto Sans TC',sans-serif;fill:#6d8290;letter-spacing:.06em}.svg-left{text-anchor:start}.svg-arrow{fill:none;stroke:#647c8c;stroke-width:1.6;marker-end:url(#arr)}.branch-svg .svg-arrow{marker-end:url(#arr2)}.svg-line{fill:none;stroke:#8ba3ad;stroke-width:1.6}.svg-dashed{fill:none;stroke:#7e9b9d;stroke-width:1.4;stroke-dasharray:5 5}
+.reading-footer{border-top:1px solid var(--line);padding-top:23px;margin-top:35px;font-size:12px;color:var(--muted)}.page-foot{font-size:12px;text-align:right;color:var(--muted);padding:12px 8px}.mobile-toc{display:none}.jump{position:fixed;bottom:22px;right:23px;background:#fff;border:1px solid var(--line);border-radius:50%;width:38px;height:38px;box-shadow:var(--shadow);color:var(--ink);z-index:30}.dark{--paper:#13242c;--panel:#1d313b;--ink:#ebf4f5;--ink-soft:#c7d8dc;--muted:#a1b9bf;--line:#36505b;--teal:#9fd6df;--teal-light:#284852;--accent:#a5dce5;--warm:#25333d;--soft:#273c43;--table:#273740;--shadow:none}.dark .topbar{background:rgba(26,45,55,.95)}.dark .hero{background:linear-gradient(142deg,#253e47,#1d313b 60%)}.dark .meta-tag{background:#273e46;color:#d0e6e8;border-color:#48646e}.dark .article blockquote,.dark .article pre.code-block,.dark .article pre.mermaid-source,.dark .article code{background:#283d46;color:#d7e7eb}.dark .article th{background:#29434d;color:#e4f4f5}.dark .article tbody tr:nth-child(even){background:#243842}.dark .diagram-panel{background:#eaf1f2}.dark .ghost-btn,.dark .jump{background:#25404b;color:#f0fafb}.dark .article .table-wrap{border-color:#44616c}
+@media(max-width:1050px){.main-grid{grid-template-columns:205px minmax(0,1fr);gap:18px;padding:23px 15px 60px}.article{padding:24px 29px}.hero{padding:25px 29px}.nav-link{font-size:11.6px}}
+@media(max-width:760px){.main-grid{display:block;padding:15px 10px 70px}.sidebar{display:none}.hero{padding:21px}.hero h1{font-size:25px}.article{padding:20px 19px}.article h2{font-size:19px}.mobile-toc{display:block;background:var(--panel);border:1px solid var(--line);padding:10px 15px;border-radius:10px;margin-bottom:13px}.mobile-toc summary{font-size:13px;font-weight:700;cursor:pointer}.mobile-toc .nav-link{font-size:13px}.topbar{padding:0 13px}.mark{font-size:12px}.top-actions .small-hide{display:none}}
+@media print{body{background:white;color:#172b36;font-size:11px}.topbar,.sidebar,.mobile-toc,.jump,.top-actions{display:none!important}.main-grid{display:block;padding:0;max-width:none}.hero{box-shadow:none;border:0;padding:10px 0;border-bottom:1px solid #aaa}.article{padding:0;border:0;box-shadow:none}.article h2{break-after:avoid;page-break-after:avoid;margin-top:28px}.article h3{break-after:avoid}.article table{font-size:10px}.diagram-panel{break-inside:avoid}.overview-svg,.branch-svg,.sequence-svg{min-width:0}.article p,.article li{orphans:3;widows:3}.page-foot{display:none}}
+</style></head><body id="top"><header class="topbar"><div class="mark"><span class="mark-icon">Sƒ</span> SiliconForge <span style="color:var(--muted);font-weight:500">/ Architecture</span></div><div class="top-actions"><button class="ghost-btn small-hide" onclick="window.print()">列印 / 儲存 PDF</button><button class="ghost-btn" id="theme" type="button" aria-label="切換深色與淺色主題">深色模式</button></div></header><div class="main-grid"><aside class="sidebar"><div class="group-title">目錄 · Contents</div><a class="nav-link" href="#chapter-00"><span class="nav-n">00</span><span>從一項工程變更開始理解 SiliconForge</span></a>
+<a class="nav-link" href="#chapter-01"><span class="nav-n">01</span><span>目標、系統邊界與成功定義</span></a>
+<a class="nav-link" href="#chapter-02"><span class="nav-n">02</span><span>整體系統拓樸：一個控制平面、眾多專業 Owner</span></a>
+<a class="nav-link" href="#chapter-03"><span class="nav-n">03</span><span>組織架構：誰擁有決策權</span></a>
+<a class="nav-link" href="#chapter-04"><span class="nav-n">04</span><span>Runtime：事件如何成為可恢復的工作</span></a>
+<a class="nav-link" href="#chapter-05"><span class="nav-n">05</span><span>P-Stack：每個 Owner 的專業方法，不是第二套 Router</span></a>
+<a class="nav-link" href="#chapter-06"><span class="nav-n">06</span><span>跨 Owner Communication：把「詢問另一個人」變成持久事件</span></a>
+<a class="nav-link" href="#chapter-07"><span class="nav-n">07</span><span>EDA Environment 與工程證據：模型無權自己說通過</span></a>
+<a class="nav-link" href="#chapter-08"><span class="nav-n">08</span><span>v3.1 Parallel Exploration：同一需求的多條工程生命線</span></a>
+<a class="nav-link" href="#chapter-09"><span class="nav-n">09</span><span>人類入口：Native Harness、MCP 與通知</span></a>
+<a class="nav-link" href="#chapter-10"><span class="nav-n">10</span><span>Web Dashboard：人類看得懂的「工程控制塔」</span></a>
+<a class="nav-link" href="#chapter-11"><span class="nav-n">11</span><span>PDCA：由真實工程失敗改進工作方法</span></a>
+<a class="nav-link" href="#chapter-12"><span class="nav-n">12</span><span>安全、資源治理與可控制的自治</span></a>
+<a class="nav-link" href="#chapter-13"><span class="nav-n">13</span><span>從規格到正式驗收：A0 至 A6 與 v3.1 E01 至 E20</span></a>
+<a class="nav-link" href="#chapter-14"><span class="nav-n">14</span><span>三個端到端情境，驗證系統是否真正閉環</span></a>
+<a class="nav-link" href="#chapter-15"><span class="nav-n">15</span><span>工程部署、版本治理與人類／外部 Coding Agent 的特殊邊界</span></a>
+<a class="nav-link" href="#chapter-16"><span class="nav-n">16</span><span>截至本文件快照的實作進度與缺口</span></a>
+<a class="nav-link" href="#chapter-17"><span class="nav-n">17</span><span>規格閱讀與架構審查的重點問題</span></a>
+<a class="nav-link" href="#appendix-18"><span class="nav-n">附</span><span>重要物件、事件與狀態速查</span></a>
+<a class="nav-link" href="#appendix-19"><span class="nav-n">附</span><span>規格來源與權威順序</span></a><div class="sidebar-note">規格快照為 2026-11-10。這份文件整合正式架構，不代表當前 Source 已完成所有驗收。</div></aside><main class="content-shell"><div class="hero"><div class="eyebrow">Architecture Specification · Reader Edition 1.0</div><h1>SiliconForge v3.1<br/>事件驅動晶片工程 Super Agent</h1><p>從事件接入到跨 Owner 工程決策，從具名 Skills、EDA Evidence 到平行探索、Dashboard 與 PDCA 的完整系統設計。</p><div class="meta-row"><span class="meta-tag">2026-11-10 · 台灣時間</span><span class="meta-tag">v3.0 Core + v3.1 Extension</span><span class="meta-tag">18 章 + 附錄</span><span class="meta-tag">人類閱讀整合版 · 非新規範</span></div></div><details class="mobile-toc"><summary>閱讀目錄（點此展開）</summary><a class="nav-link" href="#chapter-00"><span class="nav-n">00</span><span>從一項工程變更開始理解 SiliconForge</span></a>
+<a class="nav-link" href="#chapter-01"><span class="nav-n">01</span><span>目標、系統邊界與成功定義</span></a>
+<a class="nav-link" href="#chapter-02"><span class="nav-n">02</span><span>整體系統拓樸：一個控制平面、眾多專業 Owner</span></a>
+<a class="nav-link" href="#chapter-03"><span class="nav-n">03</span><span>組織架構：誰擁有決策權</span></a>
+<a class="nav-link" href="#chapter-04"><span class="nav-n">04</span><span>Runtime：事件如何成為可恢復的工作</span></a>
+<a class="nav-link" href="#chapter-05"><span class="nav-n">05</span><span>P-Stack：每個 Owner 的專業方法，不是第二套 Router</span></a>
+<a class="nav-link" href="#chapter-06"><span class="nav-n">06</span><span>跨 Owner Communication：把「詢問另一個人」變成持久事件</span></a>
+<a class="nav-link" href="#chapter-07"><span class="nav-n">07</span><span>EDA Environment 與工程證據：模型無權自己說通過</span></a>
+<a class="nav-link" href="#chapter-08"><span class="nav-n">08</span><span>v3.1 Parallel Exploration：同一需求的多條工程生命線</span></a>
+<a class="nav-link" href="#chapter-09"><span class="nav-n">09</span><span>人類入口：Native Harness、MCP 與通知</span></a>
+<a class="nav-link" href="#chapter-10"><span class="nav-n">10</span><span>Web Dashboard：人類看得懂的「工程控制塔」</span></a>
+<a class="nav-link" href="#chapter-11"><span class="nav-n">11</span><span>PDCA：由真實工程失敗改進工作方法</span></a>
+<a class="nav-link" href="#chapter-12"><span class="nav-n">12</span><span>安全、資源治理與可控制的自治</span></a>
+<a class="nav-link" href="#chapter-13"><span class="nav-n">13</span><span>從規格到正式驗收：A0 至 A6 與 v3.1 E01 至 E20</span></a>
+<a class="nav-link" href="#chapter-14"><span class="nav-n">14</span><span>三個端到端情境，驗證系統是否真正閉環</span></a>
+<a class="nav-link" href="#chapter-15"><span class="nav-n">15</span><span>工程部署、版本治理與人類／外部 Coding Agent 的特殊邊界</span></a>
+<a class="nav-link" href="#chapter-16"><span class="nav-n">16</span><span>截至本文件快照的實作進度與缺口</span></a>
+<a class="nav-link" href="#chapter-17"><span class="nav-n">17</span><span>規格閱讀與架構審查的重點問題</span></a>
+<a class="nav-link" href="#appendix-18"><span class="nav-n">附</span><span>重要物件、事件與狀態速查</span></a>
+<a class="nav-link" href="#appendix-19"><span class="nav-n">附</span><span>規格來源與權威順序</span></a></details><article class="article"><h1 id="siliconforge-v31事件驅動晶片工程-super-agent-完整架構規格書">SiliconForge v3.1：事件驅動晶片工程 Super Agent 完整架構規格書</h1>
+<p><strong>人類閱讀整合版 | Architecture &amp; System Specification | 2026 年 11 月 10 日</strong></p>
+<blockquote>
+<p><strong>文件定位</strong>：本文件把 SiliconForge 正式 Repository 的 v3.0 核心架構、v3.1 平行探索擴充、Dashboard／PDCA 規範及正式驗收要求重新編排為可連續閱讀的系統規格書。它是供架構審查與跨領域溝通的<strong>閱讀整合版</strong>，不擅自取代原始規範、授權政策、實際程式碼或動態工作指引。當摘要和正式規格有差異，原文件與其機器可讀契約優先。</p>
+<p><strong>規格快照</strong>：唯一正式 Repository <a href="https://github.com/caseykcc0124/SiliconForge" rel="noopener noreferrer" target="_blank"><code>caseykcc0124/SiliconForge</code></a>，GitHub main 截至 Commit <a href="https://github.com/caseykcc0124/SiliconForge/commit/f99078a9ebd5a10ae3f15b500cec71f4fad41f13" rel="noopener noreferrer" target="_blank"><code>f99078a9ebd5a10ae3f15b500cec71f4fad41f13</code></a>。資料擷取於 2026-11-10 台灣時間。此版本名稱「人類閱讀整合版 1.0」不是新的專案架構版號。</p>
+<p><strong>閱讀規則</strong>：本文件將「<strong>設計要求</strong>」、「<strong>允許的實作方式</strong>」、「<strong>本地 Agent 已回報</strong>」和「<strong>正式驗收</strong>」明確區分。開發成果未經取得原始 Source、執行紀錄與相應 Gate 證據前，不得因架構圖完整而標示量產級或正式 PASS。</p>
+</blockquote>
+<h2 class="chapter-title" id="chapter-00">00｜從一項工程變更開始理解 SiliconForge</h2>
+<p>想像一個晶片 IP 的規格修改：APB CRC32 的某個暫存器行為發生變化。傳統流程中，工程師要通知 RTL 設計者，協調 Verification 更新測試，排隊跑模擬與 Formal，接著將結果交給架構、PPA 與整合團隊；任何一個人停在訊息交換或環境問題上，都可能讓整條工作鏈等待。</p>
+<p>SiliconForge 的目標是把這條鏈路變成<strong>事件觸發、可稽核、會恢復的數位工程組織</strong>。規格變化進入認證入口後，系統將任務持久化並交給對應的 Domain Owner。Owner 依自己的工程專長與 P-Stack 方法工作，必要時把請求直接交給其他 Owner；EDA Runner 執行受控工具；工具與 Agent 的結果再形成事件，驅動後續步驟。即使使用者關閉 Codex 或 Dashboard，已提交的工作與證據也不應消失。</p>
+<p>這個願景受三條限制支配。第一，<strong>Runtime 負責程序及權限，專業 Owner 負責工程判斷</strong>。第二，<strong>只有符合同一規格、原始碼、約束及環境版本的真實證據，才能形成工程驗收</strong>。第三，<strong>同一需求可以衍生多個競爭的設計方案，但每條方案都必須獨立可追溯、可終止、可驗證</strong>。第三項正是 v3.1 相較 v3.0 的主要擴充。</p>
+<p>初始基準使用小型 APB CRC32 Engine，足以涵蓋 APB 協定、寄存器語意、reset、資料運算、功能驗證、Formal 與 PPA；不以整顆大型 SoC 作為首個閉環的先決條件。未來才逐步擴展其他 IP 與多專案。</p>
+<h2 class="chapter-title" id="chapter-01">01｜目標、系統邊界與成功定義</h2>
+<p><strong>正式目標</strong>是建立可長期運作的事件驅動晶片工程框架，使經授權的工程事件能自動抵達正確 Owner，並透過持久化任務、受控工具、跨領域交接及證據閘門形成工程閉環。人類應只在意圖或政策邊界、配額、授權發布、無法自行排除的實質阻礙時介入。</p>
+<p>因此，SiliconForge 不以「同時啟動多少 Agent」、「產生多少 RTL 檔案」或「Dashboard 有多少綠燈」衡量成功。主要衡量的是：可重現的合格產物、獨立驗證的結果、完成一條工程鏈的成本與時間、模型與工具中斷後的恢復能力、錯誤證據阻擋率，以及人類必要介入次數。</p>
+<p><strong>硬性非目標</strong>包括建立另一個聊天 CLI、讓 Main LLM 當全域工程裁判、讓 Owner 隨意安裝 PDK／EDA、讓模型靠文字宣稱 PASS、為修復單一 Bug 無限制增加 Agent 或框架、把受限制的工程資料推到公開 GitHub。這些限制要由 Host Runtime 的程式、權限與資料模型落實，不能單靠 Prompt 自律。</p>
+<h2 class="chapter-title" id="chapter-02">02｜整體系統拓樸：一個控制平面、眾多專業 Owner</h2>
+<div class="diagram-panel"><div class="diagram-kicker">FIG. 01 · 主要資料路徑與責任分層</div><div class="svg-scroller"><svg aria-label="人類與工程事件經過 Ingress 進入確定性 Runtime，再投遞 Domain Owners、P-Stack、EDA 與 Evidence；右側由 Read Model 顯示於 Dashboard" class="overview-svg" role="img" viewbox="0 0 1180 622" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="arr" markerheight="6" markerwidth="6" orient="auto" refx="8.5" refy="5" viewbox="0 0 10 10"><path d="M0 0L10 5L0 10Z" fill="#647c8c"></path></marker></defs>
+<text class="svg-label" x="35" y="23">輸入與使用者界面</text>
+<rect class="svg-box svg-light" height="67" rx="9" width="320" x="35" y="36"></rect><text class="svg-main" x="195" y="61">Codex / Claude Code</text><text class="svg-sub" x="195" y="83">Skills · AGENTS.md · MCP · Human</text>
+<rect class="svg-box svg-light" height="67" rx="9" width="320" x="408" y="36"></rect><text class="svg-main" x="568" y="61">External Engineering Events</text><text class="svg-sub" x="568" y="83">Spec · Git · CI · Timer · EDA Callback</text>
+<rect class="svg-box svg-bright" height="67" rx="9" width="363" x="782" y="36"></rect><text class="svg-main" x="963" y="61">Web Dashboard</text><text class="svg-sub" x="963" y="83">Read view · Authenticated Commands</text>
+<path class="svg-arrow" d="M195 103V139H371V155"></path><path class="svg-arrow" d="M568 103V155"></path><path class="svg-arrow" d="M963 103V129H764V155"></path>
+<rect class="svg-box svg-accent" height="59" rx="10" width="658" x="242" y="155"></rect><text class="svg-main svg-white" x="571" y="179">Authenticated Gateway · Ingress</text><text class="svg-sub svg-white" x="571" y="199">Actor AuthZ · Schema · Policy · Idempotency · Source Validation</text>
+<path class="svg-arrow" d="M571 214V239"></path>
+<rect class="svg-box svg-runtime" height="110" rx="11" width="1110" x="35" y="239"></rect><text class="svg-main svg-left" x="56" y="263">Deterministic Super Agent Runtime</text>
+<rect class="svg-cell" height="48" rx="6" width="246" x="56" y="281"></rect><text class="svg-main svg-small" x="179" y="300">Event Journal / Outbox</text><text class="svg-sub" x="179" y="317">Durable / Replay</text>
+<rect class="svg-cell" height="48" rx="6" width="247" x="318" y="281"></rect><text class="svg-main svg-small" x="442" y="300">Router / Inbox / Scheduler</text><text class="svg-sub" x="442" y="317">Direct Domain Delivery</text>
+<rect class="svg-cell" height="48" rx="6" width="248" x="581" y="281"></rect><text class="svg-main svg-small" x="705" y="300">Policy / Budget / Lease</text><text class="svg-sub" x="705" y="317">Fencing / Bounded Retry</text>
+<rect class="svg-cell" height="48" rx="6" width="279" x="845" y="281"></rect><text class="svg-main svg-small" x="984" y="300">Exploration / Branch Registry</text><text class="svg-sub" x="984" y="317">Multi Owner · DAG · Recovery</text>
+<path class="svg-arrow" d="M571 349V374"></path>
+<text class="svg-label" x="35" y="372">領域工程決策與可多重存在的 Owner Instance</text>
+<rect class="svg-box svg-owners" height="77" rx="11" width="1110" x="35" y="388"></rect>
+<g><rect class="svg-cell" height="46" rx="6" width="175" x="50" y="402"></rect><text class="svg-main svg-small" x="138" y="429">Spec / RTL</text></g>
+<g><rect class="svg-cell" height="46" rx="6" width="205" x="234" y="402"></rect><text class="svg-main svg-small" x="336" y="429">Verification / Formal</text></g>
+<g><rect class="svg-cell" height="46" rx="6" width="205" x="448" y="402"></rect><text class="svg-main svg-small" x="550" y="429">PPA / Integration</text></g>
+<g><rect class="svg-cell" height="46" rx="6" width="220" x="662" y="402"></rect><text class="svg-main svg-small" x="772" y="429">EDA Environment</text></g>
+<g><rect class="svg-cell" height="46" rx="6" width="239" x="891" y="402"></rect><text class="svg-main svg-small" x="1011" y="429">Process Improvement / PDCA</text></g>
+<path class="svg-arrow" d="M571 465V490"></path>
+<rect class="svg-box svg-light" height="62" rx="9" width="478" x="82" y="490"></rect><text class="svg-main" x="320" y="516">Owner-local P-Stack + Native Harness</text><text class="svg-sub" x="320" y="538">Versioned Skill · Turn · Checkpoint · Artifact</text>
+<rect class="svg-box svg-light" height="62" rx="9" width="508" x="589" y="490"></rect><text class="svg-main" x="843" y="516">Controlled Git Workspace + EDA Runner</text><text class="svg-sub" x="843" y="538">Branch Isolation · Approved Profile · Real Tools</text>
+<path class="svg-arrow" d="M320 552V570H572V578"></path><path class="svg-arrow" d="M843 552V570H572V578"></path>
+<rect class="svg-box svg-evidence" height="37" rx="8" width="510" x="317" y="578"></rect><text class="svg-main svg-small" x="572" y="601">Immutable Engineering Evidence + Evidence Gate</text>
+<path class="svg-dashed" d="M827 596H1108V363"></path><text class="svg-mini" transform="rotate(-90 1112 476)" x="1112" y="476">證據與事件回送 Runtime / Read Model</text>
+<path class="svg-dashed" d="M1036 239V122"></path><text class="svg-mini" x="1050" y="177">Dashboard Read Model</text>
+</svg></div><p class="diagram-caption">灰藍色方塊代表邏輯模組；虛線代表可重建的觀測投影與新事件回流。EDA Environment Owner 治理工具版本，不能代替 RTL／Formal／PPA Owner 作設計判斷。</p></div>
+<blockquote>
+<p><strong>圖的判讀</strong>：箭頭表示概念上的因果與資料路徑，不表示每條連線都必須是獨立 HTTP Service。原始架構建議從模組化 Python + SQLite WAL + 受控子程序與 Git Worktree 做起，除非測得瓶頸，無須先導入複雜分散式基礎設施。</p>
+</blockquote>
+<h3 id="topic-01">02.1 控制平面與資料平面</h3>
+<p>Super Agent Runtime 是<strong>確定性控制平面</strong>。它掌握事件接收、認證、去重、路由、任務生命週期、資源配額、租約、重試與重啟恢復。Runtime 可以規定何時喚醒 RTL Owner，但不該決定 CRC polynomial、修正哪個 always block，或替 PPA Owner 挑選競爭方案。</p>
+<p>Domain Owners 是<strong>專業判斷平面</strong>。每個 Owner 對獲授權的 Spec、RTL、Verification、Formal、PPA 等事項負責，可選擇 P-Stack Skills、開啟有限的 Subworkers，以及直接發出跨領域 Peer Request。EDA 工具是客觀執行平面。Human Harness 與 Dashboard 是使用者入口及觀察窗口，不依賴任一長時間存在的 LLM 對話。</p>
+<h3 id="topic-02">02.2 不應混淆的四種完成</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>層級</th>
+<th>「完成」真正代表的事</th>
+<th>不代表的事</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Native Agent Turn</td>
+<td>模型執行結束並留下原始輸出與使用量</td>
+<td>Spec 已接受、RTL 正確或 Ticket 關閉</td>
+</tr>
+<tr class="even">
+<td>Domain Task / Owner Ticket</td>
+<td>在自己的工作契約內完成產物或交接</td>
+<td>其他 Owner、EDA 或整合 Gate 已通過</td>
+</tr>
+<tr class="odd">
+<td>EDA Job</td>
+<td>特定 Tool、特定 SHA 與配置已實際執行並有解析結果</td>
+<td>其他證據、Formal、PPA 或 Release 必然合格</td>
+</tr>
+<tr class="even">
+<td>Engineering Acceptance / Release</td>
+<td>正式的必需 Gate 對正確指紋全部獨立核對</td>
+<td>可以從 Local Mock、推理自評、歷史分支 PASS 直接繼承</td>
+</tr>
+</tbody>
+</table></div>
+<p>這個區分也決定 Dashboard 的視覺語意：<strong>Task COMPLETED 可以同時伴隨 Engineering NOT_RUN 或 BLOCKED</strong>。</p>
+<h2 class="chapter-title" id="chapter-03">03｜組織架構：誰擁有決策權</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>元件 / Domain Role</th>
+<th>正面職責</th>
+<th>不得越界</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Main Agent</td>
+<td>解讀人類意圖、提供狀態、提交授權事件、轉達真正的批准</td>
+<td>替 RTL 決定修法、替 PPA 選勝者、成為每個 Peer 的必經站</td>
+</tr>
+<tr class="even">
+<td>Runtime / ExplorationCoordinator</td>
+<td>Event、Routing、Owner Instance、Branch Registry、Lease、Budget、Recovery</td>
+<td>根據 Prompt 判斷設計正確或私自更改 Hard Gate</td>
+</tr>
+<tr class="odd">
+<td>Spec Owner</td>
+<td>明確化介面、暫存器、時序、reset、需求版本和 Impact</td>
+<td>默改已核准的需求或規格驗收</td>
+</tr>
+<tr class="even">
+<td>RTL Owner</td>
+<td>微架構、候選分支、局部修補、有限 Arena 與交付 RTL</td>
+<td>私下放寬測試、改控制平面或直接推送 main</td>
+</tr>
+<tr class="odd">
+<td>Verification Owner</td>
+<td>Testbench、Golden Model、Regression、Seed/Waveform、Bug 分類與 Peer Request</td>
+<td>自己修改 RTL 後自行宣布全系統過關</td>
+</tr>
+<tr class="even">
+<td>Formal Owner</td>
+<td>Properties、Assumptions、Proof／Counterexample 與不確定性分類</td>
+<td>把 UNKNOWN/TIMEOUT 當成 PASS，或為變綠修改必要 Property</td>
+</tr>
+<tr class="odd">
+<td>PPA Owner</td>
+<td>相同條件下的 Performance、Power、Area 比較及工程建議</td>
+<td>依不可比的數據決定勝負，或忽略功能 Gate</td>
+</tr>
+<tr class="even">
+<td>Integration Owner</td>
+<td>核對同一版本所有必需證據、接受候選、Merge 後 ReGate、Release 邊界</td>
+<td>使用舊 SHA 的 PASS、漏缺 Gate 或無批准直接發佈</td>
+</tr>
+<tr class="odd">
+<td>EDA Environment Owner</td>
+<td>工具版本、容器、PDK／Library／License、Profile、環境漂移</td>
+<td>代替專業 Owner 解釋設計 Bug；讓他人繞過版本管控</td>
+</tr>
+<tr class="even">
+<td>Process Improvement Owner</td>
+<td>PDCA、失敗模式、成本分析、隔離 A/B 提案</td>
+<td>未經批准直接部署政策、Router 或生產 Skills</td>
+</tr>
+<tr class="odd">
+<td>Observability Projector</td>
+<td>將權威 Event / Evidence 投影為唯讀狀態、Timeline、DAG</td>
+<td>成為另一套隱藏的工程狀態權威或自行裁決</td>
+</tr>
+</tbody>
+</table></div>
+<p>v3.1 特別要求區分 <code>owner_role</code> 和 <code>owner_instance_id</code>。RTL 是一種角色，<code>RTL#performance</code>、<code>RTL#low_power</code>、<code>RTL#area</code> 則可以是三個同時活躍、有不同 Ticket、Lease、工作樹與成本帳戶的執行個體。<strong>Role 絕不是單例鎖</strong>，Owner Instance 也不等於一個永不關閉的模型 Process。</p>
+<h2 class="chapter-title" id="chapter-04">04｜Runtime：事件如何成為可恢復的工作</h2>
+<p>完整路徑可寫成：</p>
+<p><strong>Producer → 認證 Ingress → Schema／Policy 驗證 → 原子 Event Journal + Outbox → 確定性 Routing → Owner Inbox → Scheduler Lease → Owner Decision → Tool / Peer Result → 新事件。</strong></p>
+<p>它與單純的 Agent 工作流有一個決定性的不同：每個步驟都以持久化事實表示。當 Codex 對話、工具或 Host Process 中斷，系統不需依賴上一輪 LLM「記得」發生過什麼，就能從 EventStore、Ticket、Outbox 和 Artifact Receipt 重建狀態。</p>
+<h3 id="topic-03">04.1 事件封包與身份</h3>
+<p>正式事件至少攜帶事件 ID、類別與 Schema 版本、Project/IP/Ticket、來源身份與驗證結果、去重鍵、發生與接收時間、Producer Revision、Spec SHA、Source SHA、Toolchain Profile Digest、Parent/Causation/Correlation/Trace ID、Payload、Artifact Refs 與 Authorization Policy Version。v3.1 的探索事件另加入 Exploration、Branch、Candidate、Owner Instance 與期望的 Parent Head SHA。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>ID／指紋</th>
+<th>問題</th>
+<th>核心規則</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>event_id</code></td>
+<td>這是哪一次持久化事實？</td>
+<td>是紀錄的身分，不能拿來冒充業務去重鍵</td>
+</tr>
+<tr class="even">
+<td><code>idempotency_key</code></td>
+<td>同一事實重送了嗎？</td>
+<td>同來源、同內容回既有 Event；同鍵異內容拒絕</td>
+</tr>
+<tr class="odd">
+<td><code>trace_id</code> / <code>causation_id</code></td>
+<td>一整條工作因果由何而來？</td>
+<td>讓人沿著 Spec、Peer、EDA、Integration 追根究柢</td>
+</tr>
+<tr class="even">
+<td><code>ticket_id</code> / <code>owner_instance_id</code></td>
+<td>誰對哪個工作負責？</td>
+<td>真實受信任 Registry 解析，不接受 Payload 自稱角色</td>
+</tr>
+<tr class="odd">
+<td><code>spec_sha</code> / <code>source_sha</code></td>
+<td>哪一版需求與候選？</td>
+<td>版本不符的 Evidence 無法升格為該版本 PASS</td>
+</tr>
+<tr class="even">
+<td><code>constraints_sha</code> / <code>env_digest</code></td>
+<td>在什麼條件下執行？</td>
+<td>決定 Formal／PPA／Power 是否有可比性</td>
+</tr>
+<tr class="odd">
+<td><code>branch_id</code> / <code>expected_head_sha</code></td>
+<td>哪條方案及其當前 Git Head？</td>
+<td>防止工作寫入錯誤 Branch 或以過時 Parent 擅改</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="topic-04">04.2 原子提交、去重與 Delivery</h3>
+<p>Ingress 在同一個資料庫交易中提交 Event、必要的 Delivery／Outbox 與 Ticket 轉換。若事件已寫入，卻在 Worker 啟動前當機，重啟後仍可取得待辦。重複 Callback 不應生成重複 Job。傳送採 <strong>at-least-once + 下游冪等</strong> 的可實作模型，不聲稱跨 LLM、EDA、Git 與外部服務具有真正的 End-to-end Exactly-once。</p>
+<p>Delivery 的典型狀態是 <code>READY → LEASED → ACKED</code>，過期可回 <code>READY</code> 或進有界重試，超出限制轉 <code>DEAD_LETTER</code>。每次領取有遞增的 <code>lease_token</code>，舊 Worker 不可使用過期 Token 覆寫新 Worker 的結果。未知事件或兩條同優先度衝突路由應拒絕或隔離，不能一律交給 Main 猜。</p>
+<h3 id="topic-05">04.3 Ticket 與 Process 是不同生命週期</h3>
+<pre class="text code-block"><code>Ticket:
+NOT_STARTED → READY → ACTIVE → WAITING_FOR_RUN / WAITING_FOR_PEER
+                            → WAITING_FOR_ENV / WAITING_FOR_HUMAN
+                            → READY → VERIFYING → VERIFIED
+                         或 → BLOCKED / CANCELLED / SUPERSEDED
+
+Process:
+STARTED → RUNNING → COMPLETED / TIMED_OUT / INTERRUPTED</code></pre>
+<p>Ticket 可跨多次 Process 和模型切換。EDA 等待期間應釋放模型計算資源，由 Runner 完成事件再喚醒 Owner。Watchdog 依已保存的租約與等待狀態追蹤，不要求 LLM 每幾秒自行詢問一次。</p>
+<h3 id="topic-06">04.4 崩潰與逾時後如何恢復</h3>
+<p>恢復過程核對未 ACK Delivery、已提交 Event、原始 Artifact Hash、預期的 Source Head、當前 Lease/Actor 權限以及已完成的 Native Turn。若模型已寫出完整產物卻在回傳 Receipt 前逾時，恢復程序應優先辨識原本的 Artifact，而非直接重跑已成功的 Turn。原先的 <code>TIMED_OUT</code> 事件必須保留，不能因後來恢復成功就改寫歷史。</p>
+<h2 class="chapter-title" id="chapter-05">05｜P-Stack：每個 Owner 的專業方法，不是第二套 Router</h2>
+<p>P-Stack 在 SiliconForge 中是一組<strong>Owner-local 專業工程方法／Skills 契約</strong>。Owner 可以按工作需要選擇 Interrogate、Arena、Swarm、Waveform-TDD、Evidence 等方法，在限制好的預算與 Worktree 內派生 Subworkers；跨 Domain 的事件生命週期仍交給唯一 Runtime。這個切分避免每個 Owner 都實作自己的全域排程、通信與權限系統。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>專業 Owner</th>
+<th>方法與典型產物</th>
+<th>判斷依據</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Spec</td>
+<td><code>silicon-architect</code>、<code>design-impact/interrogate</code>，產出 Spec Revision、Interface/Reset/Latency Contract、Impact Matrix</td>
+<td>需求版本、使用者意圖、規格歧義</td>
+</tr>
+<tr class="even">
+<td>RTL</td>
+<td><code>silicon-architect</code>、<code>waveform-tdd</code>、<code>rtl-arena</code>、<code>design-interrogate</code>、<code>engineering-evidence</code>，產出獨立 RTL 候選與修補</td>
+<td>可重現回歸、同一 Spec、設計限制</td>
+</tr>
+<tr class="odd">
+<td>Verification</td>
+<td><code>verification-swarm</code>，產出 Directed/Random APB tests、Golden Diff、Seed、Waveform、最小 Reproducer</td>
+<td>客觀預期／實際差異、失敗分類</td>
+</tr>
+<tr class="even">
+<td>Formal</td>
+<td><code>formal-interrogate</code>，產出 Property、Assumption、Proof／Counterexample</td>
+<td>實際 Formal 工具及完整假設</td>
+</tr>
+<tr class="odd">
+<td>PPA</td>
+<td><code>ppa-arena</code>，產出候選比較、Pareto 與可比性報告</td>
+<td>相同 Library、PVT、STA、Clock、活動率與測試條件</td>
+</tr>
+<tr class="even">
+<td>Integration</td>
+<td><code>engineering-evidence</code>，核對所有 Evidence Fingerprints</td>
+<td>與新候選 SHA 一致且全部必需 Gate 合格</td>
+</tr>
+<tr class="odd">
+<td>EDA Environment</td>
+<td><code>toolchain-manager</code>，產出核准的工具與環境 Profile</td>
+<td>工具版本、授權、版本漂移、Smoke</td>
+</tr>
+<tr class="even">
+<td>Improvement</td>
+<td><code>silicon-reflect</code>，產出 PDCA Proposal 與 A/B 結果</td>
+<td>可重現失敗、成本、風險與受控批准</td>
+</tr>
+</tbody>
+</table></div>
+<p>每個可驗證的 Skill Invocation 應有觸發事件、受認證 Owner/Ticket、Skill ID/Version/Content SHA、輸入的 Spec/Source/Environment Pins、執行器、Worker/Turn ID、原始輸出、Artifact Hash、是否通過預定退出條件，以及成本／停止原因。使用了「Arena」「Swarm」這些字眼，不足以證明具名插件真的執行。</p>
+<p><strong>能力標示要分三層</strong>：<code>METHOD_APPLIED_ONLY</code> 表示 Owner 依循方法；<code>PROJECT_LOCAL_SKILL_EXECUTED</code> 表示專案內受控 Skill Binding 有真正呼叫及 Receipt；<code>SKILL_RUNNER_EXECUTED</code> 才代表具名 Runner 的真實執行。三者不能互換。原始專案允許使用專案內薄型 Binding，但不能把它宣稱為第三方 P-Stack 插件已通過測試。</p>
+<h2 class="chapter-title" id="chapter-06">06｜跨 Owner Communication：把「詢問另一個人」變成持久事件</h2>
+<p>當 Verification 發現 RTL 的 Reset 或 Clear 行為與需求不同，它應建立一個包含 Recipient、Ticket、Source/Spec SHA、問題、Completion Contract、Deadline 和 Artifact References 的 <strong>Typed Peer Request</strong>。Runtime 查 Registry 送到正確 Owner Instance。RTL 可回覆 Clarification、Patch Ready、Needs Evidence 或帶證據的 Refusal；Verification 收到對應 Result Event 後繼續原本 Ticket。</p>
+<div class="diagram-panel"><div class="diagram-kicker">FIG. 03 · 跨 Owner Peer Request 與 EDA Event Loop</div><div class="svg-scroller"><svg aria-label="Verification 經 Runtime 將 Peer Request 送 RTL，RTL 回傳修正，Verification 提交 EDA Job，Runner 結果再由 Runtime 喚醒 Verification" class="sequence-svg" role="img" viewbox="0 0 1160 492" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arr3" markerheight="6" markerwidth="6" orient="auto" refx="8.5" refy="5" viewbox="0 0 10 10"><path d="M0 0L10 5L0 10Z" fill="#647c8c"></path></marker></defs>
+<rect class="svg-box svg-owners" height="55" rx="9" width="220" x="23" y="20"></rect><text class="svg-main" x="133" y="42">Verification</text><text class="svg-sub" x="133" y="61">Domain Owner</text>
+<rect class="svg-box svg-runtime" height="55" rx="9" width="220" x="330" y="20"></rect><text class="svg-main" x="440" y="42">EventStore / Router</text><text class="svg-sub" x="440" y="61">Durable Delivery</text>
+<rect class="svg-box svg-owners" height="55" rx="9" width="220" x="635" y="20"></rect><text class="svg-main" x="745" y="42">RTL</text><text class="svg-sub" x="745" y="61">Domain Owner</text>
+<rect class="svg-box svg-light" height="55" rx="9" width="206" x="931" y="20"></rect><text class="svg-main" x="1034" y="42">EDA Runner</text><text class="svg-sub" x="1034" y="61">Approved Tool Profile</text>
+<g><path d="M133 75V471 M440 75V471 M745 75V471 M1034 75V471" stroke="#c8d9dd" stroke-dasharray="5 6" stroke-width="1.5"></path></g>
+<text class="svg-mini" x="290" y="115">1. PEER.REQUEST · Spec / Candidate SHA</text><path class="svg-arrow" d="M133 129H440" style="marker-end:url(#arr3)"></path>
+<text class="svg-mini" x="590" y="166">2. 已認證的目標 Owner Inbox</text><path class="svg-arrow" d="M440 180H745" style="marker-end:url(#arr3)"></path>
+<text class="svg-mini" x="590" y="216">3. CLARIFICATION 或 RTL.PATCH_READY</text><path class="svg-arrow" d="M745 230H440" style="marker-end:url(#arr3)"></path>
+<text class="svg-mini" x="290" y="265">4. Response · correlation_id</text><path class="svg-arrow" d="M440 279H133" style="marker-end:url(#arr3)"></path>
+<text class="svg-mini" x="583" y="318">5. SIM Job Intent · Exact SHA + Env</text><path class="svg-arrow" d="M133 332H1034" style="marker-end:url(#arr3)"></path>
+<text class="svg-mini" x="738" y="369">6. EDA.RUN_COMPLETED + Raw Evidence</text><path class="svg-arrow" d="M1034 384H440" style="marker-end:url(#arr3)"></path>
+<text class="svg-mini" x="288" y="430">7. Wake Original Ticket / Continue Gate</text><path class="svg-arrow" d="M440 443H133" style="marker-end:url(#arr3)"></path>
+</svg></div><p class="diagram-caption">所有步驟都應保留 Event ID、Trace/Correlation、Owner Instance、Source SHA 與 Artifact 收據。時序圖為概念性流程，實際 EDA 結果不因 Callback 抵達就直接構成 Integration PASS。</p></div>
+
+<p><strong>Main 不能成為這個流程的工程仲裁者</strong>。跨 Owner 的技術分歧應由具有責任的 Domain Owner 處理；只有需求超出已授權範圍、硬性權限衝突或需要外部意圖裁決時才交給人類。Peer 逾時、拒絕或缺證據也要形成持久狀態，不能只在 Chat 文字中消失。</p>
+<p>同一 Role 的三個 RTL Instance 同時存在時，Peer Request 必須帶 Branch/Instance Scope。EDA 完成事件應由可信的 Job Registry 反查原發起者；即使 Callback Payload 惡意填入別條 Branch，也不能變更配送對象。</p>
+<h2 class="chapter-title" id="chapter-07">07｜EDA Environment 與工程證據：模型無權自己說通過</h2>
+<h3 id="topic-07">07.1 工具、環境與工作提交</h3>
+<p>EDA Environment Owner 管理受批准的 Toolchain Profile，涵蓋 Verilator/cocotb、Yosys、SymbiYosys、OpenROAD 及必要的 PDK、Library、License、Constraints、Smoke 版本。工程 Owner 透過受控 Runner 提交 Job，不得自行安裝或默默變更工具。最初可用免費 OSS 工具，未來保留商業工具 Profile 替換介面，但跨 Provider 結果必須重新評估。</p>
+<p>標準 Job 綁定 Project/IP、Ticket、Requesting Owner、Source Commit、Spec SHA、Test Suite 或 Property Set、Tool Name、Profile Digest、Constraints Digest、Input Artifacts、執行時間／記憶體限制、Output Contract 及 Callback Key。Runner 是可以實際失敗、超時、重試的工作執行器，並非在 Dashboard 上模擬一段 Log 的展示器。</p>
+<h3 id="topic-08">07.2 Immutable Evidence Manifest</h3>
+<p>一份可信的結果要能回答：當時對哪一個 Source SHA 執行？使用哪個規格與約束？何種 Tool 及版本？在哪個 Library、PVT Corner、Clock/Load 與 Power Activity 下？實際命令、開始／完成時間、Exit Code、Raw Log、Waveform、Counterexample、Netlist、Parser 版本與分析結果在哪裡？</p>
+<p>因此，Evidence Manifest 保留這些可驗證資訊的原始引用與 SHA。若 Raw Report 遺失、Parser 出錯、環境不明、結果過期，必須標 <code>UNVERIFIED</code>、<code>UNKNOWN</code>、<code>BLOCKED</code> 或 <code>NOT_RUN</code>，不能單靠報告敘述標 PASS。</p>
+<h3 id="topic-09">07.3 Simulation、Formal、Synthesis、PPA 的不同證據門檻</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>類別</th>
+<th>真正的有效證據</th>
+<th>最常見的不合格情況</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Simulation</td>
+<td>真實執行的 Testbench／Golden Model、Seed、Expected vs Actual、Waveform、工具 Exit Code、同 SHA</td>
+<td>Mock 倒數、Agent 口頭宣稱、拿舊版測試結果</td>
+</tr>
+<tr class="even">
+<td>Formal</td>
+<td>明確 Property/Assumption/Scope/Tool 與狀態 <code>PASS/FAIL/UNKNOWN/TIMEOUT</code></td>
+<td>Reference-relative Proof 被誤當完整正式 Eligibility；Unknown 當 PASS</td>
+</tr>
+<tr class="odd">
+<td>Synthesis</td>
+<td>Yosys 或核准工具實際產生 Netlist 與 Cell/Mapping Report</td>
+<td>無 Library 的 generic cells 當成實體面積</td>
+</tr>
+<tr class="even">
+<td>Timing/Area</td>
+<td>經批准 Corner/Lib/SDC/STA Profile 下的實際報告</td>
+<td>不同 PVT 或不一致 Clock/Load 直接比較</td>
+</tr>
+<tr class="odd">
+<td>Power</td>
+<td>有效 Activity、Voltage、Mode、Workload 與估計信心標示</td>
+<td>只根據 Cell Count 斷言 Power 最好</td>
+</tr>
+<tr class="even">
+<td>Integration</td>
+<td>相同 Spec／Source／Constraint／Env Fingerprints 的完整必要結果</td>
+<td>拼接三條 Branch 的 PASS 或 Merge 後沿用前版 Gate</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="topic-10">07.4 工程終態</h3>
+<p><code>COMPLETED_PASS</code> 只表示那個 Job 的機器條件成立。正式 <code>VERIFIED</code> 與 Release 必須再由 Integration Owner 檢查所有適用 Gate 的同版證據。若現階段為框架演示而暫緩 EDA，必須標 <code>EDA_DEFERRED</code>；如果缺正式 ASIC Liberty、Corner、SDC／STA、Power Activity，PPA 的結論應為 <code>INCOMPARABLE</code> 或 <code>BLOCKED</code>，不能以空值推估虛構的精度。</p>
+<h2 class="chapter-title" id="chapter-08">08｜v3.1 Parallel Exploration：同一需求的多條工程生命線</h2>
+<p>在 v3.0 的線性工作流程之外，v3.1 允許同一 Requirement 形成一個 Exploration Group。Group 在共同的已核准 Spec、Hard Constraints、Resource Budget 下，衍生 Performance、Low Power、Area 三種設計路線；每條路線可再做受控分叉。每個 Branch 擁有自己的 Owner Instance、Git Worktree、Ticket、候選 SHA 和獨立 EDA Evidence。</p>
+<div class="diagram-panel"><div class="diagram-kicker">FIG. 02 · v3.1 Requirement → Branch DAG → Merge/ReGate</div><div class="svg-scroller"><svg aria-label="同一個 Requirement 衍生 Performance、Low Power、Area 三個分支，Performance 再分叉，合格候選送入比較與受控合併後在新 SHA 重驗" class="branch-svg" role="img" viewbox="0 0 1160 494" xmlns="http://www.w3.org/2000/svg"><defs><marker id="arr2" markerheight="6" markerwidth="6" orient="auto" refx="8.5" refy="5" viewbox="0 0 10 10"><path d="M0 0L10 5L0 10Z" fill="#647c8c"></path></marker></defs>
+<rect class="svg-box svg-accent" height="63" rx="10" width="430" x="365" y="17"></rect><text class="svg-main svg-white" x="580" y="42">Requirement + Frozen Spec</text><text class="svg-sub svg-white" x="580" y="63">S1 · Constraints K1 · Objective Policy O1</text>
+<path class="svg-arrow" d="M580 80V106"></path>
+<rect class="svg-box svg-runtime" height="60" rx="10" width="430" x="365" y="106"></rect><text class="svg-main" x="580" y="131">Exploration X1</text><text class="svg-sub" x="580" y="152">Shared Budget · Branch Registry · Parent SHA</text>
+<path class="svg-line" d="M580 166V189H209V208"></path><path class="svg-line" d="M580 166V208"></path><path class="svg-line" d="M580 189H959V208"></path>
+<rect class="svg-box svg-light" height="91" rx="9" width="330" x="45" y="208"></rect><text class="svg-main" x="210" y="232">B1 · Performance</text><text class="svg-sub" x="210" y="254">RTL Owner #1 · Candidate C1</text><text class="svg-mini" x="210" y="278">獨立 SIM · FORMAL · PPA · SHA</text>
+<rect class="svg-box svg-light" height="91" rx="9" width="330" x="415" y="208"></rect><text class="svg-main" x="580" y="232">B2 · Low Power</text><text class="svg-sub" x="580" y="254">RTL Owner #2 · Candidate C2</text><text class="svg-mini" x="580" y="278">獨立 SIM · FORMAL · PPA · SHA</text>
+<rect class="svg-box svg-light" height="91" rx="9" width="330" x="785" y="208"></rect><text class="svg-main" x="950" y="232">B3 · Area</text><text class="svg-sub" x="950" y="254">RTL Owner #3 · Candidate C3</text><text class="svg-mini" x="950" y="278">獨立 SIM · FORMAL · PPA · SHA</text>
+<path class="svg-arrow" d="M210 299V333"></path><rect class="svg-box svg-owners" height="50" rx="8" width="311" x="54" y="333"></rect><text class="svg-main svg-small" x="210" y="353">B1a · Nested Performance Fork</text><text class="svg-mini" x="210" y="371">新 Owner / Candidate SHA / Evidence</text>
+<path class="svg-arrow" d="M580 299V332"></path><path class="svg-arrow" d="M950 299V332H747"></path>
+<rect class="svg-box svg-evidence" height="51" rx="8" width="330" x="415" y="332"></rect><text class="svg-main svg-small" x="580" y="352">Comparison → Pareto</text><text class="svg-mini" x="580" y="370">Hard Gate First · Comparable Only</text>
+<path class="svg-arrow" d="M580 383V402"></path><rect class="svg-box svg-runtime" height="75" rx="10" width="492" x="334" y="402"></rect><text class="svg-main" x="580" y="426">Authorized Select / Controlled Merge</text><text class="svg-sub" x="580" y="447">NEW Merge SHA M1 → Fresh Required Gates</text><text class="svg-mini" x="580" y="467">歷史分支 PASS 不得繼承為 M1 PASS</text>
+</svg></div><p class="diagram-caption">圖中的箭頭是閱讀簡化，實際 Branch DAG 與 Merge/Selection 必須由資料庫 Registry、Git Worktree 與不可變 Evidence 支撐，不能靠三個 Prompt 或三個檔名代替。</p></div><pre class="text code-block"><code>Requirement R_CRC_01 ─ Spec S1 / Constraints K1 / Objective Policy O1
+└─ Exploration X1（共用預算 B1）
+   ├─ Baseline B0 @ Git A
+   ├─ Performance B1 ─ RTL#1 ─ Candidate C1 ─ [SIM／FORMAL／PPA]
+   │  └─ Performance B1a ─ RTL#4 ─ Candidate C1a ─ [獨立驗證]
+   ├─ Low Power  B2 ─ RTL#2 ─ Candidate C2 ─ [SIM／FORMAL／PPA]
+   └─ Area       B3 ─ RTL#3 ─ Candidate C3 ─ [SIM／FORMAL／PPA]
+                  ↓
+       合格且可比較的候選 → Pareto Frontier
+                  ↓
+       授權選擇／受控 Merge → 新 SHA M1 → 全部必要 Gate 重驗</code></pre>
+<h3 id="topic-11">08.1 物件與血緣</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>物件</th>
+<th>定義</th>
+<th>必須保留的關聯</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Requirement / Spec Revision</td>
+<td>需求意義及不可變版本</td>
+<td>共同需求、Golden/Hard Constraint</td>
+</tr>
+<tr class="even">
+<td>Exploration</td>
+<td>一組競爭方案和共同 Resource Budget</td>
+<td>Objective Policy、Baseline、Branch 集合</td>
+</tr>
+<tr class="odd">
+<td>Branch</td>
+<td>一條設計路線，允許 Parent → Child</td>
+<td><code>parent_branch_id</code>、<code>fork_commit_sha</code>、<code>current_head_sha</code>、Depth、Status</td>
+</tr>
+<tr class="even">
+<td>Owner Instance</td>
+<td>一名 Role 在特定 Branch/Ticket 的執行身份</td>
+<td>Role、Skills、Lease Epoch、Checkpoint、Cost</td>
+</tr>
+<tr class="odd">
+<td>Candidate</td>
+<td>某個 Branch 的具體原始碼及設計版本</td>
+<td>Spec SHA、Source SHA、Design Contract</td>
+</tr>
+<tr class="even">
+<td>EDA Job / Evidence</td>
+<td>針對候選特定條件的執行與結果</td>
+<td>Toolchain、Constraint、Run ID、Artifact Hash</td>
+</tr>
+<tr class="odd">
+<td>Merge / Lineage Edge</td>
+<td>分叉、衍生、合併、替代的不可變關聯</td>
+<td>Expected Head、Authorization、Merge SHA、ReGate</td>
+</tr>
+</tbody>
+</table></div>
+<p>Parent Relationship 不可改寫，Branch ID 不可重用，Graph 不得有環。每個受控可寫 Worktree 同時最多一個有效 Writer Lease。Git Service 依授權和 Expected SHA 建立、提交、合併或封存；Owner 只可提出候選與 Merge Proposal，不能繞過它直接覆寫 main。</p>
+<h3 id="topic-12">08.2 Branch Scope 下的 Routing</h3>
+<p>路由分兩段：先由 Event Type/Project/IP/Policy 判定 <code>owner_role</code>，再用可信的 Branch、Job 與 Peer Registry 找 <code>owner_instance_id</code>。同一 Candidate 的 <code>RTL.CANDIDATE_READY</code> 可以 fan-out 給 Verification、Formal、PPA，各自獨立 ACK。跨 Branch Read-only Evidence 分享必須有明確 <code>cross_branch</code> Scope 與授權，不能拿另一個 Candidate 的結果替自己過 Gate。</p>
+<h3 id="topic-13">08.3 資源政策與有界探索</h3>
+<p>目前正式 <code>config/exploration_policy.json</code> 的開發期設定為：初始每 Group 最多 3 Branch，總 Branch 最多 6，同時活躍最多 3，最大 Depth 2，同 Role 同時最多 3 個 Owner Instance，無 Scope 的跨 Branch Peer 配額為 0。這些是<strong>可版控、需授權調整的預設政策值</strong>，不是架構永遠無法超過的硬體上限。原始碼、EDA、模型、Child Workers 與 Group Budget 由 Runtime 統一控管。</p>
+<h3 id="topic-14">08.4 比較、選擇與 Merge ReGate</h3>
+<p>候選先達成相應功能／Formal Hard Gate，才進 PPA。PPA 必須比較相同的 Library、Corner、Constraints、Clock、Power Activity 與合理相同的 Workload。沒有可靠 Power 數據時，不能假裝能做三軸精確 Pareto 排序；保留 <code>INCOMPARABLE</code> 與限制說明。</p>
+<p>對於同樣滿足硬性約束、互有優劣的候選，保存多點 <strong>Pareto Frontier</strong>。若已核准 Objective Policy 與 Trade-off 權重，PPA／Spec Domain 可據此選擇；如果沒有授權，應呈現決策選項請人類決定，Main 不自行補上偏好。Merge 遇衝突要留下三方 Diff/Conflict Event，不能讓模型無條件採納一方。</p>
+<p><strong>Merge 產生一個新的 SHA。</strong> 既有 B1、B2 的 Simulation、Formal 與 PPA PASS 不會自動轉移到 M1。Release 前要在 M1 依新版本實際重跑適用 Gate，這是 ReGate 的核心定義。被淘汰或失敗分支仍保留假設、原因、證據與 PDCA 價值。</p>
+<h2 class="chapter-title" id="chapter-09">09｜人類入口：Native Harness、MCP 與通知</h2>
+<p>對使用者而言，SiliconForge 應該在<strong>正常 Codex／Claude Code 對話</strong>中可用。<code>AGENTS.md</code>、Skills 與 MCP 負責將使用者意圖送進受認證的 Gateway；使用者也可開啟 Web Dashboard 查看狀態和提交獲授權操作。系統不另造一套仿 Codex 的聊天終端。</p>
+<p>規格列出的最小 MCP 介面包括 <code>sf_get_status</code>、<code>sf_submit_event</code>、<code>sf_get_evidence</code>、<code>sf_send_message</code>、<code>sf_get_activity</code>、<code>sf_subscribe</code>、<code>sf_get_notifications</code>、<code>sf_submit_approval</code>、<code>sf_control_ticket</code>。v3.1 另定義探索與分支的受控 Commands，例如 <code>request_exploration</code>、<code>fork_branch</code>、<code>get_lineage</code>、<code>submit_candidate</code>、<code>request_branch_comparison</code>、<code>propose_merge</code>、<code>evaluate_merge</code>、<code>apply_merge</code> 和 <code>archive_branch</code>。</p>
+<p>這些是<strong>目標介面契約</strong>，不可將文件中列出的名稱直接當成目前 GitHub 已部署的 API。所有 Mutation 必須有 Actor Identity、Project Membership、Capability、Nonce/Idempotency、Expected Revision 與稽核。關閉前端不會取消後端 Ticket，未送達通知保留在 Durable Outbox；重新開啟 Native Harness 時能讀回。</p>
+<p>Owner Harness Adapter 提供 <code>start / resume / interrupt / collect_output / checkpoint / shutdown</code>，分別保存 Harness、Model、Effort、Skill Version、Token、Cost、使用量未知狀態及限制。換模型並不重置同一 Ticket 的配額，也不能繞過已拒絕的批准要求。</p>
+<h2 class="chapter-title" id="chapter-10">10｜Web Dashboard：人類看得懂的「工程控制塔」</h2>
+<p>Web Dashboard 的權威規格由 <code>docs/06_OBSERVABILITY_PDCA.md</code> 定義核心觀測功能；<code>docs/16_PARALLEL_EXPLORATION_IMPLEMENTATION.md</code> 第 16.7 節和 <code>docs/14</code> 擴充 Branch DAG、PPA 和 Merge 視角；<code>docs/09</code> 的 A5 與 <code>docs/15</code> 的 E19 定義可驗收條件。<strong>Dashboard 是可重建的 Read Model，Event Journal／Engineering Evidence 才是權威資料。</strong></p>
+<h3 id="topic-15">10.1 五層權威紀錄</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>紀錄層</th>
+<th>儲存內容</th>
+<th>對使用者的意義</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Event Journal</td>
+<td>事件、路由、Delivery、ACK、因果及來源</td>
+<td>「系統為何啟動或恢復這件工作？」</td>
+</tr>
+<tr class="even">
+<td>Communication Ledger</td>
+<td>Human／Peer Request、Sender/Recipient、Response、Deadline、Artifacts</td>
+<td>「誰向誰提出什麼問題，回答了嗎？」</td>
+</tr>
+<tr class="odd">
+<td>Execution Trace</td>
+<td>Owner Turn、Skill/Worker、Model、EDA Command、等待、Token、Cost</td>
+<td>「實際做過哪些動作？花了多少資源？」</td>
+</tr>
+<tr class="even">
+<td>Decision &amp; Evidence Record</td>
+<td>候選方案、Constraints、證據 Hash、選擇理由與 Gate</td>
+<td>「為什麼認定方案可靠／不可比／不合格？」</td>
+</tr>
+<tr class="odd">
+<td>Improvement Ledger</td>
+<td>失敗模式、Baseline、Proposal、A/B、Rollback</td>
+<td>「系統因哪個教訓改善，下次應如何驗證？」</td>
+</tr>
+</tbody>
+</table></div>
+<p>這些資料透過 <code>trace_id / event_id / ticket_id / owner_run_id / branch_id / causation_id / spec_sha / source_sha</code> 等鍵串接。大型 Log、Waveform 保留在受權限管制的 Artifact Store，Dashboard 顯示其指紋與授權存取入口；避免把敏感內容直接嵌進網頁。</p>
+<h3 id="topic-16">10.2 使用者應該看到的八個畫面</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>畫面</th>
+<th>主要問題</th>
+<th>最低資訊要求</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mission Overview</td>
+<td>哪些工作正在進行或等待？</td>
+<td>Project/Task、Owner、Gate、Last Progress、Blocker、Next Action、通知</td>
+</tr>
+<tr class="even">
+<td>Owner / Agent Activity</td>
+<td>誰真的在執行？</td>
+<td>Role 與 Instance 分開、Native Turn/Skill Identity、Lease、Model、Tokens、Cost/Unknown</td>
+</tr>
+<tr class="odd">
+<td>Event / Communication Trace</td>
+<td>這件事如何演變？</td>
+<td>Event Causation、Peer Sender/Recipient、Response、Timeout、Retry、原始 ID</td>
+</tr>
+<tr class="even">
+<td>Requirement &amp; Branch Explorer</td>
+<td>同一需求衍生哪些設計？</td>
+<td>Requirement → Exploration → Branch DAG、Parent、Fork SHA、Head、Status</td>
+</tr>
+<tr class="odd">
+<td>Engineering Evidence</td>
+<td>哪個候選得到什麼驗證？</td>
+<td>Candidate/Spec/Env/Constraints Pin、SIM/Formal/Synthesis/PPA、Raw Artifact</td>
+</tr>
+<tr class="even">
+<td>PPA &amp; Comparison</td>
+<td>候選可比較嗎？</td>
+<td>Comparable Set、Assumptions、Pareto、INCOMPARABLE、Winner Policy</td>
+</tr>
+<tr class="odd">
+<td>Merge / ReGate</td>
+<td>哪個版本被選擇與整合？</td>
+<td>Merge Proposal、Conflict、Authorization、新 Merge SHA、各項 ReGate</td>
+</tr>
+<tr class="even">
+<td>PDCA &amp; Reliability</td>
+<td>哪些失敗反覆發生，改善是否有效？</td>
+<td>Failure Signature、Baseline、A/B、Checkpoint、Recovery、Policy Change Approval</td>
+</tr>
+</tbody>
+</table></div>
+<p>上表是把現有文件的多項要求整理成較符合人類閱讀習慣的<strong>建議資訊架構</strong>；它不是要求 Coding Agent 立刻開發八個相互獨立的 Web 服務或新增 Gate。UI 可以用單頁、Tab、Panel 實現，只要能追溯同一份權威資料並通過既定驗收。</p>
+<h3 id="topic-17">10.3 一條事件的 Dashboard 操作路徑</h3>
+<p>使用者打開一筆 <code>SIM.REGRESSION_FAILED</code>，應看見它屬於哪個 Requirement、Branch、Source SHA 和 Verification Ticket。沿因果連結可看到 Verification 的 Reproducer、發給 RTL 的 Peer Request、RTL 的回覆、Git Candidate、Runner Job、正式 Gate 結果與最終 Integration Decision。若 Agent Turn 顯示 <code>COMPLETED</code>，但 Simulation 尚未執行，UI 必須保留 <code>SIM NOT_RUN</code>；若 Source SHA 變更，舊證據應標 <code>STALE</code>。</p>
+<p>以 Branch 為入口時，使用者應能展開分叉樹、檢視多個 Owner Instance 的平行時間線，切換 Performance/Low Power/Area 的 PPA 條件，理解每個候選為何被保留、淘汰或合併。從 Merge Commit 逆向也應查得到 Parent Candidate、Conflict Resolution、Authorization 與 ReGate。DAG 須有真正 Event 與 SHA，不能是靜態裝飾圖。</p>
+<h3 id="topic-18">10.4 UI 的顯示語意與受權限操作</h3>
+<p><code>PASS / FAIL / BLOCKED / NOT_RUN / UNKNOWN / INCOMPARABLE / STALE</code> 應分開顯示，且標明是 Mock、Local Agent 回報、可查原始證據，或正式獨立驗收。<strong>狀態顏色不能取代來源等級</strong>。缺少 Token Receipt 就顯示 Cost UNKNOWN，不要虛構零元。監控應同時呈現 Last Heartbeat 和 Last Effective Progress；停滯判定必須考慮 Session 是否真正活躍。</p>
+<p>Dashboard 的主要視圖是唯讀；若提供 Submit Event、Pause、Resume、Approve 或 Merge Proposal，必須送到與 MCP 相同的 AuthZ Gateway／Command Handler，由後端確認 Actor Capability。UI 的按鈕不能直接改 SQLite、Git 或跳過 Evidence Gate。Dashboard 暫時停止仍不得造成 Event 遺失，恢復後能從 Journal 重建相同投影。</p>
+<p><strong>正式驗收對應</strong>：A5-01 要能回放有因果的事件歷史；A5-02 顯示 Peer 狀態；A5-03 顯示 Harness/Model/Skill/成本；A5-04 驗證 UI 中斷後可重建；A5-05/06 驗證 PDCA 計畫與隔離 A/B；A5-07 驗證 Durable Notification；E10 要能追溯 Branch 血緣；E19 要能看完整 Branch/Owner/Skill/EDA/Token/Peer/Merge 的因果圖。</p>
+<h2 class="chapter-title" id="chapter-11">11｜PDCA：由真實工程失敗改進工作方法</h2>
+<p>SiliconForge 的 PDCA 並不直接等同於讓 LLM 修改自己的 System Prompt。它首先是<strong>工程運營的版本化改善機制</strong>。Plan 根據可重現的失敗簽章與實際成本定義假設；Do 在隔離環境建立 Skill、工作方法或政策候選；Check 在固定案例集上做可觀察的 A/B 比較，納入成功率、重試、Token、EDA CPU 與資安影響；Act 在符合批准與 Regression 規則後才決定 Promotion、Rollback 或 Reject。</p>
+<p>例如 Verification 在完成 Artifact 後逾時，會形成一個 Failure Motif。改進方案可以是「先持久化產物收據，再等待 Native Turn Terminal Receipt」，並在故障注入下測試是否減少重做。Dashboard 應能看到原失敗、改進候選、重現證據與剩餘風險。<strong>沒有受權限批准，Process Improvement Owner 不得自行改動生產 Router、資源限額或正式 Gate。</strong></p>
+<h2 class="chapter-title" id="chapter-12">12｜安全、資源治理與可控制的自治</h2>
+<p>Host Runtime 對每個 Ticket、Exploration、Branch 和 Owner 統一施加資源政策。典型限制包括 Token／Model／EDA 預算、允許工具與檔案路徑、網路範圍、最大嘗試次數、最大 Child Workers、最大並發 Branch、Deadline、Source ACL 和發布許可。這些限制跨模型與 Session 累積，不因切換 Harness 或建立子分支而歸零。</p>
+<p>No-progress Watchdog 不能只看是否有新 Commit 或新文字。它要比較 Ticket、Failure Signature、Candidate SHA、Evidence Hash、Test Coverage／Quality Delta。持續產生不同 Hash 但沒有品質改善，仍可視為無進展。政策示例允許同失敗簽章最多約 3 次有限嘗試；超出時應停止<strong>受影響的 Branch 或 Ticket</strong>、保存診斷與 PDCA，而非讓其他健康工作一起停擺。</p>
+<p>需要人類批准的場景為：需求意圖衝突、未授權 Trade-off、跨權限或 License／PDK 安裝、擴充配額、正式 Policy／Gate 變更、外部發佈等。明確拒絕後不能透過換模型、換入口或修改 Prompt 重試繞過。已經授權且範圍清楚的工程處理不需要每個 Turn 都詢問人類。</p>
+<h2 class="chapter-title" id="chapter-13">13｜從規格到正式驗收：A0 至 A6 與 v3.1 E01 至 E20</h2>
+<p>完整系統不是一次展示就能宣稱完成。正式驗收分成原有 <strong>A0–A6 共 60 件</strong>與 v3.1 增量 <strong>E01–E20 共 20 件</strong>，合計 <strong>80 件 Required Cases</strong>。每個 ID 的 <code>PASS/FAIL/BLOCKED/NOT_RUN</code> 依原始斷言與真實執行證據認定。模擬、單一 Smoke、文字 Review 或本地展示都不自動替代全部 ID。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>里程碑</th>
+<th style="text-align: right;">正式案例數</th>
+<th>工程能力與關閉要求</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A0</td>
+<td style="text-align: right;">18</td>
+<td>Event、Outbox、Routing、Lease、Crash、Watchdog、Peer、Replay 等控制平面契約</td>
+</tr>
+<tr class="even">
+<td>A1</td>
+<td style="text-align: right;">8</td>
+<td>Native Codex/Claude、MCP 認證、通知持久化、Session/Model 切換</td>
+</tr>
+<tr class="odd">
+<td>A2</td>
+<td style="text-align: right;">7</td>
+<td>EDA Environment Profile、真實 APB CRC32 Simulation、Formal、Synthesis</td>
+</tr>
+<tr class="even">
+<td>A3</td>
+<td style="text-align: right;">7</td>
+<td>Verification ↔︎ RTL 真實自動修補、Main 離線、相同 SHA 重驗</td>
+</tr>
+<tr class="odd">
+<td>A4</td>
+<td style="text-align: right;">6</td>
+<td>規格變更、候選優化、具可比性的 PPA 與獨立 Gate</td>
+</tr>
+<tr class="even">
+<td>A5</td>
+<td style="text-align: right;">7</td>
+<td>Observability、Dashboard Replay、Communication、Cost、PDCA、Notification</td>
+</tr>
+<tr class="odd">
+<td>A6</td>
+<td style="text-align: right;">7</td>
+<td>資安、配額、跨專案、公平性、故障與環境漂移</td>
+</tr>
+<tr class="even">
+<td>E01–E20</td>
+<td style="text-align: right;">20</td>
+<td>多 Owner/Branch、真實 Worktree、EDA Fanout、Pareto、Merge/ReGate、DAG、綜合閉環</td>
+</tr>
+<tr class="odd">
+<td><strong>總計</strong></td>
+<td style="text-align: right;"><strong>80</strong></td>
+<td><strong>每一個必需案例都要有對應的獨立客觀證據</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>為保持原有系統架構，v3.1 擴充插入原有階段：A0X 增加 Registry／Branch DAG；A3X 增加真正多 Owner 和 Worktree；A4X 增加三路真實 EDA、比較與 Merge；A5X 增加 DAG／Pareto／PDCA 視圖；A6X 增加多分支 Crash／Fairness。它們是擴充點，沒有取代 A0–A6。</p>
+<p>Supervisor 的 G0–G7 是<strong>工程監督工作分段</strong>，與 A0–A6 正式測試類別不能直接一對一換算。Current Directive 可安排先完成可用框架及有界 Demo，再補齊正式 Gate，但不會降低原本的 80 項退出條件。驗收報告要帶 Test ID、原始 Commit、Command、時間、Profile/Environment Digest、Raw Artifact/Log Hash、Reviewer、限制與未執行項目。</p>
+<h2 class="chapter-title" id="chapter-14">14｜三個端到端情境，驗證系統是否真正閉環</h2>
+<h3 id="topic-19">14.1 情境甲：修復一個實際 CRC32 Regression</h3>
+<p>一個經認證的 Regression Failure Event 由 CI 或 Runner 進站。Runtime 原子記錄，送給 Verification。Verification 以同一 SHA 重現錯誤，保存 Seed／Expected／Actual／Waveform，並直接向 RTL Owner 送 Typed Repair Request。RTL 依 Scope 進入獨立 Worktree，利用 Waveform-TDD 和 Arena 產生候選；新 Candidate Event 自動 fan-out 到 Verification 和 Formal，Runner 用受批准 Profile 真實執行。Integration 只接受同一個 Spec／Candidate／Toolchain 指紋的必需證據。整個過程可以在 Main 關閉的狀態下進行，工作仍可恢復與追溯。</p>
+<h3 id="topic-20">14.2 情境乙：同一規格下的三種微架構競爭</h3>
+<p>需求規定 CRC32 功能與硬性約束，提出提高 Fmax、降低 Power、減少 Area 的目標。ExplorationCoordinator 在同一 Scope 建立三個 Branch，分派三名 RTL Instance。Performance Route 可再 Fork 一個較深 Pipeline 方案；每條線用自己的原始碼、Testbench、EDA Job、工具 Profile 和 Evidence。Compare Projector 先排除功能 Gate 未過或條件不可比的方案，再給 PPA／Spec Owner Pareto 資料。依已批准的 Objective Policy 選擇或請人類批准 Trade-off，進行受控 Merge。<strong>新 Merge SHA 必須重新執行適用 Gate</strong>。Dashboard 保留被淘汰候選與所有決策過程。</p>
+<h3 id="topic-21">14.3 情境丙：Agent 產物已寫完，卻在回傳前逾時</h3>
+<p>Verification／Spec Native Turn 先寫出了 Artifact，模型返回 Receipt 或 Process Terminal State 時發生逾時。Runtime 保留原本 Turn 的 <code>TIMED_OUT</code>，以受認證 Actor、有效 Lease、Expected Head 及原始檔 Hash 建立或恢復 Checkpoint。新的 Process 從已持久化位置接手，若確認同一產物已存在，便不再重複該 Turn。Dashboard 同時顯示原失敗、恢復事件、Artifact SHA 與最終 Ticket 狀態；沒有獨立 EDA 的部分仍是 <code>NOT_RUN</code>。這個情境對控制 Agent Token 成本與長時間可靠性很重要。</p>
+<h2 class="chapter-title" id="chapter-15">15｜工程部署、版本治理與人類／外部 Coding Agent 的特殊邊界</h2>
+<h3 id="topic-22">15.1 技術建議基線</h3>
+<p>既有規格建議先以 Python 模組化 Runtime、SQLite WAL、Git Worktree、受控 Subprocess／Docker Runner、薄型 MCP／HTTP Gateway、唯讀 Dashboard 建構可運作系統。可選 FastAPI 或 Web 前端框架作實作替代，但選擇框架不構成新的架構權威。只有經過證明的吞吐、可靠性或部署需求，才考慮 Kafka、Redis、NATS、Kubernetes 等額外服務並提出 ADR。</p>
+<h3 id="topic-23">15.2 唯一正式 Repository 與本地開發限制</h3>
+<p>正式的 Source／規格／驗收權威為 <a href="https://github.com/caseykcc0124/SiliconForge" rel="noopener noreferrer" target="_blank"><code>caseykcc0124/SiliconForge</code></a>。目前外部 Coding Agent 可透過 Chrome 閱讀 GitHub、以 ZIP 下載程式碼，在自己的 Local 做 Git Branch、測試與封裝；<strong>對遠端只能使用 GitHub Web 編輯根目錄 <code>SiliconForge_Working_SYNC.md</code></strong>。它無法自行 Clone/Pull/Push、建立 PR、批次上傳 Source。Supervisor 負責安全更新 <code>docs/19_SUPERVISOR_WORK_ORDER.md</code>，Coding Agent 在活躍 Session 中輪詢並 ACK。任何 Sync Web Commit 都不代表遠端正式 Source 已整合。</p>
+<p>Local ZIP／Patch 只有在實際可被授權 Integrator 取得，並驗證 Bytes、Hash、Target SHA 及 GitHub Commit 後，才能構成遠端 Source Integration 的證據。不得因知道 ZIP 路徑就假設它已上傳或可下載。</p>
+<h3 id="topic-24">15.3 架構變更與政策變更的授權界線</h3>
+<p>這份人類閱讀整合版不修改任何 GitHub 規格或 Agent 指令。當需要新增正式功能、轉移 Domain Authority、變更配額、Policy／Gate、安全規則或發布權限時，要用原本的架構管理與授權流程處理。<code>docs/19</code> 是最新<strong>開發工作次序</strong>的來源，但它不是用來默默重寫 <code>docs/00–16</code> 或 80 個驗收斷言的捷徑。</p>
+<h2 class="chapter-title" id="chapter-16">16｜截至本文件快照的實作進度與缺口</h2>
+<p><strong>這一節是日期限定的進度快照，不屬於永久架構規格。</strong> 截至 GitHub main <code>f99078a9</code>，正式 Repo README 的標示仍以 Specification／A0 Reference Implementation 為基線；遠端未看到最新本地 Source 的正式整合。最新 Coding Agent Sync 回報如下：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>項目</th>
+<th>Agent 於 Local 回報</th>
+<th>可核實的邊界</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Directive</td>
+<td>已 ACK <code>SF-DIR-20261109-16</code></td>
+<td>Work Order 是本輪 P-Stack Skill、Docs Matrix、Recovery 與 Dashboard；不是新正式 Gate</td>
+</tr>
+<tr class="even">
+<td>先前跨 Role 框架</td>
+<td>Directive15 曾完成 Spec → RTL → Verification → Peer Clarification → Integration → PDCA CHECK</td>
+<td>原始開發 Bundle 尚不可取得；不能視為 80 項正式驗收</td>
+</tr>
+<tr class="odd">
+<td>最新 Spec 沙盒</td>
+<td>Directive16 新 POLYNOMIAL read-only 0x0c 需求；Spec Native Turn 實際完成</td>
+<td>Spec Acceptance 及整條 RTL/Verification/Integration 工作鏈尚未完成</td>
+</tr>
+<tr class="even">
+<td>文件引用</td>
+<td>13 份現行文件有 Chrome 閱讀紀錄及本地 Documentation Compliance Matrix</td>
+<td>尚未收到可獨立檢查的完整執行證據包</td>
+</tr>
+<tr class="odd">
+<td>Skill</td>
+<td>既有方法已使用；正在建立 Project-local Binding</td>
+<td>具名第三方 P-Stack Runner 尚未驗證；未取得 <code>PROJECT_LOCAL_SKILL_EXECUTED</code> 最終 Receipt</td>
+</tr>
+<tr class="even">
+<td>Recovery</td>
+<td>已回報真實 Shell Artifact Checkpoint 調和，另在 SQLite 複本做故障注入、Lease/Auth/SHA 拒絕檢查</td>
+<td>Fault Injection 為 <code>FAULT_INJECTION_NOT_NATIVE</code>；不等於正式工程 Verification</td>
+</tr>
+<tr class="odd">
+<td>Dashboard</td>
+<td>已在 Chrome 實際打開 Directive16 RUNNING 畫面、留下 Screenshot／Page Hash</td>
+<td>完成後的最終 UI 及本輪整條事件鏈尚未交付</td>
+</tr>
+<tr class="even">
+<td>Source / Transfer</td>
+<td>最近完整交付的 Local Source <code>fc1bb556e811d754bad63247eb7699ef17774a60</code>，D16 有尚未交付的本地修改</td>
+<td>只見 Sync Web Commits，Local Bundle Transfer <code>UNAVAILABLE</code>、Remote Source Integration <code>null</code></td>
+</tr>
+<tr class="odd">
+<td>正式 EDA / PPA / Merge</td>
+<td>D16 尚未執行正式 Simulation/Formal/PPA/Select/Merge/ReGate</td>
+<td>已明確暫緩；不能因 Task 完成而推導出工程 PASS</td>
+</tr>
+<tr class="even">
+<td>正式驗收</td>
+<td>原有 A0–A6 共 60，加 E01–E20 共 20</td>
+<td>E01–E20 在 JSON 契約中仍 <code>NOT_RUN</code>；本文件沒有替任何 Case 產生新 PASS</td>
+</tr>
+</tbody>
+</table></div>
+<p>這份狀態表不能替代未來的即時 Sync。若需判斷「今天到底完成到哪」，必須重新讀取 <code>SiliconForge_Working_SYNC.md</code> 及最新 Commit，必要時取得 Local 原始 Execution Bundle，不能引用這份快照當作永遠不變的事實。</p>
+<h2 class="chapter-title" id="chapter-17">17｜規格閱讀與架構審查的重點問題</h2>
+<p>對人類架構審查者，最值得持續追問的是：</p>
+<ol type="1">
+<li><strong>控制權是否集中且適當？</strong> Runtime 有完整事件治理權，Owner 有領域工程決策權，Main 不成為單點仲裁。</li>
+<li><strong>事件能否恢復？</strong> 任意 crash、重送、Lease 過期、Client 關閉都不應讓工程事實遺失或產生假 PASS。</li>
+<li><strong>Skill 是否真實執行？</strong> 名稱、版本、受限執行、Raw Result 與 Evidence 能否形成可稽核的鏈。</li>
+<li><strong>候選是否真正隔離？</strong> 同一 Role 多 Instance、不同 Worktree／Git SHA、獨立 EDA Job 與 Branch DAG 是否存在。</li>
+<li><strong>工程結果是否具同版可比性？</strong> Spec、Source、Lib、Corner、Constraints 與 Tool Profile 都可查，而且新 Merge SHA 確實 ReGate。</li>
+<li><strong>Dashboard 能否說明「為什麼」？</strong> 任何綠燈都能回溯原始 Event、Tool、Artifact、Owner 及 Approval，而非僅在前端顯示摘要。</li>
+<li><strong>改善是否有受控治理？</strong> PDCA 的 ACT 必須通過獨立 A/B 與權限審核，不能自己改規則。</li>
+<li><strong>驗收與交付是否分級？</strong> Local Demo、Mock、Agent PASS、Supervisor Verified 與 Remote Integrated 應分開呈現。</li>
+</ol>
+<p>這些問題共同形成 SiliconForge 的架構完整性檢查，不應在每次工作指引更新時重新發明一套原則。</p>
+<h2 class="chapter-title" id="appendix-18">附錄 A｜重要物件、事件與狀態速查</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>名稱</th>
+<th>定義</th>
+<th>常見關聯鍵</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>EventEnvelope</code></td>
+<td>認證來源送入 Runtime 的可持久化事實</td>
+<td>event / producer / project / ticket / correlation / SHA</td>
+</tr>
+<tr class="even">
+<td><code>DomainTicket</code></td>
+<td>Owner 對一項工程目標的持久化承諾</td>
+<td>ticket / owner_instance / checkpoint / mandate / revision</td>
+</tr>
+<tr class="odd">
+<td><code>Delivery / Outbox</code></td>
+<td>保證可重送、可 ACK 的待辦與通知</td>
+<td>event / recipient / attempt / lease_token</td>
+</tr>
+<tr class="even">
+<td><code>OwnerInstance</code></td>
+<td>Role 在 Branch/Ticket 範圍內的責任身分</td>
+<td>owner_instance / role / branch / lease / budget</td>
+</tr>
+<tr class="odd">
+<td><code>SkillInvocation</code></td>
+<td>受控的專業方法實際呼叫與收據</td>
+<td>skill_id / version / owner / turn / spec / artifact</td>
+</tr>
+<tr class="even">
+<td><code>EDAJob</code></td>
+<td>實際 Tool 執行的意圖、進度與完成報告</td>
+<td>job / candidate / env / constraints / command / status</td>
+</tr>
+<tr class="odd">
+<td><code>EvidenceManifest</code></td>
+<td>關聯原始工具產物的不可變證據封包</td>
+<td>source_sha / spec_sha / env_digest / artifact SHA</td>
+</tr>
+<tr class="even">
+<td><code>ExplorationGraph</code></td>
+<td>Requirement、Branch、Candidate、Owner 與 Merge 的血緣圖</td>
+<td>exploration / branch / parent / head / event</td>
+</tr>
+<tr class="odd">
+<td><code>PDCA Case</code></td>
+<td>失敗模式與版本化改善提案</td>
+<td>signature / baseline / A/B / approval</td>
+</tr>
+</tbody>
+</table></div>
+<h2 class="chapter-title" id="appendix-19">附錄 B｜規格來源與權威順序</h2>
+<p><strong>最先閱讀</strong>：<a href="https://github.com/caseykcc0124/SiliconForge/blob/main/README.md" rel="noopener noreferrer" target="_blank"><code>README.md</code></a> 提供現行 v3.1 入口；<a href="https://github.com/caseykcc0124/SiliconForge/blob/main/AGENTS.md" rel="noopener noreferrer" target="_blank"><code>AGENTS.md</code></a> 定義 Agent 使用與權限。正式資料以當前唯一 Repository 的原始文件為準。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr class="header">
+<th>主題</th>
+<th>主要正式規格</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>任務定位與非目標</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/00_MISSION_AND_BOUNDARIES.md" rel="noopener noreferrer" target="_blank"><code>docs/00_MISSION_AND_BOUNDARIES.md</code></a></td>
+</tr>
+<tr class="even">
+<td>系統分層、Owner 權限</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/01_ARCHITECTURE_AND_OWNERSHIP.md" rel="noopener noreferrer" target="_blank"><code>docs/01_ARCHITECTURE_AND_OWNERSHIP.md</code></a></td>
+</tr>
+<tr class="odd">
+<td>Event/Delivery/Ticket/Recovery</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/02_EVENT_RUNTIME_PROTOCOL.md" rel="noopener noreferrer" target="_blank"><code>docs/02_EVENT_RUNTIME_PROTOCOL.md</code></a></td>
+</tr>
+<tr class="even">
+<td>P-Stack Owner-local Skills</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/03_PSTACK_DOMAIN_WORKFLOWS.md" rel="noopener noreferrer" target="_blank"><code>docs/03_PSTACK_DOMAIN_WORKFLOWS.md</code></a></td>
+</tr>
+<tr class="odd">
+<td>EDA Profile 與 Evidence</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/04_EDA_EVIDENCE_AND_ENVIRONMENT.md" rel="noopener noreferrer" target="_blank"><code>docs/04_EDA_EVIDENCE_AND_ENVIRONMENT.md</code></a></td>
+</tr>
+<tr class="even">
+<td>Native Harness/MCP</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/05_HARNESS_MCP_HUMAN.md" rel="noopener noreferrer" target="_blank"><code>docs/05_HARNESS_MCP_HUMAN.md</code></a></td>
+</tr>
+<tr class="odd">
+<td>Dashboard／Telemetry／PDCA</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/06_OBSERVABILITY_PDCA.md" rel="noopener noreferrer" target="_blank"><code>docs/06_OBSERVABILITY_PDCA.md</code></a></td>
+</tr>
+<tr class="even">
+<td>安全、配額及失敗控制</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/07_SAFETY_AND_RESOURCE_GATES.md" rel="noopener noreferrer" target="_blank"><code>docs/07_SAFETY_AND_RESOURCE_GATES.md</code></a></td>
+</tr>
+<tr class="odd">
+<td>Milestones</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/08_IMPLEMENTATION_PLAN.md" rel="noopener noreferrer" target="_blank"><code>docs/08_IMPLEMENTATION_PLAN.md</code></a></td>
+</tr>
+<tr class="even">
+<td>A0–A6 正式 60 項驗收</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/09_ACCEPTANCE_TEST_MATRIX.md" rel="noopener noreferrer" target="_blank"><code>docs/09_ACCEPTANCE_TEST_MATRIX.md</code></a></td>
+</tr>
+<tr class="odd">
+<td>v3.1 多 Owner / Branch DAG</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/14_PARALLEL_EXPLORATION_ARCHITECTURE.md" rel="noopener noreferrer" target="_blank"><code>docs/14_PARALLEL_EXPLORATION_ARCHITECTURE.md</code></a></td>
+</tr>
+<tr class="even">
+<td>v3.1 E01–E20 正式驗收</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/15_PARALLEL_EXPLORATION_ACCEPTANCE.md" rel="noopener noreferrer" target="_blank"><code>docs/15_PARALLEL_EXPLORATION_ACCEPTANCE.md</code></a></td>
+</tr>
+<tr class="odd">
+<td>v3.1 Commands / UI / Migration</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/16_PARALLEL_EXPLORATION_IMPLEMENTATION.md" rel="noopener noreferrer" target="_blank"><code>docs/16_PARALLEL_EXPLORATION_IMPLEMENTATION.md</code></a></td>
+</tr>
+<tr class="even">
+<td>並行探索政策</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/config/exploration_policy.json" rel="noopener noreferrer" target="_blank"><code>config/exploration_policy.json</code></a></td>
+</tr>
+<tr class="odd">
+<td>E 類機器可讀狀態</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/contracts/parallel_exploration_acceptance.json" rel="noopener noreferrer" target="_blank"><code>contracts/parallel_exploration_acceptance.json</code></a></td>
+</tr>
+<tr class="even">
+<td>Coding Agent 最新開發指令</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md" rel="noopener noreferrer" target="_blank"><code>docs/19_SUPERVISOR_WORK_ORDER.md</code></a></td>
+</tr>
+<tr class="odd">
+<td>Coding Agent 回報與進度</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/SiliconForge_Working_SYNC.md" rel="noopener noreferrer" target="_blank"><code>SiliconForge_Working_SYNC.md</code></a></td>
+</tr>
+<tr class="even">
+<td>歷史思想脈絡，不是現行最高規範</td>
+<td><a href="https://github.com/caseykcc0124/SiliconForge/blob/main/docs/reference/Architecture_RFC_v2_2_Historical.md" rel="noopener noreferrer" target="_blank"><code>docs/reference/Architecture_RFC_v2_2_Historical.md</code></a></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>衝突時的處理順序</strong>：目前正式 v3.0／v3.1 原始規格與正式契約優先；安全／權限／授權邊界不可被開發次序覆蓋；<code>docs/19</code> 調整工作優先序而不降低 Gate；Sync 為執行回報，不是架構裁決；v2.2 RFC 保留作歷史設計與差異追溯。本整合版適合連續閱讀、審查與規格溝通，但不應自行宣告新的正式 Architecture Baseline。</p>
+<div class="reading-footer">SiliconForge v3.1 · 人類閱讀整合版 1.0 · GitHub main 快照 f99078a9。所有程式、政策與正式驗收以 Repository 原始規範為準。</div></article><div class="page-foot">本機可離線閱讀 · 僅內嵌 CSS 與原生 JavaScript</div></main></div><button class="jump" type="button" onclick="scrollTo({top:0,behavior:'smooth'})" title="回到頁首">↑</button><script>(function(){var b=document.body,t=document.getElementById('theme');t.addEventListener('click',function(){b.classList.toggle('dark');t.textContent=b.classList.contains('dark')?'淺色模式':'深色模式'});var links=[...document.querySelectorAll('.sidebar a.nav-link')],heads=[...document.querySelectorAll('.article h2')];function sync(){var idx=-1;for(var i=0;i<heads.length;i++){if(heads[i].getBoundingClientRect().top<=140)idx=i;}links.forEach((x,i)=>x.classList.toggle('active',i===idx));}window.addEventListener('scroll',sync,{passive:true});sync();})();</script></body></html>
