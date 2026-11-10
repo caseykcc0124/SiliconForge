@@ -1,17 +1,17 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261110-17**
+> **DIRECTIVE_ID: SF-DIR-20261110-18**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-10 (UTC date; exact commit timestamp is authoritative)**
+> **UPDATED_AT_UTC: 2026-11-10T08:41:00Z (directive publication; GitHub commit timestamp authoritative)**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: Directive17，完成 D16 本地成果凍結與可取得交付準備，優先推進真實多 Owner／Branch DAG 的最小框架閉環及 Dashboard 因果追溯；正式 Formal／物理 PPA／Select／Merge ReGate 依既有授權與環境條件辦理，不得宣稱 PASS。原 G0–G7 與 80 案不變。**
+> **CURRENT MISSION PRIORITY: Directive18，依使用者明確指示先完整實作 Event-driven Runtime、Super Agent／Owner 協作、多 Owner／Branch DAG、Dashboard／Observability、P-Stack／Owner-local Skills 五大 P0 核心模組及共同端到端閉環；Formal／實體 PPA／Pareto／Merge ReGate 後置，保留既有 G0–G7、80 項正式驗收與全部安全／權限／配額 Gate。**
 
 
 ## 0. 任務與角色
@@ -391,3 +391,22 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 **完成判準：** 本輪可標 `D17_LOCAL_FRAMEWORK_SLICE_COMPLETED` 的條件為同一 Requirement 的至少兩個真實隔離 Owner/Branch、可信 Registry/Lease/Peer 事件、可重啟追溯、至少一條真實工具或明確標示工具阻礙的候選證據，以及 Chrome 實際核對 Dashboard/事件來源。這只是 Local DEV 工作完成，絕不等於 G0–G7 任一正式 Gate、A0–A6 60 件或 E01–E20 20 件自動 PASS。若仍有外部依賴，保留原 Gate 及下一可執行行動，無須等待 Supervisor 逐步指揮。
 
 **本版更新原因與下一步（SF-DIR-20261110-17）：** D16 已回報完成而 Artifact Transfer 未建立，且使用者明確要求更新下一階段。停止重做已完成工作，轉向可交付成果與最小真實多 Owner/Branch 框架閉環；保持正式驗收、G0–G7、安全、配額、Agent 遠端權限與需人類批准事項不變。Coding Agent 下次活躍輪詢請 ACK 17 並自主執行本節。
+
+
+### 2.19 Directive18：五大 P0 核心框架功能完成優先（2026-11-10，使用者直接授權調整優先順序）
+
+**觸發與已知基線：** 使用者明確要求「Event-driven Runtime、Super Agent／Owner 協作、多 Owner／Branch DAG、Dashboard／Observability、P-Stack／Owner-local Skills 先把這些部分優先推進到完成」，並要求立即提交工作指引。最新 Sync 已 ACK D17（last_seen=SF-DIR-20261110-17, APPLIED），本地 Source SHA `a547ce37023bf9351612c06c7b373c193e96c365`，D17 ZIP SHA256 `4fc508217af5c599fcfc211ab4ce0088054517b8bae2ecc97273ea149976b32e`，2 個真實 RTL Owner、2 條候選 Branch、Native Turn、Icarus/Yosys、Peer Recovery、Chrome/SQLite Dashboard 對照已由 Agent 回報完成。本地 Bundle 未傳遞，遠端 source 未整合，正式 E01–E20 仍 NOT_RUN；此處不把 Agent 自述提升為獨立驗收。
+
+**執行政策：** Coding Agent 在下一次活躍 Session 用 Chrome 重新讀本文件，於其獨占的根目錄 Sync ACK `SF-DIR-20261110-18`。以現有 Local Source/Worktree/SQLite/Native/Skill/Dashboard 繼續，凍結 D16/D17 原始證據，不重建 Repo、不重跑未受影響的流程、不新增正式案例或無效 Mock。以下五個 P0 為同一個工程閉環，應自主連續實作、修復阻斷缺陷並完成必要最小真實測試，不等待逐項指示；若依賴外部核准，精確標明後繼續其他合法可做的 P0 工作。
+
+1. **P0-A Event-driven Runtime：** 補齊 durable EventStore、immutable event/causal routing、可信 Registry/Job/Lease/ACK/Retry、idempotency、dead-letter、scoped checkpoint、failure isolation、crash/restart replay、stale lease fencing。以實際程序終止、重啟、重送及交錯 Owner 工作驗證沒有遺失、重複副作用或跨 Scope 污染；使用既有測試與原始 SQLite/命令/日志作證。
+2. **P0-B Super Agent／Owner 協作：** 實作可持續的任務分解/派工、Role 與多 Instance lifecycle、authenticated Peer request/response/refusal/timeout、WAITING/wake、成果交接、budget/resource scope、故障隔離與跨程序接續。Main 不可作每步仲裁者或以忙碌輪詢維持工作；真實 Owner/Native Turn 與 deterministic validator 必須清楚區分，不把模擬 Turn 宣稱真實。
+3. **P0-C 多 Owner／Branch DAG：** 從 D17 的兩路擴至同一 Requirement 至少三個同 Role RTL Owner Instance、三條真實隔離 Git Worktree/Branch/Commit，至少一次二級 Fork；維持 branch-scoped lease/event/checkpoint/peer、parent/fork/head lineage、來源 SHA/Spec SHA、跨 Branch 禁止存取、並行進度與一支失敗其他持續；重啟後 DAG/Owner/Job/Lease 不失真。這是核心功能交付的最小三路場景，正式 E01–E20 不因 Demo 自動 PASS。
+4. **P0-D Dashboard／Observability：** 使用真正 EventStore/Registry/SQLite 與原始 Receipt，呈現 Requirement、Task、Owner Role/Instance、Branch DAG/Worktree/SHA、Event/Peer/Skill/Native/EDA trace、checkpoint/failure/blocker、Token/Cost（未知顯示 UNKNOWN）、Gate/Case/下一行動；Chrome 實際開啟並與持久資料交叉核對，重新開啟可重建因果與狀態。未有 Formal/PPA/Merge/Release 證據必須顯示 NOT_RUN/BLOCKED/INCOMPARABLE，禁止靜態示意圖冒充結果。
+5. **P0-E P-Stack／Owner-local Skills：** 補齊 owner-scoped Skill Registry/discovery/selection/version/capability、授權隔離、真實 invocation、input/output hashes、immutable execution receipt、failure/retry/recovery、EventStore/checkpoint 與 Dashboard 連接；至少由 Spec、RTL、Verification 角色實際執行可追溯 Skill。區分 Skill 的真實工具執行、純提示文字及模擬結果，保留原始紀錄。
+
+**唯一整合完成場景：** 以 APB CRC32 或既有固定 Requirement 作真實端到端演示：Requirement 入 EventStore → Super Agent 建立協作計畫 → 三個 RTL Owner/三條獨立 Branch 並行 → 各自實際 Skill/Native 工作與 Candidate SHA → authenticated Verification Peer handoff → 注入一個 Owner 故障與程序重啟 → checkpoint/lease/replay 正確恢復且其他 Branch 不停 → Chrome Dashboard 重新開啟並與 EventStore/SQLite 核對 Owner、Branch、Skill、Peer、Token、Evidence 全鏈。對有現成合法 OSS 工具及輸入者執行必要真實 Icarus/Yosys 驗證，保留每 Branch raw command/exit/log/env/spec/source hash；不強迫本階段完成 Formal/實體 PPA/Pareto/Merge/ReGate。
+
+**驗收與交付：** 每個 P0 功能用現有測試、可重現原始證據、Reviewer 具體缺陷與修復、Local SHA、Branch DAG、Chrome Dashboard 對照、Bundle Manifest/bytes SHA256 回報。完成五項與整合場景時僅標 `CORE_FRAMEWORK_LOCAL_IMPLEMENTED`；只有授權 Integrator 真正取得原始 Bundle bytes、驗 SHA256、整合 source 並獨立重現後才可標 `CORE_FRAMEWORK_INDEPENDENTLY_VERIFIED`。Formal/physical PPA/Select/Merge ReGate 後置但不刪除、放寬或繞過；原 G0–G7 與 A0–A6 60 件加 E01–E20 20 件共 80 件正式驗收不變，未執行保持 NOT_RUN。不得更動權限、模型配額、安全策略或正式 Gate。Agent 只能 GitHub Web Edit 根目錄 Sync，不能遠端 Git 操作或假裝 Bundle 已傳遞。每 15 分鐘輪詢僅限活躍 Session。五項本地完成後凍結交付、回報下一外部依賴，不自行無限擴張功能或測試。
+
+**本版更新原因與下一步（SF-DIR-20261110-18）：** 使用者直接指定五個核心架構模組優先全部完成，D17 的兩 Owner Vertical Slice 已本地封存，現可在不新增授權的範圍內推進三路真實協作、完整 Runtime/Skill/Dashboard 端到端框架。Coding Agent 下次活躍輪詢立即 ACK 18，依上述 P0-A 至 P0-E 連續實作與回報；Supervisor 不修改 Sync。
