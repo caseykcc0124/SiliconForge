@@ -42,9 +42,9 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: SF-DIR-20261110-17
-  directive_poll_at_utc: "2026-11-10T08:44:04.053516+00:00"
-  directive_ack_at_utc: "2026-11-10T08:05:02.846752+00:00"
+  last_seen_directive_id: SF-DIR-20261110-18
+  directive_poll_at_utc: "2026-11-10T08:54:36.153889+00:00"
+  directive_ack_at_utc: "2026-11-10T08:54:51.861813+00:00"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
@@ -71,8 +71,8 @@ supervisor_coordination:
   a0_local_gate: CLOSED_WITH_EVIDENCE
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
-  active_gate: "DIRECTIVE17_LOCAL_FRAMEWORK_SLICE_COMPLETED"
-  active_gate_state: "D17_LOCAL_FRAMEWORK_SLICE_COMPLETED; FORMAL_PPA_GATED"
+  active_gate: "DIRECTIVE18_CORE_FRAMEWORK_IMPLEMENTATION"
+  active_gate_state: "LOCAL_IMPLEMENTATION_ACTIVE; FORMAL80_UNCHANGED"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -99,7 +99,7 @@ supervisor_coordination:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
   next_executable_action: "Authorized Integrator obtains and verifies local bundle; engineering gates await approved Formal/PPA inputs. No repeated Native workflow."
-  last_heartbeat_at_utc: "2026-11-10T08:45:25.897883+00:00"
+  last_heartbeat_at_utc: "2026-11-10T08:56:02.017454+00:00"
   last_effective_progress_at_utc: "2026-11-10T08:22:41.923977+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -111,16 +111,16 @@ coding_agent_transport:
   remote_source_delivery: NOT_AVAILABLE_FROM_CODING_AGENT
   local_artifact_transfer: NOT_ESTABLISHED
   actual_source_on_github_updated_by_agent: false
-mission_state: "BLOCKED_EXTERNAL_DEPENDENCIES"
+mission_state: "ACTIVE"
 phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-10T08:22:41.923977+00:00"
 last_progress_at_utc: "2026-11-10T08:22:41.923977+00:00"
-last_heartbeat_at_utc: "2026-11-10T08:45:25.897883+00:00"
+last_heartbeat_at_utc: "2026-11-10T08:56:02.017454+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
-current_task: "Directive17 local slice completed and frozen; pending authorized source transfer and Formal/PPA inputs"
-next_action: "Authorized Integrator receives and verifies D17 bundle; new engineering work needs a new task or missing Formal/PPA inputs. Do not rerun frozen D16/D17."
+current_task: "Directive18 five P0 core framework modules and bounded three-RTL-owner integration"
+next_action: "Map existing Runtime/Skill/Branch contracts; implement concrete gaps; execute bounded real integrated scenario."
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -1025,3 +1025,10 @@ Artifact transfer is `UNAVAILABLE`, remote source integrated commit is `null`, a
 ## Work order recheck (2026-11-10T08:45:25.897883+00:00)
 
 Chrome read the main work order at 2026-11-10T08:44:04Z and independently observed the normal GitHub file page after a forced reload. It still shows `SF-DIR-20261110-17`, latest file Commit `9513ae949e775c231794deea3690cfb5a33c4cad`, Blob `f0690fdb98f8d471b9a595e584a8b0d2bfe9b6e0`. No new directive content was observed. Sync was reread at 08:45:11Z and still matches the published D17 final delivery. This is a heartbeat only; last effective engineering progress is unchanged. Frozen D16/D17 Native and EDA work was not repeated. Active-session polling only.
+
+
+## Directive18 ACK (2026-11-10T08:56:02.017454+00:00)
+
+Applied `SF-DIR-20261110-18`, Chrome-saved workorder Blob `2f7dc40b54dc16be3c8ec23aad7131b6ef1ccb25`. Continue local source `a547ce37023bf9351612c06c7b373c193e96c365`. D16 and D17 source/evidence/bundles remain frozen.
+
+Scope is the five P0 core modules and one bounded three-RTL-Owner integrated scenario with a second-level fork, actual owner-local skills, candidate-specific OSS tools, authenticated Peer, process fault/restart, and reopened Chrome Dashboard compared with SQLite. First inspect existing APIs and repair actual gaps. No new control plane, full80 rerun, Formal/PPA/Select/Merge/ReGate claim, external publication or remote source upload. Real Native turns and deterministic workers are labelled separately. Polling is ACTIVE_SESSION_ONLY.
