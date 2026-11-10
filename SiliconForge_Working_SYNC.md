@@ -42,20 +42,20 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: SF-DIR-20261109-13
-  directive_poll_at_utc: "2026-11-09T02:20:40Z"
-  directive_ack_at_utc: "2026-11-09T02:11:52.0271110Z"
+  last_seen_directive_id: SF-DIR-20261109-16
+  directive_poll_at_utc: "2026-11-10T05:38:47.989326+00:00"
+  directive_ack_at_utc: "2026-11-10T05:38:47.989326+00:00"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: "FRESH_AUTHENTICATED_REFERENCE_PROOF_INTEGRATED; FORMAL_GATE_BLOCKED"
-  dev_delivery_state: "LOCAL_PROOF_INTEGRATED; EXTERNAL_PPA_INPUT_REQUIRED; MERGE_REGATE_NOT_RUN; FORMAL_ACCEPTANCE_PROFILE_REQUIRED"
+  dev_capability_state: "D15_LOCAL_MULTI_OWNER_FLOW_AND_CHROME_UI_REPRODUCED; D16_SKILL_CHECKPOINT_PENDING"
+  dev_delivery_state: "D15_PREPARED_LOCAL; SOURCE_TRANSFER_UNAVAILABLE; D16_ACTIVE"
   dev_usable_capabilities:
     - Manifest-driven fixed-argv Runtime to native RTL-only repair, actual Icarus simulation and Yosys smoke.
     - Default software-clear task and distinct configured polynomial fault demonstrated; one scoped owner per invocation.
   dev_demo_reproduction: "One new REAL candidate/Formal job: actual native Yosys proof with SHA-bound immutable receipt; wrong Head, producer/completion scope and altered source rejected. No historical proof rerun."
-  dev_bundle_sha256: "88daf512d5d4c2e7c4595d37c251322f887874a42b3ec54b31baaf217b7a4d24"
-  dev_bundle_contents: "Source b8dd54a and candidate e2b864d archives/history, fresh proof/immutable receipt/SQLite, exact PPA dependencies and targeted refusal evidence."
+  dev_bundle_sha256: "16eca59668b9e390f718539f378634a4e4131b321afe288fcb6b0d2b6cf78a5d"
+  dev_bundle_contents: "D15 source/candidate archives, SQLite before/final, Native logs/artifacts and Chrome screenshots."
   vertical_slice_last_run: "Two sequential RTL scopes on029c87c:659a6762 baseline FAIL/native RTL repair/Icarus and Yosys PASS, exit3 then PID22688 resume COMPLETED; fa1268e5 normal COMPLETED. Final9b81128 corrects inherited Directive07 payload label, no new real run."
   remaining_mock_or_stub: "Formal80 pending; reference-equivalence PASS is development evidence only. Approved formal acceptance assumptions/profile and physical PPA inputs/providers absent."
   external_harness_blocker: "NONE_FOR_THIS_CONFIGURED_LOCAL_TASK; prompt command restrictions are advisory, native used readonly Git and Python CRC sanity; controller EDA/diff gates provide actual outcome."
@@ -71,7 +71,7 @@ supervisor_coordination:
   a0_local_gate: CLOSED_WITH_EVIDENCE
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
-  active_gate: "G3_G5_G7_ORIGINAL_PROOF_PPA_SELECT_MERGE_REGATE"
+  active_gate: "DIRECTIVE16_P0_DOCS_SKILL_CHECKPOINT"
   active_gate_state: "LOCAL_PROOF_INTEGRATED_EXTERNAL_FORMAL_PPA_INPUT_REQUIRED"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
@@ -80,9 +80,9 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
+  local_git_commit: "fc1bb556e811d754bad63247eb7699ef17774a60"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "88daf512d5d4c2e7c4595d37c251322f887874a42b3ec54b31baaf217b7a4d24"
+  local_artifact_sha256: "16eca59668b9e390f718539f378634a4e4131b321afe288fcb6b0d2b6cf78a5d"
   local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive13-b8dd54a.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
@@ -99,8 +99,8 @@ supervisor_coordination:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
   next_executable_action: "Environment/Design Authority supplies approved formal acceptance assumptions/binding plus target Liberty/corner, SDC/STA and power activity/provider; then fresh candidate checks and unchanged Select/Merge/ReGate."
-  last_heartbeat_at_utc: "2026-11-09T02:20:40Z"
-  last_effective_progress_at_utc: "2026-11-09T02:19:04.412929+00:00"
+  last_heartbeat_at_utc: "2026-11-10T05:38:47.989326+00:00"
+  last_effective_progress_at_utc: "2026-11-09T16:15:07+08:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -111,12 +111,12 @@ coding_agent_transport:
   remote_source_delivery: NOT_AVAILABLE_FROM_CODING_AGENT
   local_artifact_transfer: NOT_ESTABLISHED
   actual_source_on_github_updated_by_agent: false
-mission_state: "WAITING_FOR_HUMAN"
+mission_state: "ACTIVE"
 phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-09T02:20:40Z"
 last_progress_at_utc: "2026-11-09T02:19:04.412929+00:00"
-last_heartbeat_at_utc: "2026-11-09T02:20:40Z"
+last_heartbeat_at_utc: "2026-11-10T05:38:47.989326+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive13 LOCAL_PROOF_INTEGRATED; EXTERNAL_PPA_INPUT_REQUIRED; MERGE_REGATE_NOT_RUN; FORMAL_ACCEPTANCE_PROFILE_REQUIRED"
@@ -922,3 +922,8 @@ PDCA includes an actual handoff gap: one Verification timeout after artifact pro
 Reproduce the completed-request replay locally with `PYTHONPATH=dev-real-work/src` and a trusted ephemeral `SF_OPERATOR_CREDENTIAL`: `python -m siliconforge.chip_flow --db .audit/dev-real-live/runtime.sqlite --request .audit/directive15-live/flow-request.json --output .audit/directive15-live`. Evidence includes stdout/stderr, runtime-before/final.sqlite, original artifacts, Native logs, source/candidate archives and source Git bundle. Next executable engineering action remains separately authorized simulation/Formal/PPA against the exact candidate SHA; this directive intentionally defers those gates. No remote source upload or integration is claimed, and no 24x7 polling is claimed.
 
 last_heartbeat_at_utc: 2026-11-09T08:20:05.188867+00:00
+
+
+## Directive16 ACK and interactive desktop restored
+
+`SF-DIR-20261109-16`, updated 2026-11-09T08:27:51Z, was re-read through Chrome at 2026-11-10T05:38:47.989326+00:00. Browser physical input works again. Existing D15 source fc1bb556 and immutable bundle remain the baseline. The current top machine-readable YAML was reconciled with D15 delivery and Directive16 activation; this is governance correction, not a new engineering result. Required main docs, explicit project-local Skill invocation receipts, one new small sandbox trace, bounded artifact checkpoint recovery and running/final Chrome Dashboard observations are pending. No D15 Native turn or EDA is rerun. Named third-party silicon Skill runner is not found in searched available tools/skill paths; a minimal project-local binding remains planned and unexecuted. Source transfer stays UNAVAILABLE and remote_source_integrated_commit stays null.
