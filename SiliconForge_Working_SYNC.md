@@ -43,12 +43,12 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261109-16
-  directive_poll_at_utc: "2026-11-10T06:22:40.436550+00:00"
+  directive_poll_at_utc: "2026-11-10T07:05:17.541581+00:00"
   directive_ack_at_utc: "2026-11-10T05:38:47.989326+00:00"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: "D16_DOCS_READ; SHELL_ARTIFACT_CHECKPOINT_RECONCILED; BOUNDED_RECOVERY_PROBE_PASS; SPEC_ACCEPTANCE_PENDING"
+  dev_capability_state: "PROJECT_LOCAL_SPEC_AND_RTL_SKILL_EXECUTED; NEW_CANDIDATE_COMMITTED; VERIFICATION_PENDING; EDA_DEFERRED"
   dev_delivery_state: "D15_PREPARED_LOCAL; SOURCE_TRANSFER_UNAVAILABLE; D16_ACTIVE"
   dev_usable_capabilities:
     - Manifest-driven fixed-argv Runtime to native RTL-only repair, actual Icarus simulation and Yosys smoke.
@@ -71,7 +71,7 @@ supervisor_coordination:
   a0_local_gate: CLOSED_WITH_EVIDENCE
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
-  active_gate: "DIRECTIVE16_SPEC_CLARIFICATION_PENDING"
+  active_gate: "DIRECTIVE16_VERIFICATION_NATIVE_RUNNING"
   active_gate_state: "LOCAL_PROOF_INTEGRATED_EXTERNAL_FORMAL_PPA_INPUT_REQUIRED"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
@@ -99,8 +99,8 @@ supervisor_coordination:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
   next_executable_action: "Environment/Design Authority supplies approved formal acceptance assumptions/binding plus target Liberty/corner, SDC/STA and power activity/provider; then fresh candidate checks and unchanged Select/Merge/ReGate."
-  last_heartbeat_at_utc: "2026-11-10T06:25:00.280259+00:00"
-  last_effective_progress_at_utc: "2026-11-10T06:21:28Z"
+  last_heartbeat_at_utc: "2026-11-10T07:06:15.063432+00:00"
+  last_effective_progress_at_utc: "2026-11-10T06:57:58Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -116,7 +116,7 @@ phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-09T02:20:40Z"
 last_progress_at_utc: "2026-11-09T02:19:04.412929+00:00"
-last_heartbeat_at_utc: "2026-11-10T06:25:00.280259+00:00"
+last_heartbeat_at_utc: "2026-11-10T07:06:15.063432+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive13 LOCAL_PROOF_INTEGRATED; EXTERNAL_PPA_INPUT_REQUIRED; MERGE_REGATE_NOT_RUN; FORMAL_ACCEPTANCE_PROFILE_REQUIRED"
@@ -945,3 +945,16 @@ Reported at 2026-11-10T06:25:00.280259+00:00. Latest Chrome docs/19 poll at 2026
 One bounded FAULT_INJECTION_NOT_NATIVE producer in a copied SQLite database checkpointed its output before injected TIMED_OUT. New process `11868` recovered identical artifact hashes from checkpoint `b56b2c34-687b-4a28-be0a-ddfc28f9d189`, SHA256 `0a723a76ef10c6f0a070482ef0096c11410ec640b19799a8dfaa16ccb67aca79`, while preserving original test-producer TIMED_OUT. Same-key accept returned the same immutable receipt. Stale lease returned LeaseConflict; wrong actor returned PolicyDenied; wrong HEAD returned ChipFlowBlocked. The probe did not invoke a Native model and did not mutate live SQLite. Original D15 Native TIMED_OUT and immutable delivery remain untouched. This probe is Runtime recovery evidence, not engineering verification.
 
 A distinct Spec clarification Native step is being completed locally so the Spec Owner can decide whether its existing read/write sequencing question blocks the explicit 0x0c requirement or belongs to Verification's direct typed Peer clarification. Main does not answer that engineering question. Original Spec file/turn and skill v1.0.0 content pins remain preserved. Dashboard now projects all actual task Native invocation IDs and counts original-turn usage as well as later clarification usage, with cost UNKNOWN. Running Chrome observation and SQLite ID comparison are recorded; final UI remains pending. Eleven historical engineering tables, root AGENTS.md and D15 ZIP SHA were checked unchanged. Source remains local fc1bb556 plus uncommitted D16 edits; no new bundle, source upload, formal EDA or release claim.
+
+
+## Directive16 accepted Owner Skill and new candidate milestone
+
+Reported at 2026-11-10T07:06:15.063432+00:00. Latest Chrome docs/19 poll at 2026-11-10T07:05:17.541581+00:00 confirms unchanged Directive16 Blob `9cb6a5784b90612abea0d5d1dbcf3fc4f54486fa`.
+
+The same task `directive16-polyread-20261110-01`, root event `74d01c74-7f28-4837-ac42-d58481c9d83c`, now has actual accepted `PROJECT_LOCAL_SKILL_EXECUTED` receipts for Spec and RTL. Spec clarification Native session `38d40ee1-c5ba-4d18-94bf-dd299d589515`, turn `145f6c8d-4d1f-477d-8d59-70607bdd1416`, completed exit0 and Owner judged the explicit 0x0c implementation requirements nonblocking while leaving the observable sequencing question to independent Verification. Spec Skill checkpoint `36108b79-2496-4ea0-a02b-e77c72d4f9c3`, SHA256 `c7e47453605a2d8662baef198beaaa6ed7a5c22fd8442902f4d173b409a8610d`. The original Spec file/turn remains preserved. Original Spec Peer expired normally; one new fixed-key typed Peer request follows its expiry wake, retaining the original EXPIRED state and causal lineage.
+
+RTL Native session `5a3bf53f-52ee-4ee2-8964-834f5f987dc7`, turn `611e7e9a-a4bf-463e-a587-27e97827d642`, completed exit0. WorkspaceService committed only two added RTL lines for qualified read-only POLYNOMIAL register 0x0c. New candidate source SHA is `de65872c3671dd3f533abf6a13bb3ae08609774e`, parent `9abc076ee2571282246be57006b761926208624e`; this is a local candidate, not the coordinator implementation commit or remote source. RTL Skill receipt is actual project-local binding execution, not a third-party P-Stack runner invocation.
+
+The Native clarification briefly wrote a long-path diagnostic payload before its formal JSON. The first immutable checkpoint is preserved; a new immutable revision receipt pins the final artifact and raw successful write/readback records. New-process acceptance uses matching artifact hashes and retains earlier receipts. Windows extended-path readback and equivalent HDL/English notation in the local artifact validator were corrected without rewriting Owner outputs or changing formal gates. No completed Native turn was repeated. The separate bounded copied-DB recovery probe remains the sole injected test producer, explicitly NOT_RUN for Native, with stale lease/wrong actor/wrong HEAD refusals and new-process original-hash recovery.
+
+Chrome observed and SQLite-compared the same request's WAITING handoff at 2026-11-10T06:58:47.695255+00:00, page SHA256 `97a5f53ae70b16d5701ab3a243e50db110a06677e7954262f0e416ea271ab9e0`, screenshot SHA256 `0ec6f98168e13955ab75205b58777d89948e929f39710995e71f2330f08aaeca`. Verification Native is running independently; Peer clarification, Integration/PDCA, final Dashboard, immutable bundle and final delivery are pending. Engineering state remains CANDIDATE_UNVERIFIED_EDA_DEFERRED. Cost UNKNOWN; usage remains recorded in raw Native receipts. Local coordinator source is still fc1bb556 plus uncommitted D16 edits. No source transfer or formal EDA/PPA/Merge/ReGate/Release is claimed.
