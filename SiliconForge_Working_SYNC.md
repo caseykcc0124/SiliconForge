@@ -43,19 +43,19 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261110-18
-  directive_poll_at_utc: "2026-11-10T09:28:28.510111+00:00"
+  directive_poll_at_utc: "2026-11-10T09:42:21.602655+00:00"
   directive_ack_at_utc: "2026-11-10T08:54:51.861813+00:00"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: "D16_FROZEN; D17_TWO_ISOLATED_NATIVE_RTL_OWNERS_SIM_SYNTH_PEER_RECOVERY_CHROME_COMPLETED"
-  dev_delivery_state: "DEV_LOCAL_ONLY_PENDING_TRANSFER; D17_BUNDLE_PREPARED"
+  dev_capability_state: "CORE_FRAMEWORK_LOCAL_IMPLEMENTED; P0_A_B_C_D_E_BOUNDED_REAL_SCENARIO_COMPLETED"
+  dev_delivery_state: "DEV_LOCAL_ONLY_PENDING_TRANSFER; D18_IMMUTABLE_BUNDLE_PREPARED"
   dev_usable_capabilities:
     - Manifest-driven fixed-argv Runtime to native RTL-only repair, actual Icarus simulation and Yosys smoke.
     - Default software-clear task and distinct configured polynomial fault demonstrated; one scoped owner per invocation.
-  dev_demo_reproduction: "D17 two actual overlapping RTL turns; candidate-local Icarus/Yosys; scoped deterministic Verification Peer; new-process recovery; Chrome/SQLite matched. DELIVERY.md records commands and limits."
-  dev_bundle_sha256: "4fc508217af5c599fcfc211ab4ce0088054517b8bae2ecc97273ea149976b32e"
-  dev_bundle_contents: "D17 final/baseline/two candidate source archives, patch, SQLite, raw Native/EDA/checkpoint/Peer/recovery/Chrome evidence, docs pins and formal-case observations."
+  dev_demo_reproduction: "D18 three overlapping actual RTL Native turns, isolated worktrees and depth2 fork; Spec1 RTL3 Verification3 fixed-tool Skills; 4 authenticated Peers; process kill/restart/stale fencing; Chrome and SQLite matched."
+  dev_bundle_sha256: "75628ea44d5828fae0bae3fdae6235b258f9835fb44f4058a7396b443b59f7a7"
+  dev_bundle_contents: "Six source archives including baseline/operator/three candidates, binary patch, SQLite backup, raw Native/Skill/EDA/Peer/checkpoint/process-recovery/Chrome evidence, reviewer verdicts, exact source and file manifests."
   vertical_slice_last_run: "Two sequential RTL scopes on029c87c:659a6762 baseline FAIL/native RTL repair/Icarus and Yosys PASS, exit3 then PID22688 resume COMPLETED; fa1268e5 normal COMPLETED. Final9b81128 corrects inherited Directive07 payload label, no new real run."
   remaining_mock_or_stub: "Formal80 pending; reference-equivalence PASS is development evidence only. Approved formal acceptance assumptions/profile and physical PPA inputs/providers absent."
   external_harness_blocker: "NONE_FOR_THIS_CONFIGURED_LOCAL_TASK; prompt command restrictions are advisory, native used readonly Git and Python CRC sanity; controller EDA/diff gates provide actual outcome."
@@ -71,8 +71,8 @@ supervisor_coordination:
   a0_local_gate: CLOSED_WITH_EVIDENCE
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
-  active_gate: "DIRECTIVE18_CORE_FRAMEWORK_IMPLEMENTATION"
-  active_gate_state: "LOCAL_IMPLEMENTATION_ACTIVE; FORMAL80_UNCHANGED"
+  active_gate: "DIRECTIVE18_CORE_FRAMEWORK_LOCAL_IMPLEMENTED"
+  active_gate_state: "LOCAL_COMPLETED_FROZEN; INDEPENDENT_INTEGRATION_PENDING; FORMAL80_UNCHANGED"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -80,10 +80,10 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "a547ce37023bf9351612c06c7b373c193e96c365"
-  local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "4fc508217af5c599fcfc211ab4ce0088054517b8bae2ecc97273ea149976b32e"
-  local_artifact_path: "D:/mtk32712/SiliconForge/.audit/directive17-delivery-20261110-a547ce3.zip"
+  local_git_commit: "49976c7599b4057933a6a81095ce84daff1483bf"
+  local_artifact_state: "FROZEN_LOCAL"
+  local_artifact_sha256: "75628ea44d5828fae0bae3fdae6235b258f9835fb44f4058a7396b443b59f7a7"
+  local_artifact_path: "D:/mtk32712/SiliconForge/.audit/directive18-delivery-20261110-49976c7.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
@@ -99,8 +99,8 @@ supervisor_coordination:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
   next_executable_action: "Authorized Integrator obtains and verifies local bundle; engineering gates await approved Formal/PPA inputs. No repeated Native workflow."
-  last_heartbeat_at_utc: "2026-11-10T09:32:37.545727+00:00"
-  last_effective_progress_at_utc: "2026-11-10T09:14:19+00:00"
+  last_heartbeat_at_utc: "2026-11-10T09:43:31.950978+00:00"
+  last_effective_progress_at_utc: "2026-11-10T09:42:01.738251+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -111,16 +111,16 @@ coding_agent_transport:
   remote_source_delivery: NOT_AVAILABLE_FROM_CODING_AGENT
   local_artifact_transfer: NOT_ESTABLISHED
   actual_source_on_github_updated_by_agent: false
-mission_state: "ACTIVE"
+mission_state: "LOCAL_IMPLEMENTED_PENDING_ARTIFACT_TRANSFER"
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-10T09:14:19+00:00"
-last_progress_at_utc: "2026-11-10T09:14:19+00:00"
-last_heartbeat_at_utc: "2026-11-10T09:32:37.545727+00:00"
+updated_at_utc: "2026-11-10T09:42:01.738251+00:00"
+last_progress_at_utc: "2026-11-10T09:42:01.738251+00:00"
+last_heartbeat_at_utc: "2026-11-10T09:43:31.950978+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive18 five P0 core framework modules and bounded three-RTL-owner integration"
-next_action: "Finish active three-Native branches, perform authenticated Verification Peer and one process recovery, then Chrome/SQLite comparison and freeze local delivery."
+next_action: "Authorized Integrator obtains exact D18 bundle bytes, checks SHA256, integrates source and independently reproduces. Approved Formal/PPA inputs remain separate dependencies; no further autonomous feature expansion."
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -1044,3 +1044,34 @@ Executed existing Runtime tests 18/18, Peer tests 8/8, branch-scope MOCK contrac
 ## Directive18 active continuation (2026-11-10T09:32:37.545727+00:00)
 
 The current Chrome reread at 2026-11-10T09:28:28Z confirms SF-DIR-20261110-18, blob 2f7dc40b54dc16be3c8ec23aad7131b6ef1ccb25. Local correction commit d418818 extends registered baseline 1b858a146aa3040b7a58f1de188af717108a5683. The original pre-Native SQL failure is preserved, and the same durable exploration and three branches resumed without rebuilding the database. Three isolated RTL Native processes are now active; the depth-two area branch is present. A separate-process SQLite Dashboard export was opened in Chrome and visibly shows directive18-core-crc RUNNING and all three RTL instance IDs. Spec fixed-inspection Skill succeeded. Native/EDA/Verification recovery outcomes remain pending. Formal BLOCKED, physical PPA INCOMPARABLE, Select/Merge/ReGate and formal80 NOT_RUN. No remote source integration or artifact transfer occurred.
+
+
+## Directive18 frozen local delivery (2026-11-10T09:43:31.950978+00:00)
+
+ACK SF-DIR-20261110-18 remains APPLIED. Chrome reread at 2026-11-10T09:42:21Z confirms workorder blob 2f7dc40b54dc16be3c8ec23aad7131b6ef1ccb25. P0-A through P0-E and the single integrated scenario are CORE_FRAMEWORK_LOCAL_IMPLEMENTED, not CORE_FRAMEWORK_INDEPENDENTLY_VERIFIED.
+
+### Source, branches and actual execution
+
+Final Local source 49976c7599b4057933a6a81095ce84daff1483bf. Native operator source d418818; registered baseline 1b858a146aa3040b7a58f1de188af717108a5683. Later display-only fixes scope the current task and resolve handoff Role from authoritative Instance records. They do not repeat Native/EDA or change candidates. Same requirement R_CRC_DIRECTIVE18_CORE, operation directive18-core-crc, exploration a0x:exploration:bcdd077ea8c38caf96c8287529d06c04.
+
+- Performance a0x:branch:1ab20e0e8127e98d28f4890ff71f84c8, RTL Instance 99c2c770c549e45bb7eecbee5dcd5ef3, candidate 148167fb9d4c3677f73242151da042a20d0ce9be.
+- Low power a0x:branch:35a849ddf8acc2e4da34372039982bb7, RTL Instance 8510ac84292dfec4d8d37ef4ce085231, candidate a6fce64a2d7604982b243b772edb233c0c4f508e.
+- Area a0x:branch:ded2ebe0775cd8003777b16ea99e7ab6, RTL Instance 689fe5a044b50dc776207457e878034b, candidate 2351fe4797c497c53fb9c172b3ca99098c78949b. Parent is performance, depth2, forked before Native work.
+
+Three Native Turns COMPLETED exit0 with overlapping intervals. IDs 1613e8fb-3c7c-4b21-9364-51115bdbc69d, a847842b-adf0-4f23-bdea-55de3bb8f0ca, 043f7b7f-1a80-42ab-97ac-59bdde021426. Each candidate changes only examples/apb_crc32_polynomial/rtl/apb_crc32.sv and has fresh Icarus PASS/Yosys generic synthesis PASS. Source/spec/environment/profile hashes and raw commands/exit/logs retained. Labels do not establish physical optimization. Native usage input 1741528, cached input 1551538, output 19411; cost UNKNOWN.
+
+### P0 evidence and bounded verification
+
+Existing Runtime18/18, Peer8/8, scope MOCK14/14 remained PASS. Fresh Owner Skills11/11 PASS in skill-tests-final.log, including malformed failure replay/orphan and cross-branch evidence protection. Existing checkpoint projection3/3 PASS after display correction. These are development checks, not formal80 status changes.
+
+Seven actual fixed Python Skill executions succeeded with immutable receipts and all input/output hashes verified, Spec1 RTL3 Verification3. Discovery/selection/version/capability and original Native prompt association are separately recorded. These deterministic inspectors are not extra Native models or a third-party P-Stack runner. Four authenticated Peer exchanges succeeded, Spec1 plus Verification3; cross-branch response rejected.
+
+Verification PID9692 reached its durable scoped checkpoint. Both healthy Verification branches completed before controller kill at 09:33:50Z. New PID2512 reclaimed the expired lease, rejected stale checkpoint token, validated original hashes, and completed pending Skill/Peer. Repeat ALREADY_RECONCILED, Native repetition0. Raw fault, process termination, recovery argv/results, and SQLite retained. The pre-Native SQL failure is preserved; same durable IDs resumed without rebuilding. Review findings were corrected; final independent narrow source/evidence review reports no local high-risk blocker.
+
+Chrome actually observed D18 RUNNING and reopened final COMPLETED, three current Verification Instances, candidate head prefixes and baseline→performance→area lineage. Fresh dashboard-observed is final; earlier snapshots retain stale display history. Chrome search over historical tasks caused Page Unresponsive; the current-task projection was narrowed and reopened successfully. Final UI Role now matches authoritative Owner Instance3/3. SQLite/turn/branch/Skill/Peer/artifact comparison passed. Evidence includes screenshots/hashes and verification script.
+
+### Immutable delivery and remaining boundaries
+
+Bundle D:\mtk32712\SiliconForge\.audit\directive18-delivery-20261110-49976c7.zip is 8506983 bytes, SHA256 75628ea44d5828fae0bae3fdae6235b258f9835fb44f4058a7396b443b59f7a7, 204 files, ZIP integrity PASS. Includes source archives, patch, SQLite backup, raw evidence, reviewer reports and DELIVERY.md commands/relocation limits. D16 SHA4ae4d449f5e4f5d73bef7e13e4e3d8101c6cfc62a56ca24ef97837b1b71a053d and D17 SHA4fc508217af5c599fcfc211ab4ce0088054517b8bae2ecc97273ea149976b32e unchanged. No successful frozen Native scenario rerun.
+
+Formal BLOCKED; physical PPA INCOMPARABLE; Select/Merge/ReGate NOT_RUN. Original G0-G7 and A0-A6 plus E01-E20 formal acceptance statuses unchanged. Transfer UNAVAILABLE; remote source integrated commit null. This Web Sync report does not upload source. Authorized Integrator must obtain exact bytes, verify SHA256, integrate and independently reproduce before independent verification. Local scope is now frozen; no daemon, unattended scheduler, policy/quota changes, or further feature/test expansion.
