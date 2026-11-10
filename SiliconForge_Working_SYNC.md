@@ -43,19 +43,19 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261109-16
-  directive_poll_at_utc: "2026-11-10T07:05:17.541581+00:00"
+  directive_poll_at_utc: "2026-11-10T07:23:10.730597+00:00"
   directive_ack_at_utc: "2026-11-10T05:38:47.989326+00:00"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: "PROJECT_LOCAL_SPEC_AND_RTL_SKILL_EXECUTED; NEW_CANDIDATE_COMMITTED; VERIFICATION_PENDING; EDA_DEFERRED"
-  dev_delivery_state: "D15_PREPARED_LOCAL; SOURCE_TRANSFER_UNAVAILABLE; D16_ACTIVE"
+  dev_capability_state: "DIRECTIVE16_WORKFLOW_COMPLETED; TWO_PROJECT_LOCAL_SKILLS_EXECUTED; EDA_DEFERRED"
+  dev_delivery_state: "DEV_LOCAL_ONLY_PENDING_TRANSFER; D16_BUNDLE_PREPARED"
   dev_usable_capabilities:
     - Manifest-driven fixed-argv Runtime to native RTL-only repair, actual Icarus simulation and Yosys smoke.
     - Default software-clear task and distinct configured polynomial fault demonstrated; one scoped owner per invocation.
-  dev_demo_reproduction: "One new REAL candidate/Formal job: actual native Yosys proof with SHA-bound immutable receipt; wrong Head, producer/completion scope and altered source rejected. No historical proof rerun."
-  dev_bundle_sha256: "16eca59668b9e390f718539f378634a4e4131b321afe288fcb6b0d2b6cf78a5d"
-  dev_bundle_contents: "D15 source/candidate archives, SQLite before/final, Native logs/artifacts and Chrome screenshots."
+  dev_demo_reproduction: "Directive16 request completed; new-process replay no Native repetition; DELIVERY.md contains exact source/checkpoint inspection and 3-test command."
+  dev_bundle_sha256: "4ae4d449f5e4f5d73bef7e13e4e3d8101c6cfc62a56ca24ef97837b1b71a053d"
+  dev_bundle_contents: "D16 runtime/candidate source archives, final SQLite, raw Native logs, Skill/checkpoint/recovery receipts, Chrome and docs compliance."
   vertical_slice_last_run: "Two sequential RTL scopes on029c87c:659a6762 baseline FAIL/native RTL repair/Icarus and Yosys PASS, exit3 then PID22688 resume COMPLETED; fa1268e5 normal COMPLETED. Final9b81128 corrects inherited Directive07 payload label, no new real run."
   remaining_mock_or_stub: "Formal80 pending; reference-equivalence PASS is development evidence only. Approved formal acceptance assumptions/profile and physical PPA inputs/providers absent."
   external_harness_blocker: "NONE_FOR_THIS_CONFIGURED_LOCAL_TASK; prompt command restrictions are advisory, native used readonly Git and Python CRC sanity; controller EDA/diff gates provide actual outcome."
@@ -71,8 +71,8 @@ supervisor_coordination:
   a0_local_gate: CLOSED_WITH_EVIDENCE
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
-  active_gate: "DIRECTIVE16_VERIFICATION_NATIVE_RUNNING"
-  active_gate_state: "LOCAL_PROOF_INTEGRATED_EXTERNAL_FORMAL_PPA_INPUT_REQUIRED"
+  active_gate: "DIRECTIVE16_LOCAL_WORKFLOW_COMPLETED"
+  active_gate_state: "WORKFLOW_COMPLETED_ENGINEERING_UNVERIFIED; EXTERNAL_DEPENDENCIES_REQUIRED"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -80,10 +80,10 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "fc1bb556e811d754bad63247eb7699ef17774a60"
+  local_git_commit: "fbf69abf56a9e42ffb5995a8ae84767a6625ddba"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "16eca59668b9e390f718539f378634a4e4131b321afe288fcb6b0d2b6cf78a5d"
-  local_artifact_path: "D:/mtk32712/SiliconForge/deliveries/SiliconForge-Directive13-b8dd54a.zip"
+  local_artifact_sha256: "4ae4d449f5e4f5d73bef7e13e4e3d8101c6cfc62a56ca24ef97837b1b71a053d"
+  local_artifact_path: "D:/mtk32712/SiliconForge/.audit/directive16-delivery-20261110-fbf69ab.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
@@ -98,9 +98,9 @@ supervisor_coordination:
   blocked_items:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
-  next_executable_action: "Environment/Design Authority supplies approved formal acceptance assumptions/binding plus target Liberty/corner, SDC/STA and power activity/provider; then fresh candidate checks and unchanged Select/Merge/ReGate."
-  last_heartbeat_at_utc: "2026-11-10T07:06:15.063432+00:00"
-  last_effective_progress_at_utc: "2026-11-10T06:57:58Z"
+  next_executable_action: "Authorized Integrator obtains and verifies local bundle; engineering gates await approved Formal/PPA inputs. No repeated Native workflow."
+  last_heartbeat_at_utc: "2026-11-10T07:25:30.005299+00:00"
+  last_effective_progress_at_utc: "2026-11-10T07:24:05Z"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -111,16 +111,16 @@ coding_agent_transport:
   remote_source_delivery: NOT_AVAILABLE_FROM_CODING_AGENT
   local_artifact_transfer: NOT_ESTABLISHED
   actual_source_on_github_updated_by_agent: false
-mission_state: "ACTIVE"
+mission_state: "LOCAL_DIRECTIVE16_COMPLETE_PENDING_EXTERNAL_DEPENDENCIES"
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-09T02:20:40Z"
-last_progress_at_utc: "2026-11-09T02:19:04.412929+00:00"
-last_heartbeat_at_utc: "2026-11-10T07:06:15.063432+00:00"
+updated_at_utc: "2026-11-10T07:25:29.917788+00:00"
+last_progress_at_utc: "2026-11-10T07:24:05Z"
+last_heartbeat_at_utc: "2026-11-10T07:25:30.005299+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
-current_task: "Directive13 LOCAL_PROOF_INTEGRATED; EXTERNAL_PPA_INPUT_REQUIRED; MERGE_REGATE_NOT_RUN; FORMAL_ACCEPTANCE_PROFILE_REQUIRED"
-next_action: "Continue authorized minimal G2/G3 integration from pinned source; retain real Candidate registration and original parallel gates as incomplete."
+current_task: "Directive16 local workflow complete; candidate de65872 remains unverified; Runtime local fbf69ab; remote source null"
+next_action: "Transfer immutable D16 local bundle through authorized channel; engineering qualification remains deferred."
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -958,3 +958,26 @@ RTL Native session `5a3bf53f-52ee-4ee2-8964-834f5f987dc7`, turn `611e7e9a-a4bf-4
 The Native clarification briefly wrote a long-path diagnostic payload before its formal JSON. The first immutable checkpoint is preserved; a new immutable revision receipt pins the final artifact and raw successful write/readback records. New-process acceptance uses matching artifact hashes and retains earlier receipts. Windows extended-path readback and equivalent HDL/English notation in the local artifact validator were corrected without rewriting Owner outputs or changing formal gates. No completed Native turn was repeated. The separate bounded copied-DB recovery probe remains the sole injected test producer, explicitly NOT_RUN for Native, with stale lease/wrong actor/wrong HEAD refusals and new-process original-hash recovery.
 
 Chrome observed and SQLite-compared the same request's WAITING handoff at 2026-11-10T06:58:47.695255+00:00, page SHA256 `97a5f53ae70b16d5701ab3a243e50db110a06677e7954262f0e416ea271ab9e0`, screenshot SHA256 `0ec6f98168e13955ab75205b58777d89948e929f39710995e71f2330f08aaeca`. Verification Native is running independently; Peer clarification, Integration/PDCA, final Dashboard, immutable bundle and final delivery are pending. Engineering state remains CANDIDATE_UNVERIFIED_EDA_DEFERRED. Cost UNKNOWN; usage remains recorded in raw Native receipts. Local coordinator source is still fc1bb556 plus uncommitted D16 edits. No source transfer or formal EDA/PPA/Merge/ReGate/Release is claimed.
+
+
+## SF-DIR-20261109-16 final local delivery
+
+Reported at 2026-11-10T07:25:30.005299+00:00. DEVELOPMENT VERSION / non-production. DEV_LOCAL_ONLY_PENDING_TRANSFER.
+
+The bounded request `directive16-polyread-20261110-01` is COMPLETED. Runtime local commit is `fbf69abf56a9e42ffb5995a8ae84767a6625ddba`; sandbox RTL candidate is `de65872c3671dd3f533abf6a13bb3ae08609774e`, based on `9abc076ee2571282246be57006b761926208624e`. These are local commits. Remote source integration remains null.
+
+Two actual project-local Spec/RTL Skill invocation receipts include content version/SHA, Native session/turn, input/output pins and immutable Owner checkpoint. Third-party silicon P-Stack runner is UNAVAILABLE and is not claimed executed. Verification uses an Owner-local method. Integration and PDCA are authenticated deterministic workers, not model turns.
+
+Original Spec Native output, Peer EXPIRED and one fixed-key retry are preserved. Separate Spec clarification, RTL candidate, Verification and RTL clarification artifacts form the recorded causal chain. Original Verification TIMED_OUT remains unchanged with checkpoint `a0fad2bf-9dac-4dff-a112-e3a2151846f5` and all four original output hashes. Separate same-Owner recovery accepted those outputs. A copied-DB bounded test producer also recovered in a new process; that probe is explicitly NOT_RUN Native.
+
+The final closure initially exposed a real projection defect. Late Spec checkpoint validation overwrote ACCEPTED with CHECKPOINTED. Fixed live projection and restart hydration; 3/3 targeted regression cases PASS, changed modules compile, and a new-process completed replay succeeds without repeating Native turns. Eleven historical engineering tables, root AGENTS.md and Directive15 bundle remain unchanged. No full80 rerun or new engineering PASS is claimed.
+
+Chrome actually opened running, timeout and final Dashboard states. Final accessibility observation shows COMPLETED. SQLite comparison matches five displayed Owner workitems, all recorded Native invocations, 10 Artifact checkpoints and two Skill receipts. Saved final screenshot and original browser docs/Blob-SHA/read-time compliance matrix are in the delivery evidence. Integration/PDCA CHECK is recorded; ACT remains a proposal and live policy is unchanged.
+
+Recorded Native usage totals 2,559,320 input, 2,326,593 cached input and 59,760 output tokens. Cost UNKNOWN. Totals are recorded usage, not a priced invoice.
+
+Local immutable bundle is `D:/mtk32712/SiliconForge/.audit/directive16-delivery-20261110-fbf69ab.zip`, 10,514,914 bytes, SHA256 `4ae4d449f5e4f5d73bef7e13e4e3d8101c6cfc62a56ca24ef97837b1b71a053d`. It contains exact runtime/candidate source archives, SQLite final snapshot, raw Native logs and recovery/checkpoint lineage, Chrome observations, versioned docs compliance, sample input/output and reproduction instructions. Source transfer remains UNAVAILABLE. An Integrator must receive and verify actual bytes before remote integration.
+
+Workflow completion is separate from engineering qualification. Candidate is CANDIDATE_UNVERIFIED_EDA_DEFERRED. Simulation, Formal, EDA and physical PPA are NOT_RUN for this request. Formal60+20 acceptance, security, quota and Select/Merge/ReGate remain unchanged. Independent portable Native replay requires authorized actor/Harness/worktree provisioning and recorded absolute-path relocation; it is not claimed established by this bundle.
+
+Next concrete dependencies are an authorized source transfer path and, when the user resumes engineering gates, approved Formal/PPA inputs. No additional Native execution, background polling or repeated workflow run is armed.
