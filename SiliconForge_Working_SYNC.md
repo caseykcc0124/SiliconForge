@@ -43,7 +43,7 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261110-18
-  directive_poll_at_utc: "2026-11-10T08:54:36.153889+00:00"
+  directive_poll_at_utc: "2026-11-10T09:14:35.796205+00:00"
   directive_ack_at_utc: "2026-11-10T08:54:51.861813+00:00"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
@@ -99,8 +99,8 @@ supervisor_coordination:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
   next_executable_action: "Authorized Integrator obtains and verifies local bundle; engineering gates await approved Formal/PPA inputs. No repeated Native workflow."
-  last_heartbeat_at_utc: "2026-11-10T08:56:02.017454+00:00"
-  last_effective_progress_at_utc: "2026-11-10T08:22:41.923977+00:00"
+  last_heartbeat_at_utc: "2026-11-10T09:15:06.120891+00:00"
+  last_effective_progress_at_utc: "2026-11-10T09:14:19+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -114,13 +114,13 @@ coding_agent_transport:
 mission_state: "ACTIVE"
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-10T08:22:41.923977+00:00"
-last_progress_at_utc: "2026-11-10T08:22:41.923977+00:00"
-last_heartbeat_at_utc: "2026-11-10T08:56:02.017454+00:00"
+updated_at_utc: "2026-11-10T09:14:19+00:00"
+last_progress_at_utc: "2026-11-10T09:14:19+00:00"
+last_heartbeat_at_utc: "2026-11-10T09:15:06.120891+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive18 five P0 core framework modules and bounded three-RTL-owner integration"
-next_action: "Map existing Runtime/Skill/Branch contracts; implement concrete gaps; execute bounded real integrated scenario."
+next_action: "Finish scoped defect repairs and Skill tests, commit local baseline, run bounded three-Native-owner scenario and process recovery."
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -1032,3 +1032,10 @@ Chrome read the main work order at 2026-11-10T08:44:04Z and independently observ
 Applied `SF-DIR-20261110-18`, Chrome-saved workorder Blob `2f7dc40b54dc16be3c8ec23aad7131b6ef1ccb25`. Continue local source `a547ce37023bf9351612c06c7b373c193e96c365`. D16 and D17 source/evidence/bundles remain frozen.
 
 Scope is the five P0 core modules and one bounded three-RTL-Owner integrated scenario with a second-level fork, actual owner-local skills, candidate-specific OSS tools, authenticated Peer, process fault/restart, and reopened Chrome Dashboard compared with SQLite. First inspect existing APIs and repair actual gaps. No new control plane, full80 rerun, Formal/PPA/Select/Merge/ReGate claim, external publication or remote source upload. Real Native turns and deterministic workers are labelled separately. Polling is ACTIVE_SESSION_ONLY.
+
+
+## Directive18 implementation checkpoint (2026-11-10T09:15:06.120891+00:00)
+
+Workorder reread at 2026-11-10T09:14:35Z still Directive18, Blob `2f7dc40b54dc16be3c8ec23aad7131b6ef1ccb25`. Local edits extend existing LocalDevelopment with a durable prepare entry, bounded three-branch nested-fork scenario, actual owner inspection skills, authenticated Peer process-fault recovery, and immutable checkpoint-derived Dashboard skill views. Source changes are not yet committed or remotely integrated.
+
+Executed existing Runtime tests 18/18, Peer tests 8/8, branch-scope MOCK contract tests 14/14. These 40 checks are development tests, not formal80 acceptance. Core CLI compilation/help passed. Independent scoped review identified failure-replay, orphan artifact recovery, historical-head replay, cross-branch evidence access, Peer side-effect reconciliation, and Dashboard filtering defects. Repairs and focused Skill tests are in progress. Actual three-Owner Native/EDA scenario has not run yet. D16/D17 evidence remains frozen. No Formal/PPA/Merge or independent integration claim.
