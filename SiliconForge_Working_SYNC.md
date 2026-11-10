@@ -37,7 +37,7 @@ project: SiliconForge
 repo: caseykcc0124/SiliconForge
 branch: main
 sync_branch: main
-sync_commit: "6fe2c6b243adf399420fbfb9815c807a0ff728cb"
+sync_commit: "500539bdeab7f5c97f67e11de4ac9c42bcb3fff7"
 architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
@@ -48,14 +48,14 @@ supervisor_coordination:
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: "D16_FROZEN; D17_TWO_ISOLATED_BRANCHES_NATIVE_RUNNING"
-  dev_delivery_state: "DEV_LOCAL_ONLY_PENDING_TRANSFER; D16_BUNDLE_PREPARED"
+  dev_capability_state: "D16_FROZEN; D17_TWO_ISOLATED_NATIVE_RTL_OWNERS_SIM_SYNTH_PEER_RECOVERY_CHROME_COMPLETED"
+  dev_delivery_state: "DEV_LOCAL_ONLY_PENDING_TRANSFER; D17_BUNDLE_PREPARED"
   dev_usable_capabilities:
     - Manifest-driven fixed-argv Runtime to native RTL-only repair, actual Icarus simulation and Yosys smoke.
     - Default software-clear task and distinct configured polynomial fault demonstrated; one scoped owner per invocation.
-  dev_demo_reproduction: "Directive16 request completed; new-process replay no Native repetition; DELIVERY.md contains exact source/checkpoint inspection and 3-test command."
-  dev_bundle_sha256: "4ae4d449f5e4f5d73bef7e13e4e3d8101c6cfc62a56ca24ef97837b1b71a053d"
-  dev_bundle_contents: "D16 runtime/candidate source archives, final SQLite, raw Native logs, Skill/checkpoint/recovery receipts, Chrome and docs compliance."
+  dev_demo_reproduction: "D17 two actual overlapping RTL turns; candidate-local Icarus/Yosys; scoped deterministic Verification Peer; new-process recovery; Chrome/SQLite matched. DELIVERY.md records commands and limits."
+  dev_bundle_sha256: "4fc508217af5c599fcfc211ab4ce0088054517b8bae2ecc97273ea149976b32e"
+  dev_bundle_contents: "D17 final/baseline/two candidate source archives, patch, SQLite, raw Native/EDA/checkpoint/Peer/recovery/Chrome evidence, docs pins and formal-case observations."
   vertical_slice_last_run: "Two sequential RTL scopes on029c87c:659a6762 baseline FAIL/native RTL repair/Icarus and Yosys PASS, exit3 then PID22688 resume COMPLETED; fa1268e5 normal COMPLETED. Final9b81128 corrects inherited Directive07 payload label, no new real run."
   remaining_mock_or_stub: "Formal80 pending; reference-equivalence PASS is development evidence only. Approved formal acceptance assumptions/profile and physical PPA inputs/providers absent."
   external_harness_blocker: "NONE_FOR_THIS_CONFIGURED_LOCAL_TASK; prompt command restrictions are advisory, native used readonly Git and Python CRC sanity; controller EDA/diff gates provide actual outcome."
@@ -71,8 +71,8 @@ supervisor_coordination:
   a0_local_gate: CLOSED_WITH_EVIDENCE
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
-  active_gate: "DIRECTIVE17_TWO_OWNER_NATIVE_RUNNING"
-  active_gate_state: "LOCAL_FRAMEWORK_SLICE_ACTIVE"
+  active_gate: "DIRECTIVE17_LOCAL_FRAMEWORK_SLICE_COMPLETED"
+  active_gate_state: "D17_LOCAL_FRAMEWORK_SLICE_COMPLETED; FORMAL_PPA_GATED"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -80,10 +80,10 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "7a11430"
+  local_git_commit: "a547ce37023bf9351612c06c7b373c193e96c365"
   local_artifact_state: PREPARED_LOCAL
-  local_artifact_sha256: "4ae4d449f5e4f5d73bef7e13e4e3d8101c6cfc62a56ca24ef97837b1b71a053d"
-  local_artifact_path: "D:/mtk32712/SiliconForge/.audit/directive16-delivery-20261110-fbf69ab.zip"
+  local_artifact_sha256: "4fc508217af5c599fcfc211ab4ce0088054517b8bae2ecc97273ea149976b32e"
+  local_artifact_path: "D:/mtk32712/SiliconForge/.audit/directive17-delivery-20261110-a547ce3.zip"
   artifact_transfer_state: UNAVAILABLE
   artifact_access: LOCAL_WORKSPACE_ONLY
   remote_source_integrated_commit: null
@@ -99,8 +99,8 @@ supervisor_coordination:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
   next_executable_action: "Authorized Integrator obtains and verifies local bundle; engineering gates await approved Formal/PPA inputs. No repeated Native workflow."
-  last_heartbeat_at_utc: "2026-11-10T08:05:02.956273+00:00"
-  last_effective_progress_at_utc: "2026-11-10T08:05:02.846752+00:00"
+  last_heartbeat_at_utc: "2026-11-10T08:22:42.015547+00:00"
+  last_effective_progress_at_utc: "2026-11-10T08:22:41.923977+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -111,16 +111,16 @@ coding_agent_transport:
   remote_source_delivery: NOT_AVAILABLE_FROM_CODING_AGENT
   local_artifact_transfer: NOT_ESTABLISHED
   actual_source_on_github_updated_by_agent: false
-mission_state: "ACTIVE"
+mission_state: "BLOCKED_EXTERNAL_DEPENDENCIES"
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-10T08:05:02.846752+00:00"
-last_progress_at_utc: "2026-11-10T08:05:02.846752+00:00"
-last_heartbeat_at_utc: "2026-11-10T08:05:02.956273+00:00"
+updated_at_utc: "2026-11-10T08:22:41.923977+00:00"
+last_progress_at_utc: "2026-11-10T08:22:41.923977+00:00"
+last_heartbeat_at_utc: "2026-11-10T08:22:42.015547+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
-current_task: "Directive17 same Requirement two isolated RTL Owner/Branch Native operations"
-next_action: "Observe Native completion; candidate-specific OSS EDA; authenticated Peer and new-process recovery; Chrome DAG."
+current_task: "Directive17 local slice completed and frozen; pending authorized source transfer and Formal/PPA inputs"
+next_action: "Authorized Integrator receives and verifies D17 bundle; new engineering work needs a new task or missing Formal/PPA inputs. Do not rerun frozen D16/D17."
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -990,3 +990,33 @@ Applied at 2026-11-10T08:05:02.956273+00:00. Existing D16 commit fbf69ab, candid
 Current local7a11430 corrects the existing operations event directive attribution. Reuse LocalDevelopment.start with two real initial branches, performance and low_power, same R_CRC_DIRECTIVE17 and fixed existing APB CRC32 Spec/Constraints. Existing Runtime/Registry/Workspace/ThreadPoolExecutor owns scheduling, separate Worktrees, leases and evidence. Two bounded Native RTL turns are starting; no new Router, no third branch, no Formal/PPA/Merge claim. Default available Native model gpt-6-luna; timeout300s.
 
 Next verify independent candidate source commits, minimal actual Icarus/Yosys, an authenticated Peer evidence exchange, fresh-process durable recovery without repeated successful turns and Chrome Dashboard/SQLite DAG matching. No D16 rerun or formal80 PASS change. DEVELOPMENT VERSION; DEV_LOCAL_ONLY_PENDING_TRANSFER.
+
+
+## Directive17 final local delivery (2026-11-10T08:22:42.015547+00:00)
+
+`SF-DIR-20261110-17` is applied. Result `D17_LOCAL_FRAMEWORK_SLICE_COMPLETED`; delivery `DEV_LOCAL_ONLY_PENDING_TRANSFER`. This is local development completion only. Formal80 and G0 through G7 acceptance statuses are unchanged. D16 is frozen and was not rerun.
+
+### Exact source and real execution
+
+- Final local source `a547ce37023bf9351612c06c7b373c193e96c365`. Native baseline `7a114306220fc8332d76984217757e4ac997a06c`. Changes fix directive attribution, add a scoped Peer/checkpoint recovery helper, and expose authoritative Peer lifecycle and UNKNOWN cost in the existing Dashboard. No new control plane or scheduler.
+- Requirement `R_CRC_DIRECTIVE17`, operation `directive17-two-owner-crc`, exploration `a0x:exploration:df2c09fe520a06accdb8697396db7dae`. Baseline Branch `a0x:baseline-branch:887aa1978613a6ba5231ccf44aef13c8`.
+- Performance Branch `a0x:branch:4033255c73087cf39cd31045a290a904`, RTL Owner `a0x:owner-instance:4199ce0df27ccf08ac50b00cd008e32e`, candidate `a1fba1aa07cf4b3de2a078aaa6d831c02d1a095d`, Native Turn `fb60a82b-6c9d-40ae-b1fe-151980109260`, actual interval `08:04:40Z` to `08:05:33Z`.
+- Low-power Branch `a0x:branch:a8df05da4235554e5c4ddf1eabb11a09`, RTL Owner `a0x:owner-instance:194c7a97a718a7f5079b77b00e965dd2`, candidate `bf2662212a47d4a0d87bf395486a8d1b5ee896f1`, Native Turn `b4857a47-eb1a-4110-ae6f-1b4aa0689dfb`, actual interval `08:04:40Z` to `08:05:20Z`.
+- Two actual isolated RTL model turns overlap. Each candidate has actual Icarus simulation PASS and Yosys generic synthesis PASS, with raw commands and logs. Both report 186 generic cells. Exploration labels do not establish performance or power optimization. Both repair the existing CRC polynomial fixture.
+- Spec SHA `2b9e6e58093d142397b68fc95a86ab1d30fc469b76935a3c74e1c712eedd7e1f`, constraint SHA `4a49f3723a246c3e6c9aae77f9d59d3a5dbd5b8b326c7da5c61be92cd1fadb31`, testbench SHA `5fccf7168b7778dc2a29b21f1a8785b25f3990bff02f6036acac086baf1e2830`. Tool profile and environment pins are in operation.json.
+
+### Peer, recovery, and Chrome evidence
+
+Authenticated RTL to Verification Peer handoffs persist the actual candidate hashes and original Native IDs in Owner checkpoints. Verification is an authenticated deterministic evidence validator, not an additional model Turn. Low-power Peer `a7a66639-98be-4d6e-8013-d48c90ba2fa9` has response `30ab48d6-aff6-4df5-bb40-e673af4440f0`; performance Peer `1b99f7cb-2e2a-4997-a453-6328c0a5629b` has response `ed7d59c7-b228-487a-b4a8-c01ff773bb15`.
+
+Producer PID22392 left pending work. Recovery PID30568 checked original hashes, rejected a cross-Branch response, reconciled both Peers, consumed the wakes, and terminally acknowledged through scoped authority. A caller used `+00:00` where lease comparison expects normalized `Z`; the original lease expired naturally and recovery recovered one. This history is preserved. Repeat resume reports `ALREADY_RECONCILED`, with zero repeated Native or EDA work.
+
+Chrome directly observed pending `WAITING_FOR_PEER` and the completed DAG, Native IDs, candidate results, and authoritative `RESPONDED` lifecycle. Original communication `OPEN` remains immutable history; the corrected projection shows current lifecycle separately. SQLite and Dashboard comparison passed at `2026-11-10T08:17:42Z`, covering three Branch heads and parent edges, eight Owner records, two Native turns, two Peer responses, and six candidate results. Screenshots and rendered text are preserved. Actual Native usage totals are 208285 input tokens, 159781 cached input tokens, and 3409 output tokens. Cost is UNKNOWN.
+
+### Frozen deliverable and remaining gates
+
+Bundle `D:/mtk32712/SiliconForge/.audit/directive17-delivery-20261110-a547ce3.zip`, 5143572 bytes, SHA256 `4fc508217af5c599fcfc211ab4ce0088054517b8bae2ecc97273ea149976b32e`. ZIP integrity PASS. The 114 files include final source, baseline and both candidate source archives, D16-to-D17 binary patch, SQLite snapshot, raw Native and candidate-local EDA logs, actor/profile samples, input manifest, checkpoint and Peer receipts, Chrome screenshots, document pins, file hashes, delivery manifest, reproduction instructions, and E01 to E20 observation mapping.
+
+All E01 to E20 formal statuses are `NOT_RUN`. E01 and E02 require three routes or RTL Instances, while this authorized slice uses two. Formal is `BLOCKED`; physical PPA is `INCOMPARABLE`; Select, Merge, and ReGate are `NOT_RUN`. No winner or release is asserted. D16 ZIP remains unchanged at SHA256 `4ae4d449f5e4f5d73bef7e13e4e3d8101c6cfc62a56ca24ef97837b1b71a053d`.
+
+Artifact transfer is `UNAVAILABLE`, remote source integrated commit is `null`, and GitHub source has not been uploaded. An authorized Integrator needs the exact bundle bytes and hash. Formal requires approved acceptance profile and assumptions. Physical PPA requires technology/corners, timing constraints, power activity, and providers. Continue only new authorized work or supplied external inputs; do not rerun frozen D16/D17. Polling remains `ACTIVE_SESSION_ONLY`, with no unattended work or daemon claimed.
