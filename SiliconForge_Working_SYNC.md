@@ -37,13 +37,13 @@ project: SiliconForge
 repo: caseykcc0124/SiliconForge
 branch: main
 sync_branch: main
-sync_commit: "500539bdeab7f5c97f67e11de4ac9c42bcb3fff7"
+sync_commit: "959249478e1ce36564567364145e40008ac53aa8"
 architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261110-17
-  directive_poll_at_utc: "2026-11-10T08:01:42.260955+00:00"
+  directive_poll_at_utc: "2026-11-10T08:44:04.053516+00:00"
   directive_ack_at_utc: "2026-11-10T08:05:02.846752+00:00"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
@@ -99,7 +99,7 @@ supervisor_coordination:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
   next_executable_action: "Authorized Integrator obtains and verifies local bundle; engineering gates await approved Formal/PPA inputs. No repeated Native workflow."
-  last_heartbeat_at_utc: "2026-11-10T08:22:42.015547+00:00"
+  last_heartbeat_at_utc: "2026-11-10T08:45:25.897883+00:00"
   last_effective_progress_at_utc: "2026-11-10T08:22:41.923977+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -116,7 +116,7 @@ phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-10T08:22:41.923977+00:00"
 last_progress_at_utc: "2026-11-10T08:22:41.923977+00:00"
-last_heartbeat_at_utc: "2026-11-10T08:22:42.015547+00:00"
+last_heartbeat_at_utc: "2026-11-10T08:45:25.897883+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive17 local slice completed and frozen; pending authorized source transfer and Formal/PPA inputs"
@@ -1020,3 +1020,8 @@ Bundle `D:/mtk32712/SiliconForge/.audit/directive17-delivery-20261110-a547ce3.zi
 All E01 to E20 formal statuses are `NOT_RUN`. E01 and E02 require three routes or RTL Instances, while this authorized slice uses two. Formal is `BLOCKED`; physical PPA is `INCOMPARABLE`; Select, Merge, and ReGate are `NOT_RUN`. No winner or release is asserted. D16 ZIP remains unchanged at SHA256 `4ae4d449f5e4f5d73bef7e13e4e3d8101c6cfc62a56ca24ef97837b1b71a053d`.
 
 Artifact transfer is `UNAVAILABLE`, remote source integrated commit is `null`, and GitHub source has not been uploaded. An authorized Integrator needs the exact bundle bytes and hash. Formal requires approved acceptance profile and assumptions. Physical PPA requires technology/corners, timing constraints, power activity, and providers. Continue only new authorized work or supplied external inputs; do not rerun frozen D16/D17. Polling remains `ACTIVE_SESSION_ONLY`, with no unattended work or daemon claimed.
+
+
+## Work order recheck (2026-11-10T08:45:25.897883+00:00)
+
+Chrome read the main work order at 2026-11-10T08:44:04Z and independently observed the normal GitHub file page after a forced reload. It still shows `SF-DIR-20261110-17`, latest file Commit `9513ae949e775c231794deea3690cfb5a33c4cad`, Blob `f0690fdb98f8d471b9a595e584a8b0d2bfe9b6e0`. No new directive content was observed. Sync was reread at 08:45:11Z and still matches the published D17 final delivery. This is a heartbeat only; last effective engineering progress is unchanged. Frozen D16/D17 Native and EDA work was not repeated. Active-session polling only.
