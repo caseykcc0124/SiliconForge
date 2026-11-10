@@ -43,12 +43,12 @@ supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
   last_seen_directive_id: SF-DIR-20261109-16
-  directive_poll_at_utc: "2026-11-10T05:38:47.989326+00:00"
+  directive_poll_at_utc: "2026-11-10T06:08:34.302342+00:00"
   directive_ack_at_utc: "2026-11-10T05:38:47.989326+00:00"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: "D15_LOCAL_MULTI_OWNER_FLOW_AND_CHROME_UI_REPRODUCED; D16_SKILL_CHECKPOINT_PENDING"
+  dev_capability_state: "D16_DOCS_READ; NATIVE_SPEC_COMPLETED_OUTPUT_NOT_ACCEPTED; RUNNING_CHROME_UI_OBSERVED; SKILL_RECEIPT_PENDING"
   dev_delivery_state: "D15_PREPARED_LOCAL; SOURCE_TRANSFER_UNAVAILABLE; D16_ACTIVE"
   dev_usable_capabilities:
     - Manifest-driven fixed-argv Runtime to native RTL-only repair, actual Icarus simulation and Yosys smoke.
@@ -71,7 +71,7 @@ supervisor_coordination:
   a0_local_gate: CLOSED_WITH_EVIDENCE
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
-  active_gate: "DIRECTIVE16_P0_DOCS_SKILL_CHECKPOINT"
+  active_gate: "DIRECTIVE16_NATIVE_SPEC_CHECKPOINT_REPAIR"
   active_gate_state: "LOCAL_PROOF_INTEGRATED_EXTERNAL_FORMAL_PPA_INPUT_REQUIRED"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
@@ -99,7 +99,7 @@ supervisor_coordination:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
   next_executable_action: "Environment/Design Authority supplies approved formal acceptance assumptions/binding plus target Liberty/corner, SDC/STA and power activity/provider; then fresh candidate checks and unchanged Select/Merge/ReGate."
-  last_heartbeat_at_utc: "2026-11-10T05:38:47.989326+00:00"
+  last_heartbeat_at_utc: "2026-11-10T06:09:34.520759+00:00"
   last_effective_progress_at_utc: "2026-11-09T16:15:07+08:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -116,7 +116,7 @@ phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-09T02:20:40Z"
 last_progress_at_utc: "2026-11-09T02:19:04.412929+00:00"
-last_heartbeat_at_utc: "2026-11-10T05:38:47.989326+00:00"
+last_heartbeat_at_utc: "2026-11-10T06:09:34.520759+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive13 LOCAL_PROOF_INTEGRATED; EXTERNAL_PPA_INPUT_REQUIRED; MERGE_REGATE_NOT_RUN; FORMAL_ACCEPTANCE_PROFILE_REQUIRED"
@@ -927,3 +927,12 @@ last_heartbeat_at_utc: 2026-11-09T08:20:05.188867+00:00
 ## Directive16 ACK and interactive desktop restored
 
 `SF-DIR-20261109-16`, updated 2026-11-09T08:27:51Z, was re-read through Chrome at 2026-11-10T05:38:47.989326+00:00. Browser physical input works again. Existing D15 source fc1bb556 and immutable bundle remain the baseline. The current top machine-readable YAML was reconciled with D15 delivery and Directive16 activation; this is governance correction, not a new engineering result. Required main docs, explicit project-local Skill invocation receipts, one new small sandbox trace, bounded artifact checkpoint recovery and running/final Chrome Dashboard observations are pending. No D15 Native turn or EDA is rerun. Named third-party silicon Skill runner is not found in searched available tools/skill paths; a minimal project-local binding remains planned and unexecuted. Source transfer stays UNAVAILABLE and remote_source_integrated_commit stays null.
+
+
+## Directive16 Native Spec checkpoint repair progress
+
+Reported at 2026-11-10T06:09:34.520759+00:00. Formal docs/19 was re-read in Chrome at 2026-11-10T06:08:34.302342+00:00; Blob SHA remains `9cb6a5784b90612abea0d5d1dbcf3fc4f54486fa`. Thirteen formal main docs now have actual Chrome-read receipts and Blob SHA values in local Documentation Compliance Matrix. Local project-owner bindings and artifact checkpoint integration compile, but are uncommitted and not delivered as verified Skill execution.
+
+New authenticated task `directive16-polyread-20261110-01` forks D15 candidate `9abc076ee2571282246be57006b761926208624e`, adding only a read-only POLYNOMIAL register 0x0c in the sandbox. Native Spec session `f4a8df0e-69a7-432e-8540-080386732718`, turn `7c0b6fa2-0462-4814-8c6e-1e8b6c500634`, completed exit0. It wrote the addendum via raw `command_execution`, not `file_change`, exposing a checkpoint transport mismatch. Output status is WAITING_FOR_HUMAN with a question about existing next-edge CRC read after clear/data write. No accepted Spec or PROJECT_LOCAL_SKILL_EXECUTED receipt is claimed. Preserve the original turn and artifact; bounded repair will recognize actual shell output evidence and let the Spec Owner inspect pinned existing RTL in a distinct clarification turn rather than Main adjudicating engineering behavior.
+
+Chrome actually opened the same task's RUNNING Dashboard at `2026-11-10T06:06:15.115404+00:00`; raw screenshot SHA256 `dd128f8a424325bd4c3abe134415e36d075a7baf2b7bad51f2d65e25b9afc01d` and page SHA256 `fc86d62458ad860dcd3416aeb971a6966f56414131fcaf0663e56443e35f913f` are local evidence, with SQLite comparison pending. Actual Native usage is input230561, cached184910, output8565; cost UNKNOWN. Runtime work has not reached RTL/Verification/Integration/PDCA completion, recovery probe or final UI. D15 immutable bundle and root AGENTS.md are preserved. Local implementation source remains fc1bb556; no new bundle or remote source integration. EDA/Formal/PPA/Select/Merge/ReGate remain NOT_RUN/DEFERRED; named third-party P-Stack runner UNAVAILABLE.
