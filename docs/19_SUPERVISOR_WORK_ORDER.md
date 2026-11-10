@@ -1,17 +1,17 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261109-16**
+> **DIRECTIVE_ID: SF-DIR-20261110-17**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-09T08:27:51Z**
+> **UPDATED_AT_UTC: 2026-11-10 (UTC date; exact commit timestamp is authoritative)**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: Directive16，依 §2.17 驗證具名 P-Stack/Owner-local Skill 真實呼叫、docs/ 契約追溯、Verification 逾時後 Artifact 恢復與 Chrome Dashboard 真實觀察；EDA/PPA Gate 暫緩，原80案不變。**
+> **CURRENT MISSION PRIORITY: Directive17，完成 D16 本地成果凍結與可取得交付準備，優先推進真實多 Owner／Branch DAG 的最小框架閉環及 Dashboard 因果追溯；正式 Formal／物理 PPA／Select／Merge ReGate 依既有授權與環境條件辦理，不得宣稱 PASS。原 G0–G7 與 80 案不變。**
 
 
 ## 0. 任務與角色
@@ -373,3 +373,21 @@ Supervisor 每兩小時巡檢**本 Repository** 的 Sync、最新 GitHub Commit/
 
 
 **本版更新原因／下一步（SF-DIR-20261109-16，2026-11-09T08:27:51Z）**：Directive15 Sync 已回報本地 APB CRC32 Spec/RTL/Verification/Integration/PDCA 真實鏈與 Chrome Dashboard 観測，但原始具名 P-Stack Skill Runner 仍 `SKILL_EXECUTION_NOT_VERIFIED`；且 Verification 曾在產出四個 Artifact 後 300 秒逾時，需獨立恢復 Turn。Sync 主 YAML 尚落後 Directive15 的 SHA/ACK/Heartbeat。使用者要求下一輪繼續開發，故按 §2.17 針對已證明的缺口建立最小真實 Skill Invocation + docs 契約追溯 + Artifact checkpoint 恢復 + Dashboard UI 對照；由 Agent 自己更新其擁有的 Sync 現況，不觸碰 Supervisor 不擁有的文件。維持既有 G0–G7、80 正式案例、EDA/Formal/PPA/合併 Gate、資安權限、資源政策和僅本地 Source 交付。
+
+
+### 2.18 Directive17：交付收斂與真實多 Owner 框架閉環（2026-11-10，使用者明確要求更新下一階段指引）
+
+**觸發證據與邊界：** 最新 Sync 已 ACK Directive16 並回報 Local Git `fbf69abf56a9e42ffb5995a8ae84767a6625ddba`、10,514,914-byte D16 Bundle SHA256 `4ae4d449f5e4f5d73bef7e13e4e3d8101c6cfc62a56ca24ef97837b1b71a053d`、兩個 Project-local Skill Receipt、真實 Native Owner 工作鏈與 Chrome Dashboard 觀察。此為 Agent Local 回報，Supervisor 未取得原始 Bundle 獨立重現；`artifact_transfer_state=UNAVAILABLE`、`remote_source_integrated_commit=null`，正式 80 項不得據此增加 PASS。使用者要求直接更新工作指引，故本 Directive 以「框架可用性與 v3.1 真實平行探索」為下一輪工程重點，不重新要求已完成的 D16 Native 演示。
+
+**工作順序與可執行產物：**
+
+1. **封存 D16，禁止無效重跑。** 保持既有 Local Commit、Bundle、Manifest、SHA256、原始 Native/Skill/Checkpoint/Chrome 證據及 `DELIVERY.md` 的重現指令。檢查交付包是否含所需 Source、版本釘選、配置、原始 Logs 與最小操作入口；只補缺漏的交付說明，不為提高測試計數重跑完整 D16、80 案或新增 Mock。Local 成果只標 `DEV_LOCAL_ONLY_PENDING_TRANSFER`。
+2. **交付由授權 Integrator 負責。** Agent 僅能在既有 Local 準備 ZIP/Patch、用 Chrome 閱讀 GitHub、透過 GitHub Web Edit 更新自己擁有的 Sync；不得 git clone/fetch/pull/push GitHub、建立遠端 PR、上傳其他 Source 或假設本地路徑可供 Supervisor 下載。若實際出現合法可用傳遞管道，先確認授權 Integrator 能取得完整 bytes 並核對 SHA256、Baseline/Target SHA，然後才由 Integrator 執行遠端 Source Commit、CI 與獨立重現。沒有通道就保持 `UNAVAILABLE`，不因此停止其他已授權 Local 工程。
+3. **實作最小真實多 Owner／Branch DAG Vertical Slice。** 在現有 Runtime/Registry/Git Workspace 能力上，對同一 APB CRC32 Requirement 與固定 Spec/Constraints 建立至少兩個實際不同的 RTL Owner Instance 與各自 Local Git Worktree/Branch/Candidate SHA；保留 Performance、Low Power、Area 三路擴充能力，但不為展示而強制增加第三路。用真實持久 Event/Delivery/Lease/Peer Scope 驅動 Owner 並行或交錯工作，展示隔離、因果、各自 Evidence Fingerprint、Branch Parent/Fork/Head、重啟後可恢復。Owner Role 不能被單例鎖；不建立第二個全域 Router。
+4. **真實可觀測的跨 Owner 交接與 Dashboard。** 至少一次經認證 Spec/RTL/Verification Peer Request/Result 與 EventStore 對應；用 Chrome 實際開啟 Dashboard，核對 Owner Instance、Branch DAG、Ticket、Native/Skill/EDA Receipt、等待/阻礙、Cost UNKNOWN、Source/Spec SHA、因果 Trace 與原始資料一致。未實作的 PPA、Merge、ReGate 明確顯示 `NOT_RUN/BLOCKED/INCOMPARABLE`，不可用靜態示意圖冒充執行證據。
+5. **EDA 與正式 Gate 嚴格分層。** 對已具備授權 OSS 工具與輸入的候選，只執行足以證明新 Branch 隔離與實際 SIM/Yosys 的必要測試，保留各 Branch 原始命令、Exit Code、Logs、Source/Spec/Env Pins；不把舊 D16 的 EDA PASS 轉移至新 SHA。正式 Formal 需要核准 Profile/Assumptions，實體 PPA 需要 Library/Corner/STA/Power Activity，缺少即精確標 `BLOCKED`。未有可比較 PPA 和授權決策不得宣稱 Pareto Winner、Merge 或 ReGate PASS。
+6. **一次性收斂與回報。** 只修復真實阻斷閉環、安全或資料隔離的缺陷；最小必要測試與既定 Required Cases 不可削弱，不擴張測試矩陣。產出新的 Local Source SHA、具體命令與可重現 Raw Evidence、Branch DAG/Owner 對照、Chrome Dashboard 觀察、ZIP/Patch Manifest+SHA256；於 Sync 回報新 Gate、各 Case 真實狀態、last_progress/heartbeat、Transfer、Blocker 與 next executable action。若缺 Native 配額/工具/授權，記錄實際限制並繼續其他合法可執行的框架工作，不自造永久輪詢服務。
+
+**完成判準：** 本輪可標 `D17_LOCAL_FRAMEWORK_SLICE_COMPLETED` 的條件為同一 Requirement 的至少兩個真實隔離 Owner/Branch、可信 Registry/Lease/Peer 事件、可重啟追溯、至少一條真實工具或明確標示工具阻礙的候選證據，以及 Chrome 實際核對 Dashboard/事件來源。這只是 Local DEV 工作完成，絕不等於 G0–G7 任一正式 Gate、A0–A6 60 件或 E01–E20 20 件自動 PASS。若仍有外部依賴，保留原 Gate 及下一可執行行動，無須等待 Supervisor 逐步指揮。
+
+**本版更新原因與下一步（SF-DIR-20261110-17）：** D16 已回報完成而 Artifact Transfer 未建立，且使用者明確要求更新下一階段。停止重做已完成工作，轉向可交付成果與最小真實多 Owner/Branch 框架閉環；保持正式驗收、G0–G7、安全、配額、Agent 遠端權限與需人類批准事項不變。Coding Agent 下次活躍輪詢請 ACK 17 並自主執行本節。
