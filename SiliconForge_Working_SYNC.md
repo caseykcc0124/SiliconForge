@@ -42,13 +42,13 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: SF-DIR-20261109-16
-  directive_poll_at_utc: "2026-11-10T07:23:10.730597+00:00"
-  directive_ack_at_utc: "2026-11-10T05:38:47.989326+00:00"
+  last_seen_directive_id: SF-DIR-20261110-17
+  directive_poll_at_utc: "2026-11-10T08:01:42.260955+00:00"
+  directive_ack_at_utc: "2026-11-10T08:05:02.846752+00:00"
   directive_application_state: APPLIED
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
-  dev_capability_state: "DIRECTIVE16_WORKFLOW_COMPLETED; TWO_PROJECT_LOCAL_SKILLS_EXECUTED; EDA_DEFERRED"
+  dev_capability_state: "D16_FROZEN; D17_TWO_ISOLATED_BRANCHES_NATIVE_RUNNING"
   dev_delivery_state: "DEV_LOCAL_ONLY_PENDING_TRANSFER; D16_BUNDLE_PREPARED"
   dev_usable_capabilities:
     - Manifest-driven fixed-argv Runtime to native RTL-only repair, actual Icarus simulation and Yosys smoke.
@@ -71,8 +71,8 @@ supervisor_coordination:
   a0_local_gate: CLOSED_WITH_EVIDENCE
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
-  active_gate: "DIRECTIVE16_LOCAL_WORKFLOW_COMPLETED"
-  active_gate_state: "WORKFLOW_COMPLETED_ENGINEERING_UNVERIFIED; EXTERNAL_DEPENDENCIES_REQUIRED"
+  active_gate: "DIRECTIVE17_TWO_OWNER_NATIVE_RUNNING"
+  active_gate_state: "LOCAL_FRAMEWORK_SLICE_ACTIVE"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -80,7 +80,7 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "fbf69abf56a9e42ffb5995a8ae84767a6625ddba"
+  local_git_commit: "7a11430"
   local_artifact_state: PREPARED_LOCAL
   local_artifact_sha256: "4ae4d449f5e4f5d73bef7e13e4e3d8101c6cfc62a56ca24ef97837b1b71a053d"
   local_artifact_path: "D:/mtk32712/SiliconForge/.audit/directive16-delivery-20261110-fbf69ab.zip"
@@ -99,8 +99,8 @@ supervisor_coordination:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
   next_executable_action: "Authorized Integrator obtains and verifies local bundle; engineering gates await approved Formal/PPA inputs. No repeated Native workflow."
-  last_heartbeat_at_utc: "2026-11-10T07:25:30.005299+00:00"
-  last_effective_progress_at_utc: "2026-11-10T07:24:05Z"
+  last_heartbeat_at_utc: "2026-11-10T08:05:02.956273+00:00"
+  last_effective_progress_at_utc: "2026-11-10T08:05:02.846752+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -111,16 +111,16 @@ coding_agent_transport:
   remote_source_delivery: NOT_AVAILABLE_FROM_CODING_AGENT
   local_artifact_transfer: NOT_ESTABLISHED
   actual_source_on_github_updated_by_agent: false
-mission_state: "LOCAL_DIRECTIVE16_COMPLETE_PENDING_EXTERNAL_DEPENDENCIES"
+mission_state: "ACTIVE"
 phase: A0X
 owner_agent: Codex_local_G1
-updated_at_utc: "2026-11-10T07:25:29.917788+00:00"
-last_progress_at_utc: "2026-11-10T07:24:05Z"
-last_heartbeat_at_utc: "2026-11-10T07:25:30.005299+00:00"
+updated_at_utc: "2026-11-10T08:05:02.846752+00:00"
+last_progress_at_utc: "2026-11-10T08:05:02.846752+00:00"
+last_heartbeat_at_utc: "2026-11-10T08:05:02.956273+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
-current_task: "Directive16 local workflow complete; candidate de65872 remains unverified; Runtime local fbf69ab; remote source null"
-next_action: "Transfer immutable D16 local bundle through authorized channel; engineering qualification remains deferred."
+current_task: "Directive17 same Requirement two isolated RTL Owner/Branch Native operations"
+next_action: "Observe Native completion; candidate-specific OSS EDA; authenticated Peer and new-process recovery; Chrome DAG."
 next_action_owner: Coding Agent
 blockers: []
 human_approval_required: []
@@ -981,3 +981,12 @@ Local immutable bundle is `D:/mtk32712/SiliconForge/.audit/directive16-delivery-
 Workflow completion is separate from engineering qualification. Candidate is CANDIDATE_UNVERIFIED_EDA_DEFERRED. Simulation, Formal, EDA and physical PPA are NOT_RUN for this request. Formal60+20 acceptance, security, quota and Select/Merge/ReGate remain unchanged. Independent portable Native replay requires authorized actor/Harness/worktree provisioning and recorded absolute-path relocation; it is not claimed established by this bundle.
 
 Next concrete dependencies are an authorized source transfer path and, when the user resumes engineering gates, approved Formal/PPA inputs. No additional Native execution, background polling or repeated workflow run is armed.
+
+
+## SF-DIR-20261110-17 ACK
+
+Applied at 2026-11-10T08:05:02.956273+00:00. Existing D16 commit fbf69ab, candidate de65872, 10,514,914-byte ZIP and SHA2564ae4d449 remain preserved. Source transfer UNAVAILABLE and remote source commit null.
+
+Current local7a11430 corrects the existing operations event directive attribution. Reuse LocalDevelopment.start with two real initial branches, performance and low_power, same R_CRC_DIRECTIVE17 and fixed existing APB CRC32 Spec/Constraints. Existing Runtime/Registry/Workspace/ThreadPoolExecutor owns scheduling, separate Worktrees, leases and evidence. Two bounded Native RTL turns are starting; no new Router, no third branch, no Formal/PPA/Merge claim. Default available Native model gpt-6-luna; timeout300s.
+
+Next verify independent candidate source commits, minimal actual Icarus/Yosys, an authenticated Peer evidence exchange, fresh-process durable recovery without repeated successful turns and Chrome Dashboard/SQLite DAG matching. No D16 rerun or formal80 PASS change. DEVELOPMENT VERSION; DEV_LOCAL_ONLY_PENDING_TRANSFER.
