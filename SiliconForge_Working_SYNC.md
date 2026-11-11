@@ -99,7 +99,7 @@ supervisor_coordination:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
   next_executable_action: "Continue A1 notification/harness evidence and lease-failure PDCA baseline; preserve E05/E17 and Formal/STA input boundaries."
-  last_heartbeat_at_utc: "2026-11-11T07:23:17.019327+00:00"
+  last_heartbeat_at_utc: "2026-11-11T07:26:12.718305+00:00"
   last_effective_progress_at_utc: "2026-11-11T06:36:35.747269+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -116,7 +116,7 @@ phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-10T09:42:01.738251+00:00"
 last_progress_at_utc: "2026-11-11T06:36:35.747269+00:00"
-last_heartbeat_at_utc: "2026-11-11T07:23:17.019327+00:00"
+last_heartbeat_at_utc: "2026-11-11T07:26:12.718305+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive18 five P0 core framework modules and bounded three-RTL-owner integration"
@@ -1168,12 +1168,14 @@ SF-DIR-20261111-21 APPLIED, Chrome workorder bloba727252118e4bdfbfb5c11365b5e4e4
 Start existing SQLite/ReadModel/exportDashboard gap closure with clickable authoritative object/event references and unknown usage/status preservation. No secondUI/service. Existing nativeCodex/Claude status receipts reused, not rerun. Narrow original A1 nonce/notification/checkpoint and applicable E/PDCA cases follow with real receipts. Formal/STA providers do not stall unrelated work; no Power provider installation or falsePPA/Winner/Merge claim.
 
 
-## Directive21 Dashboard checkpoint (2026-11-11T07:23:17.019327+00:00)
+## Directive21 Dashboard checkpoint (2026-11-11T07:26:12.718305+00:00)
 
 Directive SF-DIR-20261111-21 remains ACTIVE. Chrome reread work order blob `a727252118e4bdfbfb5c11365b5e4e460009c5d3` at 2026-11-11T07:19:49Z. Local source commit `e81ac5e` adds navigation over saved Requirement/Exploration and direct ID references in the existing Dashboard, including array-valued event references to native sessions. Task usage stays UNKNOWN when receipts are missing; actual zero receipts remain zero. No second UI service or mutation authority was added.
 
 Actual historical projection contains 160 events, 24 native turns, six explorations and four framework tasks. Reopening the backup reproduces the same projection. Chrome selected `R_CRC_DIRECTIVE18_CORE` and followed branch `a0x:branch:1ab20e0e8127e98d28f4890ff71f84c8` to branch/owner records. Independent review found and then cleared the missing array-reference defect for local commit. Evidence is `.audit/directive21-live/dashboard-reviewed-projection/receipt.json`, `check-dashboard-gaps.json`, `dashboard-fix-review.json`, and `dashboard-reviewed-followed.png`. Tested source SHA256 is `7480486951309d7799dd8d8e6ad53d2093790389954223d966973abda61891fe`. Missing/zero usage tests used an explicitly modified in-memory projection, not altered runtime receipts. This is partial P1 evidence, not whole E19 acceptance.
 
 Concrete remaining gaps are recorded in `A1_REMAINING_FUNCTION_GAPS.md` and `reconcile-recovery.json`. A1-03 lacks authenticated Dashboard submission through the existing command authority; A1-06 has no nonce issuance/consumption implementation. Existing checkpoint and recovery records do not prove native close/reopen notifications or policy-enforced harness switching for A1-07/08. Completed Codex/Claude status calls were not rerun. PDCA has historical lease expiry records, but complete PLAN/DO/CHECK and independent A/B evidence remain pending; ACT cannot promote policy without human approval.
+
+PDCA now has bounded PLAN/DO/CHECK and ACT proposal/denial evidence in `.audit/directive21-live/pdca-checkpoint-20261111T072458Z/receipt.json`. Two real historical LEASE_EXPIRED records for delivery `aca6003c-7629-4d32-a63f-f0c523f2a0cf` anchor the hypothesis. Two isolated copies of the same actual runtime projection claimed delivery `519277c2-64b9-460d-bc32-5bd8b2cb0f90`; actual child processes were terminated after computing identical artifact hashes. Variant A had no persisted checkpoint, while variant B saved through existing EventStore.save_owner_checkpoint and retained it after restart. ImprovementLedger recorded PLAN/DO/CHECK; an ACT request without approval raised PermissionError and added no ACT receipt. This single matched sandbox pair measures receipt persistence only, not Native recovery, reduced rework, token/cost improvement or independent A5-05/06 acceptance. Driver SHA256 `f84a13ff7e6c213bab02f903e0a90bcf647277b8c7423feb31f230be1abc32d1`. Historical database and live policy are unchanged. Cost UNKNOWN, independent A/B review NOT_RUN, no new PASS.
 
 E05 remains FAIL due to the callback-scope/spec conflict. E17 remains BLOCKED for the missing authoritative numeric shared EDA quota and baseline fanout interpretation. Individual Formal assumptions remain PENDING_REVIEW. Nangate45 mapping remains bounded development evidence; executable controlled STA provider is still missing. Power is deferred and NOT_RUN, full PPA INCOMPARABLE, no Winner/Merge/Release claimed. Local matrix remains 36 PASS / 1 FAIL / 2 BLOCKED / 41 NOT_RUN; Supervisor verification UNKNOWN and remote E contract unchanged. Frozen D18 evidence was not rerun or modified. Architecture trace was updated locally. Continue P2/P3/P4 and Formal/STA independently within these boundaries.
