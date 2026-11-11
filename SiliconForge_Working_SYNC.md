@@ -72,7 +72,7 @@ supervisor_coordination:
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
   active_gate: "DIRECTIVE19_REMAINING_FUNCTION_AND_ACCEPTANCE_CLOSURE"
-  active_gate_state: "LOCAL_DELIVERY_ACCEPTED; REMAINING_CASE_MAPPING_ACTIVE"
+  active_gate_state: "MCP_NATIVE_STATUS_ACTUAL_SUCCESS; E17_FIX_AND_ORIGINAL_E_RUNTIME_COHORT_ACTIVE"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -80,7 +80,7 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "49976c7599b4057933a6a81095ce84daff1483bf"
+  local_git_commit: "4800a7f3faf8f6d1a64e2821cdbeeab94caf096e"
   local_artifact_state: "FROZEN_LOCAL"
   local_artifact_sha256: "75628ea44d5828fae0bae3fdae6235b258f9835fb44f4058a7396b443b59f7a7"
   local_artifact_path: "D:/mtk32712/SiliconForge/.audit/directive18-delivery-20261110-49976c7.zip"
@@ -98,9 +98,9 @@ supervisor_coordination:
   blocked_items:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
-  next_executable_action: "Authorized Integrator obtains and verifies local bundle; engineering gates await approved Formal/PPA inputs. No repeated Native workflow."
-  last_heartbeat_at_utc: "2026-11-11T02:03:25.075629+00:00"
-  last_effective_progress_at_utc: "2026-11-10T09:42:01.738251+00:00"
+  next_executable_action: "Finish fork quota denial journal, explicit Spec revision invalidation, isolated original E runtime/Git cohort; complete original80 closure mapping without rerunning D18."
+  last_heartbeat_at_utc: "2026-11-11T02:27:30.120811+00:00"
+  last_effective_progress_at_utc: "2026-11-11T02:22:12.010616+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -115,8 +115,8 @@ mission_state: "ACTIVE"
 phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-10T09:42:01.738251+00:00"
-last_progress_at_utc: "2026-11-10T09:42:01.738251+00:00"
-last_heartbeat_at_utc: "2026-11-11T02:03:25.075629+00:00"
+last_progress_at_utc: "2026-11-11T02:22:12.010616+00:00"
+last_heartbeat_at_utc: "2026-11-11T02:27:30.120811+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive18 five P0 core framework modules and bounded three-RTL-owner integration"
@@ -1082,3 +1082,14 @@ Formal BLOCKED; physical PPA INCOMPARABLE; Select/Merge/ReGate NOT_RUN. Original
 SF-DIR-20261111-19 APPLIED. Chrome reread confirms workorder blob01acb7c15dbd6da260ce8c8530a7f534f64140c6. User accepts Local Git and Local Bundle as the current delivery endpoint. Remote integration and transfer remain null/UNAVAILABLE facts, but do not block authorized local engineering. Resume source49976c7599b4057933a6a81095ce84daff1483bf; frozen D18 bundle75628ea44d5828fae0bae3fdae6235b258f9835fb44f4058a7396b443b59f7a7 remains unchanged. D18 P0 is not repeated.
 
 Next bounded milestone maps original G0-G7, A0-A6 60 and E01-E20 20 requirements to immutable completed evidence, currently executable acceptance and precise missing approved inputs. Only genuine missing local functionality is implemented, followed by applicable original acceptance. Formal profile/assumptions and physical library/corner/STA/activity/provider remain required, generic Yosys area cannot stand in for comparable PPA. No new acceptance IDs/framework/mock, policy/quota changes or remote source writes. This ACK is governance, not new engineering progress.
+
+
+## Directive19 local engineering progress (2026-11-11T02:27:30.120811+00:00)
+
+Local source `4800a7f3faf8f6d1a64e2821cdbeeab94caf096e`. Fixed actual MCP SDK2.2 sync callback thread/SQLite ownership failure using async tool wrappers. Read-only tool annotations let native Codex invoke scoped status without privileged approval. Standard MCP initialize/list16/status succeeded and outside-project scope was denied.
+
+Native Codex and Claude each completed exactly one sf_get_status call, returning identical persisted requirement R_CRC_DIRECTIVE18_CORE, branch a0x:branch:1ab20e0e8127e98d28f4890ff71f84c8, head148167fb9d4c3677f73242151da042a20d0ce9be, owner a0x:owner-instance:99c2c770c549e45bb7eecbee5dcd5ef3, ticket COMPLETED. Raw logs/receipts are `.audit/directive19-live/native-{codex,claude}-mcp.*`. A1-01/02 actual behavior succeeded; complete formal provenance/reviewer records are pending. No whole A1 gate or EDA PASS claim.
+
+G0-G7/all60 A IDs and all20 E IDs gap maps are local. Inherited A0 18 records and D18 remain frozen; no D18 rerun. Original E requires three initial performance/low_power/area routes plus a legal depth2 child, distinct from D18 two initial plus child. A fresh isolated real Runtime/Git cohort is in progress without Native/EDA or mock acceptance claims.
+
+Confirmed local gaps are fork quota refusal missing immutable BRANCH.FORK_DENIED and explicit Spec/constraint predecessor invalidation. E17 fix is in progress without quota changes. E16 design uses explicit predecessor/CAS, immutable history and stale lifecycle gates; it avoids automatically invalidating parallel experiments. Untouched cases remain NOT_RUN. Approved Formal profile and physical Liberty/corner/SDC/STA/activity/provider inputs remain dependent blockers. Remote integration null and transfer UNAVAILABLE are delivery facts, not blockers to local work.
