@@ -1,17 +1,32 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261111-22**
+> **DIRECTIVE_ID: SF-DIR-20261111-23**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-11T07:44:09.063Z (GitHub commit timestamp authoritative)**
+> **UPDATED_AT_UTC: 2026-11-11T07:45:46.972Z (GitHub commit timestamp authoritative)**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: Directive22，使用者確認 Coding Agent 已結束前一輪工作包，要求立即指派具體下一階段。延用 D21 已有 Dashboard/PDCA 及 Formal/Nangate45 部分成果，優先補完 Master §09 Native Harness/MCP A1-03/A1-06/A1-07/A1-08/A5-07、§10 Dashboard A5/E19、§11 PDCA A5-05/06、§08 E05/E17，以及 Formal 與 STA。Power 後置；本輪須產生可稽核 D22 Closure、Local Git/Bundle，原 G0–G7 及 80 項驗收、安全／配額／授權／Release 門檻完全不變。**
+> **CURRENT MISSION PRIORITY: Directive23：依使用者明確要求，Coding Agent 必須一次完成 Directive22 P0–P5 全部當前權限與環境下可執行工作，整體驗證並統一結案回報；不得每個子里程碑自行停止或逐項等待 Supervisor。Formal／STA 優先，Power 繼續暫緩。GitHub Sync 的活躍 Session 週期監督仍維持，原 G0–G7、80 項正式驗收、安全／權限／配額／正式 Gate 不變。**
+
+
+## 2.24 Directive23：一次做完 D22 全部可執行工作，再統一結案回報（2026-11-11）
+
+**新優先規則（使用者明確要求）：**「我希望他能一次做完，再回報」。本指令只調整**工作包執行／對使用者回報節奏**，不刪改 §2.23 Directive22 的 P0–P5 工程範圍、不降低原 G0–G7／A0–A6 60 + E01–E20 20 共 80 項正式驗收、不解除安全、配額、Formal Assumption、Merge/Release 或工具授權的 Gate。**在可行工作尚未收斂之前，不可因完成一個局部驗證、寫完一份分析文件、產生一個 Local Commit 或取得一項 Reviewer 回覆，就自行宣告「本輪已完成」並結束 Session。**
+
+**一次性執行命令：**
+
+1. **重啟後立即執行全包。** 在下一次實際活躍 Session 用 Chrome 重新讀本文件並於唯一可 Web Edit 的根目錄 Sync ACK `SF-DIR-20261111-23`。確認真正 Local Git HEAD／dirty tree、持久 SQLite、D21/D22 現有證據及剩餘 Case 一次，沿用原程式、原測試及已完成的結果，避免重跑歷史 D16–D18。採 P0–P5 一次完整執行計畫，明確列出依賴關係；不再每做完一個子項就問 Supervisor 要不要往下。
+2. **自主連續完成。** 在既有權限／工具／配額下依賴並行完成 **§09 MCP/Auth/Nonce/通知／Harness Recovery → §10 Dashboard → §11 PDCA A/B → §08 Branch/E05/E17 和其它原 E 案 → Formal、STA**，並整合所有必要真實原 Case 驗收與 Reviewer 證據。可以交換順序以解阻，但不能任意擴張功能或新增驗收項。對於在既有權限下**可自行修正的程式缺陷／測試失敗**，限界診斷、修復、重驗並直接推進，直到完成，不把一般 Bug 報成人工阻礙。對已完成且來源有效的 Case 只核對，不無意義重跑。
+3. **阻礙不使整輪停工。** 缺 Formal 假設核准、共享 EDA quota 明確值、合法 STA Provider、實際 Human Approval 等外部輸入時，記錄 precise `BLOCKED`、需要何種授權或檔案、現有替代證據及最小下一步；立刻轉往其他可執行任務。Power 按使用者前令暫緩，維持 NOT_RUN／UNKNOWN，不因此把完整 PPA/Pareto/Merge ReGate 偽稱 PASS；缺少必要 Gate 時仍不得執行未授權 Merge/Release。若 E05 原案例與安全語義衝突，應保留 FAIL 並呈決策選項，不能逕改規格。
+4. **執行期間不向使用者逐階段索取確認或發布階段性完工報告。** 保留必需的 Local checkpoint/commits/raw logs、適用 Gate 的品質證據；Coding Agent 在**活躍 Session** 按既有規則每 15 分鐘及 Gate 轉換時自行讀 Directive、透過 GitHub Web 更新 Sync heartbeat、真正進展與阻礙，這是**機器監督通道**，不等於要求使用者看每次狀態。只有確實觸及不可自行授權的安全/配額/正式規格/外部下載/Release 決策，才列出明確待決事項，不以反覆詢問打斷其他工作。不在 Session 停止時聲稱背景執行。
+5. **唯一最終結案回報。** 只有**所有已授權且現有環境可執行的 D22 P0–P5 工作均完成、其對應的原正式 Case 在可執行範圍內完成一次性核對、所有剩餘未完成項均有具體不可自行排除的依賴**，才寫完 `D22_CLOSURE.md`，封存最新 Local Git HEAD、Source＋Evidence Bundle 及 SHA256，於 Sync 上傳一次統一結案摘要。摘要必須包含各 P 項完成情形、原 80 Case `PASS/FAIL/BLOCKED/NOT_RUN` 溯源矩陣、可比較 Timing/Area 和不完整 Power 狀態、Review/Tool/Spec pins、真正 Blockers、完整 Reviewer 異議與需要使用者**一次決定**的事項。若確有外部依賴，標 `DIRECTIVE23_ALL_FEASIBLE_LOCAL_WORK_COMPLETE_EXTERNAL_DECISIONS_PENDING`，不能標成所有 Gate PASS；若原定工作/正式 Gate 全部有效完成，才可依證據標完整 Closed。此處的「一次做完」是把**所有可執行工作做完**，不授權繞過任何不可用輸入或將 NOT_RUN 擅填 PASS。
+
+**本次 Supervisory 裁定：** D21 在 Coding Agent 主動結束後已留部分 Dashboard/PDCA 證據，但未閉合 A1-03/A1-06/A1-07/A1-08、E19、A5-05/06、E05/E17、Formal Eligibility 和 STA Provider。D22 已提供具體技術工作單；使用者現在要求它不要再以子里程碑結案。D23 是對 D22 的**一次性連續執行覆寫**，技術實作範圍仍以 D22 為準，其他政策均沿用。
 
 
 ## 2.23 Directive22：Coding Agent 完成本輪後的下一工作包，集中交付未閉合功能與證據（2026-11-11）
