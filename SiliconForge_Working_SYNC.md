@@ -72,7 +72,7 @@ supervisor_coordination:
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
   active_gate: "DIRECTIVE20_FORMAL_NANGATE45_LOCAL_CLOSURE"
-  active_gate_state: "D20_FIXED_PROOF_PROPERTIES_AND_LIBERTY_MAPPING_OBSERVED; FORMAL_REVIEW_STA_POWER_GAPS"
+  active_gate_state: "D20_SUPERVISOR_DECISIONS_PENDING; FORMAL_ASSUMPTION_E05_QUOTA_AND_STA_POWER_GAPS"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -98,8 +98,8 @@ supervisor_coordination:
   blocked_items:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
-  next_executable_action: "Resolve reviewed Formal assumptions and remaining E17 policy gaps; obtain approved STA/power provider; keep original full PPA/Merge gates closed."
-  last_heartbeat_at_utc: "2026-11-11T06:36:35.915402+00:00"
+  next_executable_action: "Supervisor decides documented E05 behavior, DEV Formal assumptions and authoritative shared EDA cap; continue independent authorized work without changing gates."
+  last_heartbeat_at_utc: "2026-11-11T06:40:39.558419+00:00"
   last_effective_progress_at_utc: "2026-11-11T06:36:35.747269+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -116,7 +116,7 @@ phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-10T09:42:01.738251+00:00"
 last_progress_at_utc: "2026-11-11T06:36:35.747269+00:00"
-last_heartbeat_at_utc: "2026-11-11T06:36:35.915402+00:00"
+last_heartbeat_at_utc: "2026-11-11T06:40:39.558419+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive18 five P0 core framework modules and bounded three-RTL-owner integration"
@@ -1136,3 +1136,26 @@ Nangate45 public README/config/LICENSE/typicalLiberty now obtained via Chrome. L
 Fresh E17 context e17-fresh-f6d72c5a has3initial realGit branches and legal depth2 child. Depth3 fork/replay refused with exactly1 immutableBRANCH.FORK_DENIED and no depth3 branch/revision advancement. FullE17 remainsBLOCKED: initial-fanout validation is not reachable from current public ownedFork baseline lifecycle, and referenced autonomy_policy.json has no numericsharedEDAquota. No permission/lifecycle/quota edited forPASS. Earlier setup attempt on archiveddepth2 stopped beforefork; sealedcohort not reopened. E05 literal fakeB2-returnB1 versus strict rejection conflict recorded for specification decision, originalFAIL retained.
 
 Next reviewed formal conditions, remaining original policy inputs and approved actualSTA/power provider; preserve comparison/Pareto/authorizedMerge/newSHAReGate prerequisites. No whole80/wholeGatePASS, finalbundle or backgroundscheduler claim. Local progress continues within existing authority.
+
+
+## Directive20 ? Supervisor????????
+
+### 1. E05 completion scope ??
+
+? E05 ?? payload ?? B2 ??? trusted Job Registry ?? B1???????? scope ????? B1 callback ????? FAIL ????????
+
+??????????????????????? trusted-registry ????????????????? callback ???????????????? PASS?
+
+### 2. ??? Formal ????
+
+??? common PCLK synchronous sampling?active-low synchronous reset??? reference-relative induction ?????????????????? proof profile???? Local docs/FORMAL_PROPERTY_ASSUMPTION_MATRIX.md ? .audit/directive20-live/{fixed-candidate-proof,bounded-properties}/?
+
+?? reference-relative equivalence?bounded reset?CRC vector properties ??????? cover ?????? PENDING_REVIEW???????????? formal80 eligibility??? signoff ? Merge/Release ??????????????????
+
+### 3. E17 shared EDA ????
+
+config/exploration_policy.json ?? config/autonomy_policy.json?????????? shared EDA cap??? budget_caps ?? branch_slots=6????????? shared EDA cap ????????? scope ??????????????????
+
+E17 depth3???????????fanout/shared-budget???????????? E17 ?? BLOCKED??? baseline-fanout ???????? owned ForkBranch ? baseline lifecycle ????????????? scoped ??????????????
+
+?????? Directive20 ?2.21?Local36 PASS?1 FAIL?2 BLOCKED?41 NOT_RUN????80????????
