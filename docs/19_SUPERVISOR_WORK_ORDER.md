@@ -1,17 +1,36 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261111-19**
+> **DIRECTIVE_ID: SF-DIR-20261111-20**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-11T01:28:00Z (user-priority revision; GitHub commit timestamp authoritative)
+> **UPDATED_AT_UTC: 2026-11-11T05:18:43.935Z (GitHub commit timestamp authoritative)**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: Directive19，使用者接受 Local Git 與 Local Bundle 作為目前開發交付終點；不再以 GitHub Source Integration 或 Artifact Transfer 作為後續 Local 工程的前置條件。立即處理既有 G0–G7 尚未完成的功能與原定 A0–A6 60 + E01–E20 20 正式驗收、PPA／Pareto／Merge ReGate，僅在現有權限、工具與已核准輸入下執行，證據不足則如實 BLOCKED／NOT_RUN；安全、正式 Gate、配額與權限不變。
+> **CURRENT MISSION PRIORITY: Directive20：依使用者核准，立即採用已合法可用的 APB CRC32 Golden/Spec 搭建可審查的開發版 Formal Profile，使用 Nangate45 公開非量產製程平台作統一 PPA 比較基準，在不增權、不放寬原 80 項正式 Acceptance 和安全 Gate 下完成既有剩餘本地工程、E05/E17 等問題及 Formal→可比 PPA→Pareto→授權 Merge→新 SHA ReGate。Local Git/Bundle 為現階段交付，無須等待遠端 Source Integration。**
+
+
+## 2.21 Directive20：已核准 OSS Formal／Nangate45 PPA 開發基準，閉合工程驗證並對照 Master 架構（2026-11-11）
+
+**使用者核准與變更原因：** 使用者直接同意採用「既有 APB CRC32 Spec＋Golden Reference，建立可審查的 Formal Property／Assumption Profile；PPA 優先使用 Nangate45 公開參考製程與合法可用的 Yosys、OpenSTA／OpenROAD，對三候選採相同 Corner、SDC 與 VCD／SAIF 活動，進行可比較 PPA」作為**開發版**工程基準，要求在下一輪指引中執行。另要求回答「目前對應架構規格書做到哪」。本次不是批准量產級 Signoff、特定未審查 Assertion/Assumption、管理員安裝、公司受限 PDK／工具、增加配額、或自動 Merge/Release。
+
+**現有最新可驗 Sync 基線：** D19 ACK/APPLIED，Local Source SHA \`8a0ee42c5a6f400c318d64ca73dd5a1d5bd7333f\`，Gate \`DIRECTIVE19_REMAINING_FUNCTION_AND_ACCEPTANCE_CLOSURE\`，本地驗收對帳由 Agent 回報 \`34 PASS / 1 FAIL / 2 BLOCKED / 43 NOT_RUN\`（含 E01/E02/E03/E04/E06/E07/E08 本地 Runtime review PASS；E05 FAIL；E17 BLOCKED；E09/E15 待獨立審查）。該數字僅為**Agent 本地證據與審查宣稱**，尚未由 Supervisor 取得原始本地檔案重現。根目錄 Sync 機器摘要、遠端 E Contract JSON 與歷史流水帳不一致時，逐項標明權威來源與差異，不偷改契約 JSON，也不以工具未取得的證據補 PASS。D18 原始 Bundle SHA256 \`75628ea44d5828fae0bae3fdae6235b258f9835fb44f4058a7396b443b59f7a7\` 持續保持不可變；remote source integrated commit=null、transfer UNAVAILABLE 是資訊，不再阻止 Local 進展。
+
+**立即執行，沿用 D19 Local 工作，不重建系統、不無界跑測試：**
+
+1. **接收指令與優先處置現有 FAIL。** 下次活躍 Session 用 Chrome 強制重讀本文件，於 Coding Agent 獨占的根目錄 Sync ACK \`SF-DIR-20261111-20\`，保持 15 分鐘與 Gate 轉換時輪詢（僅限活躍 Session）。由現有 clean Local Git 繼續；先審理 E09、E15 已保存的原始觀察，定位／修正 E05 的原始斷言差異，完成 E17 depth/fanout/shared-budget 限制的既有契約測試；其他已合法完成的 Local Case 不反覆重跑。若某 Case 原文與實現的安全拒絕語義矛盾，原 FAIL 保留，具體記錄需人類裁決的規格衝突，不為湊 PASS 偷改 Rule。
+2. **Formal：使用已核准的開發版起點，但每個必要 Assumption 必須明確審查。** 固定現有 APB CRC32 Requirement、Spec/Golden/Testbench/Source SHA 和工具/環境版本，從正式 A2-04、A4-04、E11/E14/E16 的原斷言導出一份最小 Property／Assumption Matrix：Reset、合法 APB transfer/讀寫、CRC32 polynomial/輸入輸出與必要狀態時序；寫出每條 Property 的目的、綁定模組、驅動／排除條件、assumption 是否可能過度約束、Cover/Counterexample/Timeout 的處理。先用已合法可用的 Yosys/SBY/Solver 執行固定 Candidate 的真實 proof，保存 proof engine、clock/reset semantics、完整 CLI/exit/status、Spec/Golden/Property/Assumption/Env SHA、原始 Log／Counterexample。既有 66/66 reference-relative equivalence 是開發證據，不能直接填正式全套 Proof PASS。使用者已批准**開發方向**，不代表逐條未審查的強制 Property/Assumption 自動獲得正式批准；未審查者保持 PENDING_REVIEW/BLOCKED，其他可重現的局部 Proof 可分別記錄。
+3. **PPA：固定一個公開、非量產的共同 Technology Profile。** 優先查看 [OpenROAD Flow Scripts Nangate45 Platform](https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts/tree/master/flow/platforms/nangate45) 的 \`README.md\`、\`LICENSE\`、\`lib/\`、\`lef/\` 與平台 \`config.mk\`，來源核對後才在**現有合法存取/工具/網路政策**下取用；其 README 明示 generic research/test platform、purposely non-manufacturable。第一次只做有限度的現有工具診斷：Windows Local 上 Yosys 的 library mapping 能否使用、是否存在合法可執行的 OpenSTA/OpenROAD 或等價 approved STA/power provider、平台檔案是否可取得／解壓；不得自行安裝 WSL、提升權限、修改防火牆或下載無來源程式。如果需要新工具或下載渠道而既有政策未允許，立即回報精確缺口／授權人並繼續其他 Local 工作，**不虛報 PPA 可用**。
+4. **真正一致的候選比較。** 對原規格要求的三條**初始** Performance/Low Power/Area 路線與獨立 Nested Fork，固定同一 Golden/Spec、Candidate-specific Git SHA、Nangate45 Liberty 版本及 PVT/corner、SDC Clock/IO/Input/Output Loads（若原 Spec 沒有數值，建立明確標 \`DEV_REFERENCE_ONLY\` 的一致假設與 hash，不擅自把其提升正式晶片目標）、Netlist/Synthesis mapping、STA settings、同一 test vectors 生成的 VCD/SAIF、voltage/operating conditions、Power estimation scope。取出可稽核的 mapped cell area、critical path/slack、dynamic/leakage power（工具無法有效產生者維持 UNKNOWN），各 Candidate 輸出各自完整 command/exit/raw report/tool+library+constraint+activity hashes。沒有全體一致且有效的資料，不可標 E12/PPA COMPARABLE；generic Yosys cell count 不能冒充 physical area，公開 Nangate45 絕不冒充實際晶圓廠 PDK/Signoff。
+5. **Pareto／受控 Local Merge／Merge ReGate。** 只有符合正式獨立 Candidate correctness、Formal eligibility、同條件 PPA、既有權重/授權、Head SHA fencing、E13 merge conflict 與資源政策等前置條件，才執行 compare → Pareto → authorized local merge → 對**新 Merge SHA**重新跑必要 Simulation/Formal/Synthesis/PPA；任何未滿足的前置條件保留 \`FAIL/BLOCKED/INCOMPARABLE/NOT_RUN\` 與精確原因。不因用 Nangate45 示範就放寬 E11、E12、E14、E20、A4 正式退出條件，不自行授權 Merge/Release。
+6. **Master 架構實作對帳，不重寫規格。** 對照 [\`docs/ARCHITECTURE_V3_1_MASTER.md\`](https://github.com/caseykcc0124/SiliconForge/blob/main/docs/ARCHITECTURE_V3_1_MASTER.md) 第 02–15 節及 [\`docs/14\`](https://github.com/caseykcc0124/SiliconForge/blob/main/docs/14_PARALLEL_EXPLORATION_ARCHITECTURE.md)、[\`docs/16\`](https://github.com/caseykcc0124/SiliconForge/blob/main/docs/16_PARALLEL_EXPLORATION_IMPLEMENTATION.md)，在 Local 形成一頁 \`ARCHITECTURE_IMPLEMENTATION_TRACE.md\`：每項規格 → Local 實作模組／入口 → 原始 Task/Log/SHA → 現行 Gate/Case → 尚缺功能/測試/外部輸入 → DEV/正式證據層級。Master 第 16 節為 11/10 的歷史快照，須註明其內容已落後於 D19/D20，不因過時文字重做已完成的 P0。**本指令不授權 Coding Agent 在 GitHub Web 改寫 Master 或其他文件。**
+7. **交付與報告。** 按現有 Required IDs 完成剩餘可執行工作，最後輸出 Local Git SHA、逐 Case 80 案對帳及實際來源（本地 PASS/FAIL/BLOCKED/NOT_RUN，與遠端 E JSON 不一致明列）、Formal Property/Assumption Matrix、PPA Technology/Profile/Candidate Evidence、三路 DAG／Pareto／Merge ReGate 結果、架構對帳、一份 Local Source+Evidence Bundle 與 SHA256。透過 Sync Web Edit 報告真實進展；不得把本地 Commit、Bundle 或 Sync Web Commit 當遠端 Source Commit；不必等待 Bundle 傳輸才能繼續 Local 開發。
+
+**嚴守原 Gate：** G0–G7、A0–A6 60 件、E01–E20 20 件共 80 Required Case、原授權／安全/配額/工具政策均不變。現有 Windows Local 工具環境、資料來源、商業 EDA/PDK 授權、正式批准 Assumptions 或 Merge Authority 不足者，依證據列明待人工決定並繼續其他可做項。此 Directive 已由使用者直接核准**開發版工具與基準方向**；沒有授權在缺證據時發布產品或宣稱 Signoff。
 
 
 ## 2.20 Directive19：Local 交付已足夠，立即收斂剩餘任務（2026-11-11，使用者最新優先順序）
