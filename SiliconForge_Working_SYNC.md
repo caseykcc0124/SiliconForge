@@ -72,7 +72,7 @@ supervisor_coordination:
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
   active_gate: "DIRECTIVE21_DASHBOARD_NATIVE_PARALLEL_PDCA_FORMAL_STA"
-  active_gate_state: "D21_APPLIED; DASHBOARD_CAUSAL_TRACE_AND_UNKNOWN_USAGE_GAPS"
+  active_gate_state: "D21_ACTIVE; DASHBOARD_PARTIAL_EVIDENCE_COMMITTED; A1_PDCA_FORMAL_STA_GAPS_RETAINED"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -98,8 +98,8 @@ supervisor_coordination:
   blocked_items:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
-  next_executable_action: "Complete existing Dashboard causal navigation, remaining original A1/E/PDCA cases, reviewed Formal and actual STA; Power deferred without gate weakening."
-  last_heartbeat_at_utc: "2026-11-11T07:06:04.087470+00:00"
+  next_executable_action: "Continue A1 notification/harness evidence and lease-failure PDCA baseline; preserve E05/E17 and Formal/STA input boundaries."
+  last_heartbeat_at_utc: "2026-11-11T07:23:17.019327+00:00"
   last_effective_progress_at_utc: "2026-11-11T06:36:35.747269+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -116,7 +116,7 @@ phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-10T09:42:01.738251+00:00"
 last_progress_at_utc: "2026-11-11T06:36:35.747269+00:00"
-last_heartbeat_at_utc: "2026-11-11T07:06:04.087470+00:00"
+last_heartbeat_at_utc: "2026-11-11T07:23:17.019327+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive18 five P0 core framework modules and bounded three-RTL-owner integration"
@@ -1166,3 +1166,14 @@ E17 depth3???????????fanout/shared-budget???????????? E17 ?? BLOCKED??? baseline
 SF-DIR-20261111-21 APPLIED, Chrome workorder bloba727252118e4bdfbfb5c11365b5e4e460009c5d3. Adopt Master10 Dashboard,09 NativeHarness/MCP,08 ParallelExploration,11 PDCA, then Formal/STA; Power execution deferred only. CurrentLocal81ef4de, original80local36 PASS/1 FAIL/2 BLOCKED/41 NOT_RUN, Supervisor verificationUNKNOWN; remoteEcontract unchanged. D18 immutable and not rerun. E05 strict rejection/spec conflict, missingsharedEDA numericcap/fanout interpretation and individualFormalconditions remain unresolved, no selfapproval/quota changes.
 
 Start existing SQLite/ReadModel/exportDashboard gap closure with clickable authoritative object/event references and unknown usage/status preservation. No secondUI/service. Existing nativeCodex/Claude status receipts reused, not rerun. Narrow original A1 nonce/notification/checkpoint and applicable E/PDCA cases follow with real receipts. Formal/STA providers do not stall unrelated work; no Power provider installation or falsePPA/Winner/Merge claim.
+
+
+## Directive21 Dashboard checkpoint (2026-11-11T07:23:17.019327+00:00)
+
+Directive SF-DIR-20261111-21 remains ACTIVE. Chrome reread work order blob `a727252118e4bdfbfb5c11365b5e4e460009c5d3` at 2026-11-11T07:19:49Z. Local source commit `e81ac5e` adds navigation over saved Requirement/Exploration and direct ID references in the existing Dashboard, including array-valued event references to native sessions. Task usage stays UNKNOWN when receipts are missing; actual zero receipts remain zero. No second UI service or mutation authority was added.
+
+Actual historical projection contains 160 events, 24 native turns, six explorations and four framework tasks. Reopening the backup reproduces the same projection. Chrome selected `R_CRC_DIRECTIVE18_CORE` and followed branch `a0x:branch:1ab20e0e8127e98d28f4890ff71f84c8` to branch/owner records. Independent review found and then cleared the missing array-reference defect for local commit. Evidence is `.audit/directive21-live/dashboard-reviewed-projection/receipt.json`, `check-dashboard-gaps.json`, `dashboard-fix-review.json`, and `dashboard-reviewed-followed.png`. Tested source SHA256 is `7480486951309d7799dd8d8e6ad53d2093790389954223d966973abda61891fe`. Missing/zero usage tests used an explicitly modified in-memory projection, not altered runtime receipts. This is partial P1 evidence, not whole E19 acceptance.
+
+Concrete remaining gaps are recorded in `A1_REMAINING_FUNCTION_GAPS.md` and `reconcile-recovery.json`. A1-03 lacks authenticated Dashboard submission through the existing command authority; A1-06 has no nonce issuance/consumption implementation. Existing checkpoint and recovery records do not prove native close/reopen notifications or policy-enforced harness switching for A1-07/08. Completed Codex/Claude status calls were not rerun. PDCA has historical lease expiry records, but complete PLAN/DO/CHECK and independent A/B evidence remain pending; ACT cannot promote policy without human approval.
+
+E05 remains FAIL due to the callback-scope/spec conflict. E17 remains BLOCKED for the missing authoritative numeric shared EDA quota and baseline fanout interpretation. Individual Formal assumptions remain PENDING_REVIEW. Nangate45 mapping remains bounded development evidence; executable controlled STA provider is still missing. Power is deferred and NOT_RUN, full PPA INCOMPARABLE, no Winner/Merge/Release claimed. Local matrix remains 36 PASS / 1 FAIL / 2 BLOCKED / 41 NOT_RUN; Supervisor verification UNKNOWN and remote E contract unchanged. Frozen D18 evidence was not rerun or modified. Architecture trace was updated locally. Continue P2/P3/P4 and Formal/STA independently within these boundaries.
