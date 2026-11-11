@@ -72,7 +72,7 @@ supervisor_coordination:
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
   active_gate: "DIRECTIVE20_FORMAL_NANGATE45_LOCAL_CLOSURE"
-  active_gate_state: "D20_APPLIED; E15_REVIEW_PASS; E09_CHECKOUT_GAP"
+  active_gate_state: "D20_FIXED_PROOF_PROPERTIES_AND_LIBERTY_MAPPING_OBSERVED; FORMAL_REVIEW_STA_POWER_GAPS"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -80,7 +80,7 @@ supervisor_coordination:
   G1_typed_registry_command_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_registry_lifecycle_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
   G1_branch_failure_receipt_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
-  local_git_commit: "8a0ee42c5a6f400c318d64ca73dd5a1d5bd7333f"
+  local_git_commit: "81ef4de131f3a6d4a6aadd76b43889a4daf0774c"
   local_artifact_state: "FROZEN_LOCAL"
   local_artifact_sha256: "75628ea44d5828fae0bae3fdae6235b258f9835fb44f4058a7396b443b59f7a7"
   local_artifact_path: "D:/mtk32712/SiliconForge/.audit/directive18-delivery-20261110-49976c7.zip"
@@ -98,9 +98,9 @@ supervisor_coordination:
   blocked_items:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
-  next_executable_action: "Resolve E09 checkout gap/E05 conflict/E17; build reviewed DEV Formal matrix; diagnose legal Nangate45 STA/PPA tools; architecture trace."
-  last_heartbeat_at_utc: "2026-11-11T05:25:54.873160+00:00"
-  last_effective_progress_at_utc: "2026-11-11T03:22:17.305463+00:00"
+  next_executable_action: "Resolve reviewed Formal assumptions and remaining E17 policy gaps; obtain approved STA/power provider; keep original full PPA/Merge gates closed."
+  last_heartbeat_at_utc: "2026-11-11T06:36:35.915402+00:00"
+  last_effective_progress_at_utc: "2026-11-11T06:36:35.747269+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
   github_read: BROWSER_COMPUTER_USE
@@ -115,8 +115,8 @@ mission_state: "ACTIVE"
 phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-10T09:42:01.738251+00:00"
-last_progress_at_utc: "2026-11-11T03:22:17.305463+00:00"
-last_heartbeat_at_utc: "2026-11-11T05:25:54.873160+00:00"
+last_progress_at_utc: "2026-11-11T06:36:35.747269+00:00"
+last_heartbeat_at_utc: "2026-11-11T06:36:35.915402+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive18 five P0 core framework modules and bounded three-RTL-owner integration"
@@ -1123,3 +1123,16 @@ SF-DIR-20261111-20 APPLIED. Chrome fresh workorder blob4aef46d976e7b0d7471f80224
 E15 independent original-case Runtime/realGit review PASS using B1 BLOCKED seq22 followed by sibling job completions seq23/24, with post-run source/driver capture limitations retained. E09 independent review BLOCKED: true3worktrees/commits/isolation confirmed, but foreign-project commit denial does not establish required checkout/materialization denial; driver hash/ACK error disclosed. Local matrix35 PASS /1 FAIL /3 BLOCKED /41 NOT_RUN at .audit/directive20-live/original80-progress.json. Supervisor verification remains UNKNOWN; remote contract JSON not modified. E05 reject-first versus literal callback-return requirement remains a specification conflict, originalFAIL retained. E17 active branch quota evidence retained, remaining depth/fanout/shared-budget work pending.
 
 Proceed existing local work, approved Formal profile/property matrix and bounded proof, common Nangate45 provider diagnostics, three initial candidate comparison prerequisites and Master02-15 implementation trace. Missing formal assumption review, actual valid power/STA results and explicit merge authority remain exact gates. No whole80 or signoff claim.
+
+
+## Directive20 actual local progress (2026-11-11T06:36:35.915402+00:00)
+
+Local source 81ef4de131f3a6d4a6aadd76b43889a4daf0774c; runtime implementation unchanged8a0ee42. Master02-15 architecture implementation trace and Formal Property/Assumption Matrix are tracked local documents. Original80 matrix36 PASS /1 FAIL /2 BLOCKED /41 NOT_RUN at .audit/directive20-live/original80-progress.json. E15 original-case review PASS; E09 supplemental foreign-project materialize_branch denials independently PASS. Historical ACK/query/hash failures retained, no D18 scenario rerun or remote source integration claim.
+
+Fixed D11 candidatee2b864d2 actual Yosys reference-relative equiv_simple/equiv_induct proof PASS, with exact source/spec/golden/tool/profile/CLI/exit/raw hashes in fixed-candidate-proof. New independent bounded synchronous-reset and ASCII123456789 CRC-readback properties PASS; fixed-vector cover REACHABLE with VCD witness in bounded-properties. Each is bounded development evidence, not formal80 eligibility. Reset synchrony/initial-state relation/APB response semantics and necessary assumptions remain PENDING_REVIEW; broader reset-deassertion/protocol cover NOT_RUN. No release or signoff.
+
+Nangate45 public README/config/LICENSE/typicalLiberty now obtained via Chrome. Liberty6692032bytes, TypTyp25C1.1V; exact library hash/source receipt retained in nangate-lib. Original library notices and Apache2.0 platform LICENSE retained, README marks deliberately non-manufacturable. Actual fixed-candidate Yosys dfflibmap/ABC/stat mapping PASS, mapped325cells and area578.55 in Liberty cellarea units. ABC SCL-format fallback warnings retained. This is one library-mapping diagnostic, not die/layout area and not a3candidate comparablePPA result. Existing profile/PATH has no OpenSTA/OpenROAD; actual timing/dynamic/leakage power UNKNOWN. PPAINCOMPARABLE remains, no admininstall/WSL/newnetwork route.
+
+Fresh E17 context e17-fresh-f6d72c5a has3initial realGit branches and legal depth2 child. Depth3 fork/replay refused with exactly1 immutableBRANCH.FORK_DENIED and no depth3 branch/revision advancement. FullE17 remainsBLOCKED: initial-fanout validation is not reachable from current public ownedFork baseline lifecycle, and referenced autonomy_policy.json has no numericsharedEDAquota. No permission/lifecycle/quota edited forPASS. Earlier setup attempt on archiveddepth2 stopped beforefork; sealedcohort not reopened. E05 literal fakeB2-returnB1 versus strict rejection conflict recorded for specification decision, originalFAIL retained.
+
+Next reviewed formal conditions, remaining original policy inputs and approved actualSTA/power provider; preserve comparison/Pareto/authorizedMerge/newSHAReGate prerequisites. No whole80/wholeGatePASS, finalbundle or backgroundscheduler claim. Local progress continues within existing authority.
