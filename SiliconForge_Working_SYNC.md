@@ -42,9 +42,9 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: "SF-DIR-20261111-20"
-  directive_poll_at_utc: "2026-11-11T05:24:37.189592+00:00"
-  directive_ack_at_utc: "2026-11-11T05:25:52.943761+00:00"
+  last_seen_directive_id: "SF-DIR-20261111-21"
+  directive_poll_at_utc: "2026-11-11T07:05:05.955638+00:00"
+  directive_ack_at_utc: "2026-11-11T07:06:03.956375+00:00"
   directive_application_state: "APPLIED"
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
@@ -71,8 +71,8 @@ supervisor_coordination:
   a0_local_gate: CLOSED_WITH_EVIDENCE
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
-  active_gate: "DIRECTIVE20_FORMAL_NANGATE45_LOCAL_CLOSURE"
-  active_gate_state: "D20_SUPERVISOR_DECISIONS_PENDING; FORMAL_ASSUMPTION_E05_QUOTA_AND_STA_POWER_GAPS"
+  active_gate: "DIRECTIVE21_DASHBOARD_NATIVE_PARALLEL_PDCA_FORMAL_STA"
+  active_gate_state: "D21_APPLIED; DASHBOARD_CAUSAL_TRACE_AND_UNKNOWN_USAGE_GAPS"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -98,8 +98,8 @@ supervisor_coordination:
   blocked_items:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
-  next_executable_action: "Supervisor decides documented E05 behavior, DEV Formal assumptions and authoritative shared EDA cap; continue independent authorized work without changing gates."
-  last_heartbeat_at_utc: "2026-11-11T06:40:39.558419+00:00"
+  next_executable_action: "Complete existing Dashboard causal navigation, remaining original A1/E/PDCA cases, reviewed Formal and actual STA; Power deferred without gate weakening."
+  last_heartbeat_at_utc: "2026-11-11T07:06:04.087470+00:00"
   last_effective_progress_at_utc: "2026-11-11T06:36:35.747269+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -116,7 +116,7 @@ phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-10T09:42:01.738251+00:00"
 last_progress_at_utc: "2026-11-11T06:36:35.747269+00:00"
-last_heartbeat_at_utc: "2026-11-11T06:40:39.558419+00:00"
+last_heartbeat_at_utc: "2026-11-11T07:06:04.087470+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive18 five P0 core framework modules and bounded three-RTL-owner integration"
@@ -1159,3 +1159,10 @@ config/exploration_policy.json ?? config/autonomy_policy.json?????????? shared E
 E17 depth3???????????fanout/shared-budget???????????? E17 ?? BLOCKED??? baseline-fanout ???????? owned ForkBranch ? baseline lifecycle ????????????? scoped ??????????????
 
 ?????? Directive20 ?2.21?Local36 PASS?1 FAIL?2 BLOCKED?41 NOT_RUN????80????????
+
+
+## Directive21 ACK (2026-11-11T07:06:04.087470+00:00)
+
+SF-DIR-20261111-21 APPLIED, Chrome workorder bloba727252118e4bdfbfb5c11365b5e4e460009c5d3. Adopt Master10 Dashboard,09 NativeHarness/MCP,08 ParallelExploration,11 PDCA, then Formal/STA; Power execution deferred only. CurrentLocal81ef4de, original80local36 PASS/1 FAIL/2 BLOCKED/41 NOT_RUN, Supervisor verificationUNKNOWN; remoteEcontract unchanged. D18 immutable and not rerun. E05 strict rejection/spec conflict, missingsharedEDA numericcap/fanout interpretation and individualFormalconditions remain unresolved, no selfapproval/quota changes.
+
+Start existing SQLite/ReadModel/exportDashboard gap closure with clickable authoritative object/event references and unknown usage/status preservation. No secondUI/service. Existing nativeCodex/Claude status receipts reused, not rerun. Narrow original A1 nonce/notification/checkpoint and applicable E/PDCA cases follow with real receipts. Formal/STA providers do not stall unrelated work; no Power provider installation or falsePPA/Winner/Merge claim.
