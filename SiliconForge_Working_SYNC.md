@@ -42,9 +42,9 @@ architecture_baseline: "3.1"
 supervisor_coordination:
   directive_url: https://github.com/caseykcc0124/SiliconForge/blob/main/docs/19_SUPERVISOR_WORK_ORDER.md
   bootstrap_directive_id: SF-DIR-20261108-01
-  last_seen_directive_id: "SF-DIR-20261111-19"
-  directive_poll_at_utc: "2026-11-11T03:21:04.993972+00:00"
-  directive_ack_at_utc: "2026-11-11T02:03:24.944193+00:00"
+  last_seen_directive_id: "SF-DIR-20261111-20"
+  directive_poll_at_utc: "2026-11-11T05:24:37.189592+00:00"
+  directive_ack_at_utc: "2026-11-11T05:25:52.943761+00:00"
   directive_application_state: "APPLIED"
   polling_mode: ACTIVE_SESSION_ONLY
   dev_version_label: DEVELOPMENT VERSION / 開發版本，非量產版
@@ -71,8 +71,8 @@ supervisor_coordination:
   a0_local_gate: CLOSED_WITH_EVIDENCE
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
-  active_gate: "DIRECTIVE19_REMAINING_FUNCTION_AND_ACCEPTANCE_CLOSURE"
-  active_gate_state: "E09_E15_ACTUAL_RUNTIME_GIT_OBSERVATIONS; INDEPENDENT_REVIEW_PENDING"
+  active_gate: "DIRECTIVE20_FORMAL_NANGATE45_LOCAL_CLOSURE"
+  active_gate_state: "D20_APPLIED; E15_REVIEW_PASS; E09_CHECKOUT_GAP"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -98,8 +98,8 @@ supervisor_coordination:
   blocked_items:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
-  next_executable_action: "Adjudicate E09/E15; continue A5 PDCA and remaining quota coverage without Formal/PPA bypass."
-  last_heartbeat_at_utc: "2026-11-11T03:29:51.583477+00:00"
+  next_executable_action: "Resolve E09 checkout gap/E05 conflict/E17; build reviewed DEV Formal matrix; diagnose legal Nangate45 STA/PPA tools; architecture trace."
+  last_heartbeat_at_utc: "2026-11-11T05:25:54.873160+00:00"
   last_effective_progress_at_utc: "2026-11-11T03:22:17.305463+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -116,7 +116,7 @@ phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-10T09:42:01.738251+00:00"
 last_progress_at_utc: "2026-11-11T03:22:17.305463+00:00"
-last_heartbeat_at_utc: "2026-11-11T03:29:51.583477+00:00"
+last_heartbeat_at_utc: "2026-11-11T05:25:54.873160+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive18 five P0 core framework modules and bounded three-RTL-owner integration"
@@ -1114,3 +1114,12 @@ Source8a0ee42 remains clean. E15 new cohort e15-isolation-556e8193 has3 managed 
 E09 cohort e09-git-8293b9a2 has3 actual branch-scoped managed Git commits, distinct SHA/ref, no first-branch RTL byte pollution into others, and outside-project commit denial. Commits are behavior-neutral scope comments, not engineering candidate output. First commit/replay succeeded before audit driver ACK used unsupported notes keyword; that commit was preserved, remaining two committed by explicit e09-git-isolation-continuation.py. Pre-run environment and executed-driver hash retained; exact command list now includes both execution and continuation. Independent E09 review pending, matrix remainsNOT_RUN for E09. No Native/EDA/Formal/PPA/release run in either case.
 
 Original80 remains34 PASS /1 FAIL /2 BLOCKED /43 NOT_RUN. E05 original contract mismatch and E17 depth/fanout/shared-budget limits remain open. Next adjudicate E09/E15 and continue available local acceptance; no closure/final bundle yet. D18 unchanged and not rerun. No remote source integration/upload, policy/quota change, daemon or new framework.
+
+
+## Directive20 ACK (2026-11-11T05:25:54.873160+00:00)
+
+SF-DIR-20261111-20 APPLIED. Chrome fresh workorder blob4aef46d976e7b0d7471f80224a70fd7c569a4292. Local source8a0ee42 clean; frozen D18 preserved. Adopt approved development direction using existing APB CRC32 Spec/Golden and public non-manufacturable Nangate45 reference platform. Individual Formal assumptions remain PENDING_REVIEW; formal signoff and Merge/Release authority are not implied. No administrator install, WSL, quota/security change or remote source upload.
+
+E15 independent original-case Runtime/realGit review PASS using B1 BLOCKED seq22 followed by sibling job completions seq23/24, with post-run source/driver capture limitations retained. E09 independent review BLOCKED: true3worktrees/commits/isolation confirmed, but foreign-project commit denial does not establish required checkout/materialization denial; driver hash/ACK error disclosed. Local matrix35 PASS /1 FAIL /3 BLOCKED /41 NOT_RUN at .audit/directive20-live/original80-progress.json. Supervisor verification remains UNKNOWN; remote contract JSON not modified. E05 reject-first versus literal callback-return requirement remains a specification conflict, originalFAIL retained. E17 active branch quota evidence retained, remaining depth/fanout/shared-budget work pending.
+
+Proceed existing local work, approved Formal profile/property matrix and bounded proof, common Nangate45 provider diagnostics, three initial candidate comparison prerequisites and Master02-15 implementation trace. Missing formal assumption review, actual valid power/STA results and explicit merge authority remain exact gates. No whole80 or signoff claim.
