@@ -1,17 +1,38 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261111-20**
+> **DIRECTIVE_ID: SF-DIR-20261111-21**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-11T05:18:43.935Z (GitHub commit timestamp authoritative)**
+> **UPDATED_AT_UTC: 2026-11-11T07:00:39.291Z (GitHub commit timestamp authoritative)**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: Directive20：依使用者核准，立即採用已合法可用的 APB CRC32 Golden/Spec 搭建可審查的開發版 Formal Profile，使用 Nangate45 公開非量產製程平台作統一 PPA 比較基準，在不增權、不放寬原 80 項正式 Acceptance 和安全 Gate 下完成既有剩餘本地工程、E05/E17 等問題及 Formal→可比 PPA→Pareto→授權 Merge→新 SHA ReGate。Local Git/Bundle 為現階段交付，無須等待遠端 Source Integration。**
+> **CURRENT MISSION PRIORITY: Directive21，依使用者最新排序集中完成 v3.1 Master §10 Dashboard、§09 Native Harness/MCP、§08 Parallel Exploration、§11 PDCA 的未閉合功能與原定驗收，並優先完成開發版 Formal 與 STA Timing；Power Analysis 暫緩為後續工作。原 80 項 Required Cases、E12/E14/A4 完成門檻、政策與 Merge/Release 權限均不變。以 Local Git/Bundle 作為本輪交付，不因未有遠端 Source Commit 而等待。**
+
+
+## 2.22 Directive21：優先完成 Master §10／§09／§08／§11、Formal 與 STA，Power 後置（2026-11-11）
+
+**使用者新增優先順序及理由：** 使用者明確要求「優先完成 10、09、08、11、10 的 Formal、STA（power 的部分可以先等一下）」。依 v3.1 Master 章節解讀，重複的 §10 合併為同一 Dashboard 工作，主要排序為 **§10 Dashboard → §09 Native Harness/MCP → §08 Parallel Exploration → §11 PDCA → 開發版 Formal → STA Timing**；彼此可合理並行，不要求重新執行 D18 已封存核心模組。**Power 暫緩僅是執行排程，並未取消 Power、原 PPA 完成定義、E12/E14/E20 或其他 Required Case，也沒有授權缺少 Power 就強行選 Winner／Merge／Release。**
+
+**當前已回報基線，非 Supervisor 獨立重現：** D20 ACK/APPLIED；Local Source SHA `81ef4de131f3a6d4a6aadd76b43889a4daf0774c`。本地原 80 案進度報告為 `36 PASS / 1 FAIL / 2 BLOCKED / 41 NOT_RUN`；E05 保留 FAIL，E17 BLOCKED（缺少權威 shared EDA quota／fanout 契約）；D20 局部 Yosys Formal 和單候選 Nangate45 mapping 有實際本地執行紀錄。Nangate45 fixed candidate 的 `325 mapped cells / 578.55 Liberty cell-area units` **不是三候選可比 PPA，也不是 STA/Power 證據**。Local D18 frozen ZIP `75628ea44d5828fae0bae3fdae6235b258f9835fb44f4058a7396b443b59f7a7` 不得改寫。遠端 Source Commit 仍 null、Transfer UNAVAILABLE，但都不阻礙後續本地工程。GitHub 原 E JSON 保持全部 NOT_RUN；不得把 Agent 本地 Case 直接升格遠端獨立驗收。
+
+### 優先工作與可執行退出條件
+
+1. **P1，§10 Dashboard／Observability（A5、E19）。** 直接沿用現有 SQLite/EventStore/Read Model，將 Requirement → Exploration → Branch DAG/parent/fork/head → Owner/Native/Peer/Skill/EDA receipts → Formal/STA evidence → PDCA/Blocker/Case 的權威因果鏈放在可操作的 Chrome Dashboard 中。至少一個**現存實際任務**可從 UI 追到原始事件、Local Source/Spec/Env hashes、含失敗分支與未驗收案例；重啟／重開後投影一致。Token/Cost、STA、Power 缺數據時顯示 UNKNOWN/NOT_RUN，禁止以預設 0 或示意圖假裝有結果。只補目前缺口，使用既有原始 A5/E19 驗收，不額外建立第二套 UI／Service。
+2. **P2，§09 Native Harness／MCP（A1）。** 在既有 Codex／Claude Native Harness 與 MCP 介面上驗證實際 `sf_get_status`、已定義的授權命令、認證身份、跨 Project/Scope 拒絕、Nonce 防重放、斷線／重開後通知與 Ticket 持久化、Owner checkpoint/harness switch。已有實際 Codex/Claude status Call 不重跑，對尚未閉合的原 A1 IDs 逐項提供 command/session/raw log/actor/source digest；未授權的 approval/mutation 不執行，只證實拒絕或列為需人工核准。不自造聊天 CLI、永久活躍 Agent 或額外工具介面。
+3. **P3，§08 Parallel Exploration（E01–E20／A4）。** 完成原規格所需三條初始 Performance/Low Power/Area 真實 Branch/Worktree/Owner + 至少一條二級 Fork 的 DAG、隔離、事件 Fanout、Failure/Recovery、Git evidence 和適用的原 E 案例。保留 E05 callback scope FAIL 的安全語義／規格衝突供有權者裁決；不為湊 PASS 改寫回調政策。E17 的 shared EDA numeric cap 缺失須列為待授權決策：`config/exploration_policy.json` 指向 `config/autonomy_policy.json`，但後者目前無明確數值，不得自行填政策數字。其他可執行 E 案如 E10/E15/E16/E19 優先收斂。與 Formal/STA 缺口無關的實作可持續。
+4. **P4，§11 PDCA（A5、A6）。** 從真正的 Failure Signature、Retry/Dead Letter、Lease 恢復、Branch 結果與成本 Receipt 重建一次完整 PLAN→DO→CHECK→ACT **建議／審批邊界**，能觀測改善前後差異；沒有使用者批准不可自動提升 Policy/Quota/模型指令。沒有核准模型定價時成本仍 UNKNOWN，A5-03 不得假 PASS；可保留可驗的 Token 用量與 PDCA 假設。
+5. **P5，Formal（A2-04、A4-04、E11/E14/E16）。** 以前輪已批准的開發版 APB CRC32 Spec/Golden、已存在的 Formal Property/Assumption Matrix、Yosys/SBY/Solver（僅合法可用者）為基線，優先完成**可查的 Assumption review 準備及可執行 Proof**。針對同步 Reset、APB protocol、CRC32 readback、狀態轉換與不同 Branch Candidate 個別 proof，保存 Property/Assumption/Golden/Source/Env/Tool SHA、CLI、exit、raw logs、counterexample/cover。既有 reference-relative 66/66 和 bounded properties 為有限開發證據，不自動代表全部 Formal eligibility；需要逐項批准而未批准的 Assumption 保持 PENDING_REVIEW/BLOCKED，不得自授正式 Signoff。Formal 應與 P1–P4 適度並行，避免工具等待空轉。
+6. **P6，STA Timing（A2/A4、E11/E12/E14 涉及部分）。** 延用官方可取得、非量產的 Nangate45 同一 Liberty/Corner，以及共同的 APB CRC32 開發版 SDC clock/IO/load 假設，在既有合法工具與權限下先查可執行 OpenSTA/OpenROAD 或等效受控 STA provider；若不可取得，提交一份明確的 Binary/Source/Policy/Location 缺口，不無界下載、不要求 WSL/管理員權限。可執行時以相同 Profile、Library/SDC/Corner 對各 Candidate 真實映射後執行 STA，產生 worst path/slack/clock/fmax（有依據才報）及原始 Log+Hash，必要時做一致的 Timing/Area-only **DEV_PARTIAL_COMPARISON**；不得將它宣稱 E12 全 PPA COMPARABLE，缺少 Power 時完整 Pareto Winner/正式 Merge ReGate 仍依舊 Gate BLOCKED/INCOMPARABLE。
+7. **Power 暫緩，明確記錄未執行。** 此輪不要求 VCD/SAIF activity-to-power 估算或 Power Provider 安裝；Dashboard 將 Dynamic/Leakage/Power winner 顯示 `NOT_RUN/UNKNOWN`，必要時標比較結果 `INCOMPARABLE`。保留先前可用的共同 Test vectors 與資料 pin，將 Power 列入後續 Backlog。**不改變** E12、E14、E20、A4 等要求 Power 的原始判準，不以 Timing/Area 的部分比較完成全 PPA 或授權 Merge/Release。
+
+**執行模式與回報：** 下次活躍 Session 重新載入本文件，向唯一可 Web Edit 的根目錄 Sync ACK `SF-DIR-20261111-21`。不要等 Supervisor 逐一派工，在既有 Local Git 直接推進並固定 Commit，附原始命令、環境與證據 SHA、已關閉原 Case ID、未通過 ID 與精確 Blocker；同步 Master 第 08/09/10/11/07 節的本地 Architecture Implementation Trace。若 P1–P4 任務可並行，避免因 Formal/STA 輸入不足停工。每 15 分鐘指令輪詢僅限活躍 Session。Local Bundle 作為當前交付終點，不能偽稱 GitHub Source 已整合；Supervisor 不編輯 Sync。
+
+**權限與驗收邊界：** 原 G0–G7 及 80 Required Acceptance Cases 完全保留。任何涉及正式 Spec/Assumption 批准、共享 EDA 配額、授權 Merge、Security/Quota/模型資源與 Tool/PDK 安裝的決策均依原有授權流程，未批准時精確 BLOCKED。不得為排程調整降低門檻、擴張框架、盲目全量重跑、編造測試 PASS 或公開發布。
 
 
 ## 2.21 Directive20：已核准 OSS Formal／Nangate45 PPA 開發基準，閉合工程驗證並對照 Master 架構（2026-11-11）
