@@ -72,7 +72,7 @@ supervisor_coordination:
   a0_local_evidence_verified: 18
   supervisor_directly_verified: UNKNOWN
   active_gate: "DIRECTIVE19_REMAINING_FUNCTION_AND_ACCEPTANCE_CLOSURE"
-  active_gate_state: "D19_SPEC_INVALIDATION_AND_MCP_TRANSPORT_IMPLEMENTED; ORIGINAL_E_REVIEW_ACTIVE"
+  active_gate_state: "E09_E15_ACTUAL_RUNTIME_GIT_OBSERVATIONS; INDEPENDENT_REVIEW_PENDING"
   G0_local_gate: "CLOSED_WITH_EVIDENCE_LOCAL_18_OF_18; SUPERVISOR_UNKNOWN"
   G1_scope_runtime_unit: LOCAL_MOCK_VERIFIED
   G1_candidate_unit: LOCAL_MOCK_VERIFIED_WITH_INDEPENDENT_REVIEW
@@ -98,8 +98,8 @@ supervisor_coordination:
   blocked_items:
     - "Approved formal acceptance profile/fresh authenticated run absent"
     - "Physical PPA technology library/corner, STA constraints/provider and power activity/provider absent"
-  next_executable_action: "Adjudicate original E runtime evidence; continue available E09/E15 and A5 PDCA; preserve dependent Formal/PPA cases."
-  last_heartbeat_at_utc: "2026-11-11T03:22:17.519522+00:00"
+  next_executable_action: "Adjudicate E09/E15; continue A5 PDCA and remaining quota coverage without Formal/PPA bypass."
+  last_heartbeat_at_utc: "2026-11-11T03:29:51.583477+00:00"
   last_effective_progress_at_utc: "2026-11-11T03:22:17.305463+00:00"
 coding_agent_transport:
   acquisition: GITHUB_WEB_DOWNLOAD_ZIP
@@ -116,7 +116,7 @@ phase: A0X
 owner_agent: Codex_local_G1
 updated_at_utc: "2026-11-10T09:42:01.738251+00:00"
 last_progress_at_utc: "2026-11-11T03:22:17.305463+00:00"
-last_heartbeat_at_utc: "2026-11-11T03:22:17.519522+00:00"
+last_heartbeat_at_utc: "2026-11-11T03:29:51.583477+00:00"
 latest_commit: "b8dd54a7004545027e9ebf1d8b747f8b4750b7fc"
 latest_pr: null
 current_task: "Directive18 five P0 core framework modules and bounded three-RTL-owner integration"
@@ -1105,3 +1105,12 @@ D18 sealed bytes and evidence unchanged; no rerun. Formal assumptions/profile an
 
 
 Independent original E runtime review received. E01/E02/E03/E04/E06/E07/E08 PASS in original Runtime-contract scope; E05 FAIL due reject-first versus literal fake-B2-to-B1 requirement; E17 BLOCKED pending depth/fanout/shared-budget coverage. Original80 matrix now34 PASS /1 FAIL /2 BLOCKED /43 NOT_RUN. Prior matrix and raw failures retained. No EDA gate or whole E gate PASS.
+
+
+## Directive19 additional local Runtime/Git observations (2026-11-11T03:29:51.583477+00:00)
+
+Source8a0ee42 remains clean. E15 new cohort e15-isolation-556e8193 has3 managed real Git worktrees. Performance branch BLOCKED; area/low_power already WAITING software Runtime jobs subsequently COMPLETED, replay stayed one completion. Receipt queries initially used nonexistent branch_id/occurred_at_utc columns; raw driver failure preserved and exact existing DB recovered read-only. Environment is post-execution capture, explicitly not pre-run provenance. Independent E15 review pending, matrix remainsNOT_RUN for E15.
+
+E09 cohort e09-git-8293b9a2 has3 actual branch-scoped managed Git commits, distinct SHA/ref, no first-branch RTL byte pollution into others, and outside-project commit denial. Commits are behavior-neutral scope comments, not engineering candidate output. First commit/replay succeeded before audit driver ACK used unsupported notes keyword; that commit was preserved, remaining two committed by explicit e09-git-isolation-continuation.py. Pre-run environment and executed-driver hash retained; exact command list now includes both execution and continuation. Independent E09 review pending, matrix remainsNOT_RUN for E09. No Native/EDA/Formal/PPA/release run in either case.
+
+Original80 remains34 PASS /1 FAIL /2 BLOCKED /43 NOT_RUN. E05 original contract mismatch and E17 depth/fanout/shared-budget limits remain open. Next adjudicate E09/E15 and continue available local acceptance; no closure/final bundle yet. D18 unchanged and not rerun. No remote source integration/upload, policy/quota change, daemon or new framework.
