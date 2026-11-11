@@ -1,18 +1,31 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261110-18**
+> **DIRECTIVE_ID: SF-DIR-20261111-19**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-10T08:41:00Z (directive publication; GitHub commit timestamp authoritative)**
+> **UPDATED_AT_UTC: 2026-11-11T01:28:00Z (user-priority revision; GitHub commit timestamp authoritative)
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: Directive18，依使用者明確指示先完整實作 Event-driven Runtime、Super Agent／Owner 協作、多 Owner／Branch DAG、Dashboard／Observability、P-Stack／Owner-local Skills 五大 P0 核心模組及共同端到端閉環；Formal／實體 PPA／Pareto／Merge ReGate 後置，保留既有 G0–G7、80 項正式驗收與全部安全／權限／配額 Gate。**
+> **CURRENT MISSION PRIORITY: Directive19，使用者接受 Local Git 與 Local Bundle 作為目前開發交付終點；不再以 GitHub Source Integration 或 Artifact Transfer 作為後續 Local 工程的前置條件。立即處理既有 G0–G7 尚未完成的功能與原定 A0–A6 60 + E01–E20 20 正式驗收、PPA／Pareto／Merge ReGate，僅在現有權限、工具與已核准輸入下執行，證據不足則如實 BLOCKED／NOT_RUN；安全、正式 Gate、配額與權限不變。
 
+
+## 2.20 Directive19：Local 交付已足夠，立即收斂剩餘任務（2026-11-11，使用者最新優先順序）
+
+**變更原因：** 使用者明確表示「Coding Agent 在 local git 就好，也可以產生 Bundle 在 local，我認為這些就這樣了。盡快處理剩下的任務目標」。D18 五大 P0 已由 Agent 回報本地實作完成，Local SHA `49976c7599b4057933a6a81095ce84daff1483bf`，D18 ZIP SHA256 `75628ea44d5828fae0bae3fdae6235b258f9835fb44f4058a7396b443b59f7a7`，傳遞仍 UNAVAILABLE。這些是 Agent 自述而非 Supervisor 獨立重現。
+
+**立即執行：**
+1. 活躍 Session 下次 Chrome 輪詢本文件後，在唯一可編輯的根目錄 Sync ACK `SF-DIR-20261111-19`；從現有 Local Git/Bundle 繼續，不等待 Integrator、遠端 Source Commit、Bundle Transfer、遠端 CI 或 Supervisor 下一輪指令。Local Git 與 Local ZIP 保持可追溯即可；遠端仍如實標 `remote_source_integrated_commit=null`、`artifact_transfer_state=UNAVAILABLE`。不嘗試遠端 Git/PR/批次上傳。
+2. 先對照原 G0–G7、A0–A6 60 件與 E01–E20 20 件的**既有**要求，列出逐項剩餘功能、可直接執行的驗收、需要外部核准／資料的項目。優先完成真正尚缺的 Local 功能，接著一次性執行適用的正式驗收，不新增測試項、框架、Mock 或無界 Reviewer 循環；D18 已完成的 P0 不重做。
+3. 優先在既有合法 OSS 工具、已核准設定和真實 Local Owner/Branch/Native Harness 下，執行尚未完成的真實 Parallel Exploration／Candidate Evidence／Select/Pareto／Local Merge ReGate；對沒有 Liberty、corner、STA constraints、power activity/provider 的實體 PPA，**不得用 generic Yosys 面積或模擬數字偽稱可比較 PPA**。若缺失是必備 Gate 輸入，精確標 `INCOMPARABLE`／`BLOCKED`，仍繼續其他可執行案例。
+4. 正式 80 項只依各 Case 原定前提、原始工具 Logs、source/spec hash、branch lineage、reviewer 和 acceptance contract 逐項判 PASS/FAIL/BLOCKED/NOT_RUN；本地正式驗收可有實際結果，但不得因 Local Suite、Mock、Agent 自評或缺少外部核准而捏造 PASS。沒有授權的 Formal assumptions/profile、實體 PPA inputs 或外部獨立 Reviewer，分開列明所需人類決策，不以它們阻擋其他合法可做的 Local 工作。
+5. 每個可完成里程碑直接在 Local Git Commit，保存命令、原始 Log、SHA、Branch DAG、結果和 Local Bundle；以 Sync Web Edit 回報本輪真正完成的功能、各 Gate/Case 狀態、實際 Blocker 和下一個可執行項目。可執行項目全部收斂後，給出一次性結案矩陣及未完成項目所需的具體輸入，不因傳遞 UNAVAILABLE 宣稱整個 Local 開發停工。
+
+**邊界：** 本指令只變更 Local 開發優先順序與交付依賴，不授權修改安全/權限/配額、Formal/PPA 判定標準、80 件必選驗收、正式 Release 或自動 Merge 政策。§2.19 的 D18 P0 工作以已凍結 Local 結果為基線；本節對「等待 Bundle Transfer 才繼續工程」的舊敘述優先，但不改寫既有事實。
 
 ## 0. 任務與角色
 
