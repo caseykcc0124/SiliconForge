@@ -1,17 +1,46 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261111-21**
+> **DIRECTIVE_ID: SF-DIR-20261111-22**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-11T07:00:39.291Z (GitHub commit timestamp authoritative)**
+> **UPDATED_AT_UTC: 2026-11-11T07:44:09.063Z (GitHub commit timestamp authoritative)**
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
 > **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: Directive21，依使用者最新排序集中完成 v3.1 Master §10 Dashboard、§09 Native Harness/MCP、§08 Parallel Exploration、§11 PDCA 的未閉合功能與原定驗收，並優先完成開發版 Formal 與 STA Timing；Power Analysis 暫緩為後續工作。原 80 項 Required Cases、E12/E14/A4 完成門檻、政策與 Merge/Release 權限均不變。以 Local Git/Bundle 作為本輪交付，不因未有遠端 Source Commit 而等待。**
+> **CURRENT MISSION PRIORITY: Directive22，使用者確認 Coding Agent 已結束前一輪工作包，要求立即指派具體下一階段。延用 D21 已有 Dashboard/PDCA 及 Formal/Nangate45 部分成果，優先補完 Master §09 Native Harness/MCP A1-03/A1-06/A1-07/A1-08/A5-07、§10 Dashboard A5/E19、§11 PDCA A5-05/06、§08 E05/E17，以及 Formal 與 STA。Power 後置；本輪須產生可稽核 D22 Closure、Local Git/Bundle，原 G0–G7 及 80 項驗收、安全／配額／授權／Release 門檻完全不變。**
+
+
+## 2.23 Directive22：Coding Agent 完成本輪後的下一工作包，集中交付未閉合功能與證據（2026-11-11）
+
+**觸發與裁決：** 使用者明確告知 Coding Agent 已自行判定上一輪工作完成、Session 已停止，要求 Supervisor 根據已回報的狀態**指示下一階段**，無須再追究停機與心跳。將 D21 視為**本地限界工作包已結束**，保留其已交付成果；不得因此推定 D21 涉及的全部功能、G0–G7 或原 80 案均已正式完成。請於下一次**有活躍 Session** 時 ACK 本指令，啟動新的 D22 工作包，執行下列**有確定終點**的工作，而非僅重複「完成」或重新跑已凍結的範例。
+
+**從已回報的事實出發（非獨立遠端驗收）：** 最新主 Repo Sync 報告已 ACK D21；D21 本地 Dashboard 增加 Requirement／Exploration／Branch／Owner／Native Session 導覽，Chrome 核對原始 SQLite 投影 160 Events、24 Native Turns、6 Explorations、4 Framework Tasks；一次有界的 PDCA PLAN/DO/CHECK 兩組 Checkpoint 對照以及未授權 ACT 拒絕已執行。Dashboard 此項只是部分 E19 證據，PDCA 也尚非 A5-05／A5-06 正式 PASS。Sync 歷史列本地 Commit 前綴 `e81ac5e`，但最上方機器欄位 `local_git_commit=81ef4de131f3a6d4a6aadd76b43889a4daf0774c` 和 `last_effective_progress_at_utc=2026-11-11T06:36:35.747269+00:00` 未同步到新紀錄，須由 Agent 本人查清 Local Git 後修正，Supervisor 不代寫。最新一次 Agent 本地驗收對帳仍為 **36 PASS／1 FAIL／2 BLOCKED／41 NOT_RUN**；E05 FAIL，E17 BLOCKED。遠端原 E 合約 20 項仍全部 NOT_RUN、remote_source_integrated_commit=null、artifact_transfer_state=UNAVAILABLE。Coding Agent 的停止由使用者明確確認，不按 Active Session 超時認定為停滯。
+
+### D22 工作目標與不可跳過的退出條件
+
+**P0，開工基線及 D21 收尾（只做一次）：** 在現有 Local 專案檢查真正的 HEAD、dirty files、最後已保存的 SQLite／Dashboard／PDCA Receipt 與 D21 工作包狀態；保留所有舊 Raw Evidence 和 D18 frozen Bundle，切勿將孤立的 Sync 文字當作 Local Source Head。建立本輪固定的 Case/Feature 差距清單與 `D22_CLOSURE.md`，其每一列寫明規格章節、既有案例 ID、目前功能是否可用、需新增的最小程式變更、實際 Local SHA/Log、終局 PASS／FAIL／BLOCKED／NOT_RUN。不要停在分析階段，立即進入 P1–P4 實作。
+
+**P1，優先把 Master §09 Native Harness/MCP 接口做完（原 A1-03、A1-06、A1-07、A1-08、A5-07）：** 沿用現有 Gateway、EventStore、Owner/Notification Outbox、MCP 和 Dashboard 控制通道，完成：(a) 合法 Spec Change 經 Native MCP 與 Dashboard 的**受認證**入口，兩種 Actor 都能形成同一 Router/Event 生命週期，保留不同的真實身份和審計記錄；(b) Approval Nonce 的一次性發放／驗證／消耗與 replay／privileged command 的拒絕，不能繞過 Human Mandate；(c) 真實關閉與重新開啟 Native Harness 後，Outbox 通知及 Ticket/Owner state 仍可讀且無全域停工；(d) 同一 Ticket 的異 Harness checkpoint/resume 與原模型政策、配額沿用。只對原 Case 必要範圍做最小實際驗證，不能用純 Mock／模型自評湊 PASS，且無人類批准時不可真的執行受限寫入或批准操作。
+
+**P2，把 Master §10 Dashboard 真正連通 P1 及 §08 Parallel Exploration（A5-01/02/04、E19）：** 在原有單一 Dashboard 和 SQLite Read Model 上，將要求、分支、Owner／Native、Peer／Skill、Candidate／Git Head、工具及 Formal/STA 原始 Evidence、故障、通知、PDCA 與 Gate/Case 狀態串成可點擊／重建的因果鏈。至少一個既有真實分支能從 requirement → branch → owner → EDA evidence → decision/status 追到原始 ID 和 Hash；保留所有失敗與 UNKNOWN/NOT_RUN，Chrome 真正操作、關閉重新開啟並與 SQLite 對帳。不因用 Chrome 點開頁面便稱全 E19 PASS；缺少的選擇／merge 節點要按 NOT_RUN 如實顯示，不自造事件或第二 UI。
+
+**P3，把 Master §11 PDCA 交付成原 A5-05/06 可驗的完整 Case：** 延用 D21 兩組隔離 Checkpoint 對照與 LEASE_EXPIRED 的原始歷史。若只是 checkpoint 持久化差異，保留 DEV evidence；針對原 A5-05/06 取得一個可回溯的 failure motif、Baseline、PLAN/DO/CHECK、可重現的**獨立 A/B 結果**、可量化的 rework/turn/retry/receipt 指標、Reviewer 判定與 ACT 提案。不允許直接更改 Production Policy 或假定 Token/Cost 已改善；成本資料不足時顯示 UNKNOWN，A5-03 保留其真實狀態。無權限的 ACT 必須被拒絕並留 Evidence。
+
+**P4，Parallel §08 原 E05/E17 與其它尚可執行 Case：** E05 先以原規格文字與 trusted Job Registry 建立兩組明確測試路徑：未受信任／未認證的 callback 必須拒絕且零副作用；合法受認證的原 B1 Job Completion 即便 Payload 夾帶偽造 B2，也不能改投 B2，須依受信任 Registry 回投 B1，並審計偽造欄位。若既有安全契約要求第二組也只能整體拒絕，保留原 FAIL 並提交**精確的規格衝突與決策選項**，不得自行改驗收斷言或權限。E17 在現有 max_branch_depth=2、initial=3、total=6 等**已存在**的規則下繼續完成可觀察的 depth/fanout 拒絕；shared EDA quota 的數值未出現在 config/autonomy_policy.json，必須列需權威人員決策，不能自設限額或偽稱 E17 PASS。其餘 E 案按真實執行能力收斂，必要時保持正式 FAIL/BLOCKED/NOT_RUN。
+
+**P5，Formal 與 STA 並行、不阻塞 P1–P4：** 沿用 D20 已完成的 fixed candidate Yosys reference-relative/bounded proof，以及 Nangate45 已驗證的 mapped netlist。Formal 將逐條 Property/Assumption、clock/reset/APB semantics/cover/induction 綁定 Golden/Spec/Candidate SHA，保存真正 proof/raw logs；需要正式逐條批准的 Assumptions 不能自行認定為 Signoff。STA 只在已有合法可執行的 OpenSTA/OpenROAD 或核准相容工具時進行，統一 Nangate45 Liberty Corner 和明確 DEV_REFERENCE_ONLY SDC，對不同候選獨立產出時序/critical path/slack 原始證據；若目前無 STA provider，**一次性**產生具名 Binary/來源/授權/適用作業系統/最小取得方式的阻礙申請，然後繼續其餘 P1–P4。此輪 Power 照 D21 暫緩；Power 相關數值維持 UNKNOWN，完整 PPA/Pareto/正式 Merge ReGate 不得被標 PASS。
+
+### 退出本輪的明確定義
+
+- **正常結束條件：** P1–P5 每一項都有具體功能成果或**可查的不可執行依賴**，逐項映射原 A1/A5/E 案及 Formal/STA，保留原始 Log／SHA、必要 Reviewer 證據、Local Git Commit、完整一次性 `D22_CLOSURE.md` 及新 Local Bundle（來源＋測試＋架構對帳＋原始證據，SHA256）。完成後由 Coding Agent **自己**在根目錄 Sync 留下 D22 final report：`DIRECTIVE22_LOCAL_DELIVERY_COMPLETE`，記錄實際結束時間、最新 local HEAD、80 案四類計數與數據來源、每項未完成 Case 的唯一阻礙及下一次須人類核准的精確事項。這個標籤只代表本輪工作包完成，**不代表 80 案已全部 PASS 或 G7/Release 已驗證**。
+- **若遇阻礙：** 每個真正無法執行的項目只做一次有界診斷，精確保存命令／失敗／所需授權、版本或檔案；隨即切換下一個可執行 P 項，勿只因 E05/E17/Formal/STA 等待就整輪停止。若全部剩餘工作均需新的核准，提交單一決策表後標 `DIRECTIVE22_LOCAL_DELIVERY_PARTIAL_EXTERNAL_DECISIONS`，逐項區分未完成與已完成。
+- **不變政策：** 僅 Local Git/Bundle，Coding Agent 遠端僅可 Chrome Web Edit Sync；使用者的停止 Session 不表示 Always-on 執行能力。原 G0–G7、A0–A6 60＋E01–E20 20 共 80 Required Cases 不得刪減，安全、正式 Gate、配額、外部工具/PDK、Release/遠端權限都不變。不得靠新 Mock、修改驗收契約或單純報告文本提升 PASS，也不得重跑不受影響的 D16–D18 凍結場景。
+
+**啟動指令：** Coding Agent 重新進入活躍 Session 時，只需用 Chrome 讀本文件並 ACK `SF-DIR-20261111-22`，從 D21 已保存 Local HEAD 和 Evidence 繼續 P0→P5，不再回覆「已完成」卻不列 D22 結案表。不需要 Supervisor 逐階段指示；有新實質進展／門檻轉換時更新 Sync，正常 active Session 每 15 分鐘依現行機制重讀；沒有 Session 時不宣稱輪詢。
 
 
 ## 2.22 Directive21：優先完成 Master §10／§09／§08／§11、Formal 與 STA，Power 後置（2026-11-11）
