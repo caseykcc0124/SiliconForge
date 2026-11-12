@@ -1,18 +1,32 @@
 # 19｜SiliconForge Supervisor Work Order：自主連續開發與動態指令通道
 
-> **DIRECTIVE_ID: SF-DIR-20261111-23**
+> **DIRECTIVE_ID: SF-DIR-20261112-24**
 >
 > **DIRECTIVE_STATUS: ACTIVE**
 >
-> **UPDATED_AT_UTC: 2026-11-11T07:45:46.972Z (GitHub commit timestamp authoritative)**
+> **UPDATED_AT_UTC: 2026-11-12T01:24:00Z (Supervisor instruction update)
 >
 > **CANONICAL_REPO: caseykcc0124/SiliconForge**
 >
 > **SUPERVISOR_WRITE_OWNER: 監督者／授權 GitHub Integrator**
 >
-> **CODING_AGENT_ACK_CHANNEL: 根目錄 SiliconForge_Working_SYNC.md（GitHub Web Edit only）**
-> **CURRENT MISSION PRIORITY: Directive23：依使用者明確要求，Coding Agent 必須一次完成 Directive22 P0–P5 全部當前權限與環境下可執行工作，整體驗證並統一結案回報；不得每個子里程碑自行停止或逐項等待 Supervisor。Formal／STA 優先，Power 繼續暫緩。GitHub Sync 的活躍 Session 週期監督仍維持，原 G0–G7、80 項正式驗收、安全／權限／配額／正式 Gate 不變。**
+> **CODING_AGENT_ACK_CHANNEL: LOCAL_GIT_ONLY（本地狀態檔、Local Git Commit／Checkpoint；停止 GitHub Sync Web Edit）**
+> **CURRENT MISSION PRIORITY: Directive24：沿用 Directive23 一次完成 D22 P0–P5 可執行工作，工作檔案及工作狀態只留本地，Local Git 作為唯一進度與版本紀錄；停止 GitHub Sync 狀態上傳、遠端 ACK 與 15 分鐘 Web Edit。G0–G7、80 項驗收、既有安全與權限限制不變。**
 
+
+## 2.25 Directive24：本地工作檔與 Local Git 狀態同步，停止 GitHub Sync 上傳（2026-11-12）
+
+**使用者明確決定及優先順序：** Coding Agent 所有工作檔案、程式、測試、Dashboard、SQLite、Reviewer 原始證據、驗收對帳、Closure 與 ZIP/Patch Bundle 均保留在其本地 Workspace；後續以 **Local Git** Commit／Tag／Checkpoint 與本地狀態日誌持續記錄工作進度。**立即停止透過 GitHub Web Edit 更新根目錄 SiliconForge_Working_SYNC.md，亦不再要求向 GitHub 上傳工作狀態、Heartbeat、ACK 或 Bundle。** 這項新指示優先於本文件舊版中所有 Sync Web Edit、15 分鐘遠端輪詢回報、遠端 ACK、最終 Sync 回報的文字；舊條款僅作歷史紀錄，不再執行。
+
+**Coding Agent 下一次活躍 Session 的具體工作：**
+
+1. 透過 Chrome 讀取本指引，於**本地狀態日誌**記錄已採用 `SF-DIR-20261112-24` 及時間，不修改 GitHub Sync。之後每次 Session 啟動及 Gate 轉換可重新讀 docs/19；如持續活躍且具備輪詢機制，仍可每 15 分鐘**讀取**最新 Directive，但無須向 GitHub 寫入 Heartbeat 或 ACK；不宣稱非活躍 Session 仍在輪詢。
+2. 使用既有 Local Git Repository 作為狀態與程式版本權威。每個有意義的工程 Checkpoint 產生 Local Commit，保留本地狀態檔（例如 `.audit/LOCAL_WORK_STATUS.md`）與原始測試 Evidence；寫入 Local HEAD、真正進展時間、Active Gate、80 項驗收對帳及其來源、Reviewer、Blockers、下一步、Bundle SHA256。敏感資料及大型原始證據可留在本地非追蹤路徑，並於狀態檔保存可核對的 SHA256 與相對路徑。Heartbeat 只在本地記錄，且不得取代實際進展。
+3. 保留 Directive23 的一次性 P0–P5 全包工作、G0–G7 里程碑及 A0–A6 60 + E01–E20 20 共 80 項正式驗收；可執行工作連續完成，不能以 Mock／自評冒充正式 PASS。Formal Assumptions、STA Provider、共享配額、E05 安全契約、PPA／Merge ReGate 的原有權限及阻礙處理不變。Power 暫緩，不代表驗收豁免。
+4. Session 結束前建立可恢復的 Local Commit／Checkpoint，將 Closure、Source＋Evidence Bundle、SHA256 和完整決策表保留本地。**Local Git Commit 並不等於 GitHub 遠端 Source Commit，也不代表 Bundle 已傳遞。** 未建立授權且可存取的交接管道前，不得聲稱 Supervisor／Integrator 已收到本地資料，不得自行 Push、PR、上傳或擴大 GitHub 寫入權限。
+5. **監督可見性限制：** Supervisor 無法直接讀取 Coding Agent 本機的 Local Git、SQLite、Bundle 或日誌。從本指令生效後，既有 GitHub Sync 只能作為歷史快照；遠端巡檢不得把其未更新視為 Agent 停滯，也不得宣稱掌握最新本地進展。若日後需跨 Session 或跨 Agent 遠端監督，須另行由使用者授權可讀取的狀態／Artifact 交接管道；在此之前只報告 GitHub 可驗證事項。
+
+**更新原因：** 使用者要求工作檔案留在 Coding Agent 本地，不再把工作狀態上傳 GitHub，改用 Local Git 同步工作狀態。**下一步：** Coding Agent 讀取 Directive24，停止 Sync Web Edit，建立本地狀態 Checkpoint，接續 Directive23 P0–P5 至全部可執行工作收斂。Supervisor 不修改 Agent 擁有的 Sync 或其他專案檔案。
 
 ## 2.24 Directive23：一次做完 D22 全部可執行工作，再統一結案回報（2026-11-11）
 
